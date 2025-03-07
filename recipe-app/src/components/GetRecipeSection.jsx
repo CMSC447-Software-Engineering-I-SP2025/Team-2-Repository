@@ -2,13 +2,31 @@ import { useState } from "react";
 
 export default function GetRecipeSection() {
     const [ingredients, setIngredients] = useState(['asparagus', 'califlower', 'carrots']);
-    
+    function handleSubmit() {
+        const outgoingJSON = JSON.stringify(
+            {includeIngredients:ingredients}, 
+            {excludeIngredients:[]}, 
+            {diet:[]},
+            {intolerances:[]},
+            {cuisine: []})
+        console.log(outgoingJSON);
+        // json format example
+        // {
+        //     'includeIngredients': ['ing0', 'ing1', 'ing2'],
+        //     'excludeIngredients': ['ing0', 'ing1', 'ing2'],
+        //     'diet': ['vegetarian', 'ketogenic'],
+        //     'intolerances': ['gluten'],
+        //     'cuisine': ['italian'],
+        //     'type': ['main course']
+        //
+        // }
+    }
     return <>
         <div className="get-recipe-section">
             <div className="get-recipe-guide">Find recipes by their ingredients</div>
             <TextArea ingredients={ingredients} setIngredients={setIngredients}/>
             <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
-            <SubmitButton />
+            <SubmitButton handleSubmit={handleSubmit}/>
         </div>
     </>
 }
@@ -42,8 +60,8 @@ function TextArea({ingredients, setIngredients}) {
     </label>
 }
 
-function SubmitButton() {
-    return <button type="button" className="submit-button">Get Recipes</button>;
+function SubmitButton({handleSubmit}) {
+    return <button type="button" className="submit-button" onClick={handleSubmit}>Get Recipes</button>;
 }
 
 // function IngredientLine({name}) {
