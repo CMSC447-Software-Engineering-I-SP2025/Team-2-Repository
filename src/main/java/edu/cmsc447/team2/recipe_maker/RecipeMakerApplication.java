@@ -1,6 +1,6 @@
 package edu.cmsc447.team2.recipe_maker;
 
-import edu.cmsc447.team2.recipe_maker.model.Recipe;
+import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -11,10 +11,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.client.RestTemplate;
-
-
-import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
 public class RecipeMakerApplication {
@@ -44,13 +40,13 @@ public class RecipeMakerApplication {
 			String queryURL = String.format("%s?ingredients=%s&apiKey=%s", baseURL, ingredients, apiKey);
 
 			// Fetch data and map it into Recipe[]
-			Recipe[] recipes = restTemplate.getForObject(queryURL, Recipe[].class); //Sends the actual query
+			RecipeEntity[] recipeEntities = restTemplate.getForObject(queryURL, RecipeEntity[].class); //Sends the actual query
 
 			//Prints out recipes to console
 			//In format (id=, title=, usedIngredientCount=, missedIngredientCount=)
-			if (recipes != null) {
-				for (Recipe recipe: recipes) {
-					System.out.println(recipe.toString());
+			if (recipeEntities != null) {
+				for (RecipeEntity recipeEntity : recipeEntities) {
+					System.out.println(recipeEntity.toString());
 				}
 			} else {
 				System.out.println("No recipes found.");

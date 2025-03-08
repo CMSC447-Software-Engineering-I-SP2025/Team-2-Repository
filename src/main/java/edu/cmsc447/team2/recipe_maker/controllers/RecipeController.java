@@ -14,12 +14,17 @@ public class RecipeController {
     //Lets us inject recipeService into RecipeController
     private final RecipeService recipeService;
 
-    public RecipeController(RecipeService recipeService) {
+    private Mapper<RecipeEntity, RecipeDto> recipeMapper;
+
+    public RecipeController(RecipeService recipeService, Mapper<RecipeEntity, RecipeDto> recipeMapper) {
         this.recipeService = recipeService;
+        this.recipeMapper = recipeMapper;
     }
 
     @PutMapping(path = "/recipes")
-    public RecipeEntity addRecipe(@RequestBody RecipeEntity recipe) {
-       return recipeService.createRecipe(recipe);
+    public RecipeDto addRecipe(@RequestBody RecipeDto recipe) {
+        RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
+        RecipeEntity savedRecipesEntity = recipeService.createRecipe(recipeEntity);
+        return recipeMapper.mapTo(savedRecipesEntity);
     }
 }

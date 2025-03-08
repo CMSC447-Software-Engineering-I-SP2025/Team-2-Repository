@@ -1,0 +1,28 @@
+package edu.cmsc447.team2.recipe_maker.mappers.impl;
+
+import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
+import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
+import edu.cmsc447.team2.recipe_maker.mappers.Mapper;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
+
+// Maps RecipeEntity to RecipeDto and back
+@Component
+public class RecipeMapperImpl implements Mapper<RecipeEntity, RecipeDto> {
+
+    private ModelMapper modelMapper;
+
+    public RecipeMapperImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public RecipeDto mapTo(RecipeEntity recipeEntity) {
+        return modelMapper.map(recipeEntity, RecipeDto.class);
+    }
+
+    @Override
+    public RecipeEntity mapFrom(RecipeDto recipeDto) {
+        return modelMapper.map(recipeDto, RecipeEntity.class);
+    }
+}
