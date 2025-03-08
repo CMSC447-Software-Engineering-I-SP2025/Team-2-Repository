@@ -14,7 +14,7 @@ public class RecipeController {
     //Lets us inject recipeService into RecipeController
     private final RecipeService recipeService;
 
-    private Mapper<RecipeEntity, RecipeDto> recipeMapper;
+    private Mapper<RecipeEntity, RecipeDto> recipeMapper; //Maps from Entity to Dto
 
     public RecipeController(RecipeService recipeService, Mapper<RecipeEntity, RecipeDto> recipeMapper) {
         this.recipeService = recipeService;
