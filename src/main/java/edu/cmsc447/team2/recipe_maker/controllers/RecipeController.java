@@ -33,10 +33,10 @@ public class RecipeController {
     }
 
     @GetMapping(path = "/recipes")
-    public List<RecipeDto> getRecipe() {
+    public List<RecipeDto> getRecipe(@RequestParam String ingredients) {
         //Using as a dummy for now
 
-        return recipeClient.getRecipes();
+        return recipeClient.getRecipes(ingredients);
 
     }
 }
