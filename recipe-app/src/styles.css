@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+    background-color: rgb(254, 254, 251);
+    font-family: lato;
+    margin-top: 0;
+}
+
+.get-recipe-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5%;
+    gap: 1em;
+
+    .ingredient-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+        text-transform: capitalize;
+    }
+
+    .submit-button {
+        font-size: x-large;
+        letter-spacing: .75px;
+
+        background-color: bisque;
+        border-radius: 3px;
+        border-width: 1px;
+    }
+
+    .submit-button:hover {
+        background-color: rgb(249, 194, 100);
+    }
+}
+
+.textArea {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    .input-prompt {
+        display: flex;
+        margin-right: 5px;
+    }
+
+    input {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-right: 5px;
+    }
+}
+
+.ingredientSearchBar{
+    border-color: rgba(0, 0, 0, 0.909);
+    border-radius: 5px;
+}
+
+.ingredientSearchBar:focus{
+    border-radius: 5px;
+    border-color: black;
+    background-color: beige;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    justify-content: space-around;
+
+    .logo-container{
+        display: grid;
+        place-content: center;
+        width: 18%;
+        img {
+            width:130px;
+        }
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-family: "Delius Swash Caps";
+    }
+    nav {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 18%;
+
+        div {
+            border: 2px solid black;
+            border-top: 0;
+            block-size: fit-content;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            padding: 0 5px 5px 5px;
+            font-size: large;
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+
+    padding-bottom: 2%;
+}
+
+.results-section {
+    justify-self: center;
+    width: 80%;
+
+    .results-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        width:100%;
+        justify-content: center;
+        gap: 15px;
+        
+        img {
+            width: 100%;
+        }
+    }
+
+    .result-cell {
+        display: flex;
+        flex-direction: column;
+        border: solid black 1px;
+    
+        .div {
+            border-top: solid black 1px;
+        }
+    }
+}
+
+/* @media only screen and (min-width: 1000px) and (max-aspect-ratio:2/1) {
+    
+} */
+
+.filter-block {
+    border: solid black 1px;
+    border-radius: 1px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .filter-text {
+        padding: 2px;
+    }
+    .filter-x {
+        display: flex;
+        border-width: 0 0 0 1px;
+        aspect-ratio: 1/1;
+    }
+
+    .filter-x:hover {
+        filter: brightness(.9);
+    }
+}
+
+.contains-ingredient {
+    background-color: rgb(145, 240, 145);
+}
+
+.does-not-contain-ingredient {
+    background-color: rgb(240, 151, 151);
+}
+
+.follows-restriction {
+    background-color: plum;
+}
