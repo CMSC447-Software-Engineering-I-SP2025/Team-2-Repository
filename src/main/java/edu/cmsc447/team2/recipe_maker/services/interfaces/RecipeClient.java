@@ -7,5 +7,5 @@ import java.util.List;
 public interface RecipeClient {
 
     //Use Dto on presentation layer
-    List<RecipeDto> getRecipes();
+    List<RecipeDto> getRecipes(String ingredients);
 }
