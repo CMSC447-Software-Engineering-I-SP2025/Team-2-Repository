@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.cmsc447.team2</groupId>
-	<artifactId>recipe-maker</artifactId>
+	<artifactId>recipeEntity-maker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>recipe-maker</name>
-	<description>A Spring Boot-powered recipe recommendation system that intelligently matches users&apos; with relevant recipes based on desired filters.</description>
+	<name>recipeEntity-maker</name>
+	<description>A Spring Boot-powered recipeEntity recommendation system that intelligently matches users&apos; with relevant recipeEntities based on desired filters.</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -50,6 +50,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
 
