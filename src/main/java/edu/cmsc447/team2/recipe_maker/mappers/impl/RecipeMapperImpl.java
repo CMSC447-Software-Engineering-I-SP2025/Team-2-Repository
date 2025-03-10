@@ -12,6 +12,10 @@ public class RecipeMapperImpl implements Mapper<RecipeEntity, RecipeDto> {
 
     private ModelMapper modelMapper;
 
+    public RecipeMapperImpl() {
+        modelMapper = new ModelMapper();
+    }
+
     public RecipeMapperImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
