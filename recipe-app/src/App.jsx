@@ -6,17 +6,10 @@ import { useState } from "react";
 
 export default function App() {
     const [recipes, setRecipes] = useState([]);
-    function pushRecipes (recipesToAdd) {
-        const recipeArrCopy = recipes.slice();
-        recipeArrCopy.push(... recipesToAdd);
-        setRecipes(recipeArrCopy);
-    }
-
     return <>
-        
         <Header />
         <main>
-            <GetRecipeSection pushRecipes={pushRecipes}/>
+            <GetRecipeSection setRecipes={setRecipes}/>
             <ResultsDisplay recipes={recipes}/>
         </main>
     </>

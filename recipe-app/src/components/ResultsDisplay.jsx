@@ -1,12 +1,9 @@
-export default function ResultsDisplay ({recipes}) {
-    console.log(recipes[1]);
-    const images = ["/chicken_pot_pie.jpeg", "/chicken_cacciatore.webp", "/green-chili-stew.webp", "/ground-beef.jpg", "https://img.spoonacular.com/recipes/632660-312x231.jpg"];
-    
+export default function ResultsDisplay ({recipes}) {    
     return <div className="results-section">
         {/* <div>Results</div> */}
         <div className="results-grid">
                 {recipes.slice(0,15).map((recipe) => 
-                <ResultsCell recipeURL={recipe.image} recipeName={recipe.name} key={recipe.image}/>)}
+                <ResultsCell recipeURL={recipe.image} recipeName={recipe.title} key={recipe.title}/>)}
         </div>
     </div>
 }

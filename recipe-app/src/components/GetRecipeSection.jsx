@@ -1,87 +1,25 @@
 import { useState } from "react";
 
-export default function GetRecipeSection({pushRecipes}) {
+export default function GetRecipeSection({setRecipes}) {
     const [ingredients, setIngredients] = useState(['asparagus', 'califlower', 'carrots']);
-    const serverIP = "localhost:8080";
-
-    //creating sample response for testing
-    const dataJSON = {
-        "recipes": [
-            {
-                "name": "chicken pot pie",
-                "image": "/chicken_pot_pie.jpeg",
-                "instructions": [],
-                "ingredients": [], 
-                "diet": [],
-                "intolerances" : [],
-                "cuisine": []
-            },
-            {
-                "name": "chicken cacciatore",
-                "image": "/chicken_cacciatore.webp",
-                "instructions": [],
-                "ingredients": [], 
-                "diet": [],
-                "intolerances" : [],
-                "cuisine": []
-            },
-            {
-                "name": "green chili stew",
-                "image": "/green-chili-stew.webp",
-                "instructions": [],
-                "ingredients": [], 
-                "diet": [],
-                "intolerances" : [],
-                "cuisine": []
-            },
-            {
-                "name": "ground beef dish",
-                "image": "/ground-beef.jpg",
-                "instructions": [],
-                "ingredients": [], 
-                "diet": [],
-                "intolerances" : [],
-                "cuisine": []
-            },
-            {
-                "name": "some recipe",
-                "image": "https://img.spoonacular.com/recipes/632660-312x231.jpg",
-                "instructions": [],
-                "ingredients": [], 
-                "diet": [],
-                "intolerances" : [],
-                "cuisine": []
-            }
-        ]
-    };
-    const myBlob = new Blob([JSON.stringify(dataJSON)], {type: "application/json"});
-    const sampleResponse = new Response(myBlob);
+    const serverIP = "http://localhost:8080";
 
     function handleSubmit() {
-        const outgoingJSON = JSON.stringify(
-            {includeIngredients:ingredients}, 
-            {excludeIngredients:[]}, 
-            {diet:[]},
-            {intolerances:[]},
-            {cuisine: []})
-        console.log(outgoingJSON);
+        let requestInfo = "/recipes?";
+        if (ingredients.length > 0) requestInfo += ("ingredients=" + ingredients.join());
+        
+        const requestURL = serverIP + requestInfo;
         const options = {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            },
-            body: outgoingJSON
+            method: "GET"
         }
-        // Have to figure out how to start the springboot server in order to test the connection
-        // fetch(serverIP, options)
-        // .then(response => response.json())
-        // .then(data => console.log(data))
-        // .catch(error => console.error(error))
-        // .then(response => response.recipes.map(recipe => pushRecipe(recipe)));
+
         const tempArr = [];
-        sampleResponse.json().then(response => {
-            response.recipes.forEach(recipe => tempArr.push(recipe));
-            pushRecipes(tempArr);
+        fetch(requestURL, options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(typeof(data));
+            data.forEach(recipe => tempArr.push(recipe));
+            setRecipes(tempArr);
         })
     }
 
