@@ -17,7 +17,6 @@ export default function GetRecipeSection({setRecipes}) {
         fetch(requestURL, options)
         .then(response => response.json())
         .then(data => {
-            console.log(typeof(data));
             data.forEach(recipe => tempArr.push(recipe));
             setRecipes(tempArr);
         })
