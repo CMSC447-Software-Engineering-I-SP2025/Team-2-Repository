@@ -33,6 +33,7 @@ export default function GetRecipeSection({setRecipes}) {
 }
 
 function InputTextArea({ingredients, setIngredients}) {
+
     const [inputVal, setInputVal] = useState("");
     //input val is the exact string current on the searchbar. remember to convert to lowercase before doing anything with it.
 
