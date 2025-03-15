@@ -33,6 +33,7 @@ public class RecipeController {
     }
 
     @GetMapping(path = "/recipes")
+    @CrossOrigin(origins="http://localhost:5173")
     public List<RecipeDto> getRecipe(@RequestParam String ingredients) {
         //Using as a dummy for now
 
