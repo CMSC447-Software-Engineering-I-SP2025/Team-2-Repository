@@ -1,14 +1,13 @@
-export default function ResultsDisplay () {
-    const images = ["/chicken_pot_pie.jpeg", "/chicken_cacciatore.webp", "/green-chili-stew.webp", "/ground-beef.jpg", "https://img.spoonacular.com/recipes/632660-312x231.jpg"];
-
+export default function ResultsDisplay ({recipes}) {    
     return <div className="results-section">
         {/* <div>Results</div> */}
-        <div id="results-grid">
-            {images.slice(0,9).map((image) => <ResultsCell recipeURL={image} key={image}/>)}
+        <div className="results-grid">
+                {recipes.slice(0,15).map((recipe) => 
+                <ResultsCell recipeURL={recipe.image} recipeName={recipe.title} key={recipe.title}/>)}
         </div>
     </div>
 }
 
-function ResultsCell({recipeURL}) {
-    return <div ><img src={recipeURL} /></div>;
+function ResultsCell({recipeURL, recipeName}) {
+    return <div className="result-cell"><img src={recipeURL}/><div>{recipeName}</div></div>;
 }

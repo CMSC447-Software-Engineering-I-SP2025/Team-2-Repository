@@ -36,6 +36,7 @@ public class RecipeController {
     public List<RecipeDto> getRecipe(@RequestParam String ingredients) {
         //Using as a dummy for now
 
+        // Actually serves the gotten recipe.
         return recipeClient.getRecipes(ingredients);
 
     }

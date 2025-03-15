@@ -13,10 +13,6 @@ body {
     padding-bottom: 5%;
     gap: 1em;
 
-    /* .get-recipe-guide {
-        padding-bottom: 1em;
-    } */
-
     .ingredient-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -28,8 +24,6 @@ body {
     .submit-button {
         font-size: x-large;
         letter-spacing: .75px;
-        /* font-family: "Delius Swash Caps"; */
-
         background-color: bisque;
         border-radius: 3px;
         border-width: 1px;
@@ -42,19 +36,25 @@ body {
 
 .textArea {
     display: flex;
-    align-items: center;
+    align-items: start;
     flex-direction: row;
 
     .input-prompt {
         display: flex;
+        margin-top: 4px;
         margin-right: 5px;
     }
 
     input {
         display: flex;
         width: 100%;
+        font-size: medium;
+        height: 1.5rem;
         align-items: center;
-        margin-right: 5px;
+    }
+
+    .add-ingredient-button {
+        margin-top: 4px;
     }
 }
 
@@ -115,7 +115,7 @@ header {
     justify-self: center;
     width: 80%;
 
-    #results-grid {
+    .results-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto;
@@ -125,7 +125,16 @@ header {
         
         img {
             width: 100%;
-            /* object-fit: cover; */
+        }
+    }
+
+    .result-cell {
+        display: flex;
+        flex-direction: column;
+        border: solid black 1px;
+    
+        .div {
+            border-top: solid black 1px;
         }
     }
 }
@@ -166,4 +175,48 @@ header {
 
 .follows-restriction {
     background-color: plum;
+}
+
+.input-text-dropdown {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    .dropdown-item {
+        border: 1px solid black;
+        background-color: rgb(245, 245, 245);
+        padding: 4px;
+    }
+    .dropdown-item:hover {
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
+
+.text-with-dropdown {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    align-items: center;
+    margin-left: 8px;
+    min-width: 300px;
+
+    .input-text-dropdown  {
+        text-transform: capitalize;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        max-height: 8rem;
+    }
+}
+
+.highlighted {
+    filter: brightness(.9);
+}
+
+.no-match {
+    font-style: italic;
 }
