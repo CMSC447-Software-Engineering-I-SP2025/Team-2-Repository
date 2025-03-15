@@ -13,10 +13,6 @@ body {
     padding-bottom: 5%;
     gap: 1em;
 
-    /* .get-recipe-guide {
-        padding-bottom: 1em;
-    } */
-
     .ingredient-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -28,8 +24,6 @@ body {
     .submit-button {
         font-size: x-large;
         letter-spacing: .75px;
-        /* font-family: "Delius Swash Caps"; */
-
         background-color: bisque;
         border-radius: 3px;
         border-width: 1px;
@@ -121,7 +115,7 @@ header {
     justify-self: center;
     width: 80%;
 
-    #results-grid {
+    .results-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto;
@@ -131,7 +125,16 @@ header {
         
         img {
             width: 100%;
-            /* object-fit: cover; */
+        }
+    }
+
+    .result-cell {
+        display: flex;
+        flex-direction: column;
+        border: solid black 1px;
+    
+        .div {
+            border-top: solid black 1px;
         }
     }
 }

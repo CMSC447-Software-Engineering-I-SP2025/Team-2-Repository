@@ -1,11 +1,12 @@
 import GetRecipeSection from "./components/GetRecipeSection";
 import Header from "./components/Header";
-import React, { useEffect } from "react";
+import {useState, useEffect} from "react";
 import ResultsDisplay from "./components/ResultsDisplay";
 import Papa from 'papaparse';
 
-export default function App() {
-    let ingredientNameList = [];
+export default function App({ingredientNameList}) {
+    const [recipes, setRecipes] = useState([]);
+
     useEffect(() => {
         const ingredientCSV = "/top-1k-ingredients.csv";
         const options = {
@@ -20,10 +21,10 @@ export default function App() {
     }, [])
 
     return <>
+        <Header />
         <main>
-            <Header />
-            <GetRecipeSection ingredientNameList = {ingredientNameList}/>
-            <ResultsDisplay />
+            <GetRecipeSection ingredientNameList = {ingredientNameList} setRecipes = {setRecipes}/>
+            <ResultsDisplay recipes={recipes}/>
         </main>
     </>
 }
