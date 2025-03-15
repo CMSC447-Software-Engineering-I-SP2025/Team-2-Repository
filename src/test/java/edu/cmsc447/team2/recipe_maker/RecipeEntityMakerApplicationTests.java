@@ -4,12 +4,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.util.UriComponentsBuilder;
+
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-// //@SpringBootTest // Tests the whole appliucation
-// class RecipeEntityMakerApplicationTests {
-
+@SpringBootTest // Tests the whole appliucation
+class RecipeEntityMakerApplicationTests {
 
 // 	//Converts a Java object to a json object
 // 	@Test
@@ -32,3 +35,18 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 // 	}
 
 // }
+
+    // Test Spoonacular Query builder
+    @Test
+    public void testQueryBuilder() {
+        String baseURL = "https://api.spoonacular.com/recipes/complexSearch";
+        String queryURL = UriComponentsBuilder.fromUriString(baseURL)
+                .queryParam("includeIngredients", "salt")
+                .queryParam("instructionsRequired", true)
+                .queryParam("addRecipeInformation", true)
+                .queryParam("addRecipeInstructions", true)
+                .queryParam("apiKey", "testkey")
+                .build().toUriString();
+        assertThat(queryURL).isEqualTo("https://api.spoonacular.com/recipes/complexSearch?includeIngredients=salt&instructionsRequired=true&addRecipeInformation=true&addRecipeInstructions=true&apiKey=testkey");
+    }
+}
