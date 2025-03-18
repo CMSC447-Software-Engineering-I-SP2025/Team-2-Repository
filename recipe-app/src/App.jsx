@@ -36,7 +36,7 @@ export default function App({ingredientNameList}) {
                         } />
 
                         {/* Recipe Detail Page */}
-                        <Route path="/recipe/:recipeName" element={<RecipeDetail recipes = {recipes} />} />
+                        <Route path="/recipe/:recipeName" element={<RecipeDetail />} />
                         
                     </Routes>
                 </main>

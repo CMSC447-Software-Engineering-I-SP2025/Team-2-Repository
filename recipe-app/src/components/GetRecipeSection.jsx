@@ -20,9 +20,9 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
         .then(data => {
             data.forEach(recipe => tempArr.push(recipe));
             setRecipes(tempArr);
+            sessionStorage.setItem("recipes", JSON.stringify(tempArr));
         })
         .catch(error => console.log(error))
-
     }
 
     return <>
@@ -100,7 +100,7 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
             <input className="ingredientSearchBar"
                 type="text" 
                 name = "Ingredient Search Bar"
-                onChange={e => setInputVal(e.target.value)}
+                onChange={e => {setInputVal(e.target.value); setDropdownIndex(-1);}}
                 onKeyUp={e => keyUpEvent(e, inputVal)}
                 onKeyDown={e => keyDownEvent(e)}
             />
