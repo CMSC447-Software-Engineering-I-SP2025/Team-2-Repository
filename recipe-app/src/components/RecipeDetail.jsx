@@ -14,11 +14,6 @@ export default function RecipeDetail() {
         if (sessionStorage && sessionStorage.getItem('recipes')) {
             recipesArr = JSON.parse(sessionStorage.getItem('recipes'));
             recipe = recipesArr.find(recipe => recipe.title.toLowerCase() == recipeName.toLowerCase());
-            recipeName.toLowerCase()
-            console.log(recipesArr.length);
-            console.log(recipesArr[1].title.toLowerCase());
-            console.log(recipe);
-            console.log(recipe.title);
             setTitle(recipe['title']);
             setInstructions(recipe['analyzedInstructions'][0]['steps'])
             setImageURL(recipe['image']);
@@ -37,12 +32,14 @@ export default function RecipeDetail() {
                             <li key={index}>{item}</li>
                         ))}
                     </ul> */}
-                    <h2>Steps</h2>
-                    <ol>
-                        {instructions.map((fullStep, index) => (
-                                <li key={index}>{fullStep.step}</li>
-                        ))}
-                    </ol>
+                    <div className="steps-section">
+                        <h2>Steps</h2>
+                        <ol>
+                            {instructions.map((fullStep, index) => (
+                                    <li key={index}>{fullStep.step}</li>
+                            ))}
+                        </ol>
+                    </div>
                 </>
             ) : (
                 <h2>Recipe not found</h2>
