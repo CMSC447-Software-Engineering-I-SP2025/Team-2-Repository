@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import clsx from 'clsx'
 
 export default function GetRecipeSection({ingredientNameList, setRecipes}) {
-    const [ingredients, setIngredients] = useState(['asparagus', 'califlower', 'carrots']);
+    const [ingredients, setIngredients] = useState([]);
     const serverIP = "http://localhost:8080";
 
     function handleSubmit() {

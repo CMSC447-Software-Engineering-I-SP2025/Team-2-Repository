@@ -47,10 +47,10 @@ public class RecipeClientImpl implements RecipeClient {
         try {
 
             // Option 1: Get data from cached JSON
-            ResponseEntity<String> responseEntity = ResponseEntity.ok(Files.readString(Path.of("cached.json")));
+            //ResponseEntity<String> responseEntity = ResponseEntity.ok(Files.readString(Path.of("cached.json")));
 
             // Option 2: Get data from API
-            //ResponseEntity<String> responseEntity = restTemplate.exchange(queryURL, HttpMethod.GET, null, String.class);
+            ResponseEntity<String> responseEntity = restTemplate.exchange(queryURL, HttpMethod.GET, null, String.class);
 
             // Map data to recipeResponse object
             String rawResponse = responseEntity.getBody();
