@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ResultsDisplay ({recipes}) {    
     return <div className="results-section">
         {/* <div>Results</div> */}
@@ -9,5 +11,6 @@ export default function ResultsDisplay ({recipes}) {
 }
 
 function ResultsCell({recipeURL, recipeName}) {
-    return <div className="result-cell"><img src={recipeURL}/><div>{recipeName}</div></div>;
+    const resultLink = `/recipe/${recipeName.replace(/\s+/g, "-").toLowerCase()}`;
+    return <div className="result-cell"><a href={resultLink}> <img src ={recipeURL} alt={recipeName}/> </a><div> <a href={resultLink}> {recipeName} </a></div><div>{recipeName}</div></div>;
 }

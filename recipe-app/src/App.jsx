@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import {useState, useEffect} from "react";
 import ResultsDisplay from "./components/ResultsDisplay";
 import Papa from 'papaparse';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RecipeDetail from "./components/RecipeDetail";
 
 export default function App({ingredientNameList}) {
     const [recipes, setRecipes] = useState([]);
@@ -20,12 +22,25 @@ export default function App({ingredientNameList}) {
         .then(uniqueNames => {ingredientNameList.length = 0; return ingredientNameList.push(... uniqueNames)})
     }, [])
 
-    return <>
-        <Header />
-        <main>
-            <GetRecipeSection ingredientNameList = {ingredientNameList} setRecipes = {setRecipes}/>
-            <ResultsDisplay recipes={recipes}/>
-        </main>
-    </>
+    return ( 
+        <Router>
+            <Header />
+                <main>
+                    <Routes>
+                        {/* Homepage */}
+                        <Route path="/" element={
+                            <>
+                                <GetRecipeSection ingredientNameList = {ingredientNameList} setRecipes = {setRecipes}/>
+                                <ResultsDisplay recipes={recipes}/>
+                            </>
+                        } />
+
+                        {/* Recipe Detail Page */}
+                        <Route path="/recipe/:recipeName" element={<RecipeDetail recipes = {recipes} />} />
+                        
+                    </Routes>
+                </main>
+        </Router>
+    );
 }
 
