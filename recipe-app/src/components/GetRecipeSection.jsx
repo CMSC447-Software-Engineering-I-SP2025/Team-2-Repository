@@ -20,9 +20,9 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
         .then(data => {
             data.forEach(recipe => tempArr.push(recipe));
             setRecipes(tempArr);
+            sessionStorage.setItem("recipes", JSON.stringify(tempArr));
         })
         .catch(error => console.log(error))
-
     }
 
     return <>
