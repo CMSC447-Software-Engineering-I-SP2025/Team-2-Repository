@@ -12,5 +12,5 @@ export default function ResultsDisplay ({recipes}) {
 
 function ResultsCell({recipeURL, recipeName}) {
     const resultLink = `/recipe/${recipeName.replace(/\s+/g, "-").toLowerCase()}`;
-    return <div className="result-cell"><a href={resultLink}> <img src ={recipeURL} alt={recipeName}/> </a><div> <a href={resultLink}> {recipeName} </a></div><div>{recipeName}</div></div>;
+    return <div className="result-cell"><a href={resultLink}> <img src ={recipeURL} alt={recipeName}/> </a><div> <a href={resultLink}> {recipeName} </a></div></div>;
 }

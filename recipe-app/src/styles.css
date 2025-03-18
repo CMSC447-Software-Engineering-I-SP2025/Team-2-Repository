@@ -132,7 +132,7 @@ header {
         display: flex;
         flex-direction: column;
         border: solid black 1px;
-    
+        text-align: center;
         .div {
             border-top: solid black 1px;
         }

@@ -100,7 +100,7 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
             <input className="ingredientSearchBar"
                 type="text" 
                 name = "Ingredient Search Bar"
-                onChange={e => setInputVal(e.target.value)}
+                onChange={e => {setInputVal(e.target.value); setDropdownIndex(-1);}}
                 onKeyUp={e => keyUpEvent(e, inputVal)}
                 onKeyDown={e => keyDownEvent(e)}
             />
