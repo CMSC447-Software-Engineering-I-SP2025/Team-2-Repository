@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "recipies")
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 // Class definition + JPA tagging.
 public class RecipeEntity {
     @Id
