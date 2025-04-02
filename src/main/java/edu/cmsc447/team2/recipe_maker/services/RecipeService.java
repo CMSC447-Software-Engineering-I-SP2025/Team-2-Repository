@@ -9,13 +9,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+// Recipe service to call RecipeClient for queries or RecipeRepository for database CRUD.
 @Service
 public class RecipeService {
-    
-    
+
     @Autowired
-    private RecipeClient recipeClient;
-    
+    private RecipeClient recipeClient;    
+
     private final RecipeRepository recipeRepository;
 
     @Autowired
@@ -35,5 +35,10 @@ public class RecipeService {
 
     public void deleteRecipe(long recipeID) {
         recipeRepository.deleteById(recipeID);
+    }
+
+
+    public List<RecipeEntity> listRecipes() {
+        return recipeRepository.findAll();
     }
 }

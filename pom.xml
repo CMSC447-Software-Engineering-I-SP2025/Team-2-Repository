@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.cmsc447.team2</groupId>
-	<artifactId>recipeEntity-maker</artifactId>
+	<artifactId>CookbookApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>recipeEntity-maker</name>
+	<name>CookbookApp</name>
 	<description>A Spring Boot-powered recipeEntity recommendation system that intelligently matches users&apos; with relevant recipeEntities based on desired filters.</description>
 	<url/>
 	<licenses>

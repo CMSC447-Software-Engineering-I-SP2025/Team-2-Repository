@@ -3,27 +3,22 @@ package edu.cmsc447.team2.recipe_maker.controllers;
 import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
 import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
 import edu.cmsc447.team2.recipe_maker.mappers.RecipeMapper;
-import edu.cmsc447.team2.recipe_maker.services.interfaces.RecipeService;
-import edu.cmsc447.team2.recipe_maker.services.interfaces.RecipeClient;
+import edu.cmsc447.team2.recipe_maker.services.RecipeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class RecipeController {
-
-    //Lets us inject recipeService into RecipeController
     private final RecipeService recipeService;
-    // private final RecipeClientImpl recipeClient;
+    private RecipeMapper<RecipeEntity, RecipeDto> recipeMapper; //Maps between Entity and Dto
 
-    private RecipeMapper<RecipeEntity, RecipeDto> recipeMapper; //Maps from Entity to Dto
-
-    public RecipeController(RecipeService recipeService, RecipeMapper<RecipeEntity, RecipeDto> recipeMapper, RecipeClient recipeClient) {
+    public RecipeController(RecipeService recipeService, RecipeMapper<RecipeEntity, RecipeDto> recipeMapper) {
         this.recipeService = recipeService;
         this.recipeMapper = recipeMapper;
-        this.recipeClient = recipeClient;
     }
 
+    // Map a RecipeDto to a RecipeEntity
     @PutMapping(path = "/recipes")
     public RecipeDto addRecipe(@RequestBody RecipeDto recipe) {
         RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
@@ -31,25 +26,29 @@ public class RecipeController {
         return recipeMapper.mapTo(savedRecipesEntity);
     }
 
+    // Query the API for recipes with the listed ingredients
     @GetMapping(path = "/recipes")
     @CrossOrigin(origins="http://localhost:5173")
     public List<RecipeDto> getRecipe(@RequestParam String ingredients) {
-        // Query the API for recipes with the listed ingredients
         return recipeService.getRecipes(ingredients);
-        //return recipeClient.getRecipes(ingredients);
     }
 
-    
+    // Save a recipe to the database
     @PutMapping(path = "/saverecipe")
     public RecipeEntity saveRecipe(@RequestBody RecipeDto recipe) {
-        // Function to a recipe to the database
-    
         RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
         return recipeService.saveRecipe(recipeEntity);
     }
 
+    // Remove a recipe from the database
     @DeleteMapping(path = "/deleterecipe")
     public void deleteRecipe(@RequestBody long recipeID) {
         recipeService.deleteRecipe(recipeID);
     }
+
+    // Get all saved recipes
+    @GetMapping(path = "/listrecipes")
+    List<RecipeEntity> listRecipes() {
+        return recipeService.listRecipes();
+    }  
 }
