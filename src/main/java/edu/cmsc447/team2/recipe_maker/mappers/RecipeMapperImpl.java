@@ -12,21 +12,13 @@ public class RecipeMapperImpl implements RecipeMapper<RecipeEntity, RecipeDto> {
 
     private ModelMapper modelMapper;
 
-    public RecipeMapperImpl() {
-        modelMapper = new ModelMapper();
-    }
+    public RecipeMapperImpl() {modelMapper = new ModelMapper();}
 
-    public RecipeMapperImpl(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+    public RecipeMapperImpl(ModelMapper modelMapper) {this.modelMapper = modelMapper;}
 
     @Override
-    public RecipeDto mapTo(RecipeEntity recipeEntity) {
-        return modelMapper.map(recipeEntity, RecipeDto.class);
-    }
+    public RecipeDto mapTo(RecipeEntity recipeEntity) {return modelMapper.map(recipeEntity, RecipeDto.class);}
 
     @Override
-    public RecipeEntity mapFrom(RecipeDto recipeDto) {
-        return modelMapper.map(recipeDto, RecipeEntity.class);
-    }
+    public RecipeEntity mapFrom(RecipeDto recipeDto) {return modelMapper.map(recipeDto, RecipeEntity.class);}
 }

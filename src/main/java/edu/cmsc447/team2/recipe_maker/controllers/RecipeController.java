@@ -1,3 +1,4 @@
+// Handles web routes
 package edu.cmsc447.team2.recipe_maker.controllers;
 
 import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;

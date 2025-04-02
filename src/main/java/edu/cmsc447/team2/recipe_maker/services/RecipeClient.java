@@ -1,3 +1,4 @@
+// Handles queries
 package edu.cmsc447.team2.recipe_maker.services;
 
 import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
@@ -11,7 +12,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-// import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 
 
@@ -29,22 +29,22 @@ public class RecipeClient {
     public List<RecipeDto> getRecipes(String ingredients) {
 
         // Build Query
-        String queryURL = UriComponentsBuilder.fromUriString("https://api.spoonacular.com/recipes/complexSearch")
-                .queryParam("includeIngredients", ingredients)
-                .queryParam("instructionsRequired", true)
-                .queryParam("addRecipeInformation", true)
-                .queryParam("addRecipeInstructions", true)
-                .queryParam("apiKey", apiKey)
-                .build().toUriString();
+        String queryURL = UriComponentsBuilder
+            .fromUriString("https://api.spoonacular.com/recipes/complexSearch")
+            .queryParam("includeIngredients", ingredients)
+            .queryParam("instructionsRequired", true)
+            .queryParam("addRecipeInformation", true)
+            .queryParam("addRecipeInstructions", true)
+            .queryParam("apiKey", apiKey)
+            .build().toUriString();
         // System.out.println(queryURL);
 
         try {
-
-            // Option 1: Get data from cached JSON
-            //ResponseEntity<String> responseEntity = ResponseEntity.ok(Files.readString(Path.of("cached.json")));
-
-            // Make query to API 
+            // Query the API
             ResponseEntity<String> responseEntity = restTemplate.exchange(queryURL, HttpMethod.GET, null, String.class);
+
+            // Old cached response
+            //ResponseEntity<String> responseEntity = ResponseEntity.ok(Files.readString(Path.of("cached.json")));
 
             // Map returned data to recipeResponse object
             String rawResponse = responseEntity.getBody();

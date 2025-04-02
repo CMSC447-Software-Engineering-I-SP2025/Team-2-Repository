@@ -1,3 +1,4 @@
+// Handles database CRUD
 package edu.cmsc447.team2.recipe_maker.services;
 
 import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
@@ -21,24 +22,13 @@ public class RecipeService {
     @Autowired
     public RecipeService(RecipeRepository recipeRepository) {this.recipeRepository = recipeRepository;}
 
-    public RecipeEntity createRecipe(RecipeEntity recipeEntity) {
-        return null;
-    }
+    public RecipeEntity createRecipe(RecipeEntity recipeEntity) {return null;}
 
-    public List<RecipeDto> getRecipes(String ingredients) {
-        return recipeClient.getRecipes(ingredients);
-    }
+    public List<RecipeDto> getRecipes(String ingredients) {return recipeClient.getRecipes(ingredients);}
 
-    public RecipeEntity saveRecipe(RecipeEntity recipeEntity) {
-        return recipeRepository.save(recipeEntity);
-    }
+    public RecipeEntity saveRecipe(RecipeEntity recipeEntity) {return recipeRepository.save(recipeEntity);}
 
-    public void deleteRecipe(long recipeID) {
-        recipeRepository.deleteById(recipeID);
-    }
+    public void deleteRecipe(long recipeID) {recipeRepository.deleteById(recipeID);}
 
-
-    public List<RecipeEntity> listRecipes() {
-        return recipeRepository.findAll();
-    }
+    public List<RecipeEntity> listRecipes() {return recipeRepository.findAll();}
 }
