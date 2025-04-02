@@ -1,14 +1,14 @@
-package edu.cmsc447.team2.recipe_maker.mappers.impl;
+package edu.cmsc447.team2.recipe_maker.mappers;
 
 import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
 import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
-import edu.cmsc447.team2.recipe_maker.mappers.Mapper;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 // Maps RecipeEntity to RecipeDto and back
 @Component
-public class RecipeMapperImpl implements Mapper<RecipeEntity, RecipeDto> {
+public class RecipeMapperImpl implements RecipeMapper<RecipeEntity, RecipeDto> {
 
     private ModelMapper modelMapper;
 

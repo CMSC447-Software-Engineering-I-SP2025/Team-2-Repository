@@ -1,11 +1,14 @@
 package edu.cmsc447.team2.recipe_maker.domain.entities;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 
+// Change this Entity (and change what we request of the spoonacular API)
+// to change what recipe data we get / support.
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-// Change this stuff to change what the Spoonacular API returns.
 public record RecipeEntity(
         Long id,
         String title,
@@ -13,5 +16,5 @@ public record RecipeEntity(
         Integer missedIngredientCount,
         String instructions,
         String image) { }
- //Can use a wrapper class like List<RecipeDetails> instead of individually passing in parameters
+// Can use a wrapper class like List<RecipeDetails> instead of individually passing in parameters
 // More easily scalable

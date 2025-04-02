@@ -1,9 +1,12 @@
-package edu.cmsc447.team2.recipe_maker.services.impl;
+package edu.cmsc447.team2.recipe_maker.services;
 
 import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
 import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeResponse;
 // import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
-import edu.cmsc447.team2.recipe_maker.services.interfaces.RecipeClient;
+// import edu.cmsc447.team2.recipe_maker.mappers.impl.RecipeMapperImpl;
+// import edu.cmsc447.team2.recipe_maker.mappers.interfaces.Mapper;
+// import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
+// import edu.cmsc447.team2.recipe_maker.services.interfaces.RecipeClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -15,20 +18,24 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonParser;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+// import java.io.IOException;
+// import java.nio.file.Files;
+// import java.nio.file.Path;
 import java.util.List;
 
 @Service
-public class RecipeClientImpl implements RecipeClient {
+public class RecipeClient {
+    /* This function queries the spoonacular API, maps the returned data to Recipe DTO objects,
+    and returns a list of those objects.*/  
+
+
     // Private vars
     private final RestTemplate restTemplate;
     @Value("${spoonacular.api.key}")
     private String apiKey;
-    public RecipeClientImpl(final RestTemplate restTemplate) {this.restTemplate = restTemplate;}
+    public RecipeClient(final RestTemplate restTemplate) {this.restTemplate = restTemplate;}
 
-    @Override
+    
     public List<RecipeDto> getRecipes(String ingredients) {
 
         String baseURL = "https://api.spoonacular.com/recipes/complexSearch";
@@ -62,10 +69,6 @@ public class RecipeClientImpl implements RecipeClient {
         // Exception / no data handling
         catch (JsonProcessingException e) {
             System.out.println("JSON Processing exception" + e);
-            return List.of();
-        }
-
-        catch (IOException e) {
             return List.of();
         }
     }
