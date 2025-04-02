@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class RecipeMakerApplication {
+public class CookbookApplication {
 	// private static final Logger log = LoggerFactory.getLogger(RecipeMakerApplication.class);
 
-	public static void main(String[] args) {SpringApplication.run(RecipeMakerApplication.class, args);}
+	public static void main(String[] args) {SpringApplication.run(CookbookApplication.class, args);}
 }

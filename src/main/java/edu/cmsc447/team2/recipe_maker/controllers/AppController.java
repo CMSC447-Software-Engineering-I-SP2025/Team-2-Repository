@@ -1,22 +1,32 @@
 // Handles web routes
 package edu.cmsc447.team2.recipe_maker.controllers;
 
-import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
-import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
-import edu.cmsc447.team2.recipe_maker.mappers.RecipeMapper;
+// Recipes
 import edu.cmsc447.team2.recipe_maker.services.RecipeService;
-import org.springframework.web.bind.annotation.*;
+import edu.cmsc447.team2.recipe_maker.mappers.RecipeMapper;
+import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
+import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
 
+// Ingredients
+import edu.cmsc447.team2.recipe_maker.services.IngredientService;
+import edu.cmsc447.team2.recipe_maker.mappers.IngredientMapper;
+import edu.cmsc447.team2.recipe_maker.domain.entities.IngredientEntity;
+import edu.cmsc447.team2.recipe_maker.domain.dto.IngredientDto;
+
+// Other
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class RecipeController {
+public class AppController {
     private final RecipeService recipeService;
-    private RecipeMapper<RecipeEntity, RecipeDto> recipeMapper; //Maps between Entity and Dto
+    private RecipeMapper<RecipeEntity, RecipeDto> recipeMapper;
+    private IngredientMapper<IngredientEntity, IngredientDto> ingredientMapper;
 
-    public RecipeController(RecipeService recipeService, RecipeMapper<RecipeEntity, RecipeDto> recipeMapper) {
+    public AppController(RecipeService recipeService, RecipeMapper<RecipeEntity, RecipeDto> recipeMapper) {
         this.recipeService = recipeService;
         this.recipeMapper = recipeMapper;
+        this.ingredientMapper = ingredientMapper;
     }
 
     // Map a RecipeDto to a RecipeEntity
@@ -49,7 +59,22 @@ public class RecipeController {
 
     // Get all saved recipes
     @GetMapping(path = "/listrecipes")
-    List<RecipeEntity> listRecipes() {
+    public List<RecipeEntity> listRecipes() {
         return recipeService.listRecipes();
-    }  
+    }
+
+    // Add an ingredient to the pantry
+    @PutMapping(path = "/addingredient")
+    public void addIngredient(@RequestBody IngredientDto ingredient) {
+        IngredientEntity ingredientEntity = ingredientMapper.mapFrom(ingredient);
+        ingredientService.addIngredient();
+    }
+
+    // Remove an ingredient to the pantry
 }
+
+
+
+// AppController -> Service -> Repository -> Database
+// AppController -> Client -> Query -> API
+// DTO and Entity are the data transferred between 
