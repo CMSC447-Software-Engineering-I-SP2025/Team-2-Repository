@@ -30,6 +30,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
             <div className="get-recipe-guide">Find recipes by their ingredients</div>
             <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList}/>
             <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
+            <AdditionalFiltersAccordion />
             <SubmitButton handleSubmit={handleSubmit}/>
         </div>
     </>
@@ -126,24 +127,24 @@ function IngredientList({ingredients, setIngredients}) {
         <div className="ingredient-list">
             <div className="ingredient-grid">
                 {ingredients.map((ingredient) => 
-                    {return <FilterBlock key={ingredient} filterName={ingredient} handleClick={() => removeIngredient(ingredient)}  filterType = "contains-ingredient"/>
+                    {return <IngredientFilterBlock key={ingredient} ingredientName={ingredient} handleClick={() => removeIngredient(ingredient)}  filterType = "contains-ingredient"/>
                 })}
             </div>
         </div>
     </>
 }
 
-function FilterBlock({filterName, filterType, handleClick}) {
-    const classStr = "filter-block " + {filterType}; 
-    let croppedName = filterName;
+function IngredientFilterBlock({ingredientName, filterType, handleClick}) {
+    const classStr = "ingredient-filter-block " + {filterType}; 
+    let croppedName = ingredientName;
     if(croppedName.length > 17) {
         croppedName = croppedName.slice(0, 17) + "...";
     }
-    return <div className={classStr}><div className="filter-text">{croppedName}</div><FilterX handleClick={handleClick}/></div>;
+    return <div className={classStr}><div className="ingredient-filter-text">{croppedName}</div><IngredientFilterX handleClick={handleClick}/></div>;
 }
 
-function FilterX({handleClick}) {
-    return <button className="filter-x" onClick={handleClick}>&#10006;</button>;
+function IngredientFilterX({handleClick}) {
+    return <button className="ingredient-filter-x" onClick={handleClick}>&#10006;</button>;
 }
 
 function AutocompleteDropdown ({currentText, pushIngredient, matchingIngredients, dropdownIndex, highlightedRef}) { 
@@ -167,4 +168,61 @@ function DropdownItem ({ingredientName, pushIngredient, dropdownIndex, i, highli
     } else {
         return <li className={cls} onClick={()=>pushIngredient(ingredientName)}>{ingredientName}</li>
     }
+}
+
+function AdditionalFiltersAccordion () {
+    const cuisineList = [
+        "Asian", "British", "Cajun", "Caribbean", "Chinese", "Eastern European",
+        "European", "French", "German", "Greek", "Indian", "Irish", "Italian",
+        "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", 
+        "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai",
+        "Vietnamese" 
+    ]
+    const dietsList = [
+        "Vegetarian", "Vegan", "Lacto-Vegetarian", "Ovo-Vegetarian", 
+        "Pescetarian", "Gluten Free", "Ketogenic", "Paleo", "Primal",
+        "Low FODMAP", "Whole30"
+    ]
+    const intoleranceList = [
+        "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", 
+        "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"
+    ]
+    const filterLists = [["Cuisine", cuisineList], ["Diet", dietsList], ["Intolerance", intoleranceList]]
+
+    //true means block is invisible [cusineFilterIsInvisible, dietFilterIsInvisible, intolerancesFilterIsInvisible]
+    const [invisibleBlocks, setInvisibleBlocks] = useState([true, true, true]);
+    function toggleVisibility(pos) {
+        const arrCopy = invisibleBlocks.slice()
+        arrCopy[pos] = !arrCopy[pos]
+        setInvisibleBlocks(arrCopy)
+    }
+    return <div className="additional-filters">
+        {
+            filterLists.map((list, i) => 
+            <AdditionalFilter invisible={invisibleBlocks[i]} toggleVisibility={() => toggleVisibility(i)}  filterOptions={list} key={list[0] + "-list"}/>)
+        }
+    </div>
+}
+
+function AdditionalFilter ({invisible, toggleVisibility, filterOptions}) {
+    const cls = clsx('invisible-wrapper', {'invisible': invisible});
+    const name = filterOptions[0]
+    const list = filterOptions[1]
+    return <div className="filter">
+            <div className="filter-name" onClick={toggleVisibility}><div>{name}</div> <div>{invisible?<img src="angle-down-svgrepo-com.svg" alt="expand item icon"/>:<img src="angle-up-svgrepo-com.svg" alt="condense item icon"/>}</div></div>
+            <div className={cls}>
+                <div className="invisible-block">
+                    {list.map(option => 
+                        <Checkbox labelName={option} key={option} />
+                    )}
+                </div>
+            </div>
+    </div>
+}
+
+function Checkbox({labelName}) {
+    return <div className="filter-item">
+        <input  type="checkbox" id={labelName} name={labelName} />
+        <label htmlFor={labelName}>{labelName}</label>
+    </div>
 }
