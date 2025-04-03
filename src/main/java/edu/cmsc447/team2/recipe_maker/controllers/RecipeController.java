@@ -30,8 +30,13 @@ public class RecipeController {
     // Query the API for recipes with the listed ingredients
     @GetMapping(path = "/recipes")
     @CrossOrigin(origins="http://localhost:5173")
-    public List<RecipeDto> getRecipe(@RequestParam String ingredients) {
-        return recipeService.getRecipes(ingredients);
+    public List<RecipeDto> getRecipe(
+            @RequestParam(value = "includeIngredients", required = true) String includeIngredients,
+            @RequestParam(value = "excludeIngredients", required = false) String excludeIngredients,
+            @RequestParam(value = "cuisine", required = false) String cuisineType,
+            @RequestParam(value = "intolerances", required = false) String dietaryRestrictions)
+    {
+        return recipeService.getRecipes(includeIngredients, excludeIngredients, cuisineType, dietaryRestrictions);
     }
 
     // Save a recipe to the database

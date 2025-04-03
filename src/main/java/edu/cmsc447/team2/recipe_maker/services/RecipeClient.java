@@ -26,18 +26,33 @@ public class RecipeClient {
     private String apiKey;
     public RecipeClient(final RestTemplate restTemplate) {this.restTemplate = restTemplate;}
     
-    public List<RecipeDto> getRecipes(String ingredients) {
+    public List<RecipeDto> getRecipes(String includeIngredients, String excludeIngredients, String cuisineType, String dietaryRestrictions) {
 
         // Build Query
-        String queryURL = UriComponentsBuilder
+         UriComponentsBuilder urlBuilder = UriComponentsBuilder
             .fromUriString("https://api.spoonacular.com/recipes/complexSearch")
-            .queryParam("includeIngredients", ingredients)
+            .queryParam("includeIngredients", includeIngredients)
             .queryParam("instructionsRequired", true)
             .queryParam("addRecipeInformation", true)
             .queryParam("addRecipeInstructions", true)
-            .queryParam("apiKey", apiKey)
-            .build().toUriString();
-        // System.out.println(queryURL);
+            .queryParam("apiKey", apiKey);
+
+        // Optional Parameters
+        if (excludeIngredients != null) {
+            urlBuilder.queryParam("excludeIngredients", excludeIngredients);
+        }
+
+        if (cuisineType != null) {
+            urlBuilder.queryParam("cuisineType", cuisineType);
+        }
+
+        if (dietaryRestrictions != null) {
+            urlBuilder.queryParam("dietaryRestrictions", dietaryRestrictions);
+        }
+
+        String queryURL = urlBuilder.build().encode().toUriString();
+        // Encode is optional
+
 
         try {
             // Query the API
