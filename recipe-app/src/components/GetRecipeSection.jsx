@@ -63,11 +63,15 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
     }
 
     return <div className="get-recipe-section">
-        <div className="get-recipe-guide">Find recipes by their ingredients</div>
-        <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList}/>
-        <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
-        <AdditionalFiltersAccordion constFilterLists={constFilterLists} updateFilterBitMap={updateFilterBitMap}/>
-        <SubmitButton handleSubmit={handleSubmit}/>
+        <div className = "additional-filters-side-panel">
+            <AdditionalFiltersAccordion constFilterLists={constFilterLists} updateFilterBitMap={updateFilterBitMap}/>
+        </div>
+        <div className="get-recipe-main">
+            <div className="get-recipe-guide">Find recipes by their ingredients</div>
+            <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList}/>
+            <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
+            <SubmitButton handleSubmit={handleSubmit}/>
+        </div>
     </div>
 }
 

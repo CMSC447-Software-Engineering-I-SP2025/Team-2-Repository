@@ -10,6 +10,7 @@ export function AdditionalFiltersAccordion ({constFilterLists, updateFilterBitMa
         setInvisibleBlocks(arrCopy);
     }
     return <div className="additional-filters">
+        <div className="additional-filters-title">Search Filters</div>
         {
             Array.from(constFilterLists).map((mapping, i) => 
             <AdditionalFilter invisible={invisibleBlocks[i]} toggleVisibility={() => toggleVisibility(i)}  filterType={mapping[0]} filterOptions={mapping[1]} updateFilterBitMap={updateFilterBitMap} key={mapping[0] + "-list"}/>)
