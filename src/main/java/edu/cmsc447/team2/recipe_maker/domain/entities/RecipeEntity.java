@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 // Recipe Entity for database writing
 @Entity
-@Table(name = "recipies")
+@Table(name = "recipes") // Changed this from recipies
 @JsonIgnoreProperties(ignoreUnknown = true)
 // Class definition + JPA tagging.
 public class RecipeEntity {

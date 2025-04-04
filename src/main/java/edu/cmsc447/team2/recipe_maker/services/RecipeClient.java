@@ -34,8 +34,7 @@ public class RecipeClient {
             .queryParam("includeIngredients", includeIngredients)
             .queryParam("instructionsRequired", true)
             .queryParam("addRecipeInformation", true)
-            .queryParam("addRecipeInstructions", true)
-            .queryParam("apiKey", apiKey);
+            .queryParam("addRecipeInstructions", true);
 
         // Optional Parameters
         if (excludeIngredients != null) {
@@ -50,8 +49,10 @@ public class RecipeClient {
             urlBuilder.queryParam("dietaryRestrictions", dietaryRestrictions);
         }
 
+        urlBuilder.queryParam("apiKey", apiKey); // Needs to always be last param
+
         String queryURL = urlBuilder.build().encode().toUriString();
-        // Encode is optional
+
 
 
         try {
