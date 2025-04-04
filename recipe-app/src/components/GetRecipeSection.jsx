@@ -1,39 +1,75 @@
+import { AdditionalFiltersAccordion } from "./AdditionalFiltersAccordion";
 import { useState, useRef } from "react";
 import clsx from 'clsx'
 
 export default function GetRecipeSection({ingredientNameList, setRecipes}) {
+    const cuisineList = [
+        "Asian", "British", "Cajun", "Caribbean", "Chinese", "Eastern European",
+        "European", "French", "German", "Greek", "Indian", "Irish", "Italian",
+        "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", 
+        "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai",
+        "Vietnamese"
+    ];
+    const dietsList = [
+        "Vegetarian", "Vegan", "Lacto-Vegetarian", "Ovo-Vegetarian", 
+        "Pescetarian", "Gluten Free", "Ketogenic", "Paleo", "Primal",
+        "Low FODMAP", "Whole30"
+    ];
+    const intoleranceList = [
+        "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", 
+        "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"
+    ];
+    const constFilterLists = new Map([["Cuisine", cuisineList], ["Diet", dietsList], ["Intolerances", intoleranceList]]);
+    
+    //The state of each filter stored in "filter name" => "filter options list" mapping
+    //True for an option means the user has toggled that option. The order of lists and options are the same as in the constant lists above.
+    const [selectedFiltersBitMaps, setSelectedFiltersBitMaps] = useState(new Map((Array.from(constFilterLists).map(nameToListMapping => [nameToListMapping[0], new Array(nameToListMapping[1].length).fill(false)]))));
+ 
+    function updateFilterBitMap (filterTypeName, filterOptionName) {
+        //find position of a filter option then invert its truthiness
+        const optionIndex = constFilterLists.get(filterTypeName).indexOf(filterOptionName);
+        let tempFilterLists = new Map(selectedFiltersBitMaps);
+        tempFilterLists.get(filterTypeName)[optionIndex] = !tempFilterLists.get(filterTypeName)[optionIndex];
+        setSelectedFiltersBitMaps(tempFilterLists);
+    }
     const [ingredients, setIngredients] = useState([]);
-    const serverIP = "http://localhost:8080";
+
+    const serverBaseURLString = "http://localhost:8080";
+    let serverBaseURL = new URL(serverBaseURLString);
 
     function handleSubmit() {
-        let requestInfo = "/recipes?";
-        if (ingredients.length > 0) requestInfo += ("ingredients=" + ingredients.join());
-        
-        const requestURL = serverIP + requestInfo;
-        const options = {
-            method: "GET"
-        }
+        let recipeEndpoint = new URL("recipes", serverBaseURL);
+        if (ingredients.length > 0) recipeEndpoint.searchParams.append("ingredients", ingredients.join());
+        selectedFiltersBitMaps.forEach((bitMap, filterType) => {
+            const selectedOptions = [];
+            bitMap.forEach((optionIsSelected, i) => { 
+                if (optionIsSelected) selectedOptions.push(constFilterLists.get(filterType)[i]);
+            });
+            if(selectedOptions.length > 0) {
+                recipeEndpoint.searchParams.append(filterType, selectedOptions.join());
+            }
+        });
+        console.log(recipeEndpoint.toString());
 
-        const tempArr = [];
-        fetch(requestURL, options)
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(recipe => tempArr.push(recipe));
-            setRecipes(tempArr);
-            sessionStorage.setItem("recipes", JSON.stringify(tempArr));
-        })
-        .catch(error => console.log(error))
+        // const options = {method: "GET"};
+        // const tempArr = [];
+        // fetch(recipeEndpoint, options)
+        // .then(response => response.json())
+        // .then(data => {
+        //     data.forEach(recipe => tempArr.push(recipe));
+        //     setRecipes(tempArr);
+        //     sessionStorage.setItem("recipes", JSON.stringify(tempArr));
+        // })
+        // .catch(error => console.log(error));
     }
 
-    return <>
-        <div className="get-recipe-section">
-            <div className="get-recipe-guide">Find recipes by their ingredients</div>
-            <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList}/>
-            <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
-            <AdditionalFiltersAccordion />
-            <SubmitButton handleSubmit={handleSubmit}/>
-        </div>
-    </>
+    return <div className="get-recipe-section">
+        <div className="get-recipe-guide">Find recipes by their ingredients</div>
+        <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList}/>
+        <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
+        <AdditionalFiltersAccordion constFilterLists={constFilterLists} updateFilterBitMap={updateFilterBitMap}/>
+        <SubmitButton handleSubmit={handleSubmit}/>
+    </div>
 }
 
 function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
@@ -90,10 +126,6 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
             }
         }
     }
-
-    /*
-    function handleKeyInput
-    */
 
     return <label className="textArea">
         <div className="input-prompt">Ingredient:</div>
@@ -168,61 +200,4 @@ function DropdownItem ({ingredientName, pushIngredient, dropdownIndex, i, highli
     } else {
         return <li className={cls} onClick={()=>pushIngredient(ingredientName)}>{ingredientName}</li>
     }
-}
-
-function AdditionalFiltersAccordion () {
-    const cuisineList = [
-        "Asian", "British", "Cajun", "Caribbean", "Chinese", "Eastern European",
-        "European", "French", "German", "Greek", "Indian", "Irish", "Italian",
-        "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", 
-        "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai",
-        "Vietnamese" 
-    ]
-    const dietsList = [
-        "Vegetarian", "Vegan", "Lacto-Vegetarian", "Ovo-Vegetarian", 
-        "Pescetarian", "Gluten Free", "Ketogenic", "Paleo", "Primal",
-        "Low FODMAP", "Whole30"
-    ]
-    const intoleranceList = [
-        "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", 
-        "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"
-    ]
-    const filterLists = [["Cuisine", cuisineList], ["Diet", dietsList], ["Intolerance", intoleranceList]]
-
-    //true means block is invisible [cusineFilterIsInvisible, dietFilterIsInvisible, intolerancesFilterIsInvisible]
-    const [invisibleBlocks, setInvisibleBlocks] = useState([true, true, true]);
-    function toggleVisibility(pos) {
-        const arrCopy = invisibleBlocks.slice()
-        arrCopy[pos] = !arrCopy[pos]
-        setInvisibleBlocks(arrCopy)
-    }
-    return <div className="additional-filters">
-        {
-            filterLists.map((list, i) => 
-            <AdditionalFilter invisible={invisibleBlocks[i]} toggleVisibility={() => toggleVisibility(i)}  filterOptions={list} key={list[0] + "-list"}/>)
-        }
-    </div>
-}
-
-function AdditionalFilter ({invisible, toggleVisibility, filterOptions}) {
-    const cls = clsx('invisible-wrapper', {'invisible': invisible});
-    const name = filterOptions[0]
-    const list = filterOptions[1]
-    return <div className="filter">
-            <div className="filter-name" onClick={toggleVisibility}><div>{name}</div> <div>{invisible?<img src="angle-down-svgrepo-com.svg" alt="expand item icon"/>:<img src="angle-up-svgrepo-com.svg" alt="condense item icon"/>}</div></div>
-            <div className={cls}>
-                <div className="invisible-block">
-                    {list.map(option => 
-                        <Checkbox labelName={option} key={option} />
-                    )}
-                </div>
-            </div>
-    </div>
-}
-
-function Checkbox({labelName}) {
-    return <div className="filter-item">
-        <input  type="checkbox" id={labelName} name={labelName} />
-        <label htmlFor={labelName}>{labelName}</label>
-    </div>
 }
