@@ -49,18 +49,17 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
                 recipeEndpoint.searchParams.append(filterType, selectedOptions.join());
             }
         });
-        console.log(recipeEndpoint.toString());
 
-        // const options = {method: "GET"};
-        // const tempArr = [];
-        // fetch(recipeEndpoint, options)
-        // .then(response => response.json())
-        // .then(data => {
-        //     data.forEach(recipe => tempArr.push(recipe));
-        //     setRecipes(tempArr);
-        //     sessionStorage.setItem("recipes", JSON.stringify(tempArr));
-        // })
-        // .catch(error => console.log(error));
+        const options = {method: "GET"};
+        const tempArr = [];
+        fetch(recipeEndpoint, options)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(recipe => tempArr.push(recipe));
+            setRecipes(tempArr);
+            sessionStorage.setItem("recipes", JSON.stringify(tempArr));
+        })
+        .catch(error => console.log(error));
     }
 
     return <div className="get-recipe-section">
