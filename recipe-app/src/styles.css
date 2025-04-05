@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 
 body {
     background-color: rgb(254, 254, 251);
@@ -8,14 +9,31 @@ body {
 
 .get-recipe-section {
     display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    width: 100%;
+    gap: 2px;
+}
+
+.additional-filters-side-panel {
+    flex-basis: 31%;
+    z-index: 100;
+    position: relative;
+    justify-content: right;
+}
+
+.get-recipe-main {
+    justify-self: center;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 5%;
-    gap: 1em;
+    padding-bottom: 2rem;
+    gap: 1rem;
+    flex-basis: 38%;
 
     .ingredient-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
         gap: 10px;
         text-transform: capitalize;
@@ -122,10 +140,6 @@ header {
         width:100%;
         justify-content: center;
         gap: 15px;
-        
-        img {
-            width: 100%;
-        }
     }
 
     .result-cell {
@@ -133,8 +147,24 @@ header {
         flex-direction: column;
         border: solid black 1px;
         text-align: center;
-        .div {
-            border-top: solid black 1px;
+        font-size: x-large;        
+        
+        a {
+            text-decoration: none;
+        }
+        img {
+            width: 100%;
+        }
+        div {
+            /* border-top: solid black 1px; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+        .recipe-name {
+            padding: 4px;
+            /* font-family: "Amarante", serif; */
         }
     }
 }
@@ -143,7 +173,7 @@ header {
     
 } */
 
-.filter-block {
+.ingredient-filter-block {
     border: solid black 1px;
     border-radius: 1px;
     text-align: center;
@@ -151,16 +181,16 @@ header {
     flex-direction: row;
     justify-content: space-between;
 
-    .filter-text {
+    .ingredient-filter-text {
         padding: 2px;
     }
-    .filter-x {
+    .ingredient-filter-x {
         display: flex;
         border-width: 0 0 0 1px;
         aspect-ratio: 1/1;
     }
 
-    .filter-x:hover {
+    .ingredient-filter-x:hover {
         filter: brightness(.9);
     }
 }
@@ -232,6 +262,66 @@ header {
         li:not(:first-child) {
             margin-top: 11px;
         }
+    }
+}
 
+.additional-filters {
+    /* margin-top: 2rem; */
+    width:  75%;
+    /* justify-self: right; */
+    position: absolute;
+    right: 2%;
+    background-color: rgb(254, 254, 251);
+
+    .additional-filters-title {
+       width: 100%;
+
+        border: 1px black solid;
+        text-align: center;
+        border-radius: 2px;
+    }
+
+    .filter {
+       width: 100%;
+       border: 1px black solid;
+       border-radius: 2px;
+
+       .filter-name{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 2px 5px;
+            background-color: rgb(238, 238, 238);
+            border-radius: 2px;
+            
+            div {
+                align-content: center;
+                justify-content: center;
+            }
+            img {
+                display: flex;
+                height: 1.1rem;
+            }
+        }
+        .filter-name:hover {
+            cursor: pointer;
+        }
+        .invisible-wrapper {
+            /*Hack to be able to transition to auto height */
+            display: grid;
+            grid-template-rows: 1fr;
+            transition: grid-template-rows .6s;
+
+            .invisible-block { 
+                display: grid;
+                gap: 3px;
+                overflow-y: hidden;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        .invisible-wrapper.invisible {
+            grid-template-rows: 0fr;
+        }
     }
 }

@@ -1,38 +1,78 @@
+import { AdditionalFiltersAccordion } from "./AdditionalFiltersAccordion";
 import { useState, useRef } from "react";
 import clsx from 'clsx'
 
 export default function GetRecipeSection({ingredientNameList, setRecipes}) {
+    const cuisineList = [
+        "Asian", "British", "Cajun", "Caribbean", "Chinese", "Eastern European",
+        "European", "French", "German", "Greek", "Indian", "Irish", "Italian",
+        "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", 
+        "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai",
+        "Vietnamese"
+    ];
+    const dietsList = [
+        "Vegetarian", "Vegan", "Lacto-Vegetarian", "Ovo-Vegetarian", 
+        "Pescetarian", "Gluten Free", "Ketogenic", "Paleo", "Primal",
+        "Low FODMAP", "Whole30"
+    ];
+    const intoleranceList = [
+        "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", 
+        "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"
+    ];
+    const constFilterLists = new Map([["Cuisine", cuisineList], ["Diet", dietsList], ["Intolerances", intoleranceList]]);
+    
+    //The state of each filter stored in "filter name" => "filter options list" mapping
+    //True for an option means the user has toggled that option. The order of lists and options are the same as in the constant lists above.
+    const [selectedFiltersBitMaps, setSelectedFiltersBitMaps] = useState(new Map((Array.from(constFilterLists).map(nameToListMapping => [nameToListMapping[0], new Array(nameToListMapping[1].length).fill(false)]))));
+ 
+    function updateFilterBitMap (filterTypeName, filterOptionName) {
+        //find position of a filter option then invert its truthiness
+        const optionIndex = constFilterLists.get(filterTypeName).indexOf(filterOptionName);
+        let tempFilterLists = new Map(selectedFiltersBitMaps);
+        tempFilterLists.get(filterTypeName)[optionIndex] = !tempFilterLists.get(filterTypeName)[optionIndex];
+        setSelectedFiltersBitMaps(tempFilterLists);
+    }
     const [ingredients, setIngredients] = useState([]);
-    const serverIP = "http://localhost:8080";
+
+    const serverBaseURLString = "http://localhost:8080";
+    let serverBaseURL = new URL(serverBaseURLString);
 
     function handleSubmit() {
-        let requestInfo = "/recipes?";
-        if (ingredients.length > 0) requestInfo += ("ingredients=" + ingredients.join());
-        
-        const requestURL = serverIP + requestInfo;
-        const options = {
-            method: "GET"
-        }
+        let recipeEndpoint = new URL("recipes", serverBaseURL);
+        if (ingredients.length > 0) recipeEndpoint.searchParams.append("ingredients", ingredients.join());
+        selectedFiltersBitMaps.forEach((bitMap, filterType) => {
+            const selectedOptions = [];
+            bitMap.forEach((optionIsSelected, i) => { 
+                if (optionIsSelected) selectedOptions.push(constFilterLists.get(filterType)[i]);
+            });
+            if(selectedOptions.length > 0) {
+                recipeEndpoint.searchParams.append(filterType, selectedOptions.join());
+            }
+        });
 
+        const options = {method: "GET"};
         const tempArr = [];
-        fetch(requestURL, options)
+        fetch(recipeEndpoint, options)
         .then(response => response.json())
         .then(data => {
             data.forEach(recipe => tempArr.push(recipe));
             setRecipes(tempArr);
             sessionStorage.setItem("recipes", JSON.stringify(tempArr));
         })
-        .catch(error => console.log(error))
+        .catch(error => console.log(error));
     }
 
-    return <>
-        <div className="get-recipe-section">
+    return <div className="get-recipe-section">
+        <div className = "additional-filters-side-panel">
+            <AdditionalFiltersAccordion constFilterLists={constFilterLists} updateFilterBitMap={updateFilterBitMap}/>
+        </div>
+        <div className="get-recipe-main">
             <div className="get-recipe-guide">Find recipes by their ingredients</div>
             <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList}/>
             <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
             <SubmitButton handleSubmit={handleSubmit}/>
         </div>
-    </>
+    </div>
 }
 
 function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
@@ -90,10 +130,6 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
         }
     }
 
-    /*
-    function handleKeyInput
-    */
-
     return <label className="textArea">
         <div className="input-prompt">Ingredient:</div>
         <div className="text-with-dropdown" >
@@ -126,24 +162,24 @@ function IngredientList({ingredients, setIngredients}) {
         <div className="ingredient-list">
             <div className="ingredient-grid">
                 {ingredients.map((ingredient) => 
-                    {return <FilterBlock key={ingredient} filterName={ingredient} handleClick={() => removeIngredient(ingredient)}  filterType = "contains-ingredient"/>
+                    {return <IngredientFilterBlock key={ingredient} ingredientName={ingredient} handleClick={() => removeIngredient(ingredient)}  filterType = "contains-ingredient"/>
                 })}
             </div>
         </div>
     </>
 }
 
-function FilterBlock({filterName, filterType, handleClick}) {
-    const classStr = "filter-block " + {filterType}; 
-    let croppedName = filterName;
+function IngredientFilterBlock({ingredientName, filterType, handleClick}) {
+    const classStr = "ingredient-filter-block " + {filterType}; 
+    let croppedName = ingredientName;
     if(croppedName.length > 17) {
         croppedName = croppedName.slice(0, 17) + "...";
     }
-    return <div className={classStr}><div className="filter-text">{croppedName}</div><FilterX handleClick={handleClick}/></div>;
+    return <div className={classStr}><div className="ingredient-filter-text">{croppedName}</div><IngredientFilterX handleClick={handleClick}/></div>;
 }
 
-function FilterX({handleClick}) {
-    return <button className="filter-x" onClick={handleClick}>&#10006;</button>;
+function IngredientFilterX({handleClick}) {
+    return <button className="ingredient-filter-x" onClick={handleClick}>&#10006;</button>;
 }
 
 function AutocompleteDropdown ({currentText, pushIngredient, matchingIngredients, dropdownIndex, highlightedRef}) { 
