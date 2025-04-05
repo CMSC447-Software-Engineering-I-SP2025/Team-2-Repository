@@ -12,6 +12,8 @@
 - Start RecipeMakerApplication
   - Either use IDE or mvnw wrapper
     - ./mvnw spring-boot:run
-- Navigate to `localhost:8080/recipes?ingredients=x,y,z`
+- Navigate to `localhost:8080/recipes?includedIngredients=x,y,z?excludedIngredients=x?cuisine=x?intolerances=?x`
+  - excludedIngredients, cuisine, and intolerances are all optional
+  - intolerances is what spoonacular calls dietary restrictions
   - make sure you have commas and reference Spoonacular on how to type ingredients
-  - example `localhost:8080/recipes?apples,flour,sugar`
+    - example `localhost:8080/recipes?tomato,celery,chicken `
