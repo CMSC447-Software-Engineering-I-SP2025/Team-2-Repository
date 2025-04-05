@@ -11,5 +11,16 @@ function ResultsCell({recipeURL, recipeName}) {
     //had to remove the hypen formatting because it messed with recipes with hyphens -SL
     const resultLink = `/recipe/${recipeName.toLowerCase()}`; 
 
-    return <div className="result-cell"><a href={resultLink}> <img src ={recipeURL} alt={recipeName}/> </a><div> <a href={resultLink}> {recipeName} </a></div></div>;
+    return <div className="result-cell">
+        <div>
+            <a href={resultLink}> 
+                <img src ={recipeURL} alt={recipeName}/> 
+            </a>
+        </div>
+        <div className="recipe-name"> 
+            <a href={resultLink}> 
+                {recipeName} 
+            </a>
+        </div>
+    </div>;
 }

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 
 body {
     background-color: rgb(254, 254, 251);
@@ -15,7 +16,10 @@ body {
 }
 
 .additional-filters-side-panel {
-    flex-basis: 30%;
+    flex-basis: 31%;
+    z-index: 100;
+    position: relative;
+    justify-content: right;
 }
 
 .get-recipe-main {
@@ -23,13 +27,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 5%;
-    gap: 1em;
-    flex-basis: 40%;
+    padding-bottom: 2rem;
+    gap: 1rem;
+    flex-basis: 38%;
 
     .ingredient-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
         gap: 10px;
         text-transform: capitalize;
@@ -136,10 +140,6 @@ header {
         width:100%;
         justify-content: center;
         gap: 15px;
-        
-        img {
-            width: 100%;
-        }
     }
 
     .result-cell {
@@ -147,8 +147,24 @@ header {
         flex-direction: column;
         border: solid black 1px;
         text-align: center;
-        .div {
-            border-top: solid black 1px;
+        font-size: x-large;        
+        
+        a {
+            text-decoration: none;
+        }
+        img {
+            width: 100%;
+        }
+        div {
+            /* border-top: solid black 1px; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+        .recipe-name {
+            padding: 4px;
+            /* font-family: "Amarante", serif; */
         }
     }
 }
@@ -252,7 +268,10 @@ header {
 .additional-filters {
     /* margin-top: 2rem; */
     width:  75%;
-    justify-self: right;
+    /* justify-self: right; */
+    position: absolute;
+    right: 2%;
+    background-color: rgb(254, 254, 251);
 
     .additional-filters-title {
        width: 100%;
