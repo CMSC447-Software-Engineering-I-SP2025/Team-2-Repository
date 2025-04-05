@@ -88,7 +88,7 @@ public class AppController {
         ingredientService.removeingredient(ingredientID);
     }
 
-    // Remove an ingredient from the pantry
+    // List all ingredients
     @DeleteMapping(path = "/listingredients") 
     public void removeingredient() {
         ingredientService.listIngredients();
