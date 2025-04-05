@@ -16,7 +16,7 @@ public class IngredientService {
 
     public IngredientEntity addIngredient(IngredientEntity IngredientEntity) {return IngredientRepository.save(IngredientEntity);}
 
-    public void removeIngredient(long ingredientID) {IngredientRepository.deleteById(ingredientID);}
+    public void removeingredient(long ingredientID) {IngredientRepository.deleteById(ingredientID);}
 
     public List<IngredientEntity> listIngredients() {return IngredientRepository.findAll();}
 }

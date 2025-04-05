@@ -87,6 +87,12 @@ public class AppController {
     public void removeingredient(@RequestBody long ingredientID) {
         ingredientService.removeingredient(ingredientID);
     }
+
+    // Remove an ingredient from the pantry
+    @DeleteMapping(path = "/listingredients") 
+    public void removeingredient() {
+        ingredientService.listIngredients();
+    }
 }
 
 
