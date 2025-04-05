@@ -1,15 +1,16 @@
 // Handles web routes
 package edu.cmsc447.team2.recipe_maker.controllers;
 
+
+import edu.cmsc447.team2.recipe_maker.mappers.GenericMapper;
+
 // Recipes
 import edu.cmsc447.team2.recipe_maker.services.RecipeService;
-import edu.cmsc447.team2.recipe_maker.mappers.RecipeMapper;
 import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
 import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
 
 // Ingredients
 import edu.cmsc447.team2.recipe_maker.services.IngredientService;
-import edu.cmsc447.team2.recipe_maker.mappers.IngredientMapper;
 import edu.cmsc447.team2.recipe_maker.domain.entities.IngredientEntity;
 import edu.cmsc447.team2.recipe_maker.domain.dto.IngredientDto;
 
@@ -19,16 +20,27 @@ import java.util.List;
 
 @RestController
 public class AppController {
-    private final RecipeService recipeService;
-    private RecipeMapper<RecipeEntity, RecipeDto> recipeMapper;
-    private IngredientMapper<IngredientEntity, IngredientDto> ingredientMapper;
 
-    public AppController(RecipeService recipeService, RecipeMapper<RecipeEntity, RecipeDto> recipeMapper) {
+    // Instantiate mappers and services
+    private final RecipeService recipeService;
+    private final IngredientService ingredientService;
+    private GenericMapper<RecipeEntity, RecipeDto> recipeMapper;
+    private GenericMapper<IngredientEntity, IngredientDto> ingredientMapper;
+
+
+    // Add mappers and services to the controller
+    public AppController(
+    RecipeService recipeService,
+    IngredientService ingredientService,
+    GenericMapper<RecipeEntity, RecipeDto> recipeMapper,
+    GenericMapper<IngredientEntity, IngredientDto> ingredientMapper) {
         this.recipeService = recipeService;
+        this.ingredientService = ingredientService;
         this.recipeMapper = recipeMapper;
         this.ingredientMapper = ingredientMapper;
     }
 
+    // Define paths
     // Map a RecipeDto to a RecipeEntity
     @PutMapping(path = "/recipes")
     public RecipeDto addRecipe(@RequestBody RecipeDto recipe) {
@@ -67,10 +79,14 @@ public class AppController {
     @PutMapping(path = "/addingredient")
     public void addIngredient(@RequestBody IngredientDto ingredient) {
         IngredientEntity ingredientEntity = ingredientMapper.mapFrom(ingredient);
-        ingredientService.addIngredient();
+        ingredientService.addIngredient(ingredientEntity);
     }
 
-    // Remove an ingredient to the pantry
+    // Remove an ingredient from the pantry
+    @DeleteMapping(path = "/removeingredient")
+    public void removeingredient(@RequestBody long ingredientID) {
+        ingredientService.removeingredient(ingredientID);
+    }
 }
 
 
