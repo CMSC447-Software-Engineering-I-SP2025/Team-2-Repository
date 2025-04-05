@@ -18,5 +18,5 @@ public class IngredientService {
 
     public void removeIngredient(long ingredientID) {IngredientRepository.deleteById(ingredientID);}
 
-    public List<IngredientEntity> listRecipes() {return IngredientRepository.findAll();}
+    public List<IngredientEntity> listIngredients() {return IngredientRepository.findAll();}
 }
