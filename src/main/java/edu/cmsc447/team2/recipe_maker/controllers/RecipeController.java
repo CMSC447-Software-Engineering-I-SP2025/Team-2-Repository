@@ -34,9 +34,10 @@ public class RecipeController {
             @RequestParam(value = "includeIngredients", required = true) String includeIngredients,
             @RequestParam(value = "excludeIngredients", required = false) String excludeIngredients,
             @RequestParam(value = "cuisine", required = false) String cuisineType,
-            @RequestParam(value = "intolerances", required = false) String dietaryRestrictions)
+            @RequestParam(value = "intolerances", required = false) String dietaryRestrictions,
+            @RequestParam(value = "diet", required = false) String diet)
     {
-        return recipeService.getRecipes(includeIngredients, excludeIngredients, cuisineType, dietaryRestrictions);
+        return recipeService.getRecipes(includeIngredients, excludeIngredients, cuisineType, dietaryRestrictions, diet);
     }
 
     // Save a recipe to the database

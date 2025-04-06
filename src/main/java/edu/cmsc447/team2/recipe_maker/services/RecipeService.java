@@ -25,7 +25,7 @@ public class RecipeService {
 
     public RecipeEntity createRecipe(RecipeEntity recipeEntity) {return null;}
 
-    public List<RecipeDto> getRecipes(String includeIngredients, String excludeIngredients, String cuisineType, String dietaryRestrictions) {return recipeClient.getRecipes(includeIngredients, excludeIngredients, cuisineType, dietaryRestrictions);}
+    public List<RecipeDto> getRecipes(String includeIngredients, String excludeIngredients, String cuisineType, String intolerances, String diet) {return recipeClient.getRecipes(includeIngredients, excludeIngredients, cuisineType, intolerances, diet);}
 
     public RecipeEntity saveRecipe(RecipeEntity recipeEntity) {return recipeRepository.save(recipeEntity);}
 
