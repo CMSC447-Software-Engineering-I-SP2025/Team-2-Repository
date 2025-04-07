@@ -2,11 +2,12 @@ import { AdditionalFiltersAccordion } from "./AdditionalFiltersAccordion";
 import { useState, useRef } from "react";
 import clsx from 'clsx'
 
-export default function GetRecipeSection({ingredientNameList, setRecipes}) {
+export default function GetRecipeSection({ingredientNameList, setRecipes, setFavoritedRecipesBitMap}) {
+
     const cuisineList = [
-        "Asian", "British", "Cajun", "Caribbean", "Chinese", "Eastern European",
-        "European", "French", "German", "Greek", "Indian", "Irish", "Italian",
-        "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", 
+        "African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese", 
+        "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", 
+        "Italian", "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", 
         "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai",
         "Vietnamese"
     ];
@@ -24,7 +25,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
     //The state of each filter stored in "filter name" => "filter options list" mapping
     //True for an option means the user has toggled that option. The order of lists and options are the same as in the constant lists above.
     const [selectedFiltersBitMaps, setSelectedFiltersBitMaps] = useState(new Map((Array.from(constFilterLists).map(nameToListMapping => [nameToListMapping[0], new Array(nameToListMapping[1].length).fill(false)]))));
- 
+    
     function updateFilterBitMap (filterTypeName, filterOptionName) {
         //find position of a filter option then invert its truthiness
         const optionIndex = constFilterLists.get(filterTypeName).indexOf(filterOptionName);
@@ -33,6 +34,24 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
         setSelectedFiltersBitMaps(tempFilterLists);
     }
     const [ingredients, setIngredients] = useState([]);
+
+    function checkIfSaved(recipes) {
+        const favoritesCopy = new Array(recipes.length).fill(false);
+        setFavoritedRecipesBitMap(favoritesCopy);
+        const serverBaseURLString = "http://localhost:8080";
+        let serverBaseURL = new URL(serverBaseURLString); 
+        let listRecipesEndpoint = new URL("listrecipes", serverBaseURL);
+        const options = {method: "GET"};
+        fetch(listRecipesEndpoint, options)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(savedRecipe => {
+                if (recipes.indexOf(savedRecipe["id"])) favoritesCopy[i] = true;
+            });
+            setFavoritedRecipesBitMap(favoritesCopy);
+        })
+        .catch(error => console.log(error));
+    }
 
     const serverBaseURLString = "http://localhost:8080";
     let serverBaseURL = new URL(serverBaseURLString);
@@ -58,6 +77,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
             data.forEach(recipe => tempArr.push(recipe));
             setRecipes(tempArr);
             sessionStorage.setItem("recipes", JSON.stringify(tempArr));
+            checkIfSaved(tempArr);
         })
         .catch(error => console.log(error));
     }
@@ -105,7 +125,7 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
             highlightedRef?.current?.parentElement.scrollBy({ top: px, behavior: 'instant'})
         }
         function scrollDownToHighlighted (scrollingDown) {
-            console.log(highlightedRef.current);
+            // console.log(highlightedRef.current);
             const highlightedObj = highlightedRef?.current;
             const sibling = scrollingDown ? highlightedObj?.nextElementSibling : highlightedObj?.previousElementSibling;
             sibling?.scrollIntoView({ behavior: "smooth", block: "nearest"});
@@ -184,14 +204,13 @@ function IngredientFilterX({handleClick}) {
 
 function AutocompleteDropdown ({currentText, pushIngredient, matchingIngredients, dropdownIndex, highlightedRef}) { 
         if(currentText.length < 3) return <></>
-        let i = 0;
         
         return <ul className="input-text-dropdown">
              {
              matchingIngredients.length > 0 ? 
-             matchingIngredients.map(ingredientName => 
+             matchingIngredients.map((ingredientName, i) => 
              <DropdownItem ingredientName={ingredientName} key={ingredientName} pushIngredient={pushIngredient} 
-                           dropdownIndex={dropdownIndex} i={i++} highlightedRef={highlightedRef}/>) :
+                           dropdownIndex={dropdownIndex} i={i} highlightedRef={highlightedRef}/>) :
              <DropdownItem ingredientName={"No ingredient found"} pushIngredient={()=>null} i={-1}/>}
         </ul>
 }

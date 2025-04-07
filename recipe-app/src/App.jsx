@@ -7,7 +7,32 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeDetail from "./components/RecipeDetail";
 
 export default function App({ingredientNameList}) {
+    function saveRecipe(recipe) {
+        const serverBaseURLString = "http://localhost:8080";
+        let serverBaseURL = new URL(serverBaseURLString);
+        let saveRecipeEndpoint = new URL("saverecipe", serverBaseURL);
+        const options = {
+            method: "POST",
+            body: JSON.stringify(recipe)
+        };
+        fetch(saveRecipeEndpoint, options)
+        .catch(error => console.log(error));
+    }
+
+    function removeRecipe(recipe) {
+        const serverBaseURLString = "http://localhost:8080";
+        let serverBaseURL = new URL(serverBaseURLString); 
+        let removeRecipeEndpoint = new URL("deleterecipe", serverBaseURL);
+        const options = {
+            method: "DELETE",
+            body: recipe["id"]
+        };
+        fetch(removeRecipeEndpoint, options)
+        .catch(error => console.log(error));
+    }
+
     const [recipes, setRecipes] = useState([]);
+    const [favoritedRecipesBitMap, setFavoritedRecipesBitMap] = useState([]);
 
     useEffect(() => {
         const ingredientCSV = "/top-1k-ingredients.csv";
@@ -30,13 +55,13 @@ export default function App({ingredientNameList}) {
                         {/* Homepage */}
                         <Route path="/" element={
                             <>
-                                <GetRecipeSection ingredientNameList = {ingredientNameList} setRecipes = {setRecipes}/>
-                                <ResultsDisplay recipes={recipes}/>
+                                <GetRecipeSection ingredientNameList={ingredientNameList} setRecipes={setRecipes} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap}/>
+                                <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>
                             </>
                         } />
 
                         {/* Recipe Detail Page */}
-                        <Route path="/recipe/:recipeName" element={<RecipeDetail />} />
+                        <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
                         
                     </Routes>
                 </main>

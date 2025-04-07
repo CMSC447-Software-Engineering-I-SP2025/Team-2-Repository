@@ -4,7 +4,8 @@
 body {
     background-color: rgb(254, 254, 251);
     font-family: lato;
-    margin-top: 0;
+    /* margin-top: 0; */
+    margin: 0;
 }
 
 .get-recipe-section {
@@ -92,6 +93,8 @@ header {
     flex-direction: row;
     height: 10%;
     justify-content: space-around;
+    border-bottom: 3px black solid;
+    margin-bottom: 2%;
 
     .logo-container{
         display: grid;
@@ -125,8 +128,6 @@ header {
             text-decoration: none;
         }
     }
-
-    padding-bottom: 2%;
 }
 
 .results-section {
@@ -162,9 +163,32 @@ header {
             justify-content: center;
             flex: 1;
         }
+
+        .result-image-wrapper {
+            position: relative;
+        }
+
         .recipe-name {
             padding: 4px;
             /* font-family: "Amarante", serif; */
+        }
+
+        .favorite-button-cut-out {
+            position: absolute;
+            height: 20%;
+            min-height: 45px;
+            aspect-ratio: 1;
+            border-bottom-left-radius: 25px;
+            top: 0;
+            right: 0;
+            background-color: rgb(254, 254, 251);
+        }
+
+        .favorite-button {
+            padding: 3px;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            width: fit-content;            
         }
     }
 }
@@ -189,7 +213,6 @@ header {
         border-width: 0 0 0 1px;
         aspect-ratio: 1/1;
     }
-
     .ingredient-filter-x:hover {
         filter: brightness(.9);
     }
@@ -263,6 +286,24 @@ header {
             margin-top: 11px;
         }
     }
+
+    .favorite-recipe-element {
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        font-size: large;
+        align-items: center;
+        margin-top: 1rem;
+        gap: 5px;
+    }
+    .favorite-button {
+        width: 2.5rem;
+    }
+}
+
+.favorite-button {
+    /*Tool for changing black to a color: https://isotropic.co/tool/hex-color-to-css-filter/ */
+    filter: invert(98%) sepia(36%) saturate(7327%) hue-rotate(312deg) brightness(107%) contrast(101%);
 }
 
 .additional-filters {
@@ -324,4 +365,14 @@ header {
             grid-template-rows: 0fr;
         }
     }
+}
+
+.recipe-title {
+    /* height: 40%; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
 }
