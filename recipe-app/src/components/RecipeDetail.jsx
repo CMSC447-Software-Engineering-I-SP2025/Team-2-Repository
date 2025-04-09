@@ -1,4 +1,4 @@
-// Page for displaying details about a single recipe
+{/*Page to display details about a single recipe*/}
 
 import {useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -24,7 +24,7 @@ export default function RecipeDetail() {
 
     return (
         <div className="recipe-detail">
-            {title ? ( //page status requires a state check because data loads after page loads
+            {title ? ( // page status requires a state check because data loads after page loads
                 <>
                    <h1>{title}</h1>
                    {imageURL ? <img src= {imageURL} alt={recipeName}/>: <div>No Image Provided</div>}  

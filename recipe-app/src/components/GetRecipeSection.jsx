@@ -1,4 +1,4 @@
-// Not sure what this is.
+{/*Handles all of the filters and querying the database*/}
 
 import { useState, useRef } from "react";
 import clsx from 'clsx'

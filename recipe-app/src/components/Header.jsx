@@ -1,4 +1,4 @@
-// Header displayed at the top of the page
+{/*Header for all pages*/}
 
 import { Link } from "react-router-dom";
 

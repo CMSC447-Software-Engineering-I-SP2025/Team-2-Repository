@@ -1,4 +1,4 @@
-// Display results from a recipe search in a grid
+{/*Display results from a recipe search in a grid*/}
 
 export default function ResultsDisplay ({recipes}) {    
     return <div className="results-section">
@@ -10,7 +10,7 @@ export default function ResultsDisplay ({recipes}) {
 }
 
 function ResultsCell({recipeURL, recipeName}) {
-    //had to remove the hypen formatting because it messed with recipes with hyphens -SL
+    {/*Display results from a recipe search in a grid*/}
     const resultLink = `/recipe/${recipeName.toLowerCase()}`; 
 
     return <div className="result-cell"><a href={resultLink}> <img src ={recipeURL} alt={recipeName}/> </a><div> <a href={resultLink}> {recipeName} </a></div></div>;
