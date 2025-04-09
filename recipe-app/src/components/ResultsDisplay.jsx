@@ -1,3 +1,5 @@
+// Display results from a recipe search in a grid
+
 export default function ResultsDisplay ({recipes}) {    
     return <div className="results-section">
         <div className="results-grid">

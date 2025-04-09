@@ -1,3 +1,5 @@
+// Not sure what this is.
+
 import { useState, useRef } from "react";
 import clsx from 'clsx'
 
@@ -24,7 +26,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
         })
         .catch(error => console.log(error))
     }
-
+    
     return <>
         <div className="get-recipe-section">
             <div className="get-recipe-guide">Find recipes by their ingredients</div>

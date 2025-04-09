@@ -1,3 +1,5 @@
+// Header displayed at the top of the page
+
 import { Link } from "react-router-dom";
 
 export default function Header () {

@@ -1,3 +1,5 @@
+// Page for displaying details about a single recipe
+
 import {useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 
