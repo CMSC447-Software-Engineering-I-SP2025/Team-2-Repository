@@ -1,3 +1,4 @@
+// Required imports
 import GetRecipeSection from "./components/GetRecipeSection";
 import Header from "./components/Header";
 import {useState, useEffect} from "react";

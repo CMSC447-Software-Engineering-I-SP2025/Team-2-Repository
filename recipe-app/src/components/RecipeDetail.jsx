@@ -1,3 +1,5 @@
+{/*Page to display details about a single recipe*/}
+
 import {useParams} from "react-router-dom";
 import { useState, useEffect, use } from "react";
 
@@ -54,7 +56,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
 
     return (
         <div className="recipe-detail">
-            {title ? ( //page status requires a state check because data loads after page loads
+            {title ? ( // page status requires a state check because data loads after page loads
                 <>
                    <div className="recipe-title">
                         <h1>{title}</h1>

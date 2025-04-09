@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.RequestParam;
 
 // Recipe service to call RecipeClient for queries or RecipeRepository for database CRUD.
 @Service

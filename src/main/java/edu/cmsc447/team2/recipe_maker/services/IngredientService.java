@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Service;
+
 import edu.cmsc447.team2.recipe_maker.domain.entities.IngredientEntity;
 import edu.cmsc447.team2.recipe_maker.repositories.IngredientRepository;
 
+@Service
 public class IngredientService {
     
     private final IngredientRepository IngredientRepository;
