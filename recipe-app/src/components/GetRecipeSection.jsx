@@ -58,7 +58,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
 
     function handleSubmit() {
         let recipeEndpoint = new URL("recipes", serverBaseURL);
-        if (ingredients.length > 0) recipeEndpoint.searchParams.append("ingredients", ingredients.join());
+        if (ingredients.length > 0) recipeEndpoint.searchParams.append("includeIngredients", ingredients.join());
         selectedFiltersBitMaps.forEach((bitMap, filterType) => {
             const selectedOptions = [];
             bitMap.forEach((optionIsSelected, i) => { 
