@@ -18,13 +18,13 @@ import com.fasterxml.jackson.core.json.JsonReadFeature;
 import java.util.List;
 
 @Service
-public class RecipeClient {
+public class APIClient {
     // Query Spoonacular API, map returned data to a RecipeDto objects, and return those object in a list.
     
     private final RestTemplate restTemplate;
     @Value("${spoonacular.api.key}")
     private String apiKey;
-    public RecipeClient(final RestTemplate restTemplate) {this.restTemplate = restTemplate;}
+    public APIClient(final RestTemplate restTemplate) {this.restTemplate = restTemplate;}
     
     public List<RecipeDto> getRecipes(String includeIngredients, String excludeIngredients, String cuisineType, String intolerances, String diet) {
 
