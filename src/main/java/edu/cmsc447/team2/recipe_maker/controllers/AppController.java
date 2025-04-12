@@ -3,7 +3,6 @@ package edu.cmsc447.team2.recipe_maker.controllers;
 
 
 import edu.cmsc447.team2.recipe_maker.mappers.GenericMapper;
-
 // Recipes
 import edu.cmsc447.team2.recipe_maker.services.RecipeService;
 import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
@@ -13,9 +12,9 @@ import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
 import edu.cmsc447.team2.recipe_maker.services.IngredientService;
 import edu.cmsc447.team2.recipe_maker.domain.entities.IngredientEntity;
 import edu.cmsc447.team2.recipe_maker.domain.dto.IngredientDto;
-
 // Other
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -64,25 +63,36 @@ public class AppController {
 
     // Save a recipe to the database
     @PutMapping(path = "/saverecipe")
+    @CrossOrigin(origins="http://localhost:5173")
     public RecipeEntity saveRecipe(@RequestBody RecipeDto recipe) {
         RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
-        return recipeService.saveRecipe(recipeEntity);
+        recipeEntity.setId(recipe.id());
+        recipeEntity.setTitle(recipe.title());
+        recipeEntity.setInstructions(recipe.analyzedInstructions().toString());
+        recipeEntity.setUsedIngredientCount(recipe.usedIngredientCount());
+        recipeEntity.setMissedIngredientCount(recipe.missedIngredientCount());
+        recipeEntity.setImage(recipe.image());
+
+        return recipeEntity;
     }
 
     // Remove a recipe from the database
     @DeleteMapping(path = "/deleterecipe")
-    public void deleteRecipe(@RequestBody long recipeID) {
-        recipeService.deleteRecipe(recipeID);
+    @CrossOrigin(origins="http://localhost:5173")
+    public void deleteRecipe(@RequestBody String recipeID) {
+        recipeService.deleteRecipe(Long.valueOf(recipeID));
     }
 
     // Get all saved recipes
     @GetMapping(path = "/listrecipes")
-    public List<RecipeEntity> listRecipes() {
+    @CrossOrigin(origins="http://localhost:5173")
+        public List<RecipeEntity> listRecipes() {
         return recipeService.listRecipes();
     }
 
     // Add an ingredient to the pantry
     @PutMapping(path = "/addingredient")
+    @CrossOrigin(origins="http://localhost:5173")
     public void addIngredient(@RequestBody IngredientDto ingredient) {
         IngredientEntity ingredientEntity = ingredientMapper.mapFrom(ingredient);
         ingredientService.addIngredient(ingredientEntity);
@@ -90,13 +100,15 @@ public class AppController {
 
     // Remove an ingredient from the pantry
     @DeleteMapping(path = "/removeingredient")
+    @CrossOrigin(origins="http://localhost:5173")
     public void removeingredient(@RequestBody long ingredientID) {
         ingredientService.removeingredient(ingredientID);
     }
 
     // List all ingredients
-    @DeleteMapping(path = "/listingredients") 
-    public void removeingredient() {
+    @GetMapping(path = "/listingredients") 
+    @CrossOrigin(origins="http://localhost:5173")
+    public void listIngredients() {
         ingredientService.listIngredients();
     }
 }
