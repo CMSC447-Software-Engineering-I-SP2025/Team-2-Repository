@@ -12,9 +12,17 @@ import edu.cmsc447.team2.recipe_maker.domain.dto.RecipeDto;
 import edu.cmsc447.team2.recipe_maker.services.IngredientService;
 import edu.cmsc447.team2.recipe_maker.domain.entities.IngredientEntity;
 import edu.cmsc447.team2.recipe_maker.domain.dto.IngredientDto;
+
 // Other
 import org.springframework.web.bind.annotation.*;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -65,14 +73,22 @@ public class AppController {
     @PutMapping(path = "/saverecipe")
     @CrossOrigin(origins="http://localhost:5173")
     public RecipeEntity saveRecipe(@RequestBody RecipeDto recipe) {
-        RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
-        recipeEntity.setId(recipe.id());
-        recipeEntity.setTitle(recipe.title());
-        recipeEntity.setInstructions(recipe.analyzedInstructions().toString());
-        recipeEntity.setUsedIngredientCount(recipe.usedIngredientCount());
-        recipeEntity.setMissedIngredientCount(recipe.missedIngredientCount());
-        recipeEntity.setImage(recipe.image());
+        //RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
+        ObjectWriter ow = new ObjectMapper().writer();  //.withDefaultPrettyPrinter()
+        String instructionsJSON = "";
+        try {
+            instructionsJSON = ow.writeValueAsString(recipe.analyzedInstructions());
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        RecipeEntity recipeEntity = new RecipeEntity(recipe.id(), recipe.title(), recipe.usedIngredientCount(), 
+                                                    recipe.missedIngredientCount(), instructionsJSON, recipe.image());
 
+        recipeService.saveRecipe(recipeEntity);
         return recipeEntity;
     }
 
@@ -86,8 +102,16 @@ public class AppController {
     // Get all saved recipes
     @GetMapping(path = "/listrecipes")
     @CrossOrigin(origins="http://localhost:5173")
-        public List<RecipeEntity> listRecipes() {
-        return recipeService.listRecipes();
+    public List<RecipeDto> listRecipes() {
+        List<RecipeEntity> entityList = recipeService.listRecipes();
+        ArrayList<RecipeDto> dtoList = new ArrayList<RecipeDto>();
+        entityList.forEach(entity -> {
+            RecipeDto recipe = new RecipeDto(entity.getId(), entity.getImage(), entity.getTitle(), 
+                                            entity.getUsedIngredientCount(), entity.getMissedIngredientCount(), 
+                                            entity.getInstructions());
+            dtoList.add(recipe);
+        });
+        return dtoList;
     }
 
     // Add an ingredient to the pantry
@@ -112,9 +136,3 @@ public class AppController {
         ingredientService.listIngredients();
     }
 }
-
-
-
-// AppController -> Service -> Repository -> Database
-// AppController -> Client -> Query -> API
-// DTO and Entity are the data transferred between 
