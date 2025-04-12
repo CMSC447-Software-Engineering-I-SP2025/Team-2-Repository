@@ -16,7 +16,7 @@ const footerStyle = {
     position: 'relative',
     overflowX: 'hidden',
     height: '55px',
-    marginTop: '245px',
+    marginTop: '290px',
     zIndex: 1,
     clear: 'both',
   };
