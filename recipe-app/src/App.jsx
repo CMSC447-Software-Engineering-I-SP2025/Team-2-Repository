@@ -5,6 +5,9 @@ import ResultsDisplay from "./components/ResultsDisplay";
 import Papa from 'papaparse';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeDetail from "./components/RecipeDetail";
+import PantryPage from "./components/PantryPage";
+import Footer from "./components/Footer";
+import HomePage from "./components/HomePage";
 
 export default function App({ingredientNameList}) {
     function saveRecipe(recipe) {
@@ -52,8 +55,12 @@ export default function App({ingredientNameList}) {
             <Header />
                 <main>
                     <Routes>
+
                         {/* Homepage */}
-                        <Route path="/" element={
+                        <Route path="/" element={<HomePage />} />
+                        
+                        {/* Search Page */}
+                        <Route path="/search" element={
                             <>
                                 <GetRecipeSection ingredientNameList={ingredientNameList} setRecipes={setRecipes} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap}/>
                                 <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>
@@ -63,8 +70,16 @@ export default function App({ingredientNameList}) {
                         {/* Recipe Detail Page */}
                         <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
                         
+                        {/* Pantry Page */}
+                        <Route path="/pantry" element={<PantryPage />} />
+    
+                        {/* 404 Page */}
+                        <Route path="*" element={<h1>404 Not Found</h1>} />
+
                     </Routes>
+
                 </main>
+            <Footer />
         </Router>
     );
 }
