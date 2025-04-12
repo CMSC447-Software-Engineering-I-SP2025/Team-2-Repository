@@ -107,6 +107,7 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
         const ingredientArrCopy = ingredients.slice();
         ingredientArrCopy.push(ingredient);
         setIngredients(ingredientArrCopy);
+        setInputVal(""); // clear input field after adding
     }
 
     function keyUpEvent(e, ingredient) {
@@ -156,9 +157,11 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
             <input className="ingredientSearchBar"
                 type="text" 
                 name = "Ingredient Search Bar"
+                value={inputVal} // control input
                 onChange={e => {setInputVal(e.target.value); setDropdownIndex(-1);}}
                 onKeyUp={e => keyUpEvent(e, inputVal)}
                 onKeyDown={e => keyDownEvent(e)}
+                autocomplete="off" // disable browser autocomplete
             />
             <AutocompleteDropdown currentText={inputVal} matchingIngredients={matchingIngredients} pushIngredient={pushIngredient} dropdownIndex={dropdownIndex} highlightedRef={highlightedRef}/>
         </div>
