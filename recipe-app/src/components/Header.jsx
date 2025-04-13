@@ -1,3 +1,5 @@
+{/*Header for all pages*/}
+
 import { Link } from "react-router-dom";
 
 export default function Header() {

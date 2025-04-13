@@ -1,43 +1,49 @@
 package edu.cmsc447.team2.recipe_maker.domain.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record RecipeDto(
     Long id,
     String image,
-    // String imageType,
     String title,
-    // Integer readyInMinutes,
-    // Integer servings,
-    // String sourceUrl,
-    // Boolean vegetarian,
-    // Boolean vegan,
-    // Boolean glutenFree,
-    // Boolean dairyFree,
-    // Boolean veryHealthy,
-    // Boolean cheap,
-    // Boolean veryPopular,
-    // Boolean sustainable,
-    // Boolean lowFodmap,
-    // Integer weightWatcherSmartPoints,
-    // String gaps,
-    // Integer preparationMinutes,
-    // Integer cookingMinutes,    
-    // Integer aggregateLikes,
-    // Double healthScore,
-    // String creditsText,
-    // String license,
-    // String sourceName,
-    // Double pricePerServing,
-    // String summary,
-    // List<String> cuisines,
-    // List<String> dishTypes,
-    // List<String> diets,
-    // List<String> occasions,
     Integer usedIngredientCount,
     Integer missedIngredientCount,
     List<InstructionDto> analyzedInstructions
-    // Double spoonacularScore,
-    // String spoonacularSourceUrl
-) {}
+) {    
+    public RecipeDto(Long id, String image, String title, Integer usedIngredientCount, 
+                    Integer missedIngredientCount, List<InstructionDto> analyzedInstructions) {
+        this.id = id;
+        this.image = image;
+        this.title = title;
+        this.usedIngredientCount = usedIngredientCount;
+        this.missedIngredientCount = missedIngredientCount;
+        this.analyzedInstructions = analyzedInstructions;
+    }
+
+    public RecipeDto(Long id, String image, String title, Integer usedIngredientCount, 
+                    Integer missedIngredientCount, String analyzedInstructions) {
+        this(id, image, title, usedIngredientCount, missedIngredientCount, instructionStringToList(analyzedInstructions));  
+    }
+
+    static private List<InstructionDto> instructionStringToList(String instructionString) {
+        List<InstructionDto> instructions = null;
+        ObjectMapper jsonMapper = new ObjectMapper();
+        try {
+            instructions = Arrays.stream(jsonMapper.readValue(instructionString, InstructionDto[].class)).toList(); 
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return instructions;
+    }   
+}

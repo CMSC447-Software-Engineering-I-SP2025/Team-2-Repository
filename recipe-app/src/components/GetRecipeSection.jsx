@@ -36,8 +36,8 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
     const [ingredients, setIngredients] = useState([]);
 
     function checkIfSaved(recipes) {
+        const recipeIDs = recipes.map(recipe => recipe["id"]);
         const favoritesCopy = new Array(recipes.length).fill(false);
-        setFavoritedRecipesBitMap(favoritesCopy);
         const serverBaseURLString = "http://localhost:8080";
         let serverBaseURL = new URL(serverBaseURLString); 
         let listRecipesEndpoint = new URL("listrecipes", serverBaseURL);
@@ -46,7 +46,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
         .then(response => response.json())
         .then(data => {
             data.forEach(savedRecipe => {
-                if (recipes.indexOf(savedRecipe["id"])) favoritesCopy[i] = true;
+                favoritesCopy[recipeIDs.indexOf(savedRecipe["id"])] = true;
             });
             setFavoritedRecipesBitMap(favoritesCopy);
         })
@@ -58,7 +58,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
 
     function handleSubmit() {
         let recipeEndpoint = new URL("recipes", serverBaseURL);
-        if (ingredients.length > 0) recipeEndpoint.searchParams.append("ingredients", ingredients.join());
+        if (ingredients.length > 0) recipeEndpoint.searchParams.append("includeIngredients", ingredients.join());
         selectedFiltersBitMaps.forEach((bitMap, filterType) => {
             const selectedOptions = [];
             bitMap.forEach((optionIsSelected, i) => { 

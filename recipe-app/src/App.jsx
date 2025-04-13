@@ -1,3 +1,4 @@
+// Required imports
 import GetRecipeSection from "./components/GetRecipeSection";
 import Header from "./components/Header";
 import {useState, useEffect} from "react";
@@ -15,7 +16,10 @@ export default function App({ingredientNameList}) {
         let serverBaseURL = new URL(serverBaseURLString);
         let saveRecipeEndpoint = new URL("saverecipe", serverBaseURL);
         const options = {
-            method: "POST",
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify(recipe)
         };
         fetch(saveRecipeEndpoint, options)
