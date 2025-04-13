@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class RecipeService {
 
     @Autowired
-    private RecipeClient recipeClient;    
+    private APIClient APIClient;
 
     private final RecipeRepository recipeRepository;
 
@@ -26,7 +26,7 @@ public class RecipeService {
 
     public RecipeEntity createRecipe(RecipeEntity recipeEntity) {return null;}
 
-    public List<RecipeDto> getRecipes(String includeIngredients, String excludeIngredients, String cuisineType, String intolerances, String diet) {return recipeClient.getRecipes(includeIngredients, excludeIngredients, cuisineType, intolerances, diet);}
+    public List<RecipeDto> getRecipes(String includeIngredients, String excludeIngredients, String cuisineType, String intolerances, String diet) {return APIClient.getRecipes(includeIngredients, excludeIngredients, cuisineType, intolerances, diet);}
 
     public RecipeEntity saveRecipe(RecipeEntity recipeEntity) {return recipeRepository.save(recipeEntity);}
 
