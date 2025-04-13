@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+// Declaration
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record RecipeDto(
     Long id,
@@ -17,21 +18,41 @@ public record RecipeDto(
     Integer missedIngredientCount,
     List<InstructionDto> analyzedInstructions
 ) {    
-    public RecipeDto(Long id, String image, String title, Integer usedIngredientCount, 
-                    Integer missedIngredientCount, List<InstructionDto> analyzedInstructions) {
-        this.id = id;
-        this.image = image;
-        this.title = title;
-        this.usedIngredientCount = usedIngredientCount;
-        this.missedIngredientCount = missedIngredientCount;
-        this.analyzedInstructions = analyzedInstructions;
+
+    // Constructor
+    public RecipeDto(
+        Long id,
+        String image,
+        String title,
+        Integer usedIngredientCount, 
+        Integer missedIngredientCount,
+        List<InstructionDto> analyzedInstructions) {
+            this.id = id;
+            this.image = image;
+            this.title = title;
+            this.usedIngredientCount = usedIngredientCount;
+            this.missedIngredientCount = missedIngredientCount;
+            this.analyzedInstructions = analyzedInstructions;
     }
 
-    public RecipeDto(Long id, String image, String title, Integer usedIngredientCount, 
-                    Integer missedIngredientCount, String analyzedInstructions) {
-        this(id, image, title, usedIngredientCount, missedIngredientCount, instructionStringToList(analyzedInstructions));  
+    // ???
+    public RecipeDto(
+        Long id,
+        String image,
+        String title,
+        Integer usedIngredientCount, 
+        Integer missedIngredientCount,
+        String analyzedInstructions) {
+        this(
+            id,
+            image,
+            title,
+            usedIngredientCount,
+            missedIngredientCount,
+            instructionStringToList(analyzedInstructions));  
     }
 
+    // Helper
     static private List<InstructionDto> instructionStringToList(String instructionString) {
         List<InstructionDto> instructions = null;
         ObjectMapper jsonMapper = new ObjectMapper();

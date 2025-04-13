@@ -21,6 +21,7 @@ public class RecipeMapper implements GenericMapper<RecipeEntity, RecipeDto> {
     @Override
     public RecipeDto mapTo(RecipeEntity recipeEntity) {return modelMapper.map(recipeEntity, RecipeDto.class);}
 
+    // RecipeDto -> RecipeEntity
     @Override
     public RecipeEntity mapFrom(RecipeDto recipeDto) {return modelMapper.map(recipeDto, RecipeEntity.class);}
 }
