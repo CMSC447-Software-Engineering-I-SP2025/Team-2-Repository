@@ -106,3 +106,11 @@ public class AppController {
 // AppController -> Service -> Repository -> Database
 // AppController -> Client -> Query -> API
 // DTO and Entity are the data transferred between 
+
+/* Two options
+ * 1. Filter by selected ingredients
+ * 2. Filter by pantry ingredients
+ * 
+ * 
+ * 
+ */
