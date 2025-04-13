@@ -1,20 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 
-export default function PantryPage() {
-    const [ingredients, setIngredients] = useState([
-        { name: 'Chicken', quantity: "2 Whole lbs" },
-        { name: 'Rice', quantity: "1 Cup" },
-        { name: 'Broccoli', quantity: "1 Bunch"},
-        { name: 'Olive Oil', quantity: "1 Tbsp"},
-    ]);
+export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
+    // const [ingredients, setIngredients] = useState([
+    //     { name: 'Chicken', quantity: "2 Whole lbs" },
+    //     { name: 'Rice', quantity: "1 Cup" },
+    //     { name: 'Broccoli', quantity: "1 Bunch"},
+    //     { name: 'Olive Oil', quantity: "1 Tbsp"},
+    // ]);
+    const [ingredients, setIngredients] = useState([]);
+
 
     const [quickAddGroups, setQuickAddGroups] = useState({});
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-    const [newIngredient, setNewIngredient] = useState({ name: '', quantity: ''});
+    const [newIngredient, setNewIngredient] = useState({ id: '', name: '', quantity: ''});
     const [showSuggestions, setShowSuggestions] = useState(false);
 
-    // Fetch and parse CSV data
+
+    const serverBaseURLString = "http://localhost:8080";
+    const serverBaseURL = new URL(serverBaseURLString);
+
+    function getIDNamePairByName(name) {
+        return ingredientObjs.find(idNamePair => idNamePair.name == name.toLowerCase());
+    }
+    function saveIngredient(ingredient) {
+        console.log(ingredient);
+        let saveIngredientEndpoint = new URL("addingredient", serverBaseURL);
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(ingredient)
+        };
+        fetch(saveIngredientEndpoint, options)
+        .catch(error => console.log(error));
+    }
+
+    function removeIngredient(ingredient) {
+        let removeIngredientEndpoint = new URL("removeingredient", serverBaseURL);
+        const options = {
+            method: "DELETE",
+            body: ingredient.id
+        };
+        fetch(removeIngredientEndpoint, options)
+        .catch(error => console.log(error));
+    }
+
+    // Fetch and parse CSV data. Fetch saved ingredients.
     useEffect(() => {
         fetch("/ingredient_list_by_category.csv")
             .then(res => res.text())
@@ -42,10 +75,25 @@ export default function PantryPage() {
                 });
             })
             .catch((err) => console.error("Error fetching CSV file:", err)); // Handle fetch errors
+
+            //Fetching the list of saved ingredients.
+            const serverBaseURLString = "http://localhost:8080";
+            let serverBaseURL = new URL(serverBaseURLString); 
+            let listIngredientsEndpoint = new URL("listingredients", serverBaseURL);
+            const options = {method: "GET"};
+            fetch(listIngredientsEndpoint, options)
+            .then(response => response.json())
+            .then(data => {
+                const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.quantity}));
+                setIngredients(tempIngredients);
+            })
+            .catch(error => console.log(error));
     }, []);
 
     // Add ingredient to the list
     const handleQuickAdd = (name) => {
+        const idName = getIDNamePairByName(name);
+        saveIngredient(idName);
         setIngredients((prev) => [...prev, { name, quantity: "-"}]);
     };
 
@@ -53,35 +101,37 @@ export default function PantryPage() {
     useEffect(() => {
         const input = newIngredient.name.toLowerCase();
         if (input) {
-            const matches = Object.values(quickAddGroups)
-                .flat()
+            const matches = Object.values(uniqueIngredientNames) //id, name
                 .filter(item => item.toLowerCase().includes(input))
-                .slice(0, 5);
             setFilteredSuggestions(matches);
             setShowSuggestions(true);
         } else {
             setFilteredSuggestions([]);
             setShowSuggestions(false);
         }
-    }, [newIngredient.name, quickAddGroups]);
+    }, [newIngredient.name]);
 
     // Add new ingredient with validation (now allowing for missing quantity)
     const handleAddIngredient = () => {
-        const capitalizeWords = (str) => {
-            return str
-                .split(' ') // Split the string into words
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
-                .join(' '); // Join the words back together
-        };
-    
-        const ingredientToAdd = {
-            name: capitalizeWords(newIngredient.name.trim()), // Capitalize each word
-            quantity: newIngredient.quantity.trim() || "-",
-        };
+        // const capitalizeWords = (str) => {
+        //     return str
+        //         .split(' ') // Split the string into words
+        //         .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
+        //         .join(' '); // Join the words back together
+        // };
+        
+        const ingredientToAdd = getIDNamePairByName(newIngredient.name);
+        
+        // const ingredientToAdd = {
+        //     id: ingredientObjs.find(idNamePair => idNamePair.name == newIngredient.name.toLowerCase()).id,
+        //     name: capitalizeWords(newIngredient.name.trim()), // Capitalize each word
+        //     quantity: newIngredient.quantity.trim() || "-",
+        // };
     
         if (ingredientToAdd.name) {
+            saveIngredient(ingredientToAdd);
             setIngredients((prev) => [...prev, ingredientToAdd]);
-            setNewIngredient({ name: '', quantity: '' });
+            setNewIngredient({ id: '', name: '', quantity: '' });
         }
     };
 
@@ -153,8 +203,8 @@ export default function PantryPage() {
                     <tbody>
                         {ingredients.map((ingredient, index) => (
                             <tr key={index}>
-                                <td>{ingredient.name}</td>
-                                <td>{ingredient.quantity}</td>
+                                <td style={{textTransform: 'capitalize'}}>{ingredient.name}</td>
+                                <td>{ingredient.quantity ? ingredient.quantity : "-"}</td>
                                 <td>
                                     <button onClick={() => {
                                         const newQuantity = prompt("Enter new quantity:", ingredient.quantity);
@@ -169,6 +219,7 @@ export default function PantryPage() {
                                 </td>
                                 <td>
                                     <button onClick={() => {
+                                        removeIngredient(getIDNamePairByName(ingredient.name));
                                         setIngredients(prev => prev.filter((_, i) => i !== index));
                                     }}>
                                         Remove

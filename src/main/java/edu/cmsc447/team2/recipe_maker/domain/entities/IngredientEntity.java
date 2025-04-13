@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class IngredientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ingredient_id", nullable = false, updatable = false)
     private Long id;
 
@@ -32,16 +31,16 @@ public class IngredientEntity {
         this.image = image;
     }
 
-    // Getters and Setters
-    // public Long getId() {return id;}
-    // public void setId(Long id) {this.id = id;}
+    //Getters and Setters
+    public Long getId() {return id;}
+    public void setId(Long id) {this.id = id;}
     
-    // public String getName() {return name;}
-    // public void setName(String name) {this.name = name;}
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
     
-    // public String getLocalizedName() {return localizedName;}
-    // public void setLocalizedName(String localizedName) {this.localizedName = localizedName;}
+    public String getLocalizedName() {return localizedName;}
+    public void setLocalizedName(String localizedName) {this.localizedName = localizedName;}
     
-    // public String getImage() {return image;}
-    // public void setImage(String image) {this.image = image;}
+    public String getImage() {return image;}
+    public void setImage(String image) {this.image = image;}
 }
