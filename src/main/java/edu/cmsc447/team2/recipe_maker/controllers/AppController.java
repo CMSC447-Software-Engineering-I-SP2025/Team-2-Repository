@@ -78,15 +78,27 @@ public class AppController {
         String instructionsJSON = "";
         try {
             instructionsJSON = ow.writeValueAsString(recipe.analyzedInstructions());
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }
+        
+        catch (JsonMappingException e) {
             e.printStackTrace();
         }
-        RecipeEntity recipeEntity = new RecipeEntity(recipe.id(), recipe.title(), recipe.usedIngredientCount(), 
-                                                    recipe.missedIngredientCount(), instructionsJSON, recipe.image());
+        
+        catch (JsonGenerationException e) {
+            e.printStackTrace();}
+        
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        RecipeEntity recipeEntity = new RecipeEntity(
+            recipe.id(),
+            recipe.title(),
+            recipe.usedIngredientCount(), 
+            recipe.missedIngredientCount(),
+            instructionsJSON,
+            recipe.image()
+        );
 
         recipeService.saveRecipe(recipeEntity);
         return recipeEntity;
