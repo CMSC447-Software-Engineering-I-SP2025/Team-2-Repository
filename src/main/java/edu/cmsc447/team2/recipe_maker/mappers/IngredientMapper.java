@@ -16,9 +16,11 @@ public class IngredientMapper implements GenericMapper<IngredientEntity, Ingredi
 
     public IngredientMapper(ModelMapper modelMapper) {this.modelMapper = modelMapper;}
 
+    // IngredientEntity -> IngredientEntity
     @Override
     public IngredientDto mapTo(IngredientEntity ingredientEntity) {return modelMapper.map(ingredientEntity, IngredientDto.class);}
 
+    // Ingredient
     @Override
     public IngredientEntity mapFrom(IngredientDto ingredientDto) {return modelMapper.map(ingredientDto, IngredientEntity.class);}
 }

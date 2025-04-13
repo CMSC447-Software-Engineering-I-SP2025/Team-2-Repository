@@ -3,7 +3,6 @@ package edu.cmsc447.team2.recipe_maker.controllers;
 
 
 import edu.cmsc447.team2.recipe_maker.mappers.GenericMapper;
-
 // Recipes
 import edu.cmsc447.team2.recipe_maker.services.RecipeService;
 import edu.cmsc447.team2.recipe_maker.domain.entities.RecipeEntity;
@@ -16,6 +15,14 @@ import edu.cmsc447.team2.recipe_maker.domain.dto.IngredientDto;
 
 // Other
 import org.springframework.web.bind.annotation.*;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -64,25 +71,64 @@ public class AppController {
 
     // Save a recipe to the database
     @PutMapping(path = "/saverecipe")
+    @CrossOrigin(origins="http://localhost:5173")
     public RecipeEntity saveRecipe(@RequestBody RecipeDto recipe) {
-        RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
-        return recipeService.saveRecipe(recipeEntity);
+        //RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
+        ObjectWriter ow = new ObjectMapper().writer();  //.withDefaultPrettyPrinter()
+        String instructionsJSON = "";
+        try {
+            instructionsJSON = ow.writeValueAsString(recipe.analyzedInstructions());
+        }
+        
+        catch (JsonMappingException e) {
+            e.printStackTrace();
+        }
+        
+        catch (JsonGenerationException e) {
+            e.printStackTrace();}
+        
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        RecipeEntity recipeEntity = new RecipeEntity(
+            recipe.id(),
+            recipe.title(),
+            recipe.usedIngredientCount(), 
+            recipe.missedIngredientCount(),
+            instructionsJSON,
+            recipe.image()
+        );
+
+        recipeService.saveRecipe(recipeEntity);
+        return recipeEntity;
     }
 
     // Remove a recipe from the database
     @DeleteMapping(path = "/deleterecipe")
-    public void deleteRecipe(@RequestBody long recipeID) {
-        recipeService.deleteRecipe(recipeID);
+    @CrossOrigin(origins="http://localhost:5173")
+    public void deleteRecipe(@RequestBody String recipeID) {
+        recipeService.deleteRecipe(Long.valueOf(recipeID));
     }
 
     // Get all saved recipes
     @GetMapping(path = "/listrecipes")
-    public List<RecipeEntity> listRecipes() {
-        return recipeService.listRecipes();
+    @CrossOrigin(origins="http://localhost:5173")
+    public List<RecipeDto> listRecipes() {
+        List<RecipeEntity> entityList = recipeService.listRecipes();
+        ArrayList<RecipeDto> dtoList = new ArrayList<RecipeDto>();
+        entityList.forEach(entity -> {
+            RecipeDto recipe = new RecipeDto(entity.getId(), entity.getImage(), entity.getTitle(), 
+                                            entity.getUsedIngredientCount(), entity.getMissedIngredientCount(), 
+                                            entity.getInstructions());
+            dtoList.add(recipe);
+        });
+        return dtoList;
     }
 
     // Add an ingredient to the pantry
     @PutMapping(path = "/addingredient")
+    @CrossOrigin(origins="http://localhost:5173")
     public void addIngredient(@RequestBody IngredientDto ingredient) {
         IngredientEntity ingredientEntity = ingredientMapper.mapFrom(ingredient);
         ingredientService.addIngredient(ingredientEntity);
@@ -90,27 +136,15 @@ public class AppController {
 
     // Remove an ingredient from the pantry
     @DeleteMapping(path = "/removeingredient")
+    @CrossOrigin(origins="http://localhost:5173")
     public void removeingredient(@RequestBody long ingredientID) {
         ingredientService.removeingredient(ingredientID);
     }
 
     // List all ingredients
-    @DeleteMapping(path = "/listingredients") 
-    public void removeingredient() {
+    @GetMapping(path = "/listingredients") 
+    @CrossOrigin(origins="http://localhost:5173")
+    public void listIngredients() {
         ingredientService.listIngredients();
     }
 }
-
-
-
-// AppController -> Service -> Repository -> Database
-// AppController -> Client -> Query -> API
-// DTO and Entity are the data transferred between 
-
-/* Two options
- * 1. Filter by selected ingredients
- * 2. Filter by pantry ingredients
- * 
- * 
- * 
- */
