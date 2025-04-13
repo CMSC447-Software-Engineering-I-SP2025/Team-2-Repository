@@ -7,7 +7,7 @@ import edu.cmsc447.team2.recipe_maker.mappers.RecipeMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-// Maps RecipeEntity to RecipeDto and back
+// Maps Between RecipeEntity and RecipeDto
 @Component
 public class RecipeMapper implements GenericMapper<RecipeEntity, RecipeDto> {
 
@@ -17,9 +17,11 @@ public class RecipeMapper implements GenericMapper<RecipeEntity, RecipeDto> {
 
     public RecipeMapper(ModelMapper modelMapper) {this.modelMapper = modelMapper;}
 
+    // RecipeEntity -> RecipeDto
     @Override
     public RecipeDto mapTo(RecipeEntity recipeEntity) {return modelMapper.map(recipeEntity, RecipeDto.class);}
 
+    // RecipeDto -> RecipeEntity
     @Override
     public RecipeEntity mapFrom(RecipeDto recipeDto) {return modelMapper.map(recipeDto, RecipeEntity.class);}
 }

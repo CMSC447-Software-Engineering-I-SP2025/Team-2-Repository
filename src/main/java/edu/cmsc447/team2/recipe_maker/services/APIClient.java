@@ -63,6 +63,7 @@ public class APIClient {
 
         try {
             // Query the API
+            System.out.println(queryURL);
             ResponseEntity<String> responseEntity = restTemplate.exchange(queryURL, HttpMethod.GET, null, String.class);
 
             // Old cached response
