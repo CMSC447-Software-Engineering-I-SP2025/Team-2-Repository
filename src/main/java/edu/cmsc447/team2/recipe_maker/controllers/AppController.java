@@ -51,12 +51,12 @@ public class AppController {
 
     // Unused?
     // Map a RecipeDto to a RecipeEntity
-    // @PutMapping(path = "/recipes")
-    // public RecipeDto addRecipe(@RequestBody RecipeDto recipe) {
-    //     RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
-    //     RecipeEntity savedRecipesEntity = recipeService.createRecipe(recipeEntity);
-    //     return recipeMapper.mapTo(savedRecipesEntity);
-    // }
+    @PutMapping(path = "/recipes")
+    public RecipeDto addRecipe(@RequestBody RecipeDto recipe) {
+        RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
+        RecipeEntity savedRecipesEntity = recipeService.createRecipe(recipeEntity);
+        return recipeMapper.mapTo(savedRecipesEntity);
+    }
 
     // Query the API for recipes with the listed ingredients
     @GetMapping(path = "/recipes")
