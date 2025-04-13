@@ -1,7 +1,7 @@
 {/*Page to display details about a single recipe*/}
 
 import {useParams} from "react-router-dom";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 
 export default function RecipeDetail({saveRecipe, removeRecipe}) {
     //the recipe data must be in states b/c the recipe isn't found until after the page loads

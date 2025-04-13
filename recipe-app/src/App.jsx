@@ -6,8 +6,11 @@ import ResultsDisplay from "./components/ResultsDisplay";
 import Papa from 'papaparse';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeDetail from "./components/RecipeDetail";
+import PantryPage from "./components/PantryPage";
+import Footer from "./components/Footer";
+import HomePage from "./components/HomePage";
 
-export default function App({ingredientNameList}) {
+export default function App({ingredientNameList, ingredientIDNamePairs}) {
     function saveRecipe(recipe) {
         const serverBaseURLString = "http://localhost:8080";
         let serverBaseURL = new URL(serverBaseURLString);
@@ -46,7 +49,9 @@ export default function App({ingredientNameList}) {
         fetch(ingredientCSV, options)
         .then(response => response.text())
         .then(text => Papa.parse(text))
-        .then(obj => obj.data.map(nameIDPair => nameIDPair[0].toLowerCase()))
+        .then(obj => {ingredientIDNamePairs.length=0; 
+                      ingredientIDNamePairs.push(... obj.data.map(pair => ({id: pair[1], name: pair[0]})));
+                      return obj.data.map(nameIDPair => nameIDPair[0].toLowerCase())})
         .then(names => [... new Set(names)])
         .then(uniqueNames => {ingredientNameList.length = 0; return ingredientNameList.push(... uniqueNames)})
     }, [])
@@ -56,8 +61,12 @@ export default function App({ingredientNameList}) {
             <Header />
                 <main>
                     <Routes>
+
                         {/* Homepage */}
-                        <Route path="/" element={
+                        <Route path="/" element={<HomePage />} />
+                        
+                        {/* Search Page */}
+                        <Route path="/search" element={
                             <>
                                 <GetRecipeSection ingredientNameList={ingredientNameList} setRecipes={setRecipes} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap}/>
                                 <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>
@@ -67,8 +76,16 @@ export default function App({ingredientNameList}) {
                         {/* Recipe Detail Page */}
                         <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
                         
+                        {/* Pantry Page */}
+                        <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs}/>} />
+    
+                        {/* 404 Page */}
+                        <Route path="*" element={<h1>404 Not Found</h1>} />
+
                     </Routes>
+
                 </main>
+            <Footer />
         </Router>
     );
 }

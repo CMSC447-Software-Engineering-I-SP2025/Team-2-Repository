@@ -132,22 +132,30 @@ public class AppController {
     // Add an ingredient to the pantry
     @PutMapping(path = "/addingredient")
     @CrossOrigin(origins="http://localhost:5173")
-    public void addIngredient(@RequestBody IngredientDto ingredient) {
-        IngredientEntity ingredientEntity = ingredientMapper.mapFrom(ingredient);
+    public IngredientEntity addIngredient(@RequestBody IngredientDto ingredient) {
+        IngredientEntity ingredientEntity = new IngredientEntity(ingredient.id(), ingredient.name(), ingredient.localizedName(), ingredient.image());
         ingredientService.addIngredient(ingredientEntity);
+        return ingredientEntity;
     }
 
     // Remove an ingredient from the pantry
     @DeleteMapping(path = "/removeingredient")
     @CrossOrigin(origins="http://localhost:5173")
-    public void removeingredient(@RequestBody long ingredientID) {
-        ingredientService.removeingredient(ingredientID);
+    public void removeingredient(@RequestBody String ingredientID) {
+        ingredientService.removeingredient(Long.valueOf(ingredientID));
     }
 
     // List all ingredients
     @GetMapping(path = "/listingredients") 
     @CrossOrigin(origins="http://localhost:5173")
-    public void listIngredients() {
-        ingredientService.listIngredients();
+    public List<IngredientDto> listIngredients() {
+        List<IngredientEntity> entityList = ingredientService.listIngredients();
+        ArrayList<IngredientDto> dtoList = new ArrayList<IngredientDto>();
+        entityList.forEach(entity -> {
+            IngredientDto ingredient = new IngredientDto(entity.getId(), entity.getName(), entity.getLocalizedName(), entity.getImage());
+            //IngredientDto ingredient = ingredientMapper.mapTo(entity);
+            dtoList.add(ingredient);
+        });
+        return dtoList;
     }
 }
