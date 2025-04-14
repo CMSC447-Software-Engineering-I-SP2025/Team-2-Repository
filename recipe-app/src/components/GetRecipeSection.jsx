@@ -20,7 +20,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
         "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", 
         "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"
     ];
-    const constFilterLists = new Map([["Cuisine", cuisineList], ["Diet", dietsList], ["Intolerances", intoleranceList]]);
+    const constFilterLists = new Map([["cuisine", cuisineList], ["diet", dietsList], ["intolerances", intoleranceList]]);
     
     //The state of each filter stored in "filter name" => "filter options list" mapping
     //True for an option means the user has toggled that option. The order of lists and options are the same as in the constant lists above.
@@ -161,7 +161,7 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
                 onChange={e => {setInputVal(e.target.value); setDropdownIndex(-1);}}
                 onKeyUp={e => keyUpEvent(e, inputVal)}
                 onKeyDown={e => keyDownEvent(e)}
-                autocomplete="off" // disable browser autocomplete
+                autoComplete="off" // disable browser autocomplete
             />
             <AutocompleteDropdown currentText={inputVal} matchingIngredients={matchingIngredients} pushIngredient={pushIngredient} dropdownIndex={dropdownIndex} highlightedRef={highlightedRef}/>
         </div>

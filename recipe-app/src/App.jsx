@@ -7,6 +7,8 @@ import Papa from 'papaparse';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeDetail from "./components/RecipeDetail";
 import PantryPage from "./components/PantryPage";
+import UserRecipesPage from "./components/UserRecipesPage";
+
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 
@@ -79,6 +81,9 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
                         {/* Pantry Page */}
                         <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs}/>} />
     
+                        {/* Saved Recipes Page */}
+                        <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
+
                         {/* 404 Page */}
                         <Route path="*" element={<h1>404 Not Found</h1>} />
 

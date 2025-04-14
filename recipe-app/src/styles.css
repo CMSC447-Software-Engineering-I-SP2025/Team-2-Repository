@@ -449,6 +449,7 @@ header {
             padding: 2px 5px;
             background-color: rgb(238, 238, 238);
             border-radius: 2px;
+            text-transform: capitalize;
             
             div {
                 align-content: center;
