@@ -63,8 +63,10 @@ class Client:
             params["diet"] = diet
 
         request_url = requests.Request(method="GET", url=self.base_url, params=params).prepare().url     # Build the request
-        response = json_mapper(json.loads(requests.get(request_url).text), Response)    # Query Spoonacular API        
-        #response = json_mapper(self.get_dummy_data(), Response) # Dummy response
+        print(request_url)
+        #response = json_mapper(json.loads(requests.get(request_url).text), Response)    # Query Spoonacular API        
+        response = json_mapper(self.get_dummy_data(), Response) # Dummy response
+        #print(response.results)
 
         return response.results
 
@@ -174,5 +176,5 @@ class Client:
         Returns:
             dict: Dummy data.
         """
-        with open('../assets/cached.json') as f:
+        with open(Path(__file__).parent.parent / "assets" / "cached.json") as f:
             return json.load(f, strict=False)
