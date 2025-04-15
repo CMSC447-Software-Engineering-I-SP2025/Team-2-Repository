@@ -11,9 +11,11 @@ This is a recipe finder application that uses the Spoonacular API.
     - In another terminal, run `npx kill-port 5173`
 
 ### Running the Backend
-1. Run `.\backend\.venv\Scripts\activate`
-2. Run `python .\backend\src\server.py`
-3. Go to `http://localhost:5173/`
+1. `cd /Team-2-Repository`
+2. `python -m venv .venv`
+3. `.\.venv\Scripts\activate`
+4. `python -m pip install -r requirements.txt`
+5. `python .\backend\src\server.py`
 
 ## Project Structure
 ### Files
