@@ -47,8 +47,8 @@ class Client:
         params = {
             "includeIngredients": include_ingredients,
             "instructionsRequired": True,
-            "addRecipeInformation": None,
-            "addRecipeInstructions": None,
+            "addRecipeInformation": True,
+            "addRecipeInstructions": True,
             "apiKey": self.api_key
         }
 
@@ -64,9 +64,9 @@ class Client:
 
         request_url = requests.Request(method="GET", url=self.base_url, params=params).prepare().url     # Build the request
         print(request_url)
-        #response = json_mapper(json.loads(requests.get(request_url).text), Response)    # Query Spoonacular API        
-        response = json_mapper(self.get_dummy_data(), Response) # Dummy response
-        #print(response.results)
+        response = json_mapper(json.loads(requests.get(request_url).text), Response)    # Query Spoonacular API        
+        #response = json_mapper(self.get_dummy_data(), Response) # Dummy response
+        print(response.results)
 
         return response.results
 
