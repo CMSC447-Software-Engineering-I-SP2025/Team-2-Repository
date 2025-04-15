@@ -35,18 +35,20 @@ class RecipeIngredient(Base):
     recipe_id = Column(Integer, ForeignKey('recipes.id'), primary_key=True)
     ingredient_id = Column(Integer, ForeignKey('ingredients.id'), primary_key=True)
 
+
 def recipe_to_db(recipe: dict) -> RecipeDB:
-    """Convert Recipe dictionary to SQLAlchemy model"""
     return RecipeDB(
         id=recipe['id'],
         title=recipe['title'],
         image=recipe['image'],
         used_ingredient_count=recipe['usedIngredientCount'],
         missed_ingredient_count=recipe['missedIngredientCount'],
-        analyzed_instructions=json.dumps([
-            {k: v for k, v in instr.items() if k != 'repr'}  # Exclude repr=False fields if needed
-            for instr in recipe['analyzedInstructions']
-        ])
+        analyzed_instructions=json.dumps(
+            [{k: v for k, v in instr.items() if k != 'repr'} 
+             for instr in recipe['analyzedInstructions'] or []]
+            if recipe['analyzedInstructions'] is not None 
+            else []
+        )
     )
 
 def db_to_recipe(recipe_db: dict) -> dict:
