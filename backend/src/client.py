@@ -63,10 +63,10 @@ class Client:
             params["diet"] = diet
 
         request_url = requests.Request(method="GET", url=self.base_url, params=params).prepare().url     # Build the request
-        print(request_url)
+        #print(request_url)
         response = json_mapper(json.loads(requests.get(request_url).text), Response)    # Query Spoonacular API        
         #response = json_mapper(self.get_dummy_data(), Response) # Dummy response
-        print(response.results)
+        #print(response.results)
 
         return response.results
 
