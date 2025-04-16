@@ -60,37 +60,39 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
 
     return ( 
         <Router>
-            <Header />
-                <main>
-                    <Routes>
+            <div className="page-wrapper">
+                <Header />
+                    <main>
+                        <Routes>
 
-                        {/* Homepage */}
-                        <Route path="/" element={<HomePage />} />
-                        
-                        {/* Search Page */}
-                        <Route path="/search" element={
-                            <>
-                                <GetRecipeSection ingredientNameList={ingredientNameList} setRecipes={setRecipes} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap}/>
-                                <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>
-                            </>
-                        } />
+                            {/* Homepage */}
+                            <Route path="/" element={<HomePage />} />
+                            
+                            {/* Search Page */}
+                            <Route path="/search" element={
+                                <>
+                                    <GetRecipeSection ingredientNameList={ingredientNameList} setRecipes={setRecipes} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap}/>
+                                    <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>
+                                </>
+                            } />
 
-                        {/* Recipe Detail Page */}
-                        <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
-                        
-                        {/* Pantry Page */}
-                        <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs}/>} />
-    
-                        {/* Saved Recipes Page */}
-                        <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
+                            {/* Recipe Detail Page */}
+                            <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
+                            
+                            {/* Pantry Page */}
+                            <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs}/>} />
+        
+                            {/* Saved Recipes Page */}
+                            <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
 
-                        {/* 404 Page */}
-                        <Route path="*" element={<h1>404 Not Found</h1>} />
+                            {/* 404 Page */}
+                            <Route path="*" element={<h1>404 Not Found</h1>} />
 
-                    </Routes>
+                        </Routes>
 
-                </main>
-            <Footer />
+                    </main>
+                <Footer />
+            </div>
         </Router>
     );
 }

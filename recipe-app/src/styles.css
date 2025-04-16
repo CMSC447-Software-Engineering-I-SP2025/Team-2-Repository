@@ -8,12 +8,24 @@ body {
     margin: 0;
 }
 
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    main {
+        min-height: 78vh;
+        flex: 1;
+        margin-bottom: 5vh;
+    }
+
+}
+
 .get-recipe-section {
     display: flex;
     flex-direction: row;
     /* justify-content: center; */
     width: 100%;
     gap: 2px;
+    margin-top: 3rem;
 }
 
 .additional-filters-side-panel {
@@ -93,7 +105,7 @@ header {
     grid-template-columns: 120px auto 140px 120px; /* 4 columns: logo, center (nav), log ingredients, icon group */
     gap: 1rem;
     height: 80px;
-    margin-bottom: 0.5%;
+    /* margin-bottom: 0.5%; */
     background-color: #A3B18A;
     align-items: center;
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2);
@@ -109,8 +121,7 @@ header {
     grid-column: 1; /* Logo stays on the far left */
     display: grid;
     place-content: left;
-    background-color: #dbcdb5;
-
+    background-color: #fefbf5;
     img {
         width: 120px;
     }
@@ -394,12 +405,30 @@ header {
     flex-direction: column;
     align-items: center;
 
+    h1{
+        text-transform: capitalize;
+    }
+
+    .recipe-detail-text-sections{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+        height: max-content;
+        align-items: top;
+        margin-top: 1rem;
+    }
     .steps-section {
         width: 60%;
         line-height: 1.6;
         li:not(:first-child) {
             margin-top: 11px;
         }
+
+        background-color:rgb(232, 206, 140);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        border-radius: 3px;
     }
 
     .favorite-recipe-element {
@@ -413,6 +442,17 @@ header {
     }
     .favorite-button {
         width: 2.5rem;
+    }
+
+    .ingredients-and-time-area {
+        background-color: rgb(125, 209, 125);
+        border-radius: 3px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        text-transform: capitalize;
+        line-height: 1.6;
+
+        
     }
 }
 
