@@ -14,7 +14,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 @Service
@@ -27,8 +29,9 @@ public class APIClient {
     public APIClient(final RestTemplate restTemplate) {this.restTemplate = restTemplate;}
     
     public List<RecipeDto> getRecipes(String includeIngredients, String excludeIngredients, String cuisineType, String intolerances, String diet) {
-
         // Build Query
+        
+        // Required parameters
          UriComponentsBuilder urlBuilder = UriComponentsBuilder
             .fromUriString("https://api.spoonacular.com/recipes/complexSearch")
             .queryParam("includeIngredients", includeIngredients)
@@ -39,35 +42,29 @@ public class APIClient {
             .queryParam("addRecipeInstructions", true);
 
         // Optional Parameters
-        if (excludeIngredients != null) {
-            urlBuilder.queryParam("excludeIngredients", excludeIngredients);
-        }
+        if (excludeIngredients != null) {urlBuilder.queryParam("excludeIngredients", excludeIngredients);}
+        if (cuisineType != null) {urlBuilder.queryParam("cuisine", cuisineType);}
+        if (intolerances != null) {urlBuilder.queryParam("intolerances", intolerances);}
+        if (diet != null){urlBuilder.queryParam("diet", diet);}
 
-        if (cuisineType != null) {
-            urlBuilder.queryParam("cuisine", cuisineType);
-        }
-
-        if (intolerances != null) {
-            urlBuilder.queryParam("intolerances", intolerances);
-        }
-
-        if (diet != null){
-            urlBuilder.queryParam("diet", diet);
-        }
-
-        // Always needs to be last query
+        // API key (must always be last)
         urlBuilder.queryParam("apiKey", apiKey);
 
         String queryURL = urlBuilder.build().encode().toUriString();
 
 
         try {
+            
+            // Workaround to make querying items with spaces work
+            queryURL = queryURL.replace(",", "%2C").replace("%20", "+");
+            
             // Query the API
-            System.out.println(queryURL);
             ResponseEntity<String> responseEntity = restTemplate.exchange(queryURL, HttpMethod.GET, null, String.class);
 
-            // Old cached response
+            // Cached response
             //ResponseEntity<String> responseEntity = ResponseEntity.ok(Files.readString(Path.of("cached.json")));
+
+            //System.out.println(queryURL);
 
             // Map returned data to recipeResponse object
             String rawResponse = responseEntity.getBody();
@@ -79,6 +76,11 @@ public class APIClient {
         // Handle exceptions
         catch (JsonProcessingException e) {
             System.out.println("JSON Processing exception" + e);
+            return List.of();
+        }
+
+        catch (IOException e) {
+            System.out.println("IO exception" + e);
             return List.of();
         }
     }
