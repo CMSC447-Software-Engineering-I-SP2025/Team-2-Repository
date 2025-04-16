@@ -56,7 +56,7 @@ public class APIClient {
         try {
             
             // Workaround to make querying items with spaces work
-            queryURL = queryURL.replace(",", "%2C").replace("%20", "+");
+            queryURL = queryURL.replace("%20", "+");
             
             // Query the API
             ResponseEntity<String> responseEntity = restTemplate.exchange(queryURL, HttpMethod.GET, null, String.class);
