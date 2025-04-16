@@ -1,0 +1,6 @@
+
+Not working
+https://api.spoonacular.com/recipes/complexSearch?includeIngredients=chocolate,marsala%20wine&instructionsRequired=true&addRecipeInformation=true&addRecipeInstructions=true&apiKey=53dcc7d06e9444f78d2aa6718fa34292
+
+Working
+https://api.spoonacular.com/recipes/complexSearch?includeIngredients=chocolate%2Cmarsala+wine&instructionsRequired=True&addRecipeInformation=True&addRecipeInstructions=True&apiKey=53dcc7d06e9444f78d2aa6718fa34292
