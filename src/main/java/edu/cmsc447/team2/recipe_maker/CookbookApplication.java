@@ -17,6 +17,7 @@ public class CookbookApplication {
 	public static void main(String[] args) {SpringApplication.run(CookbookApplication.class, args);}
 
 	// Testing inserting
+	/*
 	@Bean
 	CommandLineRunner seedUser(UserRepository repo, PasswordEncoder encoder) {
 		return args -> {
@@ -30,4 +31,5 @@ public class CookbookApplication {
 			}
 		};
 	}
+	 */
 }
