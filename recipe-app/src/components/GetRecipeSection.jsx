@@ -2,11 +2,12 @@ import { AdditionalFiltersAccordion } from "./AdditionalFiltersAccordion";
 import { useState, useRef } from "react";
 import clsx from 'clsx'
 
-export default function GetRecipeSection({ingredientNameList, setRecipes}) {
+export default function GetRecipeSection({ingredientNameList, setRecipes, setFavoritedRecipesBitMap}) {
+
     const cuisineList = [
-        "Asian", "British", "Cajun", "Caribbean", "Chinese", "Eastern European",
-        "European", "French", "German", "Greek", "Indian", "Irish", "Italian",
-        "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", 
+        "African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese", 
+        "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", 
+        "Italian", "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", 
         "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai",
         "Vietnamese"
     ];
@@ -19,12 +20,12 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
         "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", 
         "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"
     ];
-    const constFilterLists = new Map([["Cuisine", cuisineList], ["Diet", dietsList], ["Intolerances", intoleranceList]]);
+    const constFilterLists = new Map([["cuisine", cuisineList], ["diet", dietsList], ["intolerances", intoleranceList]]);
     
     //The state of each filter stored in "filter name" => "filter options list" mapping
     //True for an option means the user has toggled that option. The order of lists and options are the same as in the constant lists above.
     const [selectedFiltersBitMaps, setSelectedFiltersBitMaps] = useState(new Map((Array.from(constFilterLists).map(nameToListMapping => [nameToListMapping[0], new Array(nameToListMapping[1].length).fill(false)]))));
- 
+    
     function updateFilterBitMap (filterTypeName, filterOptionName) {
         //find position of a filter option then invert its truthiness
         const optionIndex = constFilterLists.get(filterTypeName).indexOf(filterOptionName);
@@ -34,12 +35,30 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
     }
     const [ingredients, setIngredients] = useState([]);
 
+    function checkIfSaved(recipes) {
+        const recipeIDs = recipes.map(recipe => recipe["id"]);
+        const favoritesCopy = new Array(recipes.length).fill(false);
+        const serverBaseURLString = "http://localhost:8080";
+        let serverBaseURL = new URL(serverBaseURLString); 
+        let listRecipesEndpoint = new URL("listrecipes", serverBaseURL);
+        const options = {method: "GET"};
+        fetch(listRecipesEndpoint, options)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(savedRecipe => {
+                favoritesCopy[recipeIDs.indexOf(savedRecipe["id"])] = true;
+            });
+            setFavoritedRecipesBitMap(favoritesCopy);
+        })
+        .catch(error => console.log(error));
+    }
+
     const serverBaseURLString = "http://localhost:8080";
     let serverBaseURL = new URL(serverBaseURLString);
 
     function handleSubmit() {
         let recipeEndpoint = new URL("recipes", serverBaseURL);
-        if (ingredients.length > 0) recipeEndpoint.searchParams.append("ingredients", ingredients.join());
+        if (ingredients.length > 0) recipeEndpoint.searchParams.append("includeIngredients", ingredients.join());
         selectedFiltersBitMaps.forEach((bitMap, filterType) => {
             const selectedOptions = [];
             bitMap.forEach((optionIsSelected, i) => { 
@@ -58,6 +77,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
             data.forEach(recipe => tempArr.push(recipe));
             setRecipes(tempArr);
             sessionStorage.setItem("recipes", JSON.stringify(tempArr));
+            checkIfSaved(tempArr);
         })
         .catch(error => console.log(error));
     }
@@ -78,8 +98,13 @@ export default function GetRecipeSection({ingredientNameList, setRecipes}) {
 function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
     const [inputVal, setInputVal] = useState(""); //current text on the searchbar
     const [dropdownIndex, setDropdownIndex] = useState(-1); //specifies which dropdown recipe is highlighted
-    const matchingIngredients = ingredientNameList.filter(name => name.includes(inputVal.toLowerCase()));
     const highlightedRef = useRef(null);
+    const matchingIngredients = ingredientNameList.filter(name => name.includes(inputVal.toLowerCase()));
+    const exactMatchPos = matchingIngredients.indexOf(inputVal.toLowerCase());
+    if (exactMatchPos > 0)  {
+        matchingIngredients.splice(exactMatchPos, 1);
+        matchingIngredients.unshift(inputVal.toLowerCase());
+    }
 
     function pushIngredient (ingredient) {
         ingredient = ingredient.toLowerCase();
@@ -87,6 +112,7 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
         const ingredientArrCopy = ingredients.slice();
         ingredientArrCopy.push(ingredient);
         setIngredients(ingredientArrCopy);
+        setInputVal(""); // clear input field after adding
     }
 
     function keyUpEvent(e, ingredient) {
@@ -105,7 +131,7 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
             highlightedRef?.current?.parentElement.scrollBy({ top: px, behavior: 'instant'})
         }
         function scrollDownToHighlighted (scrollingDown) {
-            console.log(highlightedRef.current);
+            // console.log(highlightedRef.current);
             const highlightedObj = highlightedRef?.current;
             const sibling = scrollingDown ? highlightedObj?.nextElementSibling : highlightedObj?.previousElementSibling;
             sibling?.scrollIntoView({ behavior: "smooth", block: "nearest"});
@@ -136,9 +162,11 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
             <input className="ingredientSearchBar"
                 type="text" 
                 name = "Ingredient Search Bar"
+                value={inputVal} // control input
                 onChange={e => {setInputVal(e.target.value); setDropdownIndex(-1);}}
                 onKeyUp={e => keyUpEvent(e, inputVal)}
                 onKeyDown={e => keyDownEvent(e)}
+                autoComplete="off" // disable browser autocomplete
             />
             <AutocompleteDropdown currentText={inputVal} matchingIngredients={matchingIngredients} pushIngredient={pushIngredient} dropdownIndex={dropdownIndex} highlightedRef={highlightedRef}/>
         </div>
@@ -184,14 +212,13 @@ function IngredientFilterX({handleClick}) {
 
 function AutocompleteDropdown ({currentText, pushIngredient, matchingIngredients, dropdownIndex, highlightedRef}) { 
         if(currentText.length < 3) return <></>
-        let i = 0;
         
         return <ul className="input-text-dropdown">
              {
              matchingIngredients.length > 0 ? 
-             matchingIngredients.map(ingredientName => 
+             matchingIngredients.map((ingredientName, i) => 
              <DropdownItem ingredientName={ingredientName} key={ingredientName} pushIngredient={pushIngredient} 
-                           dropdownIndex={dropdownIndex} i={i++} highlightedRef={highlightedRef}/>) :
+                           dropdownIndex={dropdownIndex} i={i} highlightedRef={highlightedRef}/>) :
              <DropdownItem ingredientName={"No ingredient found"} pushIngredient={()=>null} i={-1}/>}
         </ul>
 }
