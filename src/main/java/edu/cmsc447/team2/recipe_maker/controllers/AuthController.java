@@ -7,6 +7,7 @@ import edu.cmsc447.team2.recipe_maker.repositories.UserRepository;
 import edu.cmsc447.team2.recipe_maker.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -29,6 +30,7 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    // For authorizing users
     @PostMapping("/login")
     public AuthResponseDto login(@RequestBody AuthRequestDto authRequestDto) {
         log.info("Incoming login: username = {}, password = {}", authRequestDto.getUsername(), authRequestDto.getPassword());
@@ -49,5 +51,23 @@ public class AuthController {
         // Generate the JWT token
         String token = jwtUtil.generateToken(userDetails.getUsername());
         return new AuthResponseDto(token);
+    }
+
+    // Allows users to register
+    //TODO make a seperate registe response object
+    // TODO also use register request dto
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody AuthRequestDto request) {
+        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
+            return ResponseEntity.badRequest().body("Username already exists");
+        }
+
+        UserEntity newUser = UserEntity.builder()
+                .username(request.getUsername())
+                .password(passwordEncoder.encode(request.getPassword())) // hash password
+                .build();
+
+        userRepository.save(newUser);
+        return ResponseEntity.ok("User registered successfully");
     }
 }

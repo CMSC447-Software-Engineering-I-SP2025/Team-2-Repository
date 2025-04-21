@@ -20,6 +20,12 @@
     - `,` between elements mean AND
   - Example Query: `http://localhost:8080/recipes?includeIngredients=chicken,sugar&excludeIngredients=&cuisine=American,Korean&diet=paleo`
 
+Auth using
+register at localhost:8080/api/auth/register
+login at localhost:8080/api/auth/login
+
+Will populate entries in database
+
 ## Structure
 ```markdown
 recipe_maker/
