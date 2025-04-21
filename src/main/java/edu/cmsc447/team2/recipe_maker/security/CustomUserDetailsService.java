@@ -1,6 +1,5 @@
-package edu.cmsc447.team2.recipe_maker.services;
+package edu.cmsc447.team2.recipe_maker.security;
 
-import edu.cmsc447.team2.recipe_maker.UserDetailsImpl;
 import edu.cmsc447.team2.recipe_maker.domain.entities.UserEntity;
 import edu.cmsc447.team2.recipe_maker.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         UserEntity user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
-
+        log.info("Found user: {}, password hash: {}", user.getUsername(), user.getPassword());
         return new UserDetailsImpl(user);
     }
 }

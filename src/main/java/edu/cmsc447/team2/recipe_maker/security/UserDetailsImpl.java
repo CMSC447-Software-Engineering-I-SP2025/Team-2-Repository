@@ -1,4 +1,4 @@
-package edu.cmsc447.team2.recipe_maker;
+package edu.cmsc447.team2.recipe_maker.security;
 
 import edu.cmsc447.team2.recipe_maker.domain.entities.UserEntity;
 import lombok.AllArgsConstructor;
