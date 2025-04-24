@@ -36,4 +36,9 @@ public class RecipeEntity {
 
     @Column(name = "image_url", length = 500)
     private String image;
+
+    // TOdo implement later
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private UserEntity user;
 }

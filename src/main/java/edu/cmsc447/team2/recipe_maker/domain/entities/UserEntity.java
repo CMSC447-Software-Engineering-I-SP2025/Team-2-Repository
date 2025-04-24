@@ -8,7 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//TODO later
 @Table(name="users")
 public class UserEntity {
 
