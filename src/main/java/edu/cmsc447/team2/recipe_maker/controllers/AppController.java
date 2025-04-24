@@ -47,16 +47,8 @@ public class AppController {
         this.ingredientMapper = ingredientMapper;
     }
 
-    // Define paths
+    /* Define API Endpoints */
 
-    // Unused?
-    // Map a RecipeDto to a RecipeEntity
-    @PutMapping(path = "/recipes")
-    public RecipeDto addRecipe(@RequestBody RecipeDto recipe) {
-        RecipeEntity recipeEntity = recipeMapper.mapFrom(recipe);
-        RecipeEntity savedRecipesEntity = recipeService.createRecipe(recipeEntity);
-        return recipeMapper.mapTo(savedRecipesEntity);
-    }
 
     // Query the API for recipes with the listed ingredients
     @GetMapping(path = "/recipes")
@@ -121,7 +113,7 @@ public class AppController {
         List<RecipeEntity> entityList = recipeService.listRecipes();
         ArrayList<RecipeDto> dtoList = new ArrayList<RecipeDto>();
         entityList.forEach(entity -> {
-            RecipeDto recipe = new RecipeDto(entity.getId(), entity.getImage(), entity.getTitle(), 
+            RecipeDto recipe = new RecipeDto(entity.getId(), entity.getImage(), entity.getTitle(),
                                             entity.getUsedIngredientCount(), entity.getMissedIngredientCount(), 
                                             entity.getInstructions());
             dtoList.add(recipe);
