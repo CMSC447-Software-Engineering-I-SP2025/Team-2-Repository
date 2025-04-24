@@ -1,6 +1,6 @@
 package edu.cmsc447.team2.recipe_maker.domain.dto;
-import edu.cmsc447.team2.recipe_maker.domain.dto.recipe_dependencies.EquipmentDto;
-import edu.cmsc447.team2.recipe_maker.domain.dto.recipe_dependencies.IngredientDto;
+import edu.cmsc447.team2.recipe_maker.domain.dto.EquipmentDto;
+import edu.cmsc447.team2.recipe_maker.domain.dto.IngredientDto;
 
 import java.util.List;
 
