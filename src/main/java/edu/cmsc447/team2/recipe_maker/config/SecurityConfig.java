@@ -46,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/dbconsole/**").permitAll()
                         .requestMatchers("/recipes").permitAll()
+                        .requestMatchers("/listrecipes").permitAll() // TODO Remove later when finished reworking backend
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

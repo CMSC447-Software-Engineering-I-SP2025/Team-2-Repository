@@ -118,6 +118,7 @@ public class AppController {
                                             entity.getInstructions());
             dtoList.add(recipe);
         });
+
         return dtoList;
     }
 
