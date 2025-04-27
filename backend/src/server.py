@@ -18,10 +18,10 @@ from db_models import (
     ingredient_to_db,
     recipe_to_db,
 )
-from flask import Flask, jsonify, render_template_string, request, session
-from flask_cors import CORS
 
 # External Libraries
+from flask import Flask, jsonify, render_template_string, request, session
+from flask_cors import CORS
 from requests import Request
 from requests import get as reqget
 from sqlalchemy import create_engine

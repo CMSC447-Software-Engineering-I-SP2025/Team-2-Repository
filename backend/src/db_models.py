@@ -22,10 +22,10 @@ class IngredientDB(Base):
 
     __tablename__ = "ingredients"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     user_id = Column(Integer, nullable=True)
     name = Column(String(100), nullable=False)
-    quantity = Column(Integer)
+    quantity = Column(Integer, nullable=True)
     image = Column(String(255))
 
 
