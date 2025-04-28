@@ -294,21 +294,20 @@ def api_get_recipes() -> dict:
     if diet:
         params["diet"] = diet
 
-    # Dummy data
-    #json_mapper(get_dummy_data(), Response).results
+    # Get dummy data
+    #final_results = json_mapper(get_dummy_data(), Response).results
 
 
+    # One liner request + return
     # return  json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
 
-    # Sequential request
+    # Sequential request + return
     request_url = Request(method="GET", url=db.base_url, params=params).prepare().url   # Build URL
     raw_response = reqget(url=Request(method="GET", url=request_url, timeout=5).text)   # Get the raw text resonse
     json_response = json.loads(raw_response)            # Turn raw text into JSON
     mapped_json_response = json_mapper(json_data=json_response, data_class=Response)   # Map JSON into a Response object. 
     final_results = mapped_json_response.results    # Get results from response object.
 
-
-    # Make request and return data.
     return final_results
 
 @app.route("/saverecipe", methods=["PUT"])
