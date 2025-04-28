@@ -28,10 +28,9 @@ This is a recipe finder application that uses the Spoonacular API.
 │   │   ├── cached.json - Cached JSON response for testing.
 │   │   └── config.toml - Backend config info.
 │   └── src - Source code
-│       ├── server.py - Routes for the backend
-│       ├── client.py - Main business logic. Interacts with Spoonacular / database.
-│       ├── data_classes.py - Data objects / mapper for Frontend <-> Backend stuff
-│       └── db_models.py - Data objects / mappers for Backend <-> Database stuff
+│       ├── server.py - Core business logic.
+│       ├── data_classes.py - Data objects / mappers for Frontend <-> Backend data transfer.
+│       └── db_models.py - Data objects / mappers for Backend <-> Database data transfer.
 └── README.md - This file.
 ```
 ### Interactions
