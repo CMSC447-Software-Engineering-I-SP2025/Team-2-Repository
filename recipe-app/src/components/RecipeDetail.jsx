@@ -2,6 +2,7 @@
 
 import {useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
+import NutritionLabel from "./NutritionLabel";
 
 export default function RecipeDetail({saveRecipe, removeRecipe}) {
     //the recipe data must be in states b/c the recipe isn't found until after the page loads
@@ -12,13 +13,20 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
     const [imageURL, setImageURL] = useState('');
     const [ingredients, setIngredients] = useState(null);
     const [favorited, setFavorited] = useState(false);
+    const [widgetHTML, setWidgetHTML] = useState("");
+    let widget = {__html: widgetHTML}
+    const serverBaseURLString = "http://localhost:8080";
+
+    // let widget = document.createElement('html');
+    // widget.innerHTML = widgetHTML;
+
+    // let widget = "";
     let recipe;
     let recipesArr = [];
     let favorite_icon = favorited ? "../star-solid.svg" : "../star-regular.svg";
     let favorite_alt_text = favorited ? "A favorite recipe button set to favorited." : "A favorite recipe button set to not favorited.";
 
     function checkIfSaved(recipe) {
-        const serverBaseURLString = "http://localhost:8080";
         let serverBaseURL = new URL(serverBaseURLString); 
         let listRecipesEndpoint = new URL("listrecipes", serverBaseURL);
         const options = {method: "GET"};
@@ -30,6 +38,40 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
             });
         })
         .catch(error => console.log(error));
+    }
+
+    function getNutritionFacts(recipeID) {
+        //Backend: Make an endpoint for that takes an recipe id parameter and forms a request to spoonacular nutrition label endpoint
+        //Front end will send a GET request with a recipeID url parameter. Pass along the html string that spoonacular returns back to us.
+        //Frontend request: GET http://localhost:8080/nutritionLabel?recipeID={id}
+        //Spoonacular request: GET https://api.spoonacular.com/recipes/{id}/nutritionLabel?apiKey={key}
+        
+        //The label gives the nutrition by serving, so we may want to also return serving size or number of servings per recipe in regular get recipe requests
+        apiKey = "";
+        let spoonacularWidgetEndpoint = "https://api.spoonacular.com/recipes/" + recipeID + "/nutritionLabel?apiKey="  + apiKey;
+        //let spoonacularWidgetEndpoint = "https://api.spoonacular.com/recipes/" + recipeID + "/nutritionLabel?showIngredients=true&apiKey=" + apiKey;
+        
+        const options = {method: "GET"};
+        fetch(spoonacularWidgetEndpoint, options)
+        .then(response => response.text())
+        .then(html => {
+            setWidgetHTML(html);
+            console.log(widgetHTML);
+        })
+        .catch(error => console.log(error));
+
+
+        // let serverBaseURL = new URL(serverBaseURLString); 
+        // let getNutritionLabelEndpoint = new URL("nutritionLabel", serverBaseURL);
+        // recipeEndpoint.searchParams.append("recipeID", recipeID);
+        // const options = {method: "GET"};
+        // fetch(getNutritionLabelEndpoint, options)
+        // .then(response => response.text())
+        // .then(html => {
+        //     setWidgetHTML(html);
+        //     console.log(widgetHTML);
+        // })
+        // .catch(error => console.log(error));
     }
 
     useEffect(() => {
@@ -54,6 +96,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                 setImageURL(recipe['image']);
 
                 checkIfSaved(recipe);
+                getNutritionFacts(recipe['id']);
             }
         }
     }, []);
@@ -93,6 +136,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                                     ))}
                                 </ul> 
                             </div>
+
                             </div>
                             <div className="steps-section">
                                 <h2>Steps</h2>
@@ -105,6 +149,8 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                         </div> :
                         <div>No Instructions Or Ingredients Provided</div>
                     }
+                    <div dangerouslySetInnerHTML={widget}></div>
+                    {/* <NutritionLabel /> */}
                 </>
             ) : (
                 <h2>Recipe not found</h2>
