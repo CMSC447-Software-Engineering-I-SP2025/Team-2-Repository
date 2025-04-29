@@ -1,16 +1,22 @@
 // Required imports
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {useState, useEffect} from "react";
+import Papa from 'papaparse';
+
+// importing components
 import GetRecipeSection from "./components/GetRecipeSection";
 import Header from "./components/Header";
-import {useState, useEffect} from "react";
 import ResultsDisplay from "./components/ResultsDisplay";
-import Papa from 'papaparse';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeDetail from "./components/RecipeDetail";
 import PantryPage from "./components/PantryPage";
 import UserRecipesPage from "./components/UserRecipesPage";
-
+import LoginRegisterModal from "./components/LoginRegisterModal";
+import CategoryPage from "./components/CategoryPage";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
+
+//import AuthContext from "./context/AuthContext";
+
 
 export default function App({ingredientNameList, ingredientIDNamePairs}) {
     function saveRecipe(recipe) {
@@ -58,10 +64,13 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
         .then(uniqueNames => {ingredientNameList.length = 0; return ingredientNameList.push(... uniqueNames)})
     }, [])
 
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const toggleLoginModal = () => setShowLoginModal(prev => !prev);
+
     return ( 
         <Router>
             <div className="page-wrapper">
-                <Header />
+                <Header onLoginIconClick={toggleLoginModal} />
                     <main>
                         <Routes>
 
@@ -85,6 +94,10 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
                             {/* Saved Recipes Page */}
                             <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
 
+                            {/* Category/Subcategory Page */}
+                            <Route path="/:category" element={<CategoryPage />} />
+                            <Route path="/:category/:subcategory" element={<CategoryPage />} />
+
                             {/* 404 Page */}
                             <Route path="*" element={<h1>404 Not Found</h1>} />
 
@@ -92,8 +105,8 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
 
                     </main>
                 <Footer />
+                <LoginRegisterModal show={showLoginModal} onClose={() => setShowLoginModal(false)} />
             </div>
         </Router>
     );
-}
-
+};
