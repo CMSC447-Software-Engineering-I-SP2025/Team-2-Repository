@@ -26,6 +26,197 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
     let favorite_icon = favorited ? "../star-solid.svg" : "../star-regular.svg";
     let favorite_alt_text = favorited ? "A favorite recipe button set to favorited." : "A favorite recipe button set to not favorited.";
 
+
+    let numServings = 2;
+    let nutrientsRaw = [
+        {
+          "name": "Calories",
+          "amount": 538.7,
+          "unit": "kcal",
+          "percentOfDailyNeeds": 26.94
+        },
+        {
+          "name": "Fat",
+          "amount": 14.62,
+          "unit": "g",
+          "percentOfDailyNeeds": 22.49
+        },
+        {
+          "name": "Saturated Fat",
+          "amount": 1.97,
+          "unit": "g",
+          "percentOfDailyNeeds": 12.29
+        },
+        {
+          "name": "Carbohydrates",
+          "amount": 84.48,
+          "unit": "g",
+          "percentOfDailyNeeds": 28.16
+        },
+        {
+          "name": "Net Carbohydrates",
+          "amount": 69.7,
+          "unit": "g",
+          "percentOfDailyNeeds": 25.35
+        },
+        {
+          "name": "Sugar",
+          "amount": 17.87,
+          "unit": "g",
+          "percentOfDailyNeeds": 19.85
+        },
+        {
+          "name": "Cholesterol",
+          "amount": 0,
+          "unit": "mg",
+          "percentOfDailyNeeds": 0
+        },
+        {
+          "name": "Sodium",
+          "amount": 221.29,
+          "unit": "mg",
+          "percentOfDailyNeeds": 9.62
+        },
+        {
+          "name": "Alcohol",
+          "amount": 0,
+          "unit": "g",
+          "percentOfDailyNeeds": 100
+        },
+        {
+          "name": "Alcohol %",
+          "amount": 0,
+          "unit": "%",
+          "percentOfDailyNeeds": 100
+        },
+        {
+          "name": "Protein",
+          "amount": 20.86,
+          "unit": "g",
+          "percentOfDailyNeeds": 41.72
+        },
+        {
+          "name": "Manganese",
+          "amount": 2.57,
+          "unit": "mg",
+          "percentOfDailyNeeds": 128.69
+        },
+        {
+          "name": "Folate",
+          "amount": 394.21,
+          "unit": "µg",
+          "percentOfDailyNeeds": 98.55
+        },
+        {
+          "name": "Fiber",
+          "amount": 14.78,
+          "unit": "g",
+          "percentOfDailyNeeds": 59.11
+        },
+        {
+          "name": "Copper",
+          "amount": 1.06,
+          "unit": "mg",
+          "percentOfDailyNeeds": 52.75
+        },
+        {
+          "name": "Magnesium",
+          "amount": 210.24,
+          "unit": "mg",
+          "percentOfDailyNeeds": 52.56
+        },
+        {
+          "name": "Phosphorus",
+          "amount": 520.59,
+          "unit": "mg",
+          "percentOfDailyNeeds": 52.06
+        },
+        {
+          "name": "Iron",
+          "amount": 7.49,
+          "unit": "mg",
+          "percentOfDailyNeeds": 41.62
+        },
+        {
+          "name": "Vitamin B1",
+          "amount": 0.53,
+          "unit": "mg",
+          "percentOfDailyNeeds": 35.46
+        },
+        {
+          "name": "Potassium",
+          "amount": 1149.58,
+          "unit": "mg",
+          "percentOfDailyNeeds": 32.85
+        },
+        {
+          "name": "Vitamin B6",
+          "amount": 0.61,
+          "unit": "mg",
+          "percentOfDailyNeeds": 30.66
+        },
+        {
+          "name": "Zinc",
+          "amount": 4.11,
+          "unit": "mg",
+          "percentOfDailyNeeds": 27.38
+        },
+        {
+          "name": "Vitamin B2",
+          "amount": 0.34,
+          "unit": "mg",
+          "percentOfDailyNeeds": 20.08
+        },
+        {
+          "name": "Vitamin E",
+          "amount": 2.55,
+          "unit": "mg",
+          "percentOfDailyNeeds": 17.01
+        },
+        {
+          "name": "Selenium",
+          "amount": 10.92,
+          "unit": "µg",
+          "percentOfDailyNeeds": 15.6
+        },
+        {
+          "name": "Vitamin B5",
+          "amount": 1.51,
+          "unit": "mg",
+          "percentOfDailyNeeds": 15.07
+        },
+        {
+          "name": "Vitamin K",
+          "amount": 15.16,
+          "unit": "µg",
+          "percentOfDailyNeeds": 14.44
+        },
+        {
+          "name": "Vitamin C",
+          "amount": 10.76,
+          "unit": "mg",
+          "percentOfDailyNeeds": 13.04
+        },
+        {
+          "name": "Vitamin B3",
+          "amount": 2.6,
+          "unit": "mg",
+          "percentOfDailyNeeds": 13.02
+        },
+        {
+          "name": "Calcium",
+          "amount": 103.04,
+          "unit": "mg",
+          "percentOfDailyNeeds": 10.3
+        },
+        {
+          "name": "Vitamin A",
+          "amount": 385.89,
+          "unit": "IU",
+          "percentOfDailyNeeds": 7.72
+        }
+      ];
+
     function checkIfSaved(recipe) {
         let serverBaseURL = new URL(serverBaseURLString); 
         let listRecipesEndpoint = new URL("listrecipes", serverBaseURL);
@@ -41,13 +232,10 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
     }
 
     function getNutritionFacts(recipeID) {
-        //Backend: Make an endpoint for that takes an recipe id parameter and forms a request to spoonacular nutrition label endpoint
-        //Front end will send a GET request with a recipeID url parameter. Pass along the html string that spoonacular returns back to us.
-        //Frontend request: GET http://localhost:8080/nutritionLabel?recipeID={id}
-        //Spoonacular request: GET https://api.spoonacular.com/recipes/{id}/nutritionLabel?apiKey={key}
+
         
         //The label gives the nutrition by serving, so we may want to also return serving size or number of servings per recipe in regular get recipe requests
-        apiKey = "";
+        const apiKey = "";
         let spoonacularWidgetEndpoint = "https://api.spoonacular.com/recipes/" + recipeID + "/nutritionLabel?apiKey="  + apiKey;
         //let spoonacularWidgetEndpoint = "https://api.spoonacular.com/recipes/" + recipeID + "/nutritionLabel?showIngredients=true&apiKey=" + apiKey;
         
@@ -75,7 +263,6 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
     }
 
     useEffect(() => {
-        //console.log("state: " + state);
         if (sessionStorage && sessionStorage.getItem('recipes')) {
             recipesArr = JSON.parse(sessionStorage.getItem('recipes'));
             recipe = recipesArr.find(sessionRecipe => sessionRecipe.title.toLowerCase() == recipeName.toLowerCase());
@@ -96,7 +283,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                 setImageURL(recipe['image']);
 
                 checkIfSaved(recipe);
-                getNutritionFacts(recipe['id']);
+                // getNutritionFacts(recipe['id']);
             }
         }
     }, []);
@@ -149,8 +336,8 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                         </div> :
                         <div>No Instructions Or Ingredients Provided</div>
                     }
-                    <div dangerouslySetInnerHTML={widget}></div>
-                    {/* <NutritionLabel /> */}
+                    {/* <div dangerouslySetInnerHTML={widget}></div> */}
+                    <NutritionLabel nutrientsRaw={nutrientsRaw} servings={numServings}/>
                 </>
             ) : (
                 <h2>Recipe not found</h2>

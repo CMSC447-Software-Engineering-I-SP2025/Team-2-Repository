@@ -1,23 +1,27 @@
-// Calories
-// Total Fat
-// Saturated Fat
-// Trans Fat
-// Cholestoral
-// Sodium
-// Total Carbohydrates
-// Dietary Fiber
-// Total Sugars
-// Protein
-// Vitamin D
-// Calcium
-// Iron
-// Potassium
-
-export default function NutritionLabel ({nutrition}) {
+export default function NutritionLabel ({nutrientsRaw, servings}) {
     let nutrients = {};
-    const nutrientNameList = ["Calories", "Fat", "Saturated Fat", "Cholestoral", "Sodium", "Carbohydrates", 
+    const nutrientNameList = ["Calories", "Fat", "Saturated Fat", "Trans Fat", "Cholesterol", "Sodium", "Carbohydrates", 
                             "Fiber", "Sugar", "Protein", "Vitamin D", "Calcium", "Iron", "Potassium"];
-    nutrientNameList.forEach(name => nutrients[name] = nutrition.find(nutrient => nutrient.name == name));
+    nutrientNameList.forEach(name => {
+        nutrients[name] = nutrientsRaw.find(nutrient => nutrient.name == name);
+        if(nutrients[name]) {
+            nutrients[name].amount = Math.round(nutrients[name].amount);
+            nutrients[name].percentOfDailyNeeds = Math.round(nutrients[name].percentOfDailyNeeds);
+        } else {
+            nutrients[name] = {};
+            nutrients[name].amount = 0;
+            nutrients[name].percentOfDailyNeeds = 0;
+            if (["Fat", "Saturated Fat", "Trans Fat", "Carbohydrates", "Fiber", "Sugar", "Protein"].includes(name)) {
+                nutrients[name].unit = "g";
+            } else {
+                nutrients[name].unit = "mg";
+            }
+        }
+    });
+
+    function DisplayQuantity (nutrientName) {
+        return nutrients[nutrientName]["amount"] + nutrients[nutrientName]["unit"];
+    }
     
     return <>   
         <section id="spoonacular-nutrition-label">
@@ -25,6 +29,10 @@ export default function NutritionLabel ({nutrition}) {
                 <h1>
                     <b>Nutrition Facts</b>
                 </h1>
+                <hr />
+                <div>
+                    {servings + ((servings == 1) ? " Serving": " Servings")} Per Recipe
+                </div>
             </div>
             <b>Amount Per Serving</b>
             <table>
@@ -34,7 +42,7 @@ export default function NutritionLabel ({nutrition}) {
                         <b>Calories</b>
                     </td>
                     <td>
-                        <b>396</b>
+                        <b>{nutrients["Calories"]["amount"]}</b>
                     </td>
                 </tr>
                 <tr className="separator">
@@ -44,68 +52,68 @@ export default function NutritionLabel ({nutrition}) {
                 </tr>
                 <tr>
                     <td colSpan="2">
-                        <b>Total Fat</b> 4g
+                        <b>Total Fat</b> {DisplayQuantity("Fat")}
                     </td>
                     <td>
-                        <b>5%</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td className="empty"></td>
-                    <td>Saturated Fat 0.42g</td>
-                    <td>
-                        <b>2%</b>
+                        <b>{nutrients["Fat"]["percentOfDailyNeeds"]}%</b>
                     </td>
                 </tr>
                 <tr>
                     <td className="empty"></td>
+                    <td>Saturated Fat {DisplayQuantity("Saturated Fat")}</td>
                     <td>
-                        <i>Trans</i> Fat 0g
+                        <b>{nutrients["Saturated Fat"]["percentOfDailyNeeds"]}%</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td className="empty"></td>
+                    <td>
+                        <i>Trans</i> Fat {DisplayQuantity("Trans Fat")}
                     </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td colSpan="2">
-                        <b>Cholesterol</b> 0mg
+                        <b>Cholesterol</b> {DisplayQuantity("Cholesterol")}
                     </td>
                     <td>
-                        <b>0%</b>
+                        <b>{nutrients["Cholesterol"]["percentOfDailyNeeds"]}%</b>
                     </td>
                 </tr>
                 <tr>
                     <td colSpan="2">
-                        <b>Sodium</b> 232mg
+                        <b>Sodium</b> {DisplayQuantity("Sodium")}
                     </td>
                     <td>
-                        <b>10%</b>
+                        <b>{nutrients["Sodium"]["percentOfDailyNeeds"]}%</b>
                     </td>
                 </tr>
                 <tr>
                     <td colSpan="2">
-                        <b>Total Carbohydrate</b> 66g
+                        <b>Total Carbohydrate</b> {DisplayQuantity("Carbohydrates")}
                     </td>
                     <td>
-                        <b>24%</b>
+                        <b>{nutrients["Carbohydrates"]["percentOfDailyNeeds"]}%</b>
                     </td>
                 </tr>
                 <tr>
                     <td className="empty"></td>
-                    <td>Dietary Fiber 31g</td>
+                    <td>Dietary Fiber {DisplayQuantity("Fiber")}</td>
                     <td>
-                        <b>111%</b>
+                        <b>{nutrients["Fiber"]["percentOfDailyNeeds"]}%</b>
                     </td>
                 </tr>
                 <tr>
                     <td className="empty"></td>
-                    <td>Total Sugars 7g</td>
+                    <td>Total Sugars {DisplayQuantity("Sugar")}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td colSpan="2">
-                        <b>Protein</b> 26g
+                        <b>Protein</b> {DisplayQuantity("Protein")}
                     </td>
                     <td>
-                        <b>51%</b>
+                        <b>{nutrients["Protein"]["percentOfDailyNeeds"]}%</b>
                     </td>
                 </tr>
             </tbody>    
@@ -114,20 +122,20 @@ export default function NutritionLabel ({nutrition}) {
             <table>
             <tbody>
                 <tr>
-                    <td>Vitamin D 0mcg</td>
-                    <td> 0% </td>
+                    <td>Vitamin D {DisplayQuantity("Vitamin D")}</td>
+                    <td> {nutrients["Vitamin D"]["percentOfDailyNeeds"]}% </td>
                 </tr>
                 <tr>
-                    <td>Calcium 89mg </td>
-                    <td> 7% </td>
+                    <td>Calcium {DisplayQuantity("Calcium")} </td>
+                    <td> {nutrients["Calcium"]["percentOfDailyNeeds"]}% </td>
                 </tr>
                 <tr>
-                    <td>Iron 8mg</td>
-                    <td> 45% </td>
+                    <td>Iron {DisplayQuantity("Iron")}</td>
+                    <td> {nutrients["Iron"]["percentOfDailyNeeds"]}% </td>
                 </tr>
                 <tr>
-                    <td>Potassium 1131mg</td>
-                    <td> 24% </td>
+                    <td>Potassium {DisplayQuantity("Potassium")}</td>
+                    <td> {nutrients["Potassium"]["percentOfDailyNeeds"]}% </td>
                 </tr>
                 <tr className="separator">
                             <td className="small" colSpan="2">*The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.</td>
@@ -135,9 +143,9 @@ export default function NutritionLabel ({nutrition}) {
             </tbody>
             </table>
         </section>
-        <section id="spoonacular-nutrition-ingredient-list">
+        {/* <section id="spoonacular-nutrition-ingredient-list">
             <b>Ingredients:</b>
             pepper, brown sugar, carrots, celery, herbs, garlic, grapeseed oil, lemon juice, lentils, onion, red wine vinegar, salt, tomatoes, and water
-        </section>
+        </section> */}
     </>
 }
