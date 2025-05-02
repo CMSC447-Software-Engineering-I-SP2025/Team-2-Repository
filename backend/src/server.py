@@ -275,12 +275,17 @@ def api_get_recipes() -> dict:
     intolerances = request.args.get("intolerances", default="", type=str)
     diet = request.args.get("diet", default="", type=str)
 
+
     # Build required params
     params = {
         "includeIngredients": include_ingredients,
         "instructionsRequired": True,
         "addRecipeInformation": True,
         "addRecipeInstructions": True,
+        "addRecipeNutrition": True,
+        "fillIngredients": True,
+        "sort": "min-missing-ingredients",
+        "number": 15,
         "apiKey": db.api_key,
     }
 
@@ -446,4 +451,4 @@ def api_list_ingredients() -> dict:
 #
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080)
+    app.run(host="127.0.0.1", port=8080, debug=True)
