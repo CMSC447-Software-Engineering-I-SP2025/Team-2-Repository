@@ -275,12 +275,17 @@ def api_get_recipes() -> dict:
     intolerances = request.args.get("intolerances", default="", type=str)
     diet = request.args.get("diet", default="", type=str)
 
+
     # Build required params
     params = {
         "includeIngredients": include_ingredients,
         "instructionsRequired": True,
         "addRecipeInformation": True,
         "addRecipeInstructions": True,
+        "addRecipeNutrition": True,
+        "fillIngredients": True,
+        "sort": "min-missing-ingredients",
+        "number": 15,
         "apiKey": db.api_key,
     }
 
@@ -301,11 +306,12 @@ def api_get_recipes() -> dict:
     # return  json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
 
     # Sequential request
-    request_url = Request(method="GET", url=db.base_url, params=params).prepare().url   # Build URL
-    raw_response = reqget(url=Request(method="GET", url=request_url, timeout=5).text)   # Get the raw text resonse
-    json_response = json.loads(raw_response)            # Turn raw text into JSON
-    mapped_json_response = json_mapper(json_data=json_response, data_class=Response)   # Map JSON into a Response object. 
-    final_results = mapped_json_response.results    # Get results from response object.
+    request_url = Request(method="GET", url=db.base_url, params=params).prepare().url  # Build URL
+    raw_response = reqget(url = request_url, timeout=5)  # Get the raw text resonse
+    json_response = json.loads(raw_response.text)  # Turn raw text into JSON
+    mapped_json_response = json_mapper(json_data=json_response,
+                                       data_class=Response)  # Map JSON into a Response object.
+    final_results = mapped_json_response.results  # Get results from response object.
 
 
     # Make request and return data.
@@ -447,4 +453,4 @@ def api_list_ingredients() -> dict:
 #
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080)
+    app.run(host="127.0.0.1", port=8080, debug=True)
