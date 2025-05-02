@@ -1,16 +1,22 @@
 // Required imports
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {useState, useEffect} from "react";
+import Papa from 'papaparse';
+
+// importing components
 import GetRecipeSection from "./components/GetRecipeSection";
 import Header from "./components/Header";
-import {useState, useEffect} from "react";
 import ResultsDisplay from "./components/ResultsDisplay";
-import Papa from 'papaparse';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeDetail from "./components/RecipeDetail";
 import PantryPage from "./components/PantryPage";
 import UserRecipesPage from "./components/UserRecipesPage";
-
+import LoginRegisterModal from "./components/LoginRegisterModal";
+import CategoryPage from "./components/CategoryPage";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
+
+//import AuthContext from "./context/AuthContext";
+
 
 export default function App({ingredientNameList, ingredientIDNamePairs}) {
     function saveRecipe(recipe) {
@@ -58,40 +64,49 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
         .then(uniqueNames => {ingredientNameList.length = 0; return ingredientNameList.push(... uniqueNames)})
     }, [])
 
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const toggleLoginModal = () => setShowLoginModal(prev => !prev);
+
     return ( 
         <Router>
-            <Header />
-                <main>
-                    <Routes>
+            <div className="page-wrapper">
+                <Header onLoginIconClick={toggleLoginModal} />
+                    <main>
+                        <Routes>
 
-                        {/* Homepage */}
-                        <Route path="/" element={<HomePage />} />
-                        
-                        {/* Search Page */}
-                        <Route path="/search" element={
-                            <>
-                                <GetRecipeSection ingredientNameList={ingredientNameList} setRecipes={setRecipes} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap}/>
-                                <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>
-                            </>
-                        } />
+                            {/* Homepage */}
+                            <Route path="/" element={<HomePage />} />
+                            
+                            {/* Search Page */}
+                            <Route path="/search" element={
+                                <>
+                                    <GetRecipeSection ingredientNameList={ingredientNameList} setRecipes={setRecipes} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap}/>
+                                    <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>
+                                </>
+                            } />
 
-                        {/* Recipe Detail Page */}
-                        <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
-                        
-                        {/* Pantry Page */}
-                        <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs}/>} />
-    
-                        {/* Saved Recipes Page */}
-                        <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
+                            {/* Recipe Detail Page */}
+                            <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
+                            
+                            {/* Pantry Page */}
+                            <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs}/>} />
+        
+                            {/* Saved Recipes Page */}
+                            <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
 
-                        {/* 404 Page */}
-                        <Route path="*" element={<h1>404 Not Found</h1>} />
+                            {/* Category/Subcategory Page */}
+                            <Route path="/:category" element={<CategoryPage />} />
+                            <Route path="/:category/:subcategory" element={<CategoryPage />} />
 
-                    </Routes>
+                            {/* 404 Page */}
+                            <Route path="*" element={<h1>404 Not Found</h1>} />
 
-                </main>
-            <Footer />
+                        </Routes>
+
+                    </main>
+                <Footer />
+                <LoginRegisterModal show={showLoginModal} onClose={() => setShowLoginModal(false)} />
+            </div>
         </Router>
     );
-}
-
+};

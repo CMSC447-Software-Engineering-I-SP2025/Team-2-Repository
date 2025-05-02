@@ -13,12 +13,13 @@ const footerStyle = {
     backgroundColor: '#f8f9fa',
     borderTop: '1px solid #e7e7e7',
     width: '100%',
-    position: 'relative',
+    // position: 'relative',
     overflowX: 'hidden',
     height: '55px',
-    marginTop: '290px',
+    // marginTop: '290px',
     zIndex: 1,
     clear: 'both',
+    justifySelf: 'end',
   };
   
 
