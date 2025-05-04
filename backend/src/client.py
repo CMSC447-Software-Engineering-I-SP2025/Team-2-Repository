@@ -1,35 +1,54 @@
+"""Core business logic."""
 # Standard Libraries
-from tomllib import loads as tomlloads
+from json import load as jsonload
+from json import loads as jsonloads
 from pathlib import Path
-import json
-
-# External Libraries
-import requests
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
+from typing import Any
 
 # Custom Libraries
-from data_classes import Response, Recipe, Ingredient, json_mapper
-from db_models import recipe_to_db, db_to_recipe, ingredient_to_db, db_to_ingredient, Base, RecipeDB, IngredientDB
+from data_classes import Ingredient, Recipe, Response, json_mapper
+from db_data_models import (
+    Base,
+    IngredientDB,
+    RecipeDB,
+)
+from mappers import ingredient_mapper, recipe_mapper
+
+# External Libraries
+from requests import Request
+from requests import get as reqget
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from tomllib import loads as tomlloads
 
 
 class Client:
+    """Client object to communicate with the frontend and database."""
 
     def __init__(self) -> None:
         """Initialize the client object."""
 
+        # Get paths
+        db_path: Path = Path(__file__).resolve().parent.parent / "assets" / "database.db"
+        config_path: Path = Path(__file__).parent.parent / "assets" / "config.toml"
+
         # Set up SQL database
-        self.engine = create_engine(f"sqlite:///{(Path(__file__).resolve().parent.parent / 'assets' / 'database.db').as_posix()}")
+        self.engine = create_engine(f"sqlite:///{(db_path).as_posix()}")
         Base.metadata.create_all(self.engine)
         self.Session = sessionmaker(bind=self.engine)
 
         # Query vars
         self.base_url: str = "https://api.spoonacular.com/recipes/complexSearch"
-        self.api_key = tomlloads((Path(__file__).parent.parent / "assets" / "config.toml").read_text())["apikey"]
+        self.api_key = tomlloads((config_path).read_text())["apikey"]
 
     # Main functions
-    def get_recipes(self, include_ingredients: str, exclude_ingredients: str, cuisine: str, intolerances: str, diet:str) -> Response:
+    def search_recipes(
+        self,
+        include_ingredients: str,
+        exclude_ingredients: str,
+        cuisine: str,
+        intolerances: str,
+        diet:str) -> Response:
         """Query the spoonacular API for recipes.
 
         Args:
@@ -41,15 +60,15 @@ class Client:
 
         Returns:
             Response: Response data class object.
-        """
 
+        """
         # Add required params
         params = {
             "includeIngredients": include_ingredients,
             "instructionsRequired": True,
             "addRecipeInformation": True,
             "addRecipeInstructions": True,
-            "apiKey": self.api_key
+            "apiKey": self.api_key,
         }
 
         # Add optional params
@@ -62,10 +81,14 @@ class Client:
         if diet:
             params["diet"] = diet
 
-        request_url = requests.Request(method="GET", url=self.base_url, params=params).prepare().url     # Build the request
-        #print(request_url)
-        response = json_mapper(json.loads(requests.get(request_url).text), Response)    # Query Spoonacular API        
-        #response = json_mapper(self.get_dummy_data(), Response) # Dummy response
+        # Build request
+        request_url: Request = Request(method="GET", url=self.base_url, params=params).prepare().url
+
+        # Query Spoonacular
+        response: Any = json_mapper(jsonloads(reqget(url=request_url, timeout=5).text))
+
+        # Dummy response / debug printing
+        # response = json_mapper(self.get_dummy_data())
         #print(response.results)
 
         return response.results
@@ -79,9 +102,10 @@ class Client:
 
         Returns:
             str: Success response.
+
         """
         with self.Session() as session:
-            recipe_db_class = recipe_to_db(recipe)
+            recipe_db_class = recipe_mapper(recipe)
             session.add(recipe_db_class)
             session.commit()
 
@@ -99,12 +123,13 @@ class Client:
 
         Returns:
             str: Success message.
+
         """
         with self.Session() as session:
             try:
                 session.query(RecipeDB).filter_by(id=recipe_id).delete()
                 session.commit()
-                
+
             except Exception as e:
                 session.rollback()
                 raise e
@@ -116,9 +141,10 @@ class Client:
 
         Returns:
             list[Recipe]: List of saved recipes.
+
         """
         with self.Session() as session:
-            return [db_to_recipe(recipe) for recipe in session.query(RecipeDB).all()]
+            return [recipe_mapper(recipe) for recipe in session.query(RecipeDB).all()]
 
 
     def add_ingredient(self, ingredient: Ingredient) -> str:
@@ -129,12 +155,13 @@ class Client:
 
         Returns:
             str: Success string.
+
         """
         with self.Session() as session:
-            ingredient_db_class = ingredient_to_db(ingredient)
+            ingredient_db_class = ingredient_mapper(ingredient)
             session.add(ingredient_db_class)
             session.commit()
-        
+
         return "200"
 
 
@@ -149,12 +176,13 @@ class Client:
 
         Returns:
             str: Success string.
+
         """
         with self.Session() as session:
             try:
                 session.query(IngredientDB).filter_by(id=ingredient_id).delete()
                 session.commit()
-                
+
             except Exception as e:
                 session.rollback()
                 raise e
@@ -164,10 +192,11 @@ class Client:
         """List all ingredients in the database.
 
         Returns:
-            list[Ingredient]: List of ingredient dataclass objects. 
+            list[Ingredient]: List of ingredient dataclass objects.
+
         """
         with self.Session() as session:
-            return [db_to_ingredient(ingredient) for ingredient in session.query(IngredientDB).all()]
+            return [ingredient_mapper(ingr) for ingr in session.query(IngredientDB).all()]
 
 
     def get_dummy_data(self) -> dict:
@@ -175,6 +204,7 @@ class Client:
 
         Returns:
             dict: Dummy data.
+
         """
-        with open(Path(__file__).parent.parent / "assets" / "cached.json") as f:
-            return json.load(f, strict=False)
+        with Path.open(Path(__file__).parent.parent / "assets" / "cached.json") as f:
+            return jsonload(f, strict=False)

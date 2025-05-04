@@ -39,7 +39,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
             if (recipe) {
                 console.log(recipe);
                 setTitle(recipe['title']);
-                if(recipe['analyzedInstructions']?.length > 0) setInstructions(recipe['analyzedInstructions'][0]['steps']);
+                if(recipe['instructions']?.length > 0) setInstructions(recipe['instructions'][0]['steps']);
                 setImageURL(recipe['image']);
                 checkIfSaved(recipe);
             }

@@ -50,7 +50,7 @@
 				"spring",
 				"easter"
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -233,7 +233,7 @@ pork",
 			"occasions": [
 
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -548,7 +548,7 @@ option if you're following a <b>gluten free, dairy free, lacto ovo vegetarian, a
 			"occasions": [
 
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -775,7 +775,7 @@ href=\"https://spoonacular.com/recipes/moosewood-mushroom-barley-soup-143909\">M
 				"fall",
 				"winter"
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -1076,7 +1076,7 @@ protein</b>, and <b>22g of fat</b>. This gluten free, dairy free, and lacto ovo 
 			"occasions": [
 
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -1391,7 +1391,7 @@ this recipe <b>earns a spoonacular score of 94%</b>, which is spectacular. Try <
 			"occasions": [
 
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -1540,7 +1540,7 @@ this recipe <b>earns a spoonacular score of 94%</b>, which is spectacular. Try <
 			"occasions": [
 				"winter"
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -1713,7 +1713,7 @@ this recipe <b>earns a spoonacular score of 94%</b>, which is spectacular. Try <
 				"fall",
 				"winter"
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -1963,7 +1963,7 @@ this recipe <b>earns a spoonacular score of 94%</b>, which is spectacular. Try <
 			"occasions": [
 
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
@@ -2139,7 +2139,7 @@ ovo vegetarian, and vegan</b> recipe with 4 servings. This side dish has <b>397 
 			"occasions": [
 
 			],
-			"analyzedInstructions": [
+			"instructions": [
 				{
 					"name": "",
 					"steps": [
