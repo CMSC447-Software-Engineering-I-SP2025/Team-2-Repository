@@ -53,60 +53,6 @@ db = DB()
 app = Flask(__name__)
 app.secret_key = config_options["secret_key"]
 
-# Temp Forms
-LOGIN_FORM = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <h2>Login</h2>
-    <form method="post" action="/login">
-        <label>Username:</label><br>
-        <input type="text" name="username" required><br>
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
-        <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="/register">Register here</a></p>
-</body>
-</html>
-"""
-
-REGISTER_FORM = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-</head>
-<body>
-    <h2>Register</h2>
-    <form id="registerForm">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        <button type="submit">Register</button>
-    </form>
-    <div id="message"></div>
-    <script>
-        document.getElementById('registerForm').onsubmit = async function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const response = await fetch('/register', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({username, password})
-            });
-            const data = await response.json();
-            document.getElementById('message').innerText = data.message || data.error;
-        };
-    </script>
-</body>
-</html>
-"""
 
 def get_dummy_data() -> dict:
     """Get dummy data for testing.
