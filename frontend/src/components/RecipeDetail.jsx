@@ -40,9 +40,6 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
             if (recipe) {
                 console.log(recipe);
                 setTitle(recipe['title']);
-<<<<<<< HEAD
-                if(recipe['instructions']?.length > 0) setInstructions(recipe['instructions'][0]['steps']);
-=======
                 const tempIngredients = [];
                 if(recipe['analyzedInstructions']?.length > 0) {
                     setInstructions(recipe['analyzedInstructions'][0]['steps']);
@@ -54,7 +51,6 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                     console.log(tempIngredients);
                     setIngredients([... new Set(tempIngredients)]);
                 }
->>>>>>> new-version-authentication
                 setImageURL(recipe['image']);
 
                 checkIfSaved(recipe);
