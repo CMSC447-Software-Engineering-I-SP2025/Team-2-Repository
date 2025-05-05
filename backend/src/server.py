@@ -155,6 +155,26 @@ CORS(app, resources={
         "methods": ["GET"],
         "allow_headers": ["Content-Type"],
     },
+    r"/register*": {
+        "origins": "http://localhost:5173",
+        "methods": ["POST", "GET"],
+        "allow_headers": ["Content-Type"],
+    },
+    r"/login*": {
+        "origins": "http://localhost:5173",
+        "methods": ["POST", "GET"],
+        "allow_headers": ["Content-Type"],
+    },
+        r"/logout*": {
+        "origins": "http://localhost:5173",
+        "methods": ["POST"],
+        "allow_headers": ["Content-Type"],
+    },
+    r"/loginstatus*": {
+        "origins": "http://localhost:5173",
+        "methods": ["GET"],
+        "allow_headers": ["Content-Type"],
+    },
 })
 
 # ==================================================================================================================================
@@ -236,6 +256,7 @@ def logout() -> str:
     return render_template_string("<p>Logged out successfully!</p>")
 
 
+<<<<<<< HEAD
 def logged_in() -> str:
     """Return user_id if user is logged in else empty string.
 
@@ -244,6 +265,20 @@ def logged_in() -> str:
 
     """
     return session.get("user_id") if session.get("user_id") else ""
+=======
+@app.route(rule="/loginstatus", methods=["GET"])
+def loginstatus() -> str:
+    """Check whether user logged in
+
+    Returns:
+        String: "Logged In" or "Not Logged In"
+    """
+
+    if "username" in session:
+        return "Logged In", 200
+    else:
+        return "Not Logged In", 200
+>>>>>>> new-version-authentication
 
 
 @app.route(rule="/my-account")
