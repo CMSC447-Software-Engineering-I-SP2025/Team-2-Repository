@@ -1,7 +1,7 @@
 """Data models for Backend <-> database interaction."""
 import json
 
-from data_classes import Recipe
+from backend_data_models import Recipe
 from sqlalchemy import JSON, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import declarative_base, relationship
 

@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 # Custom Libraries
-from data_classes import Response, json_mapper
+from backend_data_models import Response, json_mapper
 from db_models import (
     Base,
     IngredientDB,

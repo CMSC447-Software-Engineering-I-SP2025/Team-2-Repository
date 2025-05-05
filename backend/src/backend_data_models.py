@@ -1,45 +1,88 @@
-"""Data models for frontend <-> backend interaction."""
+"""Data classe for frontend <-> backend interaction."""
 from __future__ import annotations
 
 from dataclasses import dataclass
 
+from dacite import Config, from_dict
+
 
 @dataclass
 class Temperature:
-    """Temperature for a step."""
+    """Temperature dataclass.
+
+    Attributes:
+        number (float): The temperature value.
+        unit (str): The unit of temperature (e.g., 'C', 'F').
+
+    """
 
     number: float
     unit: str
 
+
 @dataclass
 class Length:
-    """Length of an action in a step."""
+    """Length dataclass.
+
+    Attributes:
+        number (int): The length or duration value.
+        unit (str): The unit of length or duration (e.g., 'minutes', 'seconds').
+
+    """
 
     number: int
     unit: str
 
+
 @dataclass
 class Ingredient:
-    """Ingredient used in a step or held by the user."""
+    """Ingredient dataclass.
+
+    Attributes:
+        id (int): Unique identifier for the ingredient.
+        name (str): Name of the ingredient.
+        image (str): URL or path to an image of the ingredient.
+
+    """
 
     id: int
     name: str
-    localized_name: str | None
+    quantity: int | None
     image: str
+
 
 @dataclass
 class Equipment:
-    """Represents a piece of equipment used in instruction."""
+    """Equipment dataclass.
+
+    Attributes:
+        id (int): Unique identifier for the equipment.
+        name (str): Name of the equipment.
+        image (str): URL or path to an image of the equipment.
+        temperature (Temperature | None): Optional temperature setting for the equipment.
+
+    """
 
     id: int
     name: str
-    localized_name: str
     image: str
     temperature: Temperature | None = None
 
+
 @dataclass
 class Step:
-    """A single step in a recipe's instructions."""
+    """Step dataclass.
+
+    Represents a single step in a recipe instruction.
+
+    Attributes:
+        number (int): The step number in the instruction sequence.
+        step (str): Description of the step.
+        ingredients (list[Ingredient]): List of ingredients used in this step.
+        equipment (list[Equipment]): List of equipment needed for this step.
+        length (Length | None): Optional length or duration for the step.
+
+    """
 
     number: int
     step: str
@@ -47,29 +90,65 @@ class Step:
     equipment: list[Equipment]
     length: Length | None
 
+
 @dataclass
 class Instruction:
-    """A recipe's analyzed instructions."""
+    """Instruction dataclass.
+
+    Represents a set of steps under a named instruction group.
+
+    Attributes:
+        name (str): Name of the instruction group (e.g., 'Main', 'Sauce').
+        steps (list[Step]): List of steps for this instruction group.
+
+    """
 
     name: str
     steps: list[Step]
 
+
 @dataclass
 class Recipe:
-    """A single recipe."""
+    """Recipe dataclass.
+
+    Represents a complete recipe with metadata and instructions.
+
+    Attributes:
+        id (int): Unique identifier for the recipe.
+        image (str): URL or path to an image of the recipe.
+        title (str): Title of the recipe.
+        usedIngredientCount (int | None): Number of used ingredients (if applicable).
+        missedIngredientCount (int | None): Number of missed ingredients (if applicable).
+        analyzedInstructions (list[Instruction] | None): Analyzed instructions for the recipe.
+
+    """
 
     id: int
     image: str
     title: str
-    used_ingredient_count: int | None
-    missed_ingredient_count: int | None
-    instructions: list[Instruction] | None
+    usedIngredientCount: int | None
+    missedIngredientCount: int | None
+    analyzedInstructions: list[Instruction] | None
+
 
 @dataclass
 class Response:
-    """Represents responses from spoonacular."""
+    """Response dataclass.
+
+    Represents a response containing a list of recipes.
+
+    Attributes:
+        results (list[Recipe]): List of recipe objects in the response.
+
+    """
 
     results: list[Recipe]
 
 
+def json_mapper(json_data: dict, data_class: Response):
 
+    return from_dict(
+        data_class=data_class,
+        data=json_data,
+        config=Config(check_types=False, cast=[], strict=False),
+    )
