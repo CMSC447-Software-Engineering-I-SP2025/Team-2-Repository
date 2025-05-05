@@ -2,7 +2,7 @@ import { AdditionalFiltersAccordion } from "./AdditionalFiltersAccordion";
 import { useState, useRef } from "react";
 import clsx from 'clsx'
 
-export default function GetRecipeSection({ingredientNameList, setRecipes, setFavoritedRecipesBitMap}) {
+export default function GetRecipeSection({ingredientNameList, setRecipes, setFavoritedRecipesBitMap, isLoggedIn}) {
 
     const cuisineList = [
         "African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese", 
@@ -77,7 +77,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
             data.forEach(recipe => tempArr.push(recipe));
             setRecipes(tempArr);
             sessionStorage.setItem("recipes", JSON.stringify(tempArr));
-            checkIfSaved(tempArr);
+            if(isLoggedIn) checkIfSaved(tempArr);
         })
         .catch(error => console.log(error));
     }

@@ -155,6 +155,26 @@ CORS(app, resources={
         "methods": ["GET"],
         "allow_headers": ["Content-Type"],
     },
+    r"/register*": {
+        "origins": "http://localhost:5173",
+        "methods": ["POST", "GET"],
+        "allow_headers": ["Content-Type"],
+    },
+    r"/login*": {
+        "origins": "http://localhost:5173",
+        "methods": ["POST", "GET"],
+        "allow_headers": ["Content-Type"],
+    },
+        r"/logout*": {
+        "origins": "http://localhost:5173",
+        "methods": ["POST"],
+        "allow_headers": ["Content-Type"],
+    },
+    r"/loginstatus*": {
+        "origins": "http://localhost:5173",
+        "methods": ["GET"],
+        "allow_headers": ["Content-Type"],
+    },
 })
 
 # ==================================================================================================================================
@@ -234,6 +254,20 @@ def logout() -> str:
     session.pop("user_id", None)
     session.pop("username", None)
     return render_template_string("<p>Logged out successfully!</p>")
+
+
+@app.route(rule="/loginstatus", methods=["GET"])
+def loginstatus() -> str:
+    """Check whether user logged in
+
+    Returns:
+        String: "Logged In" or "Not Logged In"
+    """
+
+    if "username" in session:
+        return "Logged In", 200
+    else:
+        return "Not Logged In", 200
 
 
 @app.route(rule="/my-account")
