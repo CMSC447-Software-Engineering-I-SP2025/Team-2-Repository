@@ -8,12 +8,24 @@ body {
     margin: 0;
 }
 
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    main {
+        min-height: 100vh;
+        flex: 1;
+        margin-bottom: 0vh;
+    }
+
+}
+
 .get-recipe-section {
     display: flex;
     flex-direction: row;
     /* justify-content: center; */
     width: 100%;
     gap: 2px;
+    margin-top: 3rem;
 }
 
 .additional-filters-side-panel {
@@ -43,13 +55,13 @@ body {
     .submit-button {
         font-size: x-large;
         letter-spacing: .75px;
-        background-color: bisque;
+        background-color: rgb(237, 190, 133);
         border-radius: 3px;
         border-width: 1px;
     }
 
     .submit-button:hover {
-        background-color: rgb(249, 194, 100);
+        background-color: rgb(239, 170, 86);
     }
 }
 
@@ -93,7 +105,6 @@ header {
     grid-template-columns: 120px auto 140px 120px; /* 4 columns: logo, center (nav), log ingredients, icon group */
     gap: 1rem;
     height: 80px;
-    margin-bottom: 0.5%;
     background-color: #A3B18A;
     align-items: center;
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2);
@@ -109,8 +120,7 @@ header {
     grid-column: 1; /* Logo stays on the far left */
     display: grid;
     place-content: left;
-    background-color: #dbcdb5;
-
+    background-color: #fefbf5;
     img {
         width: 120px;
     }
@@ -120,6 +130,7 @@ header {
     display: inline-block;
     padding: 0.5rem 1rem;
     background-color:  #5e3c2c;
+    max-width: 140px;
     border-radius: 5px;
     color: #f5f5dc; /* beige */
     font-family: lato;
@@ -129,10 +140,24 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease;
     white-space: nowrap;
+    text-align: center;
 
     a {
         color: #f5f5dc; /* beige */
         text-decoration: none;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        text-align: inherit;
+        font: inherit;
+        border-radius: 0;
+        appearance: none;
+        color: inherit;
+        cursor: pointer;
     }
 }
   
@@ -140,16 +165,14 @@ header {
     background-color: #4A2C2A;
 }
 
-
 .main-nav {
-    grid-column: 2;
     display: flex;
     justify-content: space-evenly;
-    align-items: space-evenly;
+    align-items: center; /* not space-evenly — this centers vertically */
     gap: 2rem;
     font-size: x-large;
     font-weight: bold;
-    font-family: lato;
+    font-family: 'Lato';
   }
   
   .main-nav a {
@@ -157,7 +180,7 @@ header {
     text-decoration: none;
   }
   
-  /* Container for each nav item */
+  /* Each nav item */
   .nav-item {
     position: relative;
     display: flex;
@@ -165,45 +188,58 @@ header {
     align-items: center;
   }
   
-  /* Dropdown menu styling */
+  /* Dropdown menu */
   .dropdown {
-    display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    background-color: #abb39e;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 1rem;
-    z-index: 1000;
-    min-width: 160px;
-    border-radius: 4px;
-    font-family: lato;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #A3B18A;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    min-width: 240px;
+  
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  
+    font-family: 'Lato';
     font-weight: normal;
+    z-index: 1000;
   }
   
-  /* Show dropdown on hover over parent */
+  /* Show dropdown on hover */
   .nav-item:hover .dropdown {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
   
-  /* Links inside dropdown */
+  /* Dropdown links */
   .dropdown a {
-    display: block;
-    padding: 0.4rem 0;
     color: #4A2C2A;
-    font-size: large;
+    font-size: 1.2rem;
+    font-weight: bold;
     text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.1s ease, padding-left 0.2s ease;
     white-space: nowrap;
   }
   
   /* Hover effect for dropdown items */
   .dropdown a:hover {
     background-color: #dbcdb5;
+    padding-left: 0.75rem;
   }
   
-
-
-
+  
 .icon-group {
     grid-column: 4; /* Icon group stays on the far right */
     display: grid;
@@ -229,84 +265,108 @@ header {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1015px) {
     .log-ingredients {
         display: none; /* Hide the log-ingredients button */
     }
+
+    header {
+        grid-template-columns: 120px auto 0px 120px;;
+    }
 }
 
-
-@media (max-width: 768px) {
+@media (max-width: 885px) {
     .main-nav, .log-ingredients {
         display: none; /* Hide the nav and log-ingredients */
     }
 }
 
-
 .results-section {
     justify-self: center;
     width: 80%;
-
+    margin-top: 2rem;
+  
     .results-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-template-rows: auto;
-        width:100%;
-        justify-content: center;
-        gap: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
     }
-
+  
     .result-cell {
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: #dbcdb5;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+  
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      }
+  
+      a {
+        text-decoration: none;
+        color: #4A2C2A;
+      }
+  
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+  
+      div {
         display: flex;
         flex-direction: column;
-        border: solid black 1px;
-        text-align: center;
-        font-size: x-large;    
-        background-color: #dbcdb5; 
-        
-        a {
-            text-decoration: none;
-            color: #4A2C2A;
+        justify-content: center;
+        flex: 1;
+        padding: 1rem;
+      }
+  
+      .recipe-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+  
+      .result-image-wrapper {
+        position: relative;
+      }
+  
+      .favorite-button-cut-out {
+        position: absolute;
+        height: 20%;
+        min-height: 45px;
+        aspect-ratio: 1;
+        border-bottom-left-radius: 25px;
+        top: 0;
+        right: 0;
+        background-color: #fefefb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+  
+      .favorite-button {
+        padding: 4px 6px;
+        font-size: 1rem;
+        background: none;
+        border: none;
+        color: #4A2C2A;
+        cursor: pointer;
+        transition: color 0.2s ease;
+  
+        &:hover {
+          color: #a05c3c;
         }
-        img {
-            width: 100%;
-        }
-        div {
-            /* border-top: solid black 1px; */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            flex: 1;
-        }
-
-        .result-image-wrapper {
-            position: relative;
-        }
-
-        .recipe-name {
-            padding: 4px;
-            /* font-family: "Amarante", serif; */
-        }
-
-        .favorite-button-cut-out {
-            position: absolute;
-            height: 20%;
-            min-height: 45px;
-            aspect-ratio: 1;
-            border-bottom-left-radius: 25px;
-            top: 0;
-            right: 0;
-            background-color: rgb(254, 254, 251);
-        }
-
-        .favorite-button {
-            padding: 3px;
-            padding-left: 5px;
-            padding-bottom: 5px;
-            width: fit-content;            
-        }
+      }
     }
-}
+  }
+  
 
 /* @media only screen and (min-width: 1000px) and (max-aspect-ratio:2/1) {
     
@@ -394,12 +454,30 @@ header {
     flex-direction: column;
     align-items: center;
 
+    h1{
+        text-transform: capitalize;
+    }
+
+    .recipe-detail-text-sections{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+        height: max-content;
+        align-items: top;
+        margin-top: 1rem;
+    }
     .steps-section {
         width: 60%;
         line-height: 1.6;
         li:not(:first-child) {
             margin-top: 11px;
         }
+
+        background-color:rgb(232, 206, 140);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        border-radius: 3px;
     }
 
     .favorite-recipe-element {
@@ -414,6 +492,15 @@ header {
     .favorite-button {
         width: 2.5rem;
     }
+
+    .ingredients-and-time-area {
+        background-color: rgb(125, 209, 125);
+        border-radius: 3px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        text-transform: capitalize;
+        line-height: 1.6;
+    }
 }
 
 .favorite-button {
@@ -427,7 +514,7 @@ header {
     /* justify-self: right; */
     position: absolute;
     right: 2%;
-    background-color: rgb(254, 254, 251);
+    background-color: rgb(254, 254, 251);    
 
     .additional-filters-title {
        width: 100%;
@@ -708,4 +795,104 @@ header {
     .hero-cta:hover {
         background-color: #4A2C2A;
     }
+}
+  
+/* Stuff for the login and register modal */
+.login-button {
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .login-button:hover {
+    background-color: #1565c0;
+  }
+  
+  /* Modal overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal box */
+  .modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 350px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Close button (X) */
+  .close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+  }
+  
+  .close-button:hover {
+    color: #e53935;
+  }
+  
+  /* Form styles */
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .modal-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .modal-form button {
+    padding: 10px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-form button:hover {
+    background-color: #1565c0;
+  }
+  
+  /* Switch between login/register */
+  .switch-button {
+    background: none;
+    border: none;
+    color: #1976d2;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: lato;
+  }
+
+  /* Category + Subcategory styles */
+  .subcategory-section {
+    margin-bottom: 40px;
 }

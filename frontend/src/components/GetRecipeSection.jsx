@@ -2,7 +2,7 @@ import { AdditionalFiltersAccordion } from "./AdditionalFiltersAccordion";
 import { useState, useRef } from "react";
 import clsx from 'clsx'
 
-export default function GetRecipeSection({ingredientNameList, setRecipes, setFavoritedRecipesBitMap}) {
+export default function GetRecipeSection({ingredientNameList, setRecipes, setFavoritedRecipesBitMap, isLoggedIn}) {
 
     const cuisineList = [
         "African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese", 
@@ -77,7 +77,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
             data.forEach(recipe => tempArr.push(recipe));
             setRecipes(tempArr);
             sessionStorage.setItem("recipes", JSON.stringify(tempArr));
-            checkIfSaved(tempArr);
+            if(isLoggedIn) checkIfSaved(tempArr);
         })
         .catch(error => console.log(error));
     }
@@ -98,8 +98,13 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
 function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
     const [inputVal, setInputVal] = useState(""); //current text on the searchbar
     const [dropdownIndex, setDropdownIndex] = useState(-1); //specifies which dropdown recipe is highlighted
-    const matchingIngredients = ingredientNameList.filter(name => name.includes(inputVal.toLowerCase()));
     const highlightedRef = useRef(null);
+    const matchingIngredients = ingredientNameList.filter(name => name.includes(inputVal.toLowerCase()));
+    const exactMatchPos = matchingIngredients.indexOf(inputVal.toLowerCase());
+    if (exactMatchPos > 0)  {
+        matchingIngredients.splice(exactMatchPos, 1);
+        matchingIngredients.unshift(inputVal.toLowerCase());
+    }
 
     function pushIngredient (ingredient) {
         ingredient = ingredient.toLowerCase();

@@ -10,6 +10,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
     const [title, setTitle] = useState(null);
     const [instructions, setInstructions] = useState(null);
     const [imageURL, setImageURL] = useState('');
+    const [ingredients, setIngredients] = useState(null);
     const [favorited, setFavorited] = useState(false);
     let recipe;
     let recipesArr = [];
@@ -39,8 +40,19 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
             if (recipe) {
                 console.log(recipe);
                 setTitle(recipe['title']);
-                if(recipe['instructions']?.length > 0) setInstructions(recipe['instructions'][0]['steps']);
+                const tempIngredients = [];
+                if(recipe['analyzedInstructions']?.length > 0) {
+                    setInstructions(recipe['analyzedInstructions'][0]['steps']);
+                    recipe['analyzedInstructions'][0]['steps'].forEach( stepInfo => {
+                        tempIngredients.push(... stepInfo['ingredients']
+                                            .filter(info => info['id'] > 0)
+                                            .map(ingredientInfo => ingredientInfo['name']));
+                    });
+                    console.log(tempIngredients);
+                    setIngredients([... new Set(tempIngredients)]);
+                }
                 setImageURL(recipe['image']);
+
                 checkIfSaved(recipe);
             }
         }
@@ -69,28 +81,29 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                         </div>
                     </div>
 
-                    {/* <div className="ingredients-and-time-area">
-                        <div className="recipe-ingredients-display">
-                            <h2>Ingredients</h2>
-                            <ul>
-                                {recipe.ingredients.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul> 
-                        </div>
-                    </div> */}
-
                     {
                         instructions ? 
-                        <div className="steps-section">
-                            <h2>Steps</h2>
-                            <ol>
-                                {instructions.map((fullStep, index) => (
-                                        <li key={index}>{fullStep.step}</li>
-                                ))}
-                            </ol>
+                        <div className="recipe-detail-text-sections">
+                            <div className="ingredients-and-time-area">
+                            <div className="recipe-ingredients-display">
+                                <h2>Ingredients</h2>
+                                <ul>
+                                    {ingredients.map((item, index) => (
+                                        <li key={index}>{item}</li>
+                                    ))}
+                                </ul> 
+                            </div>
+                            </div>
+                            <div className="steps-section">
+                                <h2>Steps</h2>
+                                <ol>
+                                    {instructions.map((fullStep, index) => (
+                                            <li key={index}>{fullStep.step}</li>
+                                    ))}
+                                </ol>
+                            </div> 
                         </div> :
-                        <div>No Instructions Provided</div>
+                        <div>No Instructions Or Ingredients Provided</div>
                     }
                 </>
             ) : (
