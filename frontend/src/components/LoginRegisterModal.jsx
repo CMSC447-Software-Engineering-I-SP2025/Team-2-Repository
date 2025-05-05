@@ -107,7 +107,10 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
     const serverBaseURL = new URL(serverBaseURLString); 
     const logOutEndpoint = new URL("/logout", serverBaseURL);
 
-    fetch(logOutEndpoint, {method: 'POST'})
+    fetch(logOutEndpoint, {
+      method: 'POST',
+      credentials: 'include'
+    })
     .then(response => {if(response.ok) setIsLoggedIn(false);})
   }
 

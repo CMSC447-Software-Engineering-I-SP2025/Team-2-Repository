@@ -272,7 +272,7 @@ def loginstatus() -> str:
         String: "Logged In" or "Not Logged In"
     """
 
-    if "username" in session:
+    if "user_id" in session:
         return "Logged In", 200
     else:
         return "Not Logged In", 200
