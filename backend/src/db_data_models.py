@@ -1,19 +1,17 @@
 """Database data models."""
-from sqlalchemy import JSON, Column, ForeignKey, Integer, String
+from sqlalchemy import JSON, Column, Integer, PrimaryKeyConstraint, String, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
 
 # Classes
 class UserDB(Base):
-    """User table."""
+    """Table to hold users."""
 
     __tablename__ = "users"
-
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    username = Column(String(50), unique=True, nullable=False)
-    password_path = Column(String(200), nullable=False)
-    password_reset_hash = Column(String(200), nullable=False)
+    id = Column(Integer, primary_key=True)
+    username = Column(String(80), unique=True, nullable=False)
+    password_hash = Column(String(128), nullable=False)
 
 
 class IngredientDB(Base):
@@ -21,11 +19,15 @@ class IngredientDB(Base):
 
     __tablename__ = "ingredients"
 
-    ingr_id = Column(Integer, primary_key=True, nullable=False)
+    ingr_id = Column(Integer, nullable=False)
     user_id = Column(Integer, nullable=False)
     name = Column(String(100), nullable=False)
     localized_name = Column(String(100))
     image = Column(String(255))
+
+    __table_args__ = (
+        PrimaryKeyConstraint("user_id", "ingr_id"),
+    )
 
 class RecipeDB(Base):
     """Recipe DB table."""
@@ -43,15 +45,16 @@ class RecipeDB(Base):
     # Relationship (if you want direct access)
     ingredients = relationship("IngredientDB", secondary="recipe_ingredients")
 
-# # Association table for many-to-many relationship
-# class RecipeIngredientDB(Base):
-#     """Association table for a many-to-many relationships.
+# Association table for many-to-many relationship
+class RecipeIngredientDB(Base):
+    """Association table for a many-to-many relationships.
 
-#     Args:
-#         Base (_type_): Base DB class.
+    Args:
+        Base (_type_): Base DB class.
 
-#     """
+    """
 
-#     __tablename__ = "recipe_ingredients"
-#     recipe_id = Column(Integer, ForeignKey("recipes.id"), primary_key=True)
-#     ingredient_id = Column(Integer, ForeignKey("ingredients.id"), primary_key=True)
+    __tablename__ = "recipe_ingredients"
+    recipe_id = Column(Integer, ForeignKey("recipes.recipe_id"), primary_key=True)
+    ingredient_id = Column(Integer, ForeignKey("ingredients.ingr_id"), primary_key=True)
+

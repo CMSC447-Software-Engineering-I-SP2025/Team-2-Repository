@@ -24,7 +24,7 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
 
 
     function saveRecipe(recipe) {
-        let saveRecipeEndpoint = new URL("saverecipe", serverBaseURL);
+        let saveRecipeEndpoint = new URL("addrecipe", serverBaseURL);
         const options = {
             method: "PUT",
             headers: {
@@ -38,7 +38,7 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
     }
 
     function removeRecipe(recipe) {
-        let removeRecipeEndpoint = new URL("deleterecipe", serverBaseURL);
+        let removeRecipeEndpoint = new URL("removerecipe", serverBaseURL);
         const options = {
             method: "DELETE",
             credentials: "include",

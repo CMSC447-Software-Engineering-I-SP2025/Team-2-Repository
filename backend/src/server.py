@@ -8,20 +8,17 @@ from pathlib import Path
 
 # Custom Libraries
 from backend_data_models import Response, json_mapper
-from db_models import (
+from db_data_models import (
     Base,
     IngredientDB,
     RecipeDB,
     UserDB,
-    db_to_ingredient,
-    db_to_recipe,
-    ingredient_to_db,
-    recipe_to_db,
 )
 
 # External Libraries
 from flask import Flask, jsonify, render_template_string, request, session
 from flask_cors import CORS
+from mappers import db_to_ingredient, db_to_recipe, ingredient_to_db, recipe_to_db
 from requests import Request
 from requests import get as reqget
 from sqlalchemy import create_engine
@@ -71,12 +68,12 @@ CORS(app, resources={
         "methods": ["GET", "POST"],
         "allow_headers": ["Content-Type"],
     },
-    r"/saverecipe*": {
+    r"/addrecipe*": {
         "origins": "http://localhost:5173",
         "methods": ["PUT"],
         "allow_headers": ["Content-Type"],
     },
-    r"/deleterecipe*": {
+    r"/removerecipe*": {
         "origins": "http://localhost:5173",
         "methods": ["DELETE"],
         "allow_headers": ["Content-Type"],
@@ -111,10 +108,10 @@ CORS(app, resources={
         "methods": ["POST", "GET"],
         "allow_headers": ["Content-Type"],
     },
-        r"/logout*": {
-        "origins": "http://localhost:5173",
-        "methods": ["POST"],
-        "allow_headers": ["Content-Type"],
+    r"/logout*": {
+    "origins": "http://localhost:5173",
+    "methods": ["POST"],
+    "allow_headers": ["Content-Type"],
     },
     r"/loginstatus*": {
         "origins": "http://localhost:5173",
@@ -212,18 +209,19 @@ def logged_in() -> str:
 
     """
     return session.get("user_id") if session.get("user_id") else ""
+
+
 @app.route(rule="/loginstatus", methods=["GET"])
 def loginstatus() -> str:
-    """Check whether user logged in
+    """Check whether user logged in.
 
     Returns:
         String: "Logged In" or "Not Logged In"
-    """
 
+    """
     if "user_id" in session:
         return "Logged In", 200
-    else:
-        return "Not Logged In", 200
+    return "Not Logged In", 200
 
 
 @app.route(rule="/my-account")
@@ -295,7 +293,7 @@ def api_get_recipes() -> dict:
     # Request, get, and return data.
     return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
 
-@app.route("/saverecipe", methods=["PUT"])
+@app.route("/addrecipe", methods=["PUT"])
 def api_save_recipe() -> str:
     """Save a recipe to the database.
 
@@ -306,11 +304,13 @@ def api_save_recipe() -> str:
         str: Success message.
 
     """
+    user_id  = session.get("user_id")
+
     # Write data to database
     with db.DBSession() as db_session:
         try:
             recipe_db_class = recipe_to_db(request.get_json())
-            recipe_db_class.user_id = session["user_id"]
+            recipe_db_class.user_id = user_id
             db_session.add(recipe_db_class)
             db_session.commit()
         except Exception as e:
@@ -319,7 +319,7 @@ def api_save_recipe() -> str:
     return "200"
 
 
-@app.route("/deleterecipe", methods=["DELETE"])
+@app.route("/removerecipe", methods=["DELETE"])
 def api_delete_recipe() -> str:
     """Delete a recipe from the database.
 
@@ -330,11 +330,16 @@ def api_delete_recipe() -> str:
         str: Success message.
 
     """
-    # Query database for recipes.
+    user_id  = session.get("user_id")
+    recipe_id = int(request.get_data(as_text=True))
+
+    # Delete specified recipe
     with db.DBSession() as db_session:
         try:
-            db_session.query(RecipeDB).filter_by(id=int(request.get_data(as_text=True))).delete()
+            db_session.query(RecipeDB).filter_by(recipe_id=recipe_id, user_id=user_id).delete()
             db_session.commit()
+
+        # Handle errors
         except Exception as e:
             db_session.rollback()
             raise e
@@ -352,10 +357,12 @@ def api_list_recipes() -> dict:
         dict: List of saved recipes.
 
     """
+    user_id  = session.get("user_id")
+
     # Query database for recipes.
     with db.DBSession() as db_session:
         try:
-            recipes = [db_to_recipe(recipe) for recipe in db_session.query(RecipeDB).all()]
+            recipes = [db_to_recipe(recipe) for recipe in db_session.query(RecipeDB).filter(RecipeDB.user_id == user_id).all()]
             return jsonify(recipes)
         except Exception as e:
             db_session.rollback()
@@ -373,10 +380,13 @@ def api_save_ingredient() -> str:
         str: Success message.
 
     """
+    user_id  = session.get("user_id")
+
     # Write data to database
     with db.DBSession() as db_session:
         try:
             ingredient_db_class = ingredient_to_db(request.get_json())
+            ingredient_db_class.user_id = user_id
             db_session.add(ingredient_db_class)
             db_session.commit()
         except Exception as e:
@@ -397,9 +407,12 @@ def api_delete_ingredient() -> str:
 
     """
     # Write data to database
+    user_id  = session.get("user_id")
+    ingredient_id = int(request.get_data(as_text=True))
+
     with db.DBSession() as db_session:
         try:
-            db_session.query(IngredientDB).filter_by(id=int(request.get_data(as_text=True))).delete()
+            db_session.query(IngredientDB).filter_by(ingr_id=ingredient_id, user_id=user_id).delete()
             db_session.commit()
         except Exception as e:
             db_session.rollback()
@@ -418,12 +431,17 @@ def api_list_ingredients() -> dict:
         dict: List of saved ingredients.
 
     """
+    user_id  = session.get("user_id")
+
     with db.DBSession() as db_session:
         try:
-            return jsonify([db_to_ingredient(ingr) for ingr in db_session.query(IngredientDB).all()])
+            ingredients = db_session.query(IngredientDB).filter(IngredientDB.user_id == user_id).all()
+            return jsonify([db_to_ingredient(ingr) for ingr in ingredients])
+
         except Exception as e:
-                db_session.rollback()
-                raise e
+            db_session.rollback()
+            raise e
+
 
 
 # ==================================================================================================================================

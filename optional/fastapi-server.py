@@ -8,7 +8,7 @@ from typing import Annotated, Any
 
 # Custom Libraries
 from backend_data_models import Recipe, Response, json_mapper
-from db_models import (
+from db_data_models import (
     Base,
     IngredientDB,
     RecipeDB,
@@ -124,7 +124,7 @@ def api_get_recipes(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.put("/saverecipe", response_model=str)
+@app.put("/addrecipe", response_model=str)
 def api_save_recipe(
     recipe: dict,
     db_session: Annotated[Session, Depends(get_db)],
@@ -149,7 +149,7 @@ def api_save_recipe(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.delete("/deleterecipe", response_model=str)
+@app.delete("/removerecipe", response_model=str)
 def api_delete_recipe(
     recipe_id: int,
     db_session: Annotated[Session, Depends(get_db)],
