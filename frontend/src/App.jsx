@@ -30,6 +30,7 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
             headers: {
                 "Content-Type": "application/json",
             },
+            credentials: "include",
             body: JSON.stringify(recipe)
         };
         fetch(saveRecipeEndpoint, options)
@@ -40,6 +41,7 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
         let removeRecipeEndpoint = new URL("deleterecipe", serverBaseURL);
         const options = {
             method: "DELETE",
+            credentials: "include",
             body: recipe["id"]
         };
         fetch(removeRecipeEndpoint, options)
@@ -50,7 +52,8 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
     async function queryLoginStatus() {
         let loginStatusEndpoint = new URL("loginstatus", serverBaseURL);
         const options = {
-            method: "GET"
+            method: "GET",
+            credentials: "include"
         }
         fetch(loginStatusEndpoint, options)
         .then(response => response.text())

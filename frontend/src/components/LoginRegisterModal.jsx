@@ -70,7 +70,7 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
       const response = await fetch(fullPath, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // credentials: 'include',
+        credentials: 'include',
         body: JSON.stringify(payload),
       });
       if(endpoint == '/login' && response.status == 200) setIsLoggedIn(true);

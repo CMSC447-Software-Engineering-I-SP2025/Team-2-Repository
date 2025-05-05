@@ -174,8 +174,8 @@ CORS(app, resources={
         "origins": "http://localhost:5173",
         "methods": ["GET"],
         "allow_headers": ["Content-Type"],
-    },
-})
+    }
+}, supports_credentials=True)
 
 # ==================================================================================================================================
 # CORE BUSINESS LOGIC
@@ -256,7 +256,6 @@ def logout() -> str:
     return render_template_string("<p>Logged out successfully!</p>")
 
 
-<<<<<<< HEAD
 def logged_in() -> str:
     """Return user_id if user is logged in else empty string.
 
@@ -265,7 +264,6 @@ def logged_in() -> str:
 
     """
     return session.get("user_id") if session.get("user_id") else ""
-=======
 @app.route(rule="/loginstatus", methods=["GET"])
 def loginstatus() -> str:
     """Check whether user logged in
@@ -278,7 +276,6 @@ def loginstatus() -> str:
         return "Logged In", 200
     else:
         return "Not Logged In", 200
->>>>>>> new-version-authentication
 
 
 @app.route(rule="/my-account")
@@ -349,16 +346,16 @@ def api_get_recipes() -> dict:
 
 
     # One liner request + return
-    # return  json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
+    return  json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
 
     # Sequential request + return
-    request_url = Request(method="GET", url=db.base_url, params=params).prepare().url   # Build URL
-    raw_response = reqget(url=Request(method="GET", url=request_url, timeout=5).text)   # Get the raw text resonse
-    json_response = json.loads(raw_response)            # Turn raw text into JSON
-    mapped_json_response = json_mapper(json_data=json_response, data_class=Response)   # Map JSON into a Response object.
-    final_results = mapped_json_response.results    # Get results from response object.
+    # request_url = Request(method="GET", url=db.base_url, params=params).prepare().url   # Build URL
+    # raw_response = reqget(url=Request(method="GET", url=request_url, timeout=5).text)   # Get the raw text resonse
+    # json_response = json.loads(raw_response)            # Turn raw text into JSON
+    # mapped_json_response = json_mapper(json_data=json_response, data_class=Response)   # Map JSON into a Response object.
+    # final_results = mapped_json_response.results    # Get results from response object.
 
-    return final_results
+    # return final_results
 
 @app.route("/saverecipe", methods=["PUT"])
 def api_save_recipe() -> str:
