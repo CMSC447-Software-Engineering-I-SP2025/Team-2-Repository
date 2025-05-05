@@ -31,6 +31,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
             headers: {
                 "Content-Type": "application/json",
             },
+            credentials: "include",
             body: JSON.stringify(ingredient)
         };
         fetch(saveIngredientEndpoint, options)
@@ -41,6 +42,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         let removeIngredientEndpoint = new URL("removeingredient", serverBaseURL);
         const options = {
             method: "DELETE",
+            credentials: "include",
             body: ingredient.id
         };
         fetch(removeIngredientEndpoint, options)
@@ -80,7 +82,10 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
             const serverBaseURLString = "http://localhost:8080";
             let serverBaseURL = new URL(serverBaseURLString); 
             let listIngredientsEndpoint = new URL("listingredients", serverBaseURL);
-            const options = {method: "GET"};
+            const options = {
+                method: "GET",
+                credentials: "include"
+            };
             fetch(listIngredientsEndpoint, options)
             .then(response => response.json())
             .then(data => {

@@ -41,7 +41,10 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
         const serverBaseURLString = "http://localhost:8080";
         let serverBaseURL = new URL(serverBaseURLString); 
         let listRecipesEndpoint = new URL("listrecipes", serverBaseURL);
-        const options = {method: "GET"};
+        const options = {
+            method: "GET",
+            credentials: "include"
+        };
         fetch(listRecipesEndpoint, options)
         .then(response => response.json())
         .then(data => {
@@ -69,7 +72,9 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
             }
         });
 
-        const options = {method: "GET"};
+        const options = {
+            method: "GET",
+        };
         const tempArr = [];
         fetch(recipeEndpoint, options)
         .then(response => response.json())
