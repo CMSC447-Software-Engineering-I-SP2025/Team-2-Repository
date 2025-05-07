@@ -1,0 +1,2330 @@
+{
+	"results": [
+		{
+			"id": 642129,
+			"image": "https://img.spoonacular.com/recipes/642129-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Easy To Make Spring Rolls",
+			"readyInMinutes": 45,
+			"servings": 4,
+			"sourceUrl": "https://www.foodista.com/recipe/B5HHJWNP/easy-to-make-spring-rolls",
+			"vegetarian": false,
+			"vegan": false,
+			"glutenFree": true,
+			"dairyFree": true,
+			"veryHealthy": true,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 3,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 22,
+			"healthScore": 100.0,
+			"creditsText": "Foodista.com ? The Cooking Encyclopedia Everyone Can Edit",
+			"license": "CC BY 3.0",
+			"sourceName": "Foodista",
+			"pricePerServing": 377.64,
+			"summary": "If you want to add more <b>gluten free, dairy free, and pescatarian</b> recipes to your collection, Easy To Make Spring Rolls might be a recipe you should try. For <b>$3.78 per serving</b>, you get a hor d'oeuvre that serves 4. One serving contains <b>162 calories</b>, <b>13g of protein</b>, and <b>2g of fat</b>. 22 people found this recipe to be flavorful and satisfying. From preparation to the plate, this recipe takes about <b>45 minutes</b>. It can be enjoyed any time, but it is especially good for <b>Spring</b>. This recipe from Foodista requires mint leaves, garlic, chili pepper, and rice vinegar. This recipe is typical of Vietnamese cuisine. Overall, this recipe earns a <b>tremendous spoonacular score of 88%</b>. <a href=\"https://spoonacular.com/recipes/easy-to-make-spring-rolls-1262689\">Easy To Make Spring Rolls</a>, <a href=\"https://spoonacular.com/recipes/easy-to-make-spring-rolls-1218889\">Easy To Make Spring Rolls</a>, and <a href=\"https://spoonacular.com/recipes/easy-to-make-spring-rolls-1531113\">Easy To Make Spring Rolls</a> are very similar to this recipe.",
+			"cuisines": [
+				"Vietnamese",
+				"Asian"
+			],
+			"dishTypes": [
+				"fingerfood",
+				"antipasti",
+				"starter",
+				"snack",
+				"appetizer",
+				"antipasto",
+				"hor d'oeuvre"
+			],
+			"diets": [
+				"gluten free",
+				"dairy free",
+				"pescatarian"
+			],
+			"occasions": [
+				"spring",
+				"easter"
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Have all the ingredients ready for assembly. In a large bowl filled with water, dip a wrapper in the water. The rice wrapper will begin to soften and this is your cue to remove it from the water and lay it flat.",
+							"ingredients": [
+								{
+									"id": 14412,
+									"name": "water",
+									"localizedName": "water",
+									"image": "water.png"
+								},
+								{
+									"id": 20444,
+									"name": "rice",
+									"localizedName": "rice",
+									"image": "uncooked-white-rice.png"
+								},
+								{
+									"id": 0,
+									"name": "dip",
+									"localizedName": "dip",
+									"image": ""
+								}
+							],
+							"equipment": [
+								{
+									"id": 404783,
+									"name": "bowl",
+									"localizedName": "bowl",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+								}
+							]
+						},
+						{
+							"number": 2,
+							"step": "Place 2 shrimp halves in a row across the center and top with basil, mint, cilantro and lettuce. Leave about 1 to 2 inches uncovered on each side.  Fold uncovered sides inward, then tightly roll the wrapper, beginning at the end with the lettuce.  Repeat with remaining wrappers and ingredients.",
+							"ingredients": [
+								{
+									"id": 11165,
+									"name": "cilantro",
+									"localizedName": "cilantro",
+									"image": "cilantro.png"
+								},
+								{
+									"id": 11252,
+									"name": "lettuce",
+									"localizedName": "lettuce",
+									"image": "iceberg-lettuce.jpg"
+								},
+								{
+									"id": 15270,
+									"name": "shrimp",
+									"localizedName": "shrimp",
+									"image": "shrimp.png"
+								},
+								{
+									"id": 2044,
+									"name": "basil",
+									"localizedName": "basil",
+									"image": "basil.jpg"
+								},
+								{
+									"id": 2064,
+									"name": "mint",
+									"localizedName": "mint",
+									"image": "mint.jpg"
+								},
+								{
+									"id": 0,
+									"name": "roll",
+									"localizedName": "roll",
+									"image": "dinner-yeast-rolls.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 3,
+							"step": "Cut and serve at room temperature with dipping sauce.The Culinary Chases Note: The rice wrapper can be fussy to handle if you let it soak too long. I usually give it a couple of swishes in the water and then remove. It may feel slightly stiff but by the time you are ready to roll up, the wrapper will become very pliable.  A typical spring roll contains cooked rice vermicelli, slivers of cooked pork and julienned carrots but you can use whatever suits your fancy.  Enjoy!",
+							"ingredients": [
+								{
+									"id": 20134,
+									"name": "cooked rice vermicelli",
+									"localizedName": "cooked rice vermicelli",
+									"image": "rice-noodles.jpg"
+								},
+								{
+									"id": 0,
+									"name": "dipping sauce",
+									"localizedName": "dipping sauce",
+									"image": ""
+								},
+								{
+									"id": 10073,
+									"name": "cooked 
+pork",
+									"localizedName": "cooked pork",
+									"image": "pulled-pork.png"
+								},
+								{
+									"id": 11124,
+									"name": "carrot",
+									"localizedName": "carrot",
+									"image": "sliced-carrot.png"
+								},
+								{
+									"id": 14412,
+									"name": "water",
+									"localizedName": "water",
+									"image": "water.png"
+								},
+								{
+									"id": 20444,
+									"name": "rice",
+									"localizedName": "rice",
+									"image": "uncooked-white-rice.png"
+								},
+								{
+									"id": 0,
+									"name": "roll",
+									"localizedName": "roll",
+									"image": "dinner-yeast-rolls.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 98.03397369384766,
+			"spoonacularSourceUrl": "https://spoonacular.com/easy-to-make-spring-rolls-642129"
+		},
+		{
+			"id": 639891,
+			"image": "https://img.spoonacular.com/recipes/639891-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Coffee-braised Short Ribs",
+			"readyInMinutes": 45,
+			"servings": 5,
+			"sourceUrl": "https://www.foodista.com/recipe/8ZDDXLKG/coffee-braised-short-ribs",
+			"vegetarian": false,
+			"vegan": false,
+			"glutenFree": true,
+			"dairyFree": true,
+			"veryHealthy": true,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 19,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 6,
+			"healthScore": 100.0,
+			"creditsText": "Foodista.com ? The Cooking Encyclopedia Everyone Can Edit",
+			"license": "CC BY 3.0",
+			"sourceName": "Foodista",
+			"pricePerServing": 704.87,
+			"summary": "Need a <b>gluten free and dairy free main course</b>? Coffee-braised Short Ribs could be a great recipe to try. One portion of this dish contains approximately <b>74g of protein</b>, <b>42g of fat</b>, and a total of <b>877 calories</b>. For <b>$7.05 per serving</b>, this recipe <b>covers 64%</b> of your daily requirements of vitamins and minerals. This recipe serves 5. 6 people have made this recipe and would make it again. A mixture of strong freshly coffee, short, brown sugar, and a handful of other ingredients are all it takes to make this recipe so delicious. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. It is brought to you by Foodista. Taking all factors into account, this recipe <b>earns a spoonacular score of 90%</b>, which is spectacular. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/coffee-braised-short-ribs-492600\">Coffee-Braised Short Ribs</a>, <a href=\"https://spoonacular.com/recipes/coffee-braised-short-ribs-1547523\">Coffee-braised Short Ribs</a>, and <a href=\"https://spoonacular.com/recipes/coffee-braised-short-ribs-386092\">Coffee-Braised Short Ribs</a>.",
+			"cuisines": [
+
+			],
+			"dishTypes": [
+				"lunch",
+				"main course",
+				"main dish",
+				"dinner"
+			],
+			"diets": [
+				"gluten free",
+				"dairy free"
+			],
+			"occasions": [
+
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Food",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 2,
+							"step": "Preheat oven to 300F.",
+							"ingredients": [
+
+							],
+							"equipment": [
+								{
+									"id": 404784,
+									"name": "oven",
+									"localizedName": "oven",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+									"temperature": {
+										"number": 300.0,
+										"unit": "Fahrenheit"
+									}
+								}
+							]
+						},
+						{
+							"number": 3,
+							"step": "Heat oil in a large heavy stockpot over medium-high heat.",
+							"ingredients": [
+								{
+									"id": 4582,
+									"name": "cooking oil",
+									"localizedName": "cooking oil",
+									"image": "vegetable-oil.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404752,
+									"name": "pot",
+									"localizedName": "pot",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/stock-pot.jpg"
+								}
+							]
+						},
+						{
+							"number": 4,
+							"step": "Sprinkle short ribs with salt and pepper. Working in batches, add ribs to pot and cook until browned, about 4 minutes per side.",
+							"ingredients": [
+								{
+									"id": 1102047,
+									"name": "salt and pepper",
+									"localizedName": "salt and pepper",
+									"image": "salt-and-pepper.jpg"
+								},
+								{
+									"id": 10013149,
+									"name": "beef short ribs",
+									"localizedName": "beef short ribs",
+									"image": "beef-short-ribs.jpg"
+								},
+								{
+									"id": 23236,
+									"name": "ribs",
+									"localizedName": "ribs",
+									"image": "ribs.png"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404752,
+									"name": "pot",
+									"localizedName": "pot",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/stock-pot.jpg"
+								}
+							],
+							"length": {
+								"number": 4,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 5,
+							"step": "Transfer to platter.",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 6,
+							"step": "Add onion, red bell pepper, and jalapeo to drippings in stockpot. Reduce heat to medium, cover, and cook until onion is tender, stirring occasionally, about 6 minutes.Stir in garlic and saut uncovered 1 minute.",
+							"ingredients": [
+								{
+									"id": 11821,
+									"name": "red pepper",
+									"localizedName": "red pepper",
+									"image": "red-pepper.jpg"
+								},
+								{
+									"id": 11215,
+									"name": "garlic",
+									"localizedName": "garlic",
+									"image": "garlic.png"
+								},
+								{
+									"id": 11282,
+									"name": "onion",
+									"localizedName": "onion",
+									"image": "brown-onion.png"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404752,
+									"name": "pot",
+									"localizedName": "pot",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/stock-pot.jpg"
+								}
+							],
+							"length": {
+								"number": 7,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 7,
+							"step": "Add brown sugar, ancho chile powder, oregano, and cumin; stir 15 seconds. Stir in coffee, tomatoes with juice, and tomato paste. Bring to boil, scraping up browned bits. Return ribs and any juices to pot; bring to boil.Cover and bake until meat is very tender, about 1 hour 45 minutes. Spoon fat from surface of sauce. Season sauce to taste with salt and pepper.",
+							"ingredients": [
+								{
+									"id": 10111693,
+									"name": "tomatoes in juice",
+									"localizedName": "tomatoes in juice",
+									"image": "tomatoes-canned.png"
+								},
+								{
+									"id": 1022009,
+									"name": "ancho chili powder",
+									"localizedName": "ancho chili powder",
+									"image": "chili-powder.jpg"
+								},
+								{
+									"id": 1102047,
+									"name": "salt and pepper",
+									"localizedName": "salt and pepper",
+									"image": "salt-and-pepper.jpg"
+								},
+								{
+									"id": 11887,
+									"name": "tomato paste",
+									"localizedName": "tomato paste",
+									"image": "tomato-paste.jpg"
+								},
+								{
+									"id": 19334,
+									"name": "brown sugar",
+									"localizedName": "brown sugar",
+									"image": "dark-brown-sugar.png"
+								},
+								{
+									"id": 2027,
+									"name": "oregano",
+									"localizedName": "oregano",
+									"image": "oregano.jpg"
+								},
+								{
+									"id": 14209,
+									"name": "coffee",
+									"localizedName": "coffee",
+									"image": "https://spoonacular.com/cdn/ingredients_100x100/brewed-coffee.jpg"
+								},
+								{
+									"id": 1002014,
+									"name": "cumin",
+									"localizedName": "cumin",
+									"image": "ground-cumin.jpg"
+								},
+								{
+									"id": 0,
+									"name": "sauce",
+									"localizedName": "sauce",
+									"image": ""
+								},
+								{
+									"id": 1065062,
+									"name": "meat",
+									"localizedName": "meat",
+									"image": "whole-chicken.jpg"
+								},
+								{
+									"id": 23236,
+									"name": "ribs",
+									"localizedName": "ribs",
+									"image": "ribs.png"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404784,
+									"name": "oven",
+									"localizedName": "oven",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+								},
+								{
+									"id": 404752,
+									"name": "pot",
+									"localizedName": "pot",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/stock-pot.jpg"
+								}
+							],
+							"length": {
+								"number": 105,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 8,
+							"step": "Transfer ribs to a platter and spoon sauce over top.",
+							"ingredients": [
+								{
+									"id": 0,
+									"name": "sauce",
+									"localizedName": "sauce",
+									"image": ""
+								},
+								{
+									"id": 23236,
+									"name": "ribs",
+									"localizedName": "ribs",
+									"image": "ribs.png"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 9,
+							"step": "Sprinkle with chopped cilantro.",
+							"ingredients": [
+								{
+									"id": 11165,
+									"name": "cilantro",
+									"localizedName": "cilantro",
+									"image": "cilantro.png"
+								}
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 96.05828857421875,
+			"spoonacularSourceUrl": "https://spoonacular.com/coffee-braised-short-ribs-639891"
+		},
+		{
+			"id": 646043,
+			"image": "https://img.spoonacular.com/recipes/646043-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Gujarati Dry Mung Bean Curry",
+			"readyInMinutes": 45,
+			"servings": 4,
+			"sourceUrl": "https://www.foodista.com/recipe/G6ZJW56S/gujarati-dry-mung-bean-curry",
+			"vegetarian": true,
+			"vegan": true,
+			"glutenFree": true,
+			"dairyFree": true,
+			"veryHealthy": true,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 11,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 3,
+			"healthScore": 100.0,
+			"creditsText": "foodista.com",
+			"license": null,
+			"sourceName": "foodista.com",
+			"pricePerServing": 164.1,
+			"summary": "Gujarati Dry Mung Bean Curry takes about <b>45 minutes</b> from beginning to end. This main course has <b>376 calories</b>, <b>20g of protein</b>, and <b>5g of fat</b> per serving. This recipe serves 4 and costs $1.64 per serving. A mixture of baking powder, cumin seeds, garlic, and a handful of other ingredients are all it takes to make this recipe so flavorful. This recipe from Foodista has 3 fans. This recipe is typical of Indian cuisine. It is a good 
+option if you're following a <b>gluten free, dairy free, lacto ovo vegetarian, and vegan</b> diet. Taking all factors into account, this recipe <b>earns a spoonacular score of 95%</b>, which is outstanding. <a href=\"https://spoonacular.com/recipes/gujarati-dry-mung-bean-curry-1353775\">Gujarati Dry Mung Bean Curry</a>, <a href=\"https://spoonacular.com/recipes/gujarati-dry-mung-bean-curry-1520647\">Gujarati Dry Mung Bean Curry</a>, and <a href=\"https://spoonacular.com/recipes/uncle-bills-mung-bean-curry-1283881\">Uncle Bill's Mung Bean Curry</a> are very similar to this recipe.",
+			"cuisines": [
+				"Indian",
+				"Asian"
+			],
+			"dishTypes": [
+				"lunch",
+				"main course",
+				"main dish",
+				"dinner"
+			],
+			"diets": [
+				"gluten free",
+				"dairy free",
+				"lacto ovo vegetarian",
+				"vegan"
+			],
+			"occasions": [
+
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Wash the mung beans and boil them in plenty of hot water with a pinch of baking powder until al-dente. If you have a pressure cooker thats about 6-7 whistles.",
+							"ingredients": [
+								{
+									"id": 18369,
+									"name": "baking powder",
+									"localizedName": "baking powder",
+									"image": "white-powder.jpg"
+								},
+								{
+									"id": 16080,
+									"name": "mung beans",
+									"localizedName": "mung beans",
+									"image": "mung-beans.png"
+								},
+								{
+									"id": 14412,
+									"name": "water",
+									"localizedName": "water",
+									"image": "water.png"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404658,
+									"name": "pressure cooker",
+									"localizedName": "pressure cooker",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/pressure-cooker.jpg"
+								}
+							]
+						},
+						{
+							"number": 2,
+							"step": "Drain and set aside.In a large pan heat the oil and add the mustard seeds (wait for them to pop) then add the cumin seeds, asafoetida, curry leaves, garlic and chillies. Saut until aromatic. Obviously dont let it burn.",
+							"ingredients": [
+								{
+									"id": 2024,
+									"name": "mustard seeds",
+									"localizedName": "mustard seeds",
+									"image": "mustard-seeds.png"
+								},
+								{
+									"id": 93604,
+									"name": "curry leaves",
+									"localizedName": "curry leaves",
+									"image": "curry-leaves.jpg"
+								},
+								{
+									"id": 2014,
+									"name": "cumin seeds",
+									"localizedName": "cumin seeds",
+									"image": "ground-cumin.jpg"
+								},
+								{
+									"id": 1032035,
+									"name": "asafoetida",
+									"localizedName": "asafoetida",
+									"image": "curry-powder.jpg"
+								},
+								{
+									"id": 11819,
+									"name": "chili pepper",
+									"localizedName": "chili pepper",
+									"image": "red-chili.jpg"
+								},
+								{
+									"id": 11215,
+									"name": "garlic",
+									"localizedName": "garlic",
+									"image": "garlic.png"
+								},
+								{
+									"id": 4582,
+									"name": "cooking oil",
+									"localizedName": "cooking oil",
+									"image": "vegetable-oil.jpg"
+								},
+								{
+									"id": 0,
+									"name": "pop",
+									"localizedName": "soft drink",
+									"image": ""
+								}
+							],
+							"equipment": [
+								{
+									"id": 404645,
+									"name": "frying pan",
+									"localizedName": "frying pan",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+								}
+							]
+						},
+						{
+							"number": 3,
+							"step": "Add the tomatoes, turmeric and mung beans and cook for two minutes. Be careful not to mash it up as you stir.",
+							"ingredients": [
+								{
+									"id": 16080,
+									"name": "mung beans",
+									"localizedName": "mung beans",
+									"image": "mung-beans.png"
+								},
+								{
+									"id": 11529,
+									"name": "tomato",
+									"localizedName": "tomato",
+									"image": "tomato.png"
+								},
+								{
+									"id": 2043,
+									"name": "turmeric",
+									"localizedName": "turmeric",
+									"image": "turmeric.jpg"
+								}
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 2,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 4,
+							"step": "Add the salt, sugar, lemon juice and cinnamon powder and cook for a further two minutes.Throw in the chopped coriander, combine and serve.",
+							"ingredients": [
+								{
+									"id": 1012010,
+									"name": "ground cinnamon",
+									"localizedName": "ground cinnamon",
+									"image": "cinnamon.jpg"
+								},
+								{
+									"id": 9152,
+									"name": "lemon juice",
+									"localizedName": "lemon juice",
+									"image": "lemon-juice.jpg"
+								},
+								{
+									"id": 1012013,
+									"name": "coriander",
+									"localizedName": "coriander",
+									"image": "ground-coriander.jpg"
+								},
+								{
+									"id": 19335,
+									"name": "sugar",
+									"localizedName": "sugar",
+									"image": "sugar-in-bowl.png"
+								},
+								{
+									"id": 2047,
+									"name": "salt",
+									"localizedName": "salt",
+									"image": "salt.jpg"
+								}
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 2,
+								"unit": "minutes"
+							}
+						}
+					]
+				}
+			],
+			"spoonacularScore": 95.71003723144531,
+			"spoonacularSourceUrl": "https://spoonacular.com/gujarati-dry-mung-bean-curry-646043"
+		},
+		{
+			"id": 652393,
+			"image": "https://img.spoonacular.com/recipes/652393-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Moosewood Lentil Soup",
+			"readyInMinutes": 45,
+			"servings": 6,
+			"sourceUrl": "https://www.foodista.com/recipe/TNZ67L5Y/moosewood-lentil-soup",
+			"vegetarian": true,
+			"vegan": true,
+			"glutenFree": true,
+			"dairyFree": true,
+			"veryHealthy": true,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 9,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 2,
+			"healthScore": 100.0,
+			"creditsText": "foodista.com",
+			"license": null,
+			"sourceName": "foodista.com",
+			"pricePerServing": 74.36,
+			"summary": "Moosewood Lentil Soup might be a good recipe to expand your main course recipe box. This gluten free, dairy free, lacto ovo vegetarian, and vegan recipe serves 6 and costs <b>74 cents per serving</b>. One portion of this dish contains roughly <b>26g of protein</b>, <b>4g of fat</b>, and a total of <b>396 calories</b>. A mixture of pepper, lentils, salt, and a handful of other ingredients are all it takes to make this recipe so yummy. 2 people found this recipe to be flavorful and satisfying. It is perfect for <b>Autumn</b>. From preparation to the plate, this recipe takes roughly <b>45 minutes</b>. It is brought to you by Foodista. All things considered, we decided this recipe <b>deserves a spoonacular score of 95%</b>. This score is spectacular. Similar recipes are <a href=\"https://spoonacular.com/recipes/moosewood-lentil-soup-1319699\">Moosewood Lentil Soup</a>, <a 
+href=\"https://spoonacular.com/recipes/moosewood-mushroom-barley-soup-143909\">Moosewood Mushroom Barley Soup!</a>, and <a href=\"https://spoonacular.com/recipes/hungarian-mushroom-soup-from-the-moosewood-cookbook-143242\">Hungarian Mushroom Soup, from the Moosewood Cookbook</a>.",
+			"cuisines": [
+
+			],
+			"dishTypes": [
+				"lunch",
+				"soup",
+				"main course",
+				"main dish",
+				"dinner"
+			],
+			"diets": [
+				"gluten free",
+				"dairy free",
+				"lacto ovo vegetarian",
+				"vegan"
+			],
+			"occasions": [
+				"fall",
+				"winter"
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Place lentils and water in a soup pot or Dutch oven.Bring to a boil, lower heat to a simmer, and let cook until lentils are mushy (about 45 minutes).",
+							"ingredients": [
+								{
+									"id": 10316069,
+									"name": "lentils",
+									"localizedName": "lentils",
+									"image": "lentils-brown.jpg"
+								},
+								{
+									"id": 14412,
+									"name": "water",
+									"localizedName": "water",
+									"image": "water.png"
+								},
+								{
+									"id": 0,
+									"name": "soup",
+									"localizedName": "soup",
+									"image": ""
+								}
+							],
+							"equipment": [
+								{
+									"id": 404667,
+									"name": "dutch oven",
+									"localizedName": "dutch oven",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/dutch-oven.jpg"
+								}
+							],
+							"length": {
+								"number": 45,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 2,
+							"step": "Add more water as needed, until the soup is your favorite consistency.",
+							"ingredients": [
+								{
+									"id": 14412,
+									"name": "water",
+									"localizedName": "water",
+									"image": "water.png"
+								},
+								{
+									"id": 0,
+									"name": "soup",
+									"localizedName": "soup",
+									"image": ""
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 3,
+							"step": "Heat oil or melt butter in a medium-sized skillet.",
+							"ingredients": [
+								{
+									"id": 1001,
+									"name": "butter",
+									"localizedName": "butter",
+									"image": "butter-sliced.jpg"
+								},
+								{
+									"id": 4582,
+									"name": "cooking oil",
+									"localizedName": "cooking 
+oil",
+									"image": "vegetable-oil.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404645,
+									"name": "frying pan",
+									"localizedName": "frying pan",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+								}
+							]
+						},
+						{
+							"number": 4,
+							"step": "Add onion, celery, and carrots, and saut over medium heat for about 10 minutes.",
+							"ingredients": [
+								{
+									"id": 11124,
+									"name": "carrot",
+									"localizedName": "carrot",
+									"image": "sliced-carrot.png"
+								},
+								{
+									"id": 11143,
+									"name": "celery",
+									"localizedName": "celery",
+									"image": "celery.jpg"
+								},
+								{
+									"id": 11282,
+									"name": "onion",
+									"localizedName": "onion",
+									"image": "brown-onion.png"
+								}
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 10,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 5,
+							"step": "Add garlic, salt, pepper, and herbs of your choice, and saut about 5 minutes longer.",
+							"ingredients": [
+								{
+									"id": 11215,
+									"name": "garlic",
+									"localizedName": "garlic",
+									"image": "garlic.png"
+								},
+								{
+									"id": 1002030,
+									"name": "pepper",
+									"localizedName": "pepper",
+									"image": "pepper.jpg"
+								},
+								{
+									"id": 1002044,
+									"name": "herbs",
+									"localizedName": "herbs",
+									"image": "mixed-fresh-herbs.jpg"
+								},
+								{
+									"id": 2047,
+									"name": "salt",
+									"localizedName": "salt",
+									"image": "salt.jpg"
+								}
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 5,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 6,
+							"step": "Transfer to lentils.Stir in wine, if desired, lemon juice and molasses or brown sugar.Taste to correct seasonings, then simmer for",
+							"ingredients": [
+								{
+									"id": 19334,
+									"name": "brown sugar",
+									"localizedName": "brown sugar",
+									"image": "dark-brown-sugar.png"
+								},
+								{
+									"id": 9152,
+									"name": "lemon juice",
+									"localizedName": "lemon juice",
+									"image": "lemon-juice.jpg"
+								},
+								{
+									"id": 1042027,
+									"name": "seasoning",
+									"localizedName": "seasoning",
+									"image": "seasoning.png"
+								},
+								{
+									"id": 19304,
+									"name": "molasses",
+									"localizedName": "molasses",
+									"image": "molasses.jpg"
+								},
+								{
+									"id": 10316069,
+									"name": "lentils",
+									"localizedName": "lentils",
+									"image": "lentils-brown.jpg"
+								},
+								{
+									"id": 14084,
+									"name": "wine",
+									"localizedName": "wine",
+									"image": "red-wine.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 7,
+							"step": "At least 15 minutes longer.",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 15,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 8,
+							"step": "Serve hot, with a little vinegar drizzled onto each serving, and a sprinkling of minced",
+							"ingredients": [
+								{
+									"id": 2053,
+									"name": "vinegar",
+									"localizedName": "vinegar",
+									"image": "vinegar-(white).jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 9,
+							"step": "Scallions or parsley on top, if desired.",
+							"ingredients": [
+								{
+									"id": 11291,
+									"name": "green onions",
+									"localizedName": "green onions",
+									"image": "spring-onions.jpg"
+								},
+								{
+									"id": 11297,
+									"name": "parsley",
+									"localizedName": "parsley",
+									"image": "parsley.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 95.64783477783203,
+			"spoonacularSourceUrl": "https://spoonacular.com/moosewood-lentil-soup-652393"
+		},
+		{
+			"id": 716217,
+			"image": "https://img.spoonacular.com/recipes/716217-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Vietnamese Pancakes with Vegetables, Herbs and a Fragrant Dipping Sauce (Bánh Xèo)",
+			"readyInMinutes": 45,
+			"servings": 6,
+			"sourceUrl": "https://www.foodandspice.com/2012/05/vietnamese-pancakes-with-vegetables.html",
+			"vegetarian": true,
+			"vegan": false,
+			"glutenFree": true,
+			"dairyFree": true,
+			"veryHealthy": false,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 14,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 295,
+			"healthScore": 35.0,
+			"creditsText": "foodandspice.com",
+			"license": null,
+			"sourceName": "foodandspice.com",
+			"pricePerServing": 318.98,
+			"summary": "Vietnamese Pancakes with Vegetables, Herbs and a Fragrant Dipping Sauce (Bánh Xèo) requires roughly <b>45 minutes</b> from start to finish. One serving contains <b>390 calories</b>, <b>8g of 
+protein</b>, and <b>22g of fat</b>. This gluten free, dairy free, and lacto ovo vegetarian recipe serves 6 and costs <b>$3.19 per serving</b>. Head to the store and pick up chilies, rice vinegar, enoki mushrooms, and a few other things to make it today. 295 people found this recipe to be yummy and satisfying. It works well as a side dish. Plenty of people really liked this Vietnamese dish. It is brought to you by foodandspice.blogspot.com. Overall, this recipe earns an <b>awesome spoonacular score of 94%</b>. Similar recipes include <a href=\"https://spoonacular.com/recipes/bnh-xo-vietnamese-happy-pancakes-891106\">Bánh xèo (Vietnamese Happy Pancakes)</a>, <a href=\"https://spoonacular.com/recipes/banh-xeo-bnh-xo-savory-vietnamese-crpe-1000958\">Banh Xeo (Bánh Xèo) ? Savory Vietnamese Crêpe</a>, and <a href=\"https://spoonacular.com/recipes/banh-xeo-vietnamese-crepes-1661759\">Banh Xeo (Vietnamese Crepes)</a>.",
+			"cuisines": [
+				"Vietnamese",
+				"Asian"
+			],
+			"dishTypes": [
+				"side dish"
+			],
+			"diets": [
+				"gluten free",
+				"dairy free",
+				"lacto ovo vegetarian"
+			],
+			"occasions": [
+
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Begin by preparing the pancake batter.",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 2,
+							"step": "Whisk together the rice flour, egg, sea salt, turmeric, cayenne and green chili. Gradually whisk in the coconut milk. The mixture should be a smooth, semi-thick batter that is of pouring consistency.",
+							"ingredients": [
+								{
+									"id": 12118,
+									"name": "coconut milk",
+									"localizedName": "coconut milk",
+									"image": "coconut-milk.png"
+								},
+								{
+									"id": 31015,
+									"name": "green chili pepper",
+									"localizedName": "green chili pepper",
+									"image": "chili-peppers-green.jpg"
+								},
+								{
+									"id": 20061,
+									"name": "rice flour",
+									"localizedName": "rice flour",
+									"image": "white-powder.jpg"
+								},
+								{
+									"id": 1012047,
+									"name": "sea salt",
+									"localizedName": "sea salt",
+									"image": "salt.jpg"
+								},
+								{
+									"id": 2043,
+									"name": "turmeric",
+									"localizedName": "turmeric",
+									"image": "turmeric.jpg"
+								},
+								{
+									"id": 2031,
+									"name": "ground cayenne pepper",
+									"localizedName": "ground cayenne pepper",
+									"image": "chili-powder.jpg"
+								},
+								{
+									"id": 1123,
+									"name": "egg",
+									"localizedName": "egg",
+									"image": "egg.png"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404661,
+									"name": "whisk",
+									"localizedName": "whisk",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+								}
+							]
+						},
+						{
+							"number": 3,
+							"step": "Add a little water if necessary. Cover and set aside while you prepare the rest of the food.Now prepare the sauce.",
+							"ingredients": [
+								{
+									"id": 0,
+									"name": "sauce",
+									"localizedName": "sauce",
+									"image": ""
+								},
+								{
+									"id": 14412,
+									"name": "water",
+									"localizedName": "water",
+									"image": "water.png"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 4,
+							"step": "Whisk together all of the ingredients and set aside.For the filling, combine the carrot, radish, green onions, green chilies and snow peas.",
+							"ingredients": [
+								{
+									"id": 31015,
+									"name": "green chili pepper",
+									"localizedName": "green chili pepper",
+									"image": "chili-peppers-green.jpg"
+								},
+								{
+									"id": 11291,
+									"name": "green onions",
+									"localizedName": "green onions",
+									"image": "spring-onions.jpg"
+								},
+								{
+									"id": 11300,
+									"name": "snow peas",
+									"localizedName": "snow peas",
+									"image": "snow-peas.jpg"
+								},
+								{
+									"id": 11124,
+									"name": "carrot",
+									"localizedName": "carrot",
+									"image": "sliced-carrot.png"
+								},
+								{
+									"id": 11429,
+									"name": "radish",
+									"localizedName": "radish",
+									"image": "radishes.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404661,
+									"name": "whisk",
+									"localizedName": "whisk",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+								}
+							]
+						},
+						{
+							"number": 5,
+							"step": "Put the herbs in another bowl and have your sprouts ready along with the mushrooms.",
+							"ingredients": [
+								{
+									"id": 11260,
+									"name": "mushrooms",
+									"localizedName": "mushrooms",
+									"image": "https://spoonacular.com/cdn/ingredients_100x100/mushrooms.png"
+								},
+								{
+									"id": 11001,
+									"name": "sprouts",
+									"localizedName": "sprouts",
+									"image": "alfalfa-sprouts.png"
+								},
+								{
+									"id": 1002044,
+									"name": "herbs",
+									"localizedName": "herbs",
+									"image": "mixed-fresh-herbs.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404783,
+									"name": "bowl",
+									"localizedName": "bowl",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+								}
+							]
+						},
+						{
+							"number": 6,
+							"step": "Heat a teaspoon of oil over medium heat in a non-stick skillet. When hot, ladle 1/2 cup of batter into the pan and spread with the bottom of the ladle until you have a roughly 6 to 8 inch pancake.  Fry for 6 to 8 minutes or until you have small holes forming and the bottom is crispy brown, then flip and fry for another few minutes on the other side.",
+							"ingredients": [
+								{
+									"id": 0,
+									"name": "spread",
+									"localizedName": "spread",
+									"image": ""
+								},
+								{
+									"id": 4582,
+									"name": "cooking oil",
+									"localizedName": "cooking oil",
+									"image": "vegetable-oil.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404645,
+									"name": "frying pan",
+									"localizedName": "frying pan",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+								},
+								{
+									"id": 404630,
+									"name": "ladle",
+									"localizedName": "ladle",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/ladle.jpg"
+								}
+							],
+							"length": {
+								"number": 6,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 7,
+							"step": "Transfer to a plate and keep warm in a 150 oven while you finish the rest of the pancakes  you should finish with 4 to 6 pancakes.To serve, scatter a portion of the vegetables, herbs and mushrooms over one half of the pancake.",
+							"ingredients": [
+								{
+									"id": 11583,
+									"name": "vegetable",
+									"localizedName": "vegetable",
+									"image": "mixed-vegetables.png"
+								},
+								{
+									"id": 11260,
+									"name": "mushrooms",
+									"localizedName": "mushrooms",
+									"image": "https://spoonacular.com/cdn/ingredients_100x100/mushrooms.png"
+								},
+								{
+									"id": 1002044,
+									"name": "herbs",
+									"localizedName": "herbs",
+									"image": "mixed-fresh-herbs.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404784,
+									"name": "oven",
+									"localizedName": "oven",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+								}
+							]
+						},
+						{
+							"number": 8,
+							"step": "Sprinkle some sauce over top and fold the pancake.",
+							"ingredients": [
+								{
+									"id": 0,
+									"name": "sauce",
+									"localizedName": "sauce",
+									"image": ""
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 9,
+							"step": "Drizzle with more sauce and there you go.",
+							"ingredients": [
+								{
+									"id": 0,
+									"name": "sauce",
+									"localizedName": "sauce",
+									"image": ""
+								}
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 95.24661254882812,
+			"spoonacularSourceUrl": "https://spoonacular.com/vietnamese-pancakes-with-vegetables-herbs-and-a-fragrant-dipping-sauce-bnh-xo-716217"
+		},
+		{
+			"id": 645978,
+			"image": "https://img.spoonacular.com/recipes/645978-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Ground Turkey Stuffed Peppers",
+			"readyInMinutes": 45,
+			"servings": 4,
+			"sourceUrl": "https://www.foodista.com/recipe/VKY3BZ5J/ground-turkey-stuffed-peppers",
+			"vegetarian": false,
+			"vegan": false,
+			"glutenFree": true,
+			"dairyFree": false,
+			"veryHealthy": false,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 11,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 112,
+			"healthScore": 39.0,
+			"creditsText": "foodista.com",
+			"license": null,
+			"sourceName": "foodista.com",
+			"pricePerServing": 299.64,
+			"summary": "Ground Turkey Stuffed Peppers might be just the main course you are searching for. Watching your figure? This gluten free recipe has <b>463 calories</b>, <b>34g of protein</b>, and <b>17g of fat</b> per serving. This recipe serves 4 and costs $3.0 per serving. 112 people were glad they tried this recipe. A mixture of bell peppers, garlic, onion, and a handful of other ingredients are all it takes to make this recipe so yummy. It is brought to you by Foodista. From preparation to the plate, this recipe takes roughly <b>45 minutes</b>. Taking all factors into account, 
+this recipe <b>earns a spoonacular score of 94%</b>, which is spectacular. Try <a href=\"https://spoonacular.com/recipes/ground-turkey-stuffed-peppers-1311407\">Ground Turkey Stuffed Peppers</a>, <a href=\"https://spoonacular.com/recipes/ground-turkey-stuffed-peppers-1227903\">Ground Turkey Stuffed Peppers</a>, and <a href=\"https://spoonacular.com/recipes/ground-turkey-stuffed-peppers-1353987\">Ground Turkey Stuffed Peppers</a> for similar recipes.",
+			"cuisines": [
+
+			],
+			"dishTypes": [
+				"lunch",
+				"main course",
+				"main dish",
+				"dinner"
+			],
+			"diets": [
+				"gluten free"
+			],
+			"occasions": [
+
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Cook rice then knead it together with remaining filling ingredients.",
+							"ingredients": [
+								{
+									"id": 20444,
+									"name": "rice",
+									"localizedName": "rice",
+									"image": "uncooked-white-rice.png"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 2,
+							"step": "Cut tops off peppers and fill each one.",
+							"ingredients": [
+								{
+									"id": 10111333,
+									"name": "peppers",
+									"localizedName": "peppers",
+									"image": "green-pepper.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 3,
+							"step": "Place in your slow cooker or a large stove-top pot.",
+							"ingredients": [
+
+							],
+							"equipment": [
+								{
+									"id": 404718,
+									"name": "slow cooker",
+									"localizedName": "slow cooker",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/slow-cooker.jpg"
+								},
+								{
+									"id": 404794,
+									"name": "stove",
+									"localizedName": "stove",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+								},
+								{
+									"id": 404752,
+									"name": "pot",
+									"localizedName": "pot",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/stock-pot.jpg"
+								}
+							]
+						},
+						{
+							"number": 4,
+							"step": "Mix together sauce ingredients. Top each stuffed pepper with sauce and pour remaining sauce all around the stuffed peppers. Cook on medium/low for about an hour. Top with grated parmesan cheese and a little parsley for looks and serve warm.",
+							"ingredients": [
+								{
+									"id": 1032,
+									"name": "grated parmesan cheese",
+									"localizedName": "grated parmesan cheese",
+									"image": "parmesan.jpg"
+								},
+								{
+									"id": 11297,
+									"name": "parsley",
+									"localizedName": "parsley",
+									"image": "parsley.jpg"
+								},
+								{
+									"id": 10111333,
+									"name": "peppers",
+									"localizedName": "peppers",
+									"image": "green-pepper.jpg"
+								},
+								{
+									"id": 1002030,
+									"name": "pepper",
+									"localizedName": "pepper",
+									"image": "pepper.jpg"
+								},
+								{
+									"id": 0,
+									"name": "sauce",
+									"localizedName": "sauce",
+									"image": ""
+								}
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 94.98167419433594,
+			"spoonacularSourceUrl": "https://spoonacular.com/ground-turkey-stuffed-peppers-645978"
+		},
+		{
+			"id": 665379,
+			"image": "https://img.spoonacular.com/recipes/665379-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Winter Kimchi",
+			"readyInMinutes": 45,
+			"servings": 1,
+			"sourceUrl": "https://www.foodista.com/recipe/DPZ3FLTW/winter-kimchi",
+			"vegetarian": false,
+			"vegan": false,
+			"glutenFree": true,
+			"dairyFree": true,
+			"veryHealthy": true,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 6,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 4,
+			"healthScore": 100.0,
+			"creditsText": "Foodista.com ? The Cooking Encyclopedia Everyone Can Edit",
+			"license": "CC BY 3.0",
+			"sourceName": "Foodista",
+			"pricePerServing": 1050.81,
+			"summary": "Need a <b>gluten free, dairy free, and pescatarian side dish</b>? Winter Kimchi could be a spectacular recipe to try. This recipe makes 1 servings with <b>365 calories</b>, <b>23g of protein</b>, and <b>3g of fat</b> each. For <b>$10.51 per serving</b>, this recipe <b>covers 54%</b> of your daily requirements of vitamins and minerals. Not a lot of people really liked this Korean dish. It will be a hit at your <b>Winter</b> event. If you have fish sauce, brine solution, garlic bulb, and a few other ingredients on hand, you can make it. 4 people found this recipe to be delicious and satisfying. It is brought to you by Foodista. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. With a spoonacular <b>score of 92%</b>, this dish is amazing. <a href=\"https://spoonacular.com/recipes/winter-kimchi-1404513\">Winter Kimchi</a>, <a href=\"https://spoonacular.com/recipes/kimchi-stew-with-pork-belly-and-tofu-kimchi-jjigae-1679959\">Kimchi Stew with Pork Belly and Tofu (Kimchi-jjigae)</a>, and <a href=\"https://spoonacular.com/recipes/red-curry-mussels-with-kimchi-puree-from-the-kimchi-cookbook-202500\">Red Curry Mussels with Kimchi Puree from 'The Kimchi Cookbook</a> are very similar to this recipe.",
+			"cuisines": [
+				"Korean",
+				"Asian"
+			],
+			"dishTypes": [
+				"side dish"
+			],
+			"diets": [
+				"gluten free",
+				"dairy free",
+				"pescatarian"
+			],
+			"occasions": [
+				"winter"
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Soak the quartered cabbage in the brine solution for 4 hours, weighing the cabbage down with a heavy plate.",
+							"ingredients": [
+								{
+									"id": 11109,
+									"name": "cabbage",
+									"localizedName": "cabbage",
+									"image": "cabbage.jpg"
+								},
+								{
+									"id": 93798,
+									"name": "brine",
+									"localizedName": "brine",
+									"image": ""
+								}
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 240,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 2,
+							"step": "Remove and drain.",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 3,
+							"step": "Place garlic cloves, rice, fermented shrimp, fish sauce, sugar, chilly paste and chilly flakes in a food processor and zap to a smooth paste. Stir in spring onions.",
+							"ingredients": [
+								{
+									"id": 10211215,
+									"name": "whole garlic cloves",
+									"localizedName": "whole garlic cloves",
+									"image": "garlic.jpg"
+								},
+								{
+									"id": 11291,
+									"name": "spring onions",
+									"localizedName": "spring onions",
+									"image": "spring-onions.jpg"
+								},
+								{
+									"id": 6179,
+									"name": "fish sauce",
+									"localizedName": "fish sauce",
+									"image": "asian-fish-sauce.jpg"
+								},
+								{
+									"id": 15270,
+									"name": "shrimp",
+									"localizedName": "shrimp",
+									"image": "shrimp.png"
+								},
+								{
+									"id": 19335,
+									"name": "sugar",
+									"localizedName": "sugar",
+									"image": "sugar-in-bowl.png"
+								},
+								{
+									"id": 20444,
+									"name": "rice",
+									"localizedName": "rice",
+									"image": "uncooked-white-rice.png"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404771,
+									"name": "food processor",
+									"localizedName": "food processor",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/food-processor.png"
+								}
+							]
+						},
+						{
+							"number": 4,
+							"step": "Stuff the cabbage with the paste, making sure to stuff in between the individual leaves and coating every inch of it.",
+							"ingredients": [
+								{
+									"id": 11109,
+									"name": "cabbage",
+									"localizedName": "cabbage",
+									"image": "cabbage.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 5,
+							"step": "Place kimchi into an airtight container and leave at room temperature for a day before leaving it to ferment further in the fridge for at least another week before consuming. I left mine for about 3 weeks.",
+							"ingredients": [
+								{
+									"id": 98860,
+									"name": "kimchi",
+									"localizedName": "kimchi",
+									"image": "kimchi.png"
+								}
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 94.17967987060547,
+			"spoonacularSourceUrl": "https://spoonacular.com/winter-kimchi-665379"
+		},
+		{
+			"id": 652038,
+			"image": "https://img.spoonacular.com/recipes/652038-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Minted Pea & Spinach Soup",
+			"readyInMinutes": 45,
+			"servings": 6,
+			"sourceUrl": "https://www.foodista.com/recipe/QGDZZM3X/minted-pea-spinach-soup",
+			"vegetarian": true,
+			"vegan": false,
+			"glutenFree": true,
+			"dairyFree": false,
+			"veryHealthy": true,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 4,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 3,
+			"healthScore": 75.0,
+			"creditsText": "Foodista.com ? The Cooking Encyclopedia Everyone Can Edit",
+			"license": "CC BY 3.0",
+			"sourceName": "Foodista",
+			"pricePerServing": 97.28,
+			"summary": "Minted Pea & Spinach Soup takes about <b>45 minutes</b> from beginning to end. This gluten free and lacto ovo vegetarian recipe serves 6 and costs <b>97 cents per serving</b>. One serving contains <b>184 calories</b>, <b>7g of protein</b>, and <b>5g of fat</b>. This recipe is liked by 3 foodies and cooks. It will be a hit at your <b>Autumn</b> event. It works well as a very reasonably priced hor d'oeuvre. Head to the store and pick up chicken stock, water, salt & pepper, and a few other things to make it today. It is brought to you by Foodista. Overall, this recipe earns an <b>excellent spoonacular score of 93%</b>. If you like this recipe, you might also like recipes such as <a href=\"https://spoonacular.com/recipes/minted-pea-spinach-soup-1393981\">Minted Pea & Spinach Soup</a>, <a href=\"https://spoonacular.com/recipes/minted-pea-spinach-soup-1365331\">Minted Pea & Spinach Soup</a>, and <a href=\"https://spoonacular.com/recipes/fresh-spinach-soup-with-minted-pea-cilantro-478482\">Fresh Spinach Soup with Minted Pea & Cilantro</a>.",
+			"cuisines": [
+
+			],
+			"dishTypes": [
+				"antipasti",
+				"soup",
+				"starter",
+				"snack",
+				"appetizer",
+				"antipasto",
+				"hor d'oeuvre"
+			],
+			"diets": [
+				"gluten free",
+				"lacto ovo vegetarian"
+			],
+			"occasions": [
+				"fall",
+				"winter"
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Place pototoes in a medium sized pot with a little bit of water and some salt & pepper.",
+							"ingredients": [
+								{
+									"id": 1102047,
+									"name": "salt and pepper",
+									"localizedName": "salt and pepper",
+									"image": "salt-and-pepper.jpg"
+								},
+								{
+									"id": 14412,
+									"name": "water",
+									"localizedName": "water",
+									"image": "water.png"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404752,
+									"name": "pot",
+									"localizedName": "pot",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/stock-pot.jpg"
+								}
+							]
+						},
+						{
+							"number": 2,
+							"step": "Place lid on and cook for 20 minutes until almost soft.",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 20,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 3,
+							"step": "Add peas and cook for a further 5 minutes until potatoes are soft and cooked through.",
+							"ingredients": [
+								{
+									"id": 11352,
+									"name": "potato",
+									"localizedName": "potato",
+									"image": "potatoes-yukon-gold.png"
+								},
+								{
+									"id": 11304,
+									"name": "peas",
+									"localizedName": "peas",
+									"image": "peas.jpg"
+								}
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 5,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 4,
+							"step": "Add spinach and cook a further 3 -5 minutes, until wilted.Take off the heat and let cool for a few minutes, then blend to a puree with an immersion blender.",
+							"ingredients": [
+								{
+									"id": 10011457,
+									"name": "spinach",
+									"localizedName": "spinach",
+									"image": "https://spoonacular.com/cdn/ingredients_100x100/spinach.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404776,
+									"name": "immersion blender",
+									"localizedName": "immersion blender",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/immersion-blender.png"
+								}
+							],
+							"length": {
+								"number": 5,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 5,
+							"step": "Place pot back on the stovetop, adding cream, milk, water and chicken stock. Re-heat for a few minutes until piping-hot.",
+							"ingredients": [
+								{
+									"id": 6172,
+									"name": "chicken stock",
+									"localizedName": "chicken stock",
+									"image": "chicken-broth.png"
+								},
+								{
+									"id": 1053,
+									"name": "cream",
+									"localizedName": "cream",
+									"image": "fluid-cream.jpg"
+								},
+								{
+									"id": 14412,
+									"name": "water",
+									"localizedName": "water",
+									"image": "water.png"
+								},
+								{
+									"id": 1077,
+									"name": "milk",
+									"localizedName": "milk",
+									"image": "milk.png"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404794,
+									"name": "stove",
+									"localizedName": "stove",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg"
+								},
+								{
+									"id": 404752,
+									"name": "pot",
+									"localizedName": "pot",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/stock-pot.jpg"
+								}
+							]
+						},
+						{
+							"number": 6,
+							"step": "Add yoghurt, mint, sugar, salt and pepper to taste and stir through.",
+							"ingredients": [
+								{
+									"id": 1102047,
+									"name": "salt and pepper",
+									"localizedName": "salt and pepper",
+									"image": "salt-and-pepper.jpg"
+								},
+								{
+									"id": 1116,
+									"name": "yogurt",
+									"localizedName": "yogurt",
+									"image": "plain-yogurt.jpg"
+								},
+								{
+									"id": 19335,
+									"name": "sugar",
+									"localizedName": "sugar",
+									"image": "sugar-in-bowl.png"
+								},
+								{
+									"id": 2064,
+									"name": "mint",
+									"localizedName": "mint",
+									"image": "mint.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 7,
+							"step": "Serve immediately, scattered with some crispy croutons or bacon bits (or if you're like me and you just have some cheesegrillers on hand, fry them up in thin slices with a bit of sweet chilli sauce and use as topper).",
+							"ingredients": [
+								{
+									"id": 98962,
+									"name": "sweet chili sauce",
+									"localizedName": "sweet chili sauce",
+									"image": "fish-sauce.jpg"
+								},
+								{
+									"id": 43212,
+									"name": "bacon bits",
+									"localizedName": "bacon bits",
+									"image": "bacon-bits.jpg"
+								},
+								{
+									"id": 18242,
+									"name": "croutons",
+									"localizedName": "croutons",
+									"image": "croutons.png"
+								}
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 93.8776626586914,
+			"spoonacularSourceUrl": "https://spoonacular.com/minted-pea-spinach-soup-652038"
+		},
+		{
+			"id": 1096185,
+			"image": "https://img.spoonacular.com/recipes/1096185-312x231.jpg",
+			"imageType": "jpg",
+			"title": "North by Northwest Couscous Salad",
+			"readyInMinutes": 30,
+			"servings": 4,
+			"sourceUrl": "https://www.foodista.com/recipe/8S3RLBHN/north-by-northwest-couscous-salad",
+			"vegetarian": true,
+			"vegan": true,
+			"glutenFree": false,
+			"dairyFree": true,
+			"veryHealthy": true,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 16,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 1,
+			"healthScore": 100.0,
+			"creditsText": "Foodista.com ? The Cooking Encyclopedia Everyone Can Edit",
+			"license": "CC BY 3.0",
+			"sourceName": "Foodista",
+			"pricePerServing": 228.59,
+			"summary": "The recipe North by Northwest Couscous Salad can be made <b>in roughly 30 minutes</b>. One portion of this dish contains about <b>17g of protein</b>, <b>32g of fat</b>, and a total of <b>636 calories</b>. For <b>$2.29 per serving</b>, this recipe <b>covers 31%</b> of your daily requirements of vitamins and minerals. This recipe serves 4. A mixture of lemon zest, kosher salt, garbanzo beans, and a handful of other ingredients are all it takes to make this recipe so yummy. 1 person found this recipe to be flavorful and satisfying. It works well as a reasonably priced main course. It is brought to you by Foodista. It is a good option if you're following a <b>dairy free, lacto ovo vegetarian, and vegan</b> diet. All things considered, we decided this recipe <b>deserves a spoonacular score of 92%</b>. This score is awesome. Similar recipes are <a href=\"https://spoonacular.com/recipes/north-african-couscous-and-pomegranate-salad-22565\">North African Couscous And Pomegranate Salad</a>, <a href=\"https://spoonacular.com/recipes/north-african-chicken-and-couscous-232861\">North African Chicken and Couscous</a>, and <a href=\"https://spoonacular.com/recipes/traditional-north-african-couscous-the-real-way-98130\">Traditional North African Couscous (The Real Way!)</a>.",
+			"cuisines": [
+
+			],
+			"dishTypes": [
+				"side dish",
+				"lunch",
+				"salad",
+				"main course",
+				"main dish",
+				"dinner"
+			],
+			"diets": [
+				"dairy free",
+				"lacto ovo vegetarian",
+				"vegan"
+			],
+			"occasions": [
+
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Whisk together the lemon zest, lemon juice, sugar, mustard, and salt.Slowly add in the olive oil, continuing to whisk, until emulsified.Prepare the couscous according to the package instructions.Toast the hazelnuts for approximately 10 minutes at 350F.",
+							"ingredients": [
+								{
+									"id": 9152,
+									"name": "lemon juice",
+									"localizedName": "lemon juice",
+									"image": "lemon-juice.jpg"
+								},
+								{
+									"id": 9156,
+									"name": "lemon zest",
+									"localizedName": "lemon zest",
+									"image": "zest-lemon.jpg"
+								},
+								{
+									"id": 12120,
+									"name": "hazelnuts",
+									"localizedName": "hazelnuts",
+									"image": "hazelnuts.jpg"
+								},
+								{
+									"id": 4053,
+									"name": "olive oil",
+									"localizedName": "olive oil",
+									"image": "olive-oil.jpg"
+								},
+								{
+									"id": 20028,
+									"name": "couscous",
+									"localizedName": "couscous",
+									"image": "couscous-cooked.jpg"
+								},
+								{
+									"id": 2046,
+									"name": "mustard",
+									"localizedName": "mustard",
+									"image": "regular-mustard.jpg"
+								},
+								{
+									"id": 19335,
+									"name": "sugar",
+									"localizedName": "sugar",
+									"image": "sugar-in-bowl.png"
+								},
+								{
+									"id": 0,
+									"name": "sandwich bread",
+									"localizedName": "sandwich bread",
+									"image": "white-bread.jpg"
+								},
+								{
+									"id": 2047,
+									"name": "salt",
+									"localizedName": "salt",
+									"image": "salt.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404661,
+									"name": "whisk",
+									"localizedName": "whisk",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
+								}
+							],
+							"length": {
+								"number": 10,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 2,
+							"step": "Let cool until safe to touch, then chop.",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 3,
+							"step": "Mix all remaining ingredients in a large bowl.",
+							"ingredients": [
+
+							],
+							"equipment": [
+								{
+									"id": 404783,
+									"name": "bowl",
+									"localizedName": "bowl",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+								}
+							]
+						},
+						{
+							"number": 4,
+							"step": "Add the couscous and dressing.",
+							"ingredients": [
+								{
+									"id": 20028,
+									"name": "couscous",
+									"localizedName": "couscous",
+									"image": "couscous-cooked.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 5,
+							"step": "Mix well and serve.",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 93.75127410888672,
+			"spoonacularSourceUrl": "https://spoonacular.com/north-by-northwest-couscous-salad-1096185"
+		},
+		{
+			"id": 637440,
+			"image": "https://img.spoonacular.com/recipes/637440-312x231.jpg",
+			"imageType": "jpg",
+			"title": "Chapchae (Korean Stir-Fried Noodles)",
+			"readyInMinutes": 45,
+			"servings": 4,
+			"sourceUrl": "https://www.foodista.com/recipe/RSDBG48H/chapchae-korean-stir-fried-noodles",
+			"vegetarian": true,
+			"vegan": true,
+			"glutenFree": false,
+			"dairyFree": true,
+			"veryHealthy": false,
+			"cheap": false,
+			"veryPopular": false,
+			"sustainable": false,
+			"lowFodmap": false,
+			"weightWatcherSmartPoints": 12,
+			"gaps": "no",
+			"preparationMinutes": null,
+			"cookingMinutes": null,
+			"aggregateLikes": 40,
+			"healthScore": 38.0,
+			"creditsText": "Foodista.com ? The Cooking Encyclopedia Everyone Can Edit",
+			"license": "CC BY 3.0",
+			"sourceName": "Foodista",
+			"pricePerServing": 208.61,
+			"summary": "Chapchae (Korean Stir-Fried Noodles) is a <b>dairy free, lacto 
+ovo vegetarian, and vegan</b> recipe with 4 servings. This side dish has <b>397 calories</b>, <b>5g of protein</b>, and <b>15g of fat</b> per serving. For <b>$2.09 per serving</b>, this recipe <b>covers 21%</b> of your daily requirements of vitamins and minerals. 40 people have made this recipe and would make it again. It is brought to you by Foodista. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. A few people really liked this Korean dish. A mixture of soy sauce, salt, baby spinach, and a handful of other ingredients are all it takes to make this recipe so scrumptious. All things considered, we decided this recipe <b>deserves a spoonacular score of 91%</b>. This score is spectacular. Similar recipes include <a href=\"https://spoonacular.com/recipes/chapchae-korean-stir-fried-noodles-1569447\">Chapchae (Korean Stir-Fried Noodles)</a>, <a href=\"https://spoonacular.com/recipes/chapchae-korean-stir-fried-noodles-1250231\">Chapchae (Korean Stir-Fried Noodles)</a>, and <a href=\"https://spoonacular.com/recipes/korean-stir-fried-noodles-chapchae-604806\">Korean Stir-Fried Noodles (Chapchae)</a>.",
+			"cuisines": [
+				"Korean",
+				"Asian"
+			],
+			"dishTypes": [
+				"side dish"
+			],
+			"diets": [
+				"dairy free",
+				"lacto ovo vegetarian",
+				"vegan"
+			],
+			"occasions": [
+
+			],
+			"instructions": [
+				{
+					"name": "",
+					"steps": [
+						{
+							"number": 1,
+							"step": "Cook noodles according to package directions",
+							"ingredients": [
+								{
+									"id": 20420,
+									"name": "pasta",
+									"localizedName": "pasta",
+									"image": "https://spoonacular.com/cdn/ingredients_100x100/fusilli.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 2,
+							"step": "In a large pan or 
+wok over medium heat, heat olive oil and 1 Tbsp sesame oil",
+							"ingredients": [
+								{
+									"id": 4058,
+									"name": "sesame oil",
+									"localizedName": "sesame oil",
+									"image": "sesame-oil.png"
+								},
+								{
+									"id": 4053,
+									"name": "olive oil",
+									"localizedName": "olive oil",
+									"image": "olive-oil.jpg"
+								}
+							],
+							"equipment": [
+								{
+									"id": 404645,
+									"name": "frying pan",
+									"localizedName": "frying pan",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+								},
+								{
+									"id": 404666,
+									"name": "wok",
+									"localizedName": "wok",
+									"image": "https://spoonacular.com/cdn/equipment_100x100/wok.png"
+								}
+							]
+						},
+						{
+							"number": 3,
+							"step": "Add 
+onion slices and garlic and saut for about 1 min",
+							"ingredients": [
+								{
+									"id": 11215,
+									"name": "garlic",
+									"localizedName": "garlic",
+									"image": "garlic.png"
+								},
+								{
+									"id": 11282,
+									"name": "onion",
+									"localizedName": "onion",
+									"image": "brown-onion.png"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 4,
+							"step": "Add rest of vegetables and cook for 4-5 min, until the vegetables are half-cooked and still a bit crispy",
+							"ingredients": [
+								{
+									"id": 11583,
+									"name": "vegetable",
+									"localizedName": "vegetable",
+									"image": "mixed-vegetables.png"
+								}
+							],
+							"equipment": [
+
+							],
+							"length": {
+								"number": 5,
+								"unit": "minutes"
+							}
+						},
+						{
+							"number": 5,
+							"step": "Turn heat to low and add cooked noodles, soy sauce, sugar, and the remaining sesame oil",
+							"ingredients": [
+								{
+									"id": 20421,
+									"name": "cooked pasta",
+									"localizedName": "cooked pasta",
+									"image": "fusilli.jpg"
+								},
+								{
+									"id": 4058,
+									"name": "sesame oil",
+									"localizedName": "sesame oil",
+									"image": "sesame-oil.png"
+								},
+								{
+									"id": 16124,
+									"name": "soy sauce",
+									"localizedName": "soy sauce",
+									"image": "soy-sauce.jpg"
+								},
+								{
+									"id": 19335,
+									"name": "sugar",
+									"localizedName": "sugar",
+									"image": "sugar-in-bowl.png"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 6,
+							"step": "Mix to combine and cook for another 2 min",
+							"ingredients": [
+
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 7,
+							"step": "Add salt or more soy sauce if needed (or if you want it a bit sweeter, add a touch more sugar)",
+							"ingredients": [
+								{
+									"id": 16124,
+									"name": "soy sauce",
+									"localizedName": "soy sauce",
+									"image": "soy-sauce.jpg"
+								},
+								{
+									"id": 19335,
+									"name": "sugar",
+									"localizedName": "sugar",
+									"image": "sugar-in-bowl.png"
+								},
+								{
+									"id": 2047,
+									"name": "salt",
+									"localizedName": "salt",
+									"image": "salt.jpg"
+								}
+							],
+							"equipment": [
+
+							]
+						},
+						{
+							"number": 8,
+							"step": "If using sesame seeds, add them at finish",
+							"ingredients": [
+								{
+									"id": 12023,
+									"name": "sesame seeds",
+									"localizedName": "sesame seeds",
+									"image": "sesame-seeds.png"
+								}
+							],
+							"equipment": [
+
+							]
+						}
+					]
+				}
+			],
+			"spoonacularScore": 93.28660583496094,
+			"spoonacularSourceUrl": "https://spoonacular.com/chapchae-korean-stir-fried-noodles-637440"
+		}
+	],
+	"offset": 0,
+	"number": 10,
+	"totalResults": 1815
+}
