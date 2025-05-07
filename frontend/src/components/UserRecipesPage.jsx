@@ -35,7 +35,6 @@ export default function UserRecipesPage ({saveRecipe, removeRecipe}) {
             sessionStorage.setItem("recipes", JSON.stringify(savedRecipesTemp));
             const favoritesBitArrayTemp = new Array(savedRecipesTemp.length);
             favoritesBitArrayTemp.fill(true);
-            console.log(favoritesBitArrayTemp);
             setFavoritedRecipesBitMap(favoritesBitArrayTemp);
         })
         .catch(error => console.log(error));

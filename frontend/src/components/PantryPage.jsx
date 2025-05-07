@@ -10,11 +10,11 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
     // ]);
     const [ingredients, setIngredients] = useState([]);
 
-
     const [quickAddGroups, setQuickAddGroups] = useState({});
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const [newIngredient, setNewIngredient] = useState({ id: '', name: '', quantity: ''});
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
 
     const serverBaseURLString = "http://localhost:8080";
@@ -24,7 +24,6 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         return ingredientObjs.find(idNamePair => idNamePair.name == name.toLowerCase());
     }
     function saveIngredient(ingredient) {
-        console.log(ingredient);
         let saveIngredientEndpoint = new URL("addingredient", serverBaseURL);
         const options = {
             method: "PUT",
@@ -87,10 +86,18 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 credentials: "include"
             };
             fetch(listIngredientsEndpoint, options)
-            .then(response => response.json())
+            .then(response => {
+                if(response.status == 401) {
+                    setLoggedIn(false);
+                    throw new Error(`401 - Not authenticated`);
+                }
+                setLoggedIn(true);
+                return response.json();
+            })
             .then(data => {
                 const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.quantity}));
                 setIngredients(tempIngredients);
+                setLoggedIn(true);
             })
             .catch(error => console.log(error));
     }, []);
@@ -141,6 +148,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
     };
 
     return (
+        loggedIn ?
         <div className="pantry-page">
             <div className="quick-add">
                 <h2>Quick Add Ingredients</h2>
@@ -236,5 +244,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 </table>
             </div>
         </div>
+        :
+        <h1 style={{textAlign: 'center'}}>Not Logged In</h1>
     );
 }

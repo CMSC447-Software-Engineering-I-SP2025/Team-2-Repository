@@ -257,7 +257,6 @@ def api_get_recipes() -> dict:
     intolerances = request.args.get("intolerances", default="", type=str)
     diet = request.args.get("diet", default="", type=str)
 
-
     # Build required params
     params = {
         "includeIngredients": include_ingredients,
@@ -283,9 +282,14 @@ def api_get_recipes() -> dict:
 
     # Get dummy data
     #final_results = json_mapper(get_dummy_data(), Response).results
-
+    print("hre")
+    url = Request(method="GET", url=db.base_url, params=params).prepare().url
+    spoonacularResponse = reqget(url, timeout=5).text
+    json_data = json.loads(spoonacularResponse)
+    mapped_data = json_mapper(json_data, data_class=Response).results
+    return mapped_data
     # Request, get, and return data.
-    return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
+    # return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
 
 @app.route("/addrecipe", methods=["PUT"])
 def api_save_recipe() -> str:

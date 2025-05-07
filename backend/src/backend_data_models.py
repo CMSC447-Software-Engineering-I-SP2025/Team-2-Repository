@@ -106,6 +106,36 @@ class Instruction:
     name: str
     steps: list[Step]
 
+@dataclass
+class Nutrient:
+    """Nutrient dataclass.
+
+    Represents quantity of a single nutrient in a recipe
+
+    Attributes:
+        name (str): Name of the nutrient (e.g., 'Calories', 'Vitamin D')
+        amount (float): How much of the ingredient is in the recipe.
+        unit (str): The measurement unit associated with the amount.
+        percentOfDailyNeeds (float): Amount of nutrient in recipe / Recommended daily amount
+    """
+    name: str
+    amount: float
+    unit: str
+    percentOfDailyNeeds: float
+
+
+
+@dataclass
+class Nutrition:
+    """Nutrient dataclass.
+
+    Represents a collection of a nutritional information about a recipe. 
+    Omits the properties, flavonoids, and ingredients fields of a Spoonacular Nutrition object.
+
+    Attributes:
+        nutrients(list[Nutrient]): A list of nutrient quantity objects
+    """
+    nutrients: list[Nutrient]
 
 @dataclass
 class Recipe:
@@ -117,19 +147,22 @@ class Recipe:
         id (int): Unique identifier for the recipe.
         image (str): URL or path to an image of the recipe.
         title (str): Title of the recipe.
+        servings (int): Number of servings.
         usedIngredientCount (int | None): Number of used ingredients (if applicable).
         missedIngredientCount (int | None): Number of missed ingredients (if applicable).
         analyzedInstructions (list[Instruction] | None): Analyzed instructions for the recipe.
+        nutrition (Nutrition | None): Nutritional information about the recipe.
 
     """
 
     id: int
     image: str
     title: str
+    servings: int
     usedIngredientCount: int | None
     missedIngredientCount: int | None
     analyzedInstructions: list[Instruction] | None
-
+    nutrition: Nutrition | None
 
 @dataclass
 class Response:

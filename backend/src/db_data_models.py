@@ -38,9 +38,11 @@ class RecipeDB(Base):
     user_id = Column(Integer, nullable=False)
     title = Column(String(100), nullable=False)
     image = Column(String(255))
+    servings = Column(Integer)
     used_ingredient_count = Column(Integer)
     missed_ingredient_count = Column(Integer)
     analyzed_instructions = Column(JSON)  # Stores list of Instruction dataclasses as JSON
+    nutrition = Column(JSON) # Stores list of Nutrient dataclasses as JSON
 
     # Relationship (if you want direct access)
     ingredients = relationship("IngredientDB", secondary="recipe_ingredients")

@@ -799,7 +799,7 @@ header {
 
 #spoonacular-nutrition-ingredient-list,#spoonacular-nutrition-label {
     border: 1px solid black;
-    margin: 0 auto;
+    margin: 2rem auto;
     width: 300px;
     padding: .5rem;
     background: #fff;

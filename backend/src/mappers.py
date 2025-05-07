@@ -17,12 +17,17 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
             recipe_id=input_recipe.get("id"),
             title=input_recipe["title"],
             image=input_recipe["image"],
+            servings=input_recipe["servings"],
             used_ingredient_count=input_recipe["used_ingredient_count"],
             missed_ingredient_count=input_recipe["missed_ingredient_count"],
             analyzed_instructions=json.dumps(
                 [{k: v for k, v in instr.items() if k != "repr"}
                  for instr in input_recipe.get("instructions", []) or []],
             ),
+            nutrition= json.dumps(
+                {"nutrients": [{k: v for k, v in nutr.items()}
+                for nutr in input_recipe.get("nutrition").get("nutrients", []) or []]},
+            )
         )
 
     # RecipeDB -> Recipe
@@ -30,11 +35,13 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
         "id": input_recipe.recipe_id,
         "title": input_recipe.title,
         "image": input_recipe.image,
+        "servings": input_recipe.servings,
         "used_ingredient_count": input_recipe.used_ingredient_count,
         "missed_ingredient_count": input_recipe.missed_ingredient_count,
         "instructions": [
             dict(instr) for instr in json.loads(input_recipe.analyzed_instructions)
         ],
+        "nutrition": {"nutrients": [dict(nutr) for nutr in json.loads(input_recipe.nutrition)["nutrients"]]}
     }
 
     error = f"Unsupported type: {type(input_recipe)}"
@@ -92,6 +99,7 @@ def recipe_to_db(recipe: Recipe) -> RecipeDB:
         recipe_id=recipe["id"],
         title=recipe["title"],
         image=recipe["image"],
+        servings=recipe["servings"],
         used_ingredient_count=recipe["usedIngredientCount"],
         missed_ingredient_count=recipe["missedIngredientCount"],
         analyzed_instructions=json.dumps(
@@ -100,6 +108,12 @@ def recipe_to_db(recipe: Recipe) -> RecipeDB:
             if recipe["analyzedInstructions"] is not None
             else [],
         ),
+        nutrition=json.dumps(
+            {"nutrients": [{k: v for k, v in nutr.items()}
+            for nutr in recipe["nutrition"]["nutrients"] or []]}
+            if recipe["nutrition"] is not None
+            else [],
+        )
     )
 
 
@@ -109,11 +123,14 @@ def db_to_recipe(recipe_db: dict) -> dict:
         "id": recipe_db.recipe_id,
         "title": recipe_db.title,
         "image": recipe_db.image,
+        "servings": recipe_db.servings,
         "usedIngredientCount": recipe_db.used_ingredient_count,
         "missedIngredientCount": recipe_db.missed_ingredient_count,
         "analyzedInstructions": [
             dict(instr) for instr in json.loads(recipe_db.analyzed_instructions)
         ],
+        "nutrition": {"nutrients": [dict(nutr) for nutr in json.loads(recipe_db.nutrition)["nutrients"]]}
+        
     }
 
 

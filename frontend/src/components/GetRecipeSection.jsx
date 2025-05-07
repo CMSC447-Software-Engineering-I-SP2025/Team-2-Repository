@@ -136,7 +136,6 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
             highlightedRef?.current?.parentElement.scrollBy({ top: px, behavior: 'instant'})
         }
         function scrollDownToHighlighted (scrollingDown) {
-            // console.log(highlightedRef.current);
             const highlightedObj = highlightedRef?.current;
             const sibling = scrollingDown ? highlightedObj?.nextElementSibling : highlightedObj?.previousElementSibling;
             sibling?.scrollIntoView({ behavior: "smooth", block: "nearest"});
