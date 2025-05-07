@@ -176,7 +176,8 @@ def login() -> str:
     username = data.get("username")
     password = data.get("password")
     if not username or not password:
-        return render_template_string(LOGIN_FORM + "<p style='color:red;'>Username and password required.</p>"), 400
+        #return render_template_string(LOGIN_FORM + "<p style='color:red;'>Username and password required.</p>"), 400
+        return "", 400
 
     # Check if login credentials are correct
     with db.DBSession() as session_db:
@@ -184,8 +185,10 @@ def login() -> str:
         if user and check_password_hash(user.password_hash, password):
             session["user_id"] = user.id
             session["username"] = user.username
-            return render_template_string("<p>Logged in successfully! <a href='http://localhost:5173/'>Go to home</a></p>")
-        return render_template_string(LOGIN_FORM + "<p style='color:red;'>Invalid credentials.</p>"), 401
+            # return render_template_string("<p>Logged in successfully! <a href='http://localhost:5173/'>Go to home</a></p>")
+            return user.username, 200
+        #return render_template_string(LOGIN_FORM + "<p style='color:red;'>Invalid credentials.</p>"), 401
+        return "", 401
 
 
 @app.route(rule="/logout", methods=["POST", "GET"])
@@ -200,28 +203,19 @@ def logout() -> str:
     session.pop("username", None)
     return render_template_string("<p>Logged out successfully!</p>")
 
-
-def logged_in() -> str:
-    """Return user_id if user is logged in else empty string.
-
-    Returns:
-        str | None: user ID or none
-
-    """
-    return session.get("user_id") if session.get("user_id") else ""
-
-
 @app.route(rule="/loginstatus", methods=["GET"])
 def loginstatus() -> str:
-    """Check whether user logged in.
+    """Return username if user is logged in else empty string.
 
     Returns:
-        String: "Logged In" or "Not Logged In"
+        str | None: username or none
 
     """
-    if "user_id" in session:
-        return "Logged In", 200
-    return "Not Logged In", 200
+    print(session.get("username"))
+    if session.get("username") :
+        return session.get("username"), 200 
+    return "", 200
+    
 
 
 @app.route(rule="/my-account")

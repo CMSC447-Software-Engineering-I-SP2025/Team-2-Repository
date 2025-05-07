@@ -14,7 +14,7 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
     # Recipe -> RecipeDB
     if isinstance(input_recipe, Recipe):  # Recipe dict -> RecipeDB
         return RecipeDB(
-            id=input_recipe.get("recipe_id", input_recipe.get("id")),
+            recipe_id=input_recipe.get("id"),
             title=input_recipe["title"],
             image=input_recipe["image"],
             used_ingredient_count=input_recipe["used_ingredient_count"],
@@ -46,7 +46,7 @@ def ingredient_mapper(input_ingredient: Ingredient | IngredientDB) -> Ingredient
     # Ingredient -> IngredientDB
     if isinstance(input_ingredient, Ingredient):
         return IngredientDB(
-            id=input_ingredient["id"],
+            ingr_id=input_ingredient["id"],
             name=input_ingredient["name"],
             localized_name=input_ingredient.get("localized_name"),
             image=input_ingredient.get("image"),

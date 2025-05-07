@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 
-export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLoggedIn}) {
+export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLoggedIn, verifiedUsername, setVerifiedUsername}) {
   const modalRef = useRef();
   const emailInputRef = useRef();
   const [isRegistering, setIsRegistering] = useState(false);
@@ -73,11 +73,13 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
         credentials: 'include',
         body: JSON.stringify(payload),
       });
-      if(endpoint == '/login' && response.status == 200) setIsLoggedIn(true);
-
-      let data = null;
       const text = await response.text();
-
+      if(endpoint == '/login' && response.ok && text.length > 0) {
+        setIsLoggedIn(true);
+        setVerifiedUsername(text);
+      }
+      
+      let data = null;
       try {
         data = text ? JSON.parse(text) : {};
       } catch (err) {
@@ -111,7 +113,7 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
       method: 'POST',
       credentials: 'include'
     })
-    .then(response => {if(response.ok) setIsLoggedIn(false);})
+    .then(response => {if(response.ok) {setIsLoggedIn(false); setVerifiedUsername("");}})
   }
 
   function resetForm() {
@@ -139,7 +141,7 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
         </button>
         <h2>
           {isLoggedIn ? 
-            'You Are Logged In'
+            <>{'Logged in as: '} <span style={{color: "maroon"}}>{verifiedUsername}</span></>
             : isForgotPassword
             ? 'Reset Password'
             : isRegistering
@@ -226,7 +228,7 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
               className="log-out-button"
               onClick={() => attemptLogOut()}
             >
-              Log Out?
+              Log Out
             </button>
           </p>
         )}

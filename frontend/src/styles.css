@@ -868,7 +868,7 @@ header {
     border-radius: 4px;
   }
   
-  .modal-form button {
+  .modal-form button, .log-out-button {
     padding: 10px;
     background-color: #1976d2;
     color: white;

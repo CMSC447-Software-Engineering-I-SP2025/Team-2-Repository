@@ -49,16 +49,20 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
     }
 
     // Checks in with backend whether user is logged in. The frontend cannot check the user's session cookie, but the backend automatically receives it.
-    async function queryLoginStatus() {
+    function queryLoginStatus() {
         let loginStatusEndpoint = new URL("loginstatus", serverBaseURL);
         const options = {
             method: "GET",
             credentials: "include"
         }
         fetch(loginStatusEndpoint, options)
-        .then(response => response.text())
-        .then(status => status == 'Logged In')
-        .then(status => setIsLoggedIn(status))
+        .then(response => response.ok ? response.text() : "")
+        .then(responseText => {
+            if (responseText.length > 0) {
+                setIsLoggedIn(true);
+                setUsername(responseText);
+            }
+        })
         .catch(error => console.log(error));
 
     }
@@ -89,7 +93,7 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
     // Last known status of whether user is logged in. Only check this for low risk actions that don't interact with backend. 
     // Otherwise, the status should be re-checked by querying backend since this value could be tampered with or session could have expired.
     const [isLoggedIn, setIsLoggedIn] = useState(false); 
-    // const [userName, setUserName] = useState(); //only used to display user's name
+    const [username, setUsername] = useState(""); //only used to display user's name
 
     return ( 
         <Router>
@@ -129,7 +133,7 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
 
                     </main>
                 <Footer />
-                <LoginRegisterModal show={showLoginModal} onClose={() => setShowLoginModal(false)} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+                <LoginRegisterModal show={showLoginModal} onClose={() => setShowLoginModal(false)} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} verifiedUsername={username} setVerifiedUsername={setUsername}/>
             </div>
         </Router>
     );
