@@ -56,10 +56,6 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                     setIngredients([... new Set(tempIngredients)]);
                 }
                 setImageURL(recipe['image']);
-                // if(recipe['nutrition']['nutrients']) {
-                //     const tempNutrients = [];
-
-                // }
                 setNutrients(recipe['nutrition']['nutrients']);
                 setNumServings(recipe['servings']);
                 checkIfSaved(recipe);

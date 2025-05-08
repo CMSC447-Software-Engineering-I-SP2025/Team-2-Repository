@@ -1,5 +1,5 @@
 import { AdditionalFiltersAccordion } from "./AdditionalFiltersAccordion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import clsx from 'clsx'
 
 export default function GetRecipeSection({ingredientNameList, setRecipes, setFavoritedRecipesBitMap, isLoggedIn}) {
@@ -35,6 +35,9 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
     }
     const [ingredients, setIngredients] = useState([]);
 
+    //Represents whether an ingredient on the ingredient list is to be included or excluded. True represents included, false represents excluded.
+    const [ingredientsIncludeBitMap, setIngredientsIncludeBitMap] = useState([]);
+    const [includeToggle, setIncludeToggle] = useState(true); //True if toggle currently set to include chosen ingredients.
     function checkIfSaved(recipes) {
         const recipeIDs = recipes.map(recipe => recipe["id"]);
         const favoritesCopy = new Array(recipes.length).fill(false);
@@ -61,7 +64,15 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
 
     function handleSubmit() {
         let recipeEndpoint = new URL("recipes", serverBaseURL);
-        if (ingredients.length > 0) recipeEndpoint.searchParams.append("includeIngredients", ingredients.join());
+
+        // if (ingredients.length > 0) 
+        const includeIngredients = [];
+        const excludeIngrendients = [];
+        ingredients.forEach((ingredient, i) => ingredientsIncludeBitMap[i] == true ? 
+                            includeIngredients.push(ingredient) : excludeIngrendients.push(ingredient)
+        )
+        recipeEndpoint.searchParams.append("includeIngredients", includeIngredients.join());
+        recipeEndpoint.searchParams.append("excludeIngredients", excludeIngrendients.join());
         selectedFiltersBitMaps.forEach((bitMap, filterType) => {
             const selectedOptions = [];
             bitMap.forEach((optionIsSelected, i) => { 
@@ -93,14 +104,15 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
         </div>
         <div className="get-recipe-main">
             <div className="get-recipe-guide">Find recipes by their ingredients</div>
-            <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList}/>
-            <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
+            <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList} includeToggle={includeToggle} 
+                        setIncludeToggle={setIncludeToggle} ingredientsIncludeBitMap={ingredientsIncludeBitMap} setIngredientsIncludeBitMap={setIngredientsIncludeBitMap}/>
+            <IngredientList ingredients={ingredients} setIngredients={setIngredients} ingredientsIncludeBitMap={ingredientsIncludeBitMap}/>
             <SubmitButton handleSubmit={handleSubmit}/>
         </div>
     </div>
 }
 
-function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
+function InputTextArea({ingredients, setIngredients, ingredientNameList, includeToggle, setIncludeToggle, ingredientsIncludeBitMap, setIngredientsIncludeBitMap}) {
     const [inputVal, setInputVal] = useState(""); //current text on the searchbar
     const [dropdownIndex, setDropdownIndex] = useState(-1); //specifies which dropdown recipe is highlighted
     const highlightedRef = useRef(null);
@@ -117,6 +129,9 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
         const ingredientArrCopy = ingredients.slice();
         ingredientArrCopy.push(ingredient);
         setIngredients(ingredientArrCopy);
+        const includeMapCopy = ingredientsIncludeBitMap.slice();
+        includeMapCopy.push(includeToggle);
+        setIngredientsIncludeBitMap(includeMapCopy);
         setInputVal(""); // clear input field after adding
     }
 
@@ -161,6 +176,10 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList}) {
     }
 
     return <label className="textArea">
+        <select onChange={e => setIncludeToggle(e.target.value)}>
+            <option value={true}>Include</option>
+            <option value={false}>Exclude</option>
+        </select>
         <div className="input-prompt">Ingredient:</div>
         <div className="text-with-dropdown" >
             <input className="ingredientSearchBar"
@@ -182,7 +201,7 @@ function SubmitButton({handleSubmit}) {
     return <button type="button" className="submit-button" onClick={handleSubmit}>Get Recipes</button>;
 }
 
-function IngredientList({ingredients, setIngredients}) {
+function IngredientList({ingredients, setIngredients, ingredientsIncludeBitMap}) {
     function removeIngredient (ingredient) {
         //error because of key duplicate if duplicate ingredient, make sure to disallow dupes.
         const ingredientArrCopy = ingredients.slice();
@@ -193,16 +212,18 @@ function IngredientList({ingredients, setIngredients}) {
     return <>
         <div className="ingredient-list">
             <div className="ingredient-grid">
-                {ingredients.map((ingredient) => 
-                    {return <IngredientFilterBlock key={ingredient} ingredientName={ingredient} handleClick={() => removeIngredient(ingredient)}  filterType = "contains-ingredient"/>
-                })}
+                {ingredients.map(
+                    (ingredient, i) => 
+                    <IngredientFilterBlock key={ingredient} ingredientName={ingredient} handleClick={() => removeIngredient(ingredient)}  
+                                             filterType={ingredientsIncludeBitMap[i] == true ? "includes-ingredient" : "excludes-ingredient"}/>
+                )}
             </div>
         </div>
     </>
 }
 
-function IngredientFilterBlock({ingredientName, filterType, handleClick}) {
-    const classStr = "ingredient-filter-block " + {filterType}; 
+function IngredientFilterBlock({ingredientName,  handleClick, filterType}) {
+    const classStr = "ingredient-filter-block " + filterType; 
     let croppedName = ingredientName;
     if(croppedName.length > 17) {
         croppedName = croppedName.slice(0, 17) + "...";

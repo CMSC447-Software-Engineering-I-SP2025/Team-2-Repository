@@ -67,13 +67,17 @@ body {
 
 .textArea {
     display: flex;
-    align-items: start;
+    align-items: center;
     flex-direction: row;
 
+    select {
+        height: fit-content;
+        font-size: 90%;
+    }
     .input-prompt {
         display: flex;
-        margin-top: 4px;
         margin-right: 5px;
+        margin-left: 2px;
     }
 
     input {
@@ -85,7 +89,8 @@ body {
     }
 
     .add-ingredient-button {
-        margin-top: 4px;
+        /* margin-top: 4px; */
+        height: fit-content;
     }
 }
 
@@ -393,11 +398,11 @@ header {
     }
 }
 
-.contains-ingredient {
+.includes-ingredient {
     background-color: rgb(145, 240, 145);
 }
 
-.does-not-contain-ingredient {
+.excludes-ingredient {
     background-color: rgb(240, 151, 151);
 }
 
