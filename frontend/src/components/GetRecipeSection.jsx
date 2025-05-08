@@ -105,14 +105,14 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
         <div className="get-recipe-main">
             <div className="get-recipe-guide">Find recipes by their ingredients</div>
             <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList} includeToggle={includeToggle} 
-                        setIncludeToggle={setIncludeToggle} ingredientsIncludeBitMap={ingredientsIncludeBitMap} setIngredientsIncludeBitMap={setIngredientsIncludeBitMap}/>
+                        setIncludeToggle={setIncludeToggle} ingredientsIncludeBitMap={ingredientsIncludeBitMap} setIngredientsIncludeBitMap={setIngredientsIncludeBitMap} handleSubmit={handleSubmit}/>
             <IngredientList ingredients={ingredients} setIngredients={setIngredients} ingredientsIncludeBitMap={ingredientsIncludeBitMap}/>
             <SubmitButton handleSubmit={handleSubmit}/>
         </div>
     </div>
 }
 
-function InputTextArea({ingredients, setIngredients, ingredientNameList, includeToggle, setIncludeToggle, ingredientsIncludeBitMap, setIngredientsIncludeBitMap}) {
+function InputTextArea({ingredients, setIngredients, ingredientNameList, includeToggle, setIncludeToggle, ingredientsIncludeBitMap, setIngredientsIncludeBitMap, handleSubmit}) {
     const [inputVal, setInputVal] = useState(""); //current text on the searchbar
     const [dropdownIndex, setDropdownIndex] = useState(-1); //specifies which dropdown recipe is highlighted
     const highlightedRef = useRef(null);
@@ -138,7 +138,9 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList, include
     function keyUpEvent(e, ingredient) {
         const key = e.key;
         if(key === 'Enter') {
-            if (dropdownIndex >= 0 && matchingIngredients.length > 0) {
+            if (ingredient.length == 0) {
+                handleSubmit();
+            } else if (dropdownIndex >= 0 && matchingIngredients.length > 0) {
                 pushIngredient(matchingIngredients[dropdownIndex]);
             } else {
                 pushIngredient(ingredient);
