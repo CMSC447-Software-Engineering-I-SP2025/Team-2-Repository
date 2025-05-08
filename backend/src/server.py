@@ -285,8 +285,10 @@ def api_get_recipes() -> dict:
     print("hre")
     url = Request(method="GET", url=db.base_url, params=params).prepare().url
     spoonacularResponse = reqget(url, timeout=5).text
+    print(spoonacularResponse)
     json_data = json.loads(spoonacularResponse)
     mapped_data = json_mapper(json_data, data_class=Response).results
+    print(mapped_data[0])
     return mapped_data
     # Request, get, and return data.
     # return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
