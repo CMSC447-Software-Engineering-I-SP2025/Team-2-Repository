@@ -11,14 +11,12 @@ from db_data_models import IngredientDB, RecipeDB
 def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
     """Convert between Recipe dataclass/dict and RecipeDB SQLAlchemy model."""
     # Recipe -> RecipeDB
-    if isinstance(input_recipe, Recipe):  # Recipe dict -> RecipeDB
+    if isinstance(input_recipe, (dict, Recipe)):  # Recipe dict -> RecipeDB
         return RecipeDB(
             recipe_id=input_recipe.get("id"),
             title=input_recipe["title"],
             image=input_recipe["image"],
             servings=input_recipe["servings"],
-            used_ingredient_count=input_recipe["used_ingredient_count"],
-            missed_ingredient_count=input_recipe["missed_ingredient_count"],
             analyzed_instructions=json.dumps(
                 [{k: v for k, v in instr.items() if k != "repr"}
                  for instr in input_recipe.get("instructions", []) or []],
@@ -28,6 +26,7 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
                 {"nutrients": [dict(nutr.items())
                 for nutr in input_recipe.get("nutrition").get("nutrients", []) or []]},
             ),
+            ingredients=input_recipe.get("ingredients"),
         )
 
     # RecipeDB -> Recipe
@@ -36,12 +35,11 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
         "title": input_recipe.title,
         "image": input_recipe.image,
         "servings": input_recipe.servings,
-        "used_ingredient_count": input_recipe.used_ingredient_count,
-        "missed_ingredient_count": input_recipe.missed_ingredient_count,
         "instructions": [
             dict(instr) for instr in json.loads(input_recipe.analyzed_instructions)
         ],
         "nutrition": {"nutrients": [dict(nutr) for nutr in json.loads(input_recipe.nutrition)["nutrients"]]},
+        "ingredients": list(input_recipe.ingredients),
     }
 
     error = f"Unsupported type: {type(input_recipe)}"
@@ -51,12 +49,12 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
 def ingredient_mapper(input_ingredient: Ingredient | IngredientDB) -> Ingredient | IngredientDB:
     """Convert between Ingredient dataclass/dict and IngredientDB SQLAlchemy model."""
     # Ingredient -> IngredientDB
-    if isinstance(input_ingredient, Ingredient):
+    if isinstance(input_ingredient, (dict, Ingredient)):
         return IngredientDB(
             ingr_id=input_ingredient["id"],
             name=input_ingredient["name"],
-            quantity=input_ingredient["quantity"],
-            unit=input_ingredient["unit"],
+            quantity=input_ingredient.get("quantity"),
+            unit=input_ingredient.get("unit"),
             image=input_ingredient.get("image"),
         )
 

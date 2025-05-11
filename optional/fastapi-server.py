@@ -12,10 +12,8 @@ from db_data_models import (
     Base,
     IngredientDB,
     RecipeDB,
-    db_to_ingredient,
-    db_to_recipe,
-    ingredient_to_db,
-    recipe_to_db,
+    recipe_mapper,
+    ingredient_mapper,
 )
 
 # External Libraries
@@ -256,7 +254,7 @@ def api_list_ingredients(
 
     """
     try:
-        return [db_to_ingredient(ingr) for ingr in db_session.query(IngredientDB).all()]
+        return [ingredient_mapper(ingr) for ingr in db_session.query(IngredientDB).all()]
     except Exception as e:
         db_session.rollback()
         raise HTTPException(status_code=500, detail=str(e))

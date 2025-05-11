@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 # Custom Libraries
-from backend_data_models import Response, json_mapper
+from backend_data_models import Response, json_mapper, Recipe, Ingredient
 from db_data_models import (
     Base,
     IngredientDB,
@@ -18,7 +18,7 @@ from db_data_models import (
 # External Libraries
 from flask import Flask, jsonify, render_template_string, request, session
 from flask_cors import CORS
-from mappers import db_to_ingredient, db_to_recipe, ingredient_to_db, recipe_to_db
+from mappers import ingredient_mapper, recipe_mapper
 from requests import Request
 from requests import get as reqget
 from sqlalchemy import create_engine
@@ -203,6 +203,7 @@ def logout() -> str:
     session.pop("username", None)
     return render_template_string("<p>Logged out successfully!</p>")
 
+
 @app.route(rule="/loginstatus", methods=["GET"])
 def loginstatus() -> str:
     """Return username if user is logged in else empty string.
@@ -211,11 +212,9 @@ def loginstatus() -> str:
         str | None: username or none
 
     """
-    print(session.get("username"))
     if session.get("username") :
-        return session.get("username"), 200 
-    return "", 200
-    
+        return (session.get("username"), 200)
+    return ("", 200)
 
 
 @app.route(rule="/my-account")
@@ -291,7 +290,8 @@ def api_get_recipes() -> dict:
     # return mapped_data
 
     # Request, get, and return data (One liner).
-    return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
+    return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results 
+
 
 @app.route("/addrecipe", methods=["PUT"])
 def api_save_recipe() -> str:
@@ -309,12 +309,12 @@ def api_save_recipe() -> str:
     # Write data to database
     with db.DBSession() as db_session:
         try:
-            recipe_db_class = recipe_to_db(request.get_json())
+            recipe_db_class = recipe_mapper(request.get_json())
             recipe_db_class.user_id = user_id
             db_session.add(recipe_db_class)
             db_session.commit()
         except Exception as e:
-            session.rollback()
+            db_session.rollback()
             raise e
     return "200"
 
@@ -362,7 +362,7 @@ def api_list_recipes() -> dict:
     # Query database for recipes.
     with db.DBSession() as db_session:
         try:
-            recipes = [db_to_recipe(recipe) for recipe in db_session.query(RecipeDB).filter(RecipeDB.user_id == user_id).all()]
+            recipes = [recipe_mapper(recipe) for recipe in db_session.query(RecipeDB).filter(RecipeDB.user_id == user_id).all()]
             return jsonify(recipes)
         except Exception as e:
             db_session.rollback()
@@ -385,7 +385,7 @@ def api_save_ingredient() -> str:
     # Write data to database
     with db.DBSession() as db_session:
         try:
-            ingredient_db_class = ingredient_to_db(request.get_json())
+            ingredient_db_class = ingredient_mapper(request.get_json())
             ingredient_db_class.user_id = user_id
             db_session.add(ingredient_db_class)
             db_session.commit()
@@ -436,12 +436,53 @@ def api_list_ingredients() -> dict:
     with db.DBSession() as db_session:
         try:
             ingredients = db_session.query(IngredientDB).filter(IngredientDB.user_id == user_id).all()
-            return jsonify([db_to_ingredient(ingr) for ingr in ingredients])
+            return jsonify([ingredient_mapper(ingr) for ingr in ingredients])
 
         except Exception as e:
             db_session.rollback()
             raise e
 
+
+@app.route("/findmissing", methods=["GET"])
+def find_missing_ingredients() -> list[str]:
+    """Find all ingredients missing from a specified recipe.
+
+    Returns:
+        list[str]: List of missing ingredients.
+
+    """
+    # recipe = recipe_mapper(
+    #     input_recipe={
+    #         "id": 1956640,
+    #         "image": 'https://img.spoonacular.com/recipes/1956640-312x231.jpg',
+    #         "title": 'Margarita',
+    #         "servings": 1,
+    #         "ingredients": [
+    #             Ingredient(id=1019159, name='lime slice', quantity=None, unit=None, image='lime-wedge.jpg'),
+    #             Ingredient(id=0, name='cocktail', quantity=None, unit=None, image='rum-dark.jpg'),
+    #             Ingredient(id=0, name='shake', quantity=None, unit=None, image=''),
+    #             Ingredient(id=2047, name='salt', quantity=None, unit=None, image='salt.jpg'),
+    #             Ingredient(id=10014412, name='ice', quantity=None, unit=None, image='ice-cubes.png'),
+    #             Ingredient(id=1012034, name='dry seasoning rub', quantity=None, unit=None, image='seasoning.png')
+    #         ],
+    #         "nutrition": {}
+    #     },
+    # )
+
+
+    # Expecting the frontend to send a RecipeDB object.
+
+    # Get recipe from frontend
+    recipe = recipe_mapper(request.get_json())
+
+    # Get recipe ingredients
+    recipe_ingredients: list[str] = [ingredient.name for ingredient in recipe.ingredients]
+
+    # Get user ingredients
+    user_ingredinets: list[str] = [ingr["name"] for ingr in api_list_ingredients().json]
+
+    # Find / return missing ingredients
+    return [ingr for ingr in recipe_ingredients if ingr not in user_ingredinets]
 
 
 # ==================================================================================================================================

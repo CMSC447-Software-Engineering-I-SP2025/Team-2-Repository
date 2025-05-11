@@ -8,3 +8,7 @@ DONE:
 TODO:
 - Add username to "you are logged in" message
 - Remove previously entere credentials from new registration prompts.
+
+FRONTEND:
+- Have the frontend send ingredient quantity to the backend
+- Have edit quantity talk to the backend so that we can update the database
