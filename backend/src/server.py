@@ -282,13 +282,10 @@ def api_get_recipes() -> dict:
 
     # Get dummy data
     #final_results = json_mapper(get_dummy_data(), Response).results
-    print("hre")
     url = Request(method="GET", url=db.base_url, params=params).prepare().url
     spoonacularResponse = reqget(url, timeout=5).text
-    print(spoonacularResponse)
     json_data = json.loads(spoonacularResponse)
     mapped_data = json_mapper(json_data, data_class=Response).results
-    print(mapped_data[0])
     return mapped_data
     # Request, get, and return data.
     # return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
@@ -310,6 +307,7 @@ def api_save_recipe() -> str:
     with db.DBSession() as db_session:
         try:
             recipe_db_class = recipe_to_db(request.get_json())
+            print("Saving: ", recipe_db_class)
             recipe_db_class.user_id = user_id
             db_session.add(recipe_db_class)
             db_session.commit()

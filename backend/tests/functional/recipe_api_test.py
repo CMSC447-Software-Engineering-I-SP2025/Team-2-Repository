@@ -62,8 +62,13 @@ def test_get_recipes_success(client, mocker):
     mock_reqget = mocker.patch('server.reqget')
     mock_reqget.return_value = mock_response
 
-
+    # Intercepts spoonacular call with mock call
     response = client.get("recipes?includeIngredients=sausage")
+
+    # Verifying what was returned matches expected response
     assert response.status_code == 200
-    data = response.get_json()
-    assert data[0]["title"] == "Mock Scotch Eggs"
+
+    data = response.get_json()[0]
+    assert data["title"] == "Mock Scotch Eggs"
+    assert data["id"] == 659581
+

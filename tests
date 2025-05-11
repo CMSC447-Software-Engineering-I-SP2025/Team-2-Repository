@@ -7,3 +7,61 @@
 TODO:
 - Add username to "you are logged in" message
 - Remove previously entere credentials from new registration prompts.
+
+
+
+TODO for testing:
+- Get a fake query, but only extract the fields we actually use (AKA a DTO essentially)
+- Make new chatgpt chat
+- Reuse this query to test API endpoints in server.py
+    - Can use parameterization (pytest)
+-  Figure out pytest fixtures
+- Figure out stubbing with mock tests
+- Figure out how to use flask to test instead of needing flask server running
+https://www.one-tab.com/page/rWclMmoLQI24W219x4p9pw
+
+Run tests with `pytest`
+
+Example
+```
+import json
+import pytest
+from unittest.mock import patch
+from server import app  # your Flask app is defined here
+
+
+# Dummy Spoonacular-style response
+FAKE_SPOONACULAR_RESPONSE = {
+    "results": [
+        {
+            "id": 1,
+            "title": "Mock Recipe",
+            "ingredients": ["mock ingredient"],
+            # include any other fields your Response class expects
+        }
+    ]
+}
+
+
+@pytest.fixture
+def client():
+    with app.test_client() as client:
+        yield client
+
+
+@patch("server.reqget")
+def test_api_get_recipes(mock_reqget, client):
+    # Mock the external API call
+    mock_reqget.return_value.text = json.dumps(FAKE_SPOONACULAR_RESPONSE)
+
+    # Make the request
+    response = client.get("/recipes?includeIngredients=chicken")
+
+    # Basic response checks
+    assert response.status_code == 200
+    data = response.get_json()
+
+    # Validate the mocked data is returned
+    assert isinstance(data, list)
+    assert data[0]["title"] == "Mock Recipe"
+```
