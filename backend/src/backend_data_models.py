@@ -48,6 +48,7 @@ class Ingredient:
     id: int
     name: str
     quantity: int | None
+    unit: str | None
     image: str
 
 
@@ -117,7 +118,9 @@ class Nutrient:
         amount (float): How much of the ingredient is in the recipe.
         unit (str): The measurement unit associated with the amount.
         percentOfDailyNeeds (float): Amount of nutrient in recipe / Recommended daily amount
+
     """
+
     name: str
     amount: float
     unit: str
@@ -134,7 +137,9 @@ class Nutrition:
 
     Attributes:
         nutrients(list[Nutrient]): A list of nutrient quantity objects
+
     """
+
     nutrients: list[Nutrient]
 
 @dataclass

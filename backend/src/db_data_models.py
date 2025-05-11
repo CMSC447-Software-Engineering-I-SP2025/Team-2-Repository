@@ -1,5 +1,5 @@
 """Database data models."""
-from sqlalchemy import JSON, Column, Integer, PrimaryKeyConstraint, String, ForeignKey
+from sqlalchemy import JSON, Column, ForeignKey, Integer, PrimaryKeyConstraint, String
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
@@ -22,7 +22,8 @@ class IngredientDB(Base):
     ingr_id = Column(Integer, nullable=False)
     user_id = Column(Integer, nullable=False)
     name = Column(String(100), nullable=False)
-    localized_name = Column(String(100))
+    quantity = Column(Integer, nullable=True)
+    unit = Column(String(100), nullable=True)
     image = Column(String(255))
 
     __table_args__ = (
