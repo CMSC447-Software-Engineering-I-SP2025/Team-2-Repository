@@ -7,6 +7,7 @@
 # Standard Libraries
 import json
 from pathlib import Path
+from typing import Any
 
 # Custom Libraries
 from backend_data_models import Response, json_mapper
@@ -18,7 +19,7 @@ from db_data_models import (
 )
 
 # External Libraries
-from flask import Flask, jsonify, render_template_string, request, session
+from flask import Flask, jsonify, render_template_string, request, session, Response
 from flask_cors import CORS
 from mappers import db_to_ingredient, db_to_recipe, ingredient_to_db, recipe_to_db
 from requests import Request
@@ -135,7 +136,7 @@ supports_credentials=True,
 
 
 @app.route(rule="/register", methods=["POST", "GET"])
-def register() -> dict:
+def register() -> str | tuple[Response, int]:
     """Register a user.
 
     Returns:
@@ -165,7 +166,7 @@ def register() -> dict:
 
 
 @app.route(rule="/login", methods=["GET", "POST"])
-def login() -> str:
+def login() -> str | tuple[Response, int] | tuple[str, int]:
     """Log user in.
 
     Returns:
@@ -198,7 +199,7 @@ def login() -> str:
 
 
 @app.route(rule="/logout", methods=["POST", "GET"])
-def logout() -> str:
+def logout() -> tuple[Response, int]:
     """Log user out.
 
     Returns:
@@ -210,7 +211,7 @@ def logout() -> str:
     return jsonify({"message": "Logged out successfully"}), 200
 
 @app.route(rule="/loginstatus", methods=["GET"])
-def loginstatus() -> str:
+def loginstatus() -> tuple[Any | None, int] | tuple[str, int]:
     """Return username if user is logged in else empty string.
 
     Returns:
@@ -225,7 +226,7 @@ def loginstatus() -> str:
 
 
 @app.route(rule="/my-account")
-def my_account() -> str:
+def my_account() -> tuple[str, int] | str:
     """View account info.
 
     Returns:
@@ -297,7 +298,7 @@ def api_get_recipes() -> dict:
     # return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
 
 @app.route("/addrecipe", methods=["PUT"])
-def api_save_recipe() -> str:
+def api_save_recipe() -> tuple[Response, int] | str:
     """Save a recipe to the database.
 
     Raises:
@@ -328,7 +329,7 @@ def api_save_recipe() -> str:
 
 
 @app.route("/removerecipe", methods=["DELETE"])
-def api_delete_recipe() -> str:
+def api_delete_recipe() -> tuple[Response, int] | str:
     """Delete a recipe from the database.
 
     Raises:
@@ -359,7 +360,7 @@ def api_delete_recipe() -> str:
 
 
 @app.route("/listrecipes", methods=["GET"])
-def api_list_recipes() -> dict:
+def api_list_recipes() -> Response | tuple[Response, int]:
     """List all saved recipes.
 
     Raises:
@@ -370,6 +371,10 @@ def api_list_recipes() -> dict:
 
     """
     user_id  = session.get("user_id")
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     # Query database for recipes.
     with db.DBSession() as db_session:
@@ -382,7 +387,7 @@ def api_list_recipes() -> dict:
 
 
 @app.route("/addingredient", methods=["PUT"])
-def api_save_ingredient() -> str:
+def api_save_ingredient() -> tuple[Response, int] | str:
     """Add an ingredient to the pantry.
 
     Raises:
@@ -393,6 +398,10 @@ def api_save_ingredient() -> str:
 
     """
     user_id  = session.get("user_id")
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     # Write data to database
     with db.DBSession() as db_session:
@@ -408,7 +417,7 @@ def api_save_ingredient() -> str:
 
 
 @app.route("/removeingredient", methods=["DELETE"])
-def api_delete_ingredient() -> str:
+def api_delete_ingredient() -> tuple[Response, int] | str:
     """Remove an ingredient from the pantry.
 
     Raises:
@@ -422,6 +431,10 @@ def api_delete_ingredient() -> str:
     user_id  = session.get("user_id")
     ingredient_id = int(request.get_data(as_text=True))
 
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
     with db.DBSession() as db_session:
         try:
             db_session.query(IngredientDB).filter_by(ingr_id=ingredient_id, user_id=user_id).delete()
@@ -433,7 +446,7 @@ def api_delete_ingredient() -> str:
 
 
 @app.route("/listingredients", methods=["GET"])
-def api_list_ingredients() -> dict:
+def api_list_ingredients() -> Response | tuple[Response, int]:
     """List all saved ingredients.
 
     Raises:
@@ -444,6 +457,10 @@ def api_list_ingredients() -> dict:
 
     """
     user_id  = session.get("user_id")
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     with db.DBSession() as db_session:
         try:
