@@ -27,3 +27,5 @@ Need to update pip by installing from requirements.txt
 
 Coverage report
 add in `--cov`
+
+Can parameterize tests if necessary

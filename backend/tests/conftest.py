@@ -43,13 +43,20 @@ def test_user(test_db):
     session = test_db.DBSession()
 
     user = UserDB(
-        username="test",
-        password_hash=generate_password_hash("password")
+        username="testuser",
+        password_hash=generate_password_hash("securepass")
     )
 
     session.add(user)
     session.commit()
+
+    # Save .id before closing
+    user_id = user.id
+    session.expunge(user)
     session.close()
+
+    # Copy over and return
+    user.id = user_id
     return user
 
 @pytest.fixture
