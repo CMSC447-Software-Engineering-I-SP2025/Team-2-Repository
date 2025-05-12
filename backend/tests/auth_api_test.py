@@ -184,6 +184,8 @@ def test_loginstatus_logged_in(client, test_user):
 
     assert response.status_code == 200
     assert response.data.decode() == test_user.username
+
+
 def test_loginstatus_logged_out(client):
     """Returns 200 and empty string when user not logged in"""
 
@@ -191,6 +193,30 @@ def test_loginstatus_logged_out(client):
 
     assert response.status_code == 200
     assert response.data.decode() == ""
+
+
 # ==================================================================================================================================
 # Tests for /my-account endpoint
 # ==================================================================================================================================
+def test_my_account_logged_in(client, test_user):
+    """Should return 200 and show account info when logged in."""
+
+    with client.session_transaction() as sess:
+        sess["user_id"] = test_user.id
+        sess["username"] = test_user.username
+
+    response = client.get("/my-account")
+
+    assert response.status_code == 200
+    assert f"Logged in as: <strong>{test_user.username}</strong>" in response.data.decode()
+
+
+def test_my_account_not_logged_in(client):
+    """Should return 401 and login prompt when not logged in."""
+
+    response = client.get("/my-account")
+
+    assert response.status_code == 401
+    assert "You are not logged in" in response.data.decode()
+    assert "Login here" in response.data.decode()
+
