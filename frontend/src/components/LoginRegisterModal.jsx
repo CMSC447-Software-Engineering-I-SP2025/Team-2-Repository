@@ -2,10 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 
 export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLoggedIn, verifiedUsername, setVerifiedUsername}) {
   const modalRef = useRef();
-  const emailInputRef = useRef();
   const [isRegistering, setIsRegistering] = useState(false);
-  const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -25,12 +22,6 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [show, onClose]);
-
-  useEffect(() => {
-    if (show && emailInputRef.current) {
-      emailInputRef.current.focus();
-    }
-  }, [show]);
 
   useEffect(() => {
     if (errorMessage || successMessage) {
@@ -53,15 +44,12 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
     let endpoint;
     let payload;
 
-    if (isForgotPassword) {
-      endpoint = '/forgot-password';
-      payload = { email };
-    } else {
-      endpoint = isRegistering ? '/register' : '/login';
-      payload = isRegistering
-        ? { email, password, username }
-        : { username, password };
-    }
+    
+    endpoint = isRegistering ? '/register' : '/login';
+    payload = isRegistering
+      ? { password, username }
+      : { username, password };
+    
 
     try {
       const serverBaseURLString = "http://localhost:8080";
@@ -87,15 +75,10 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
       }
 
       if (!response.ok) {
+        if(response.status == 409) throw new Error(data.message || 'That username has been taken.');
         throw new Error(data.message || 'Invalid username or password.');
       }
 
-      if (isForgotPassword) {
-        setSuccessMessage('If an account with that email exists, a reset link was sent.');
-        setIsForgotPassword(false);
-      } else {
-        onClose();
-      }
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage(error.message || 'Something went wrong.');
@@ -117,12 +100,10 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
   }
 
   function resetForm() {
-    setEmail('');
     setPassword('');
     setUsername('');
     setErrorMessage('');
     setSuccessMessage('');
-    setIsForgotPassword(false);
     setIsRegistering(false);
     setIsSubmitting(false);
   }
@@ -142,8 +123,6 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
         <h2>
           {isLoggedIn ? 
             <>{'Logged in as: '} <span style={{color: "maroon"}}>{verifiedUsername}</span></>
-            : isForgotPassword
-            ? 'Reset Password'
             : isRegistering
             ? 'Register'
             : 'Login'
@@ -152,17 +131,6 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
         
         
         {!isLoggedIn && <form className="modal-form" onSubmit={handleSubmit}>      
-          {isRegistering && (
-            <input
-              type="email"
-              placeholder="Email"
-              ref={emailInputRef}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          )}
-
           <input
             type="text"
             placeholder="Username"
@@ -171,22 +139,19 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
             required
           />
 
-          {!isForgotPassword && (
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          )}
+        
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting
               ? 'Submitting...'
-              : isForgotPassword
-              ? 'Send Reset Link'
-              : isRegistering
+              :  isRegistering
               ? 'Create Account'
               : 'Login'}
           </button>
@@ -196,7 +161,7 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
         {successMessage && <p className="success-message">{successMessage}</p>}
 
         <p>
-          {!isForgotPassword && !isLoggedIn && (
+          {!isLoggedIn && (
             <>
               {isRegistering
                 ? 'Already have an account?'
@@ -211,17 +176,6 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
           )}
         </p>
 
-        {!isRegistering && !isForgotPassword && !isLoggedIn && (
-          <p>
-            <button
-              className="forgot-password-button"
-              onClick={() => setIsForgotPassword(true)}
-            >
-              Forgot your password?
-            </button>
-          </p>
-        )}
-
         {isLoggedIn && (
           <p>
             <button
@@ -229,18 +183,6 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
               onClick={() => attemptLogOut()}
             >
               Log Out
-            </button>
-          </p>
-        )}
-
-        {isForgotPassword && (
-          <p>
-            Remembered your password?{' '}
-            <button
-              className="switch-button"
-              onClick={() => setIsForgotPassword(false)}
-            >
-              Back to Login
             </button>
           </p>
         )}
