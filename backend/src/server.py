@@ -37,9 +37,13 @@ config_options = tomlloads((Path(__file__).parent.parent / "assets" / "config.to
 class DB:
     """Database connector."""
 
-    def __init__(self) -> None:
+    def __init__(self, db_uri=None) -> None:
         """Initialize the database."""
-        self.engine = create_engine(f"sqlite:///{(Path(__file__).resolve().parent.parent / 'assets' / 'database.db').as_posix()}")
+        if db_uri is None:
+            db_path = Path(__file__).resolve().parent.parent / 'assets' / 'database.db'
+            db_uri = f"sqlite:///{db_path.as_posix()}"
+
+        self.engine = create_engine(db_uri)
         Base.metadata.create_all(self.engine)
         self.DBSession = sessionmaker(bind=self.engine)
         self.base_url = "https://api.spoonacular.com/recipes/complexSearch"
