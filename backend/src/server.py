@@ -185,7 +185,7 @@ def login() -> str:
     username = data.get("username")
     password = data.get("password")
     if not username or not password:
-        return jsonify({"error": "Username and pasword required"}), 400
+        return jsonify({"error": "Username and password required"}), 400
 
     # Check if login credentials are correct
     with db.DBSession() as session_db:
@@ -194,7 +194,7 @@ def login() -> str:
             session["user_id"] = user.id
             session["username"] = user.username
             return user.username, 200
-        return jsonify({"error": "Invalid Credentials"}), 401
+        return jsonify({"error": "Invalid credentials"}), 401
 
 
 @app.route(rule="/logout", methods=["POST", "GET"])
