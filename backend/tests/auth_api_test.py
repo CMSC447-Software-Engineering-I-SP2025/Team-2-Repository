@@ -6,7 +6,6 @@ import pytest
 # Tests for /register endpoint
 # ==================================================================================================================================
 
-
 def test_register_success(client, test_db):
     """Should return 201 and store user when registration is successful."""
 
@@ -74,6 +73,7 @@ def test_register_missing_credentials(client, test_db, username, password, desc)
 # ==================================================================================================================================
 # Tests for /login endpoint
 # ==================================================================================================================================
+
 def test_login_success(client, test_db):
     """Should return 200 and allow user to login when successful."""
 
@@ -144,14 +144,53 @@ def test_login_missing_credentials(client, test_db, username, password, desc):
 
     with client.session_transaction() as sess:
         assert "user_id" not in sess
+
 # ==================================================================================================================================
 # Tests for /logout endpoint
 # ==================================================================================================================================
+
+def test_logout_success(client, test_user):
+    """Should return 200 and return successful logout message"""
+
+
+    # Manually log in the test user (simulate session-based login)
+    with client.session_transaction() as sess:
+        sess["user_id"] = test_user.id
+        sess["username"] = test_user.username
+
+    # Call logout
+    response = client.get("/logout")
+
+    assert response.status_code == 200
+    assert response.get_json()["message"] in "Logged out successfully"
+
+    # Session should now be cleared
+    with client.session_transaction() as sess:
+        assert "user_id" not in sess
+        assert "username" not in sess
 
 # ==================================================================================================================================
 # Tests for /loginstatus endpoint
 # ==================================================================================================================================
 
+def test_loginstatus_logged_in(client, test_user):
+    """Returns 200 and username when logged in"""
+
+    with client.session_transaction() as sess:
+        sess["user_id"] = test_user.id
+        sess["username"] = test_user.username
+
+    response = client.get("/loginstatus")
+
+    assert response.status_code == 200
+    assert response.data.decode() == test_user.username
+def test_loginstatus_logged_out(client):
+    """Returns 200 and empty string when user not logged in"""
+
+    response = client.get("/loginstatus")
+
+    assert response.status_code == 200
+    assert response.data.decode() == ""
 # ==================================================================================================================================
 # Tests for /my-account endpoint
 # ==================================================================================================================================
