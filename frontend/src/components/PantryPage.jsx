@@ -10,7 +10,6 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
     // ]);
     const commonVolumeUnits = ["cup", "tsp", "tbsp", "L", "mL", "qt", "pt", "gal", "fl oz"]
     const commonWeightUnits = ["kg", "g", "mg", "lb", "oz"]
-    const commonUnits = commonVolumeUnits.push(... commonWeightUnits)
     const [ingredients, setIngredients] = useState([]);
     const [quickAddGroups, setQuickAddGroups] = useState({});
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
