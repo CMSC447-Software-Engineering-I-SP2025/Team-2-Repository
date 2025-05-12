@@ -1,12 +1,9 @@
 Category,Ingredient
-Vegetables,Carrot
 Vegetables,Broccoli
 Vegetables,Bell Pepper
 Vegetables,Spinach
 Vegetables,Onion
 Vegetables,Garlic
-Vegetables,Zucchini
-Vegetables,Tomato
 Vegetables,Cucumber
 Vegetables,Cauliflower
 Vegetables,Kale
@@ -14,99 +11,58 @@ Vegetables,Sweet Potato
 Vegetables,Celery
 Vegetables,Lettuce
 Vegetables,Eggplant
-Vegetables,Beetroot
 Spices and Herbs,Coriander
 Spices and Herbs,Black Pepper
 Spices and Herbs,Salt
-Spices and Herbs,Cayenne
 Spices and Herbs,Turmeric
-Spices and Herbs,Thyme
 Spices and Herbs,Rosemary
 Spices and Herbs,Oregano
-Spices and Herbs,Basil
-Spices and Herbs,Cumin
 Spices and Herbs,Paprika
-Spices and Herbs,Nutmeg
-Spices and Herbs,Saffron
 Spices and Herbs,Dill
 Spices and Herbs,Parsley
-Spices and Herbs,Chili Flakes
-Meat,Chicken Breast
-Meat,Chicken Thigh
 Meat,Ground Beef
-Meat,Pork Chop
-Meat,Lamb Leg
 Meat,Bacon
 Meat,Turkey Breast
 Meat,Sausage
-Meat,Duck
-Meat,Veal
 Meat,Ham
-Meat,Goat Meat
-Fruits,Strawberry
 Fruits,Apple
 Fruits,Banana
 Fruits,Orange
-Fruits,Blueberry
-Fruits,Kiwi
 Fruits,Mango
 Fruits,Pineapple
-Fruits,Grapes
 Fruits,Peach
 Fruits,Plum
-Fruits,Watermelon
 Fruits,Papaya
-Fruits,Raspberry
-Fruits,Pear
-Fruits,Fig
 Dairy,Milk
-Dairy,Cheddar Cheese
 Dairy,Butter
 Dairy,Yogurt
 Dairy,Cream Cheese
-Dairy,Heavy Cream
-Dairy,Parmesan
-Dairy,Mozzarella
 Dairy,Cottage Cheese
-Dairy,Ghee
 Dairy,Sour Cream
-Dairy,Ricotta
 Grains,Rice
 Grains,Pasta
 Grains,Bread
 Grains,Quinoa
 Grains,Oats
-Grains,Barley
 Grains,Couscous
 Grains,Bulgur
 Grains,Farro
-Grains,Millet
-Legumes,Chickpeas
-Legumes,Lentils
 Legumes,Black Beans
-Legumes,Kidney Beans
 Legumes,Peas
 Legumes,Edamame
-Legumes,Navy Beans
 Legumes,Pinto Beans
 Nuts and Seeds,Almonds
 Nuts and Seeds,Walnuts
-Nuts and Seeds,Cashews
 Nuts and Seeds,Peanuts
 Nuts and Seeds,Chia Seeds
 Nuts and Seeds,Flax Seeds
 Nuts and Seeds,Sunflower Seeds
 Nuts and Seeds,Pumpkin Seeds
-Seafood,Salmon
 Seafood,Tuna
-Seafood,Shrimp
-Seafood,Crab
 Seafood,Cod
 Seafood,Mussels
 Seafood,Clams
-Seafood,Tilapia
 Seafood,Anchovies
-Seafood,Sardines
 Baking Essentials,Flour
 Baking Essentials,Baking Powder
 Baking Essentials,Baking Soda
@@ -117,9 +73,7 @@ Baking Essentials,Cornstarch
 Baking Essentials,Vanilla Extract
 Oils and Fats,Olive Oil
 Oils and Fats,Vegetable Oil
-Oils and Fats,Canola Oil
 Oils and Fats,Sesame Oil
-Oils and Fats,Lard
 Oils and Fats,Coconut Oil
 Oils and Fats,Avocado Oil
 Condiments and Sauces,Mayonnaise
@@ -131,8 +85,5 @@ Condiments and Sauces,BBQ Sauce
 Condiments and Sauces,Vinegar
 Condiments and Sauces,Worcestershire Sauce
 Tofu and Meat Substitutes,Tofu
-Tofu and Meat Substitutes,Tempeh
-Tofu and Meat Substitutes,Seitan
-Tofu and Meat Substitutes,Textured Vegetable Protein
-Tofu and Meat Substitutes,Plant-based Sausage
-Tofu and Meat Substitutes,Veggie Burger Patty
+Tofu and Meat Substitutes,Red Lentils
+Tofu and Meat Substitutes,Beans
