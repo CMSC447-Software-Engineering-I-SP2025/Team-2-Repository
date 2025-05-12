@@ -318,7 +318,7 @@ def api_save_recipe() -> str:
             db_session.add(recipe_db_class)
             db_session.commit()
         except Exception as e:
-            session.rollback()
+            db_session.rollback()
             raise e
     return "200"
 
