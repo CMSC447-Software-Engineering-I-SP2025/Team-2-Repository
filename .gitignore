@@ -4,4 +4,4 @@
 **/database.db
 venv
 .idea/
-**/node_module/
+node_modules/
