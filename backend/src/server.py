@@ -202,12 +202,12 @@ def logout() -> str:
     """Log user out.
 
     Returns:
-        Text: Success message.
+        tuple: JSON message and status code
 
     """
     session.pop("user_id", None)
     session.pop("username", None)
-    return render_template_string("<p>Logged out successfully!</p>")
+    return jsonify({"message": "Logged out successfully"}), 200
 
 @app.route(rule="/loginstatus", methods=["GET"])
 def loginstatus() -> str:
