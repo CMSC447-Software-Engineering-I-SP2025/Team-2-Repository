@@ -46,18 +46,27 @@ def test_register_duplicate_username(client, test_db):
     assert len(users) == 1
     session.close()
 
-def test_register_no_password(client, test_db):
-    """Should return 400 and print an error if password is missing."""
+@pytest.mark.parametrize("username, password, desc", [
+    ("", "somepass", "no_username"),         # missing username
+    ("newuser", "", "no_password"),          # missing password
+    (None, "somepass", "null_username"),       # None username
+    ("newuser", None, "null_password"),        # None password
+    ("", "", "no_both"),                        # missing both
+    (None, None, "null_both")                  # None both
+])
+def test_register_missing_credentials(client, test_db, username, password, desc):
+    """Should return 400 and print an error if required fields are missing."""
 
     response = client.post("/register", json={
-        "username": "newuser",
+        "username": username,
+        "password": password,
     })
 
-    assert response.status_code == 400
+    assert response.status_code == 400, f"Failed on: {desc}"
     assert response.get_json().get("error") == "Username and password required"
 
     session = test_db.DBSession()
-    user = session.query(UserDB).filter_by(username="newuser").first()
+    user = session.query(UserDB).filter_by(username=username).first()
     assert user is None
     session.close()
 
@@ -117,10 +126,10 @@ def test_login_invalid_credentials(client, test_db, username, password, desc):
 @pytest.mark.parametrize("username, password, desc", [
     ("", "somepass", "no_username"),             # missing username
     ("validuser", "", "no_password"),            # missing password
-    (None, "somepass", "none_username"),           # None username
-    ("validuser", None, "none_password"),          # None password
-    ("", "", "no_either"),                     # both empty
-    (None, None, "none_either"),                 # both None
+    (None, "somepass", "null_username"),           # None username
+    ("validuser", None, "null_password"),          # None password
+    ("", "", "no_both"),                     # both empty
+    (None, None, "null_both"),                 # both None
 ])
 def test_login_missing_credentials(client, test_db, username, password, desc):
     """Should return 400 and error when username or password is missing."""
