@@ -1,10 +1,4 @@
 # TODO
-- Test User Routes
-  - Login
-  - Logout
-  - LoginStatus
-  - My-Account
-
 - Test Authorized Routes (All require database usage)
   - save_recipe
   - delete_recipe
@@ -14,18 +8,38 @@
   - delete_ingredient
   - list_ingredients
 
-- Generate test coverage report
 - See if still need unit tests (testing models themselves)
-## Test Cases
-- Test both successful and unsuccessful
+---
 
+# Covered
+- All authentication endpoints have been covered by tests
+  - /register
+  - /login
+  - /logout
+  - /loginstatus
+  - /my-account
+  - /recipes
+    - Get query from spoonacular
+  
+- Need to get authorized routes (require logged in user) tested
 
 # Usage
 `pytest -v -s`
 
+For generating a coverage report
+` pytest -v -s --cov=backend/src --cov-report=term-missing`
+
+# How it works
+- I made a new tests folder
+  - All tests are there
+  - conftest.py
+    - Essentially set-up/teardown before each test
+  - query_api_test.py
+    - Unauthenticated spoonacular query testing
+  - authenticated_api_test.py
+    - All authenticated recipe routes (save recipe, delete recipe, save ingredient, etc.)
+  - user_routes_test.py
+    - All authenticated routes related to user login/logout
+
+`WARNING: ` Running tests will nuke the database (wipe it)
 Need to update pip by installing from requirements.txt
-
-Coverage report
-add in `--cov`
-
-Can parameterize tests if necessary
