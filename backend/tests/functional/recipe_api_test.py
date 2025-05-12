@@ -51,7 +51,9 @@ mock_spoonacular_response = {
     ]
 }
 
-
+# Logs into database
+def login(client):
+    return client.post("/login", json={"username": "test", "password": "password"})
 
 # Tests that get recipes work
 def test_get_recipes_success(client, mocker):
