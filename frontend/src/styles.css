@@ -995,7 +995,7 @@ header {
     cursor: pointer; 
 }
 
-/* For altering the account icon when user not logged in */
+/* For altering the account related icons when user not logged in */
 .icon-not-logged-in {
     img {
         filter: invert(94%) sepia(90%) saturate(1776%) hue-rotate(170deg) brightness(50%) contrast(83%);

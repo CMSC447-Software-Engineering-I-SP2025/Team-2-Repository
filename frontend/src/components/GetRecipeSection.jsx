@@ -1,5 +1,5 @@
 import { AdditionalFiltersAccordion } from "./AdditionalFiltersAccordion";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import clsx from 'clsx'
 
 export default function GetRecipeSection({ingredientNameList, setRecipes, setFavoritedRecipesBitMap, isLoggedIn}) {
@@ -178,7 +178,7 @@ function InputTextArea({ingredients, setIngredients, ingredientNameList, include
     }
 
     return <label className="textArea">
-        <select onChange={e => setIncludeToggle(e.target.value)}>
+        <select onChange={e => setIncludeToggle(e.target.value == "true")}>
             <option value={true}>Include</option>
             <option value={false}>Exclude</option>
         </select>
@@ -217,7 +217,7 @@ function IngredientList({ingredients, setIngredients, ingredientsIncludeBitMap})
                 {ingredients.map(
                     (ingredient, i) => 
                     <IngredientFilterBlock key={ingredient} ingredientName={ingredient} handleClick={() => removeIngredient(ingredient)}  
-                                             filterType={ingredientsIncludeBitMap[i] == true ? "includes-ingredient" : "excludes-ingredient"}/>
+                                             filterType={ingredientsIncludeBitMap[i] ? "includes-ingredient" : "excludes-ingredient"}/>
                 )}
             </div>
         </div>
