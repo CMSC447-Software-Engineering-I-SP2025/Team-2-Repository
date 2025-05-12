@@ -76,6 +76,21 @@ def test_delete_recipe_unauthenticated(client):
 # Tests for /listrecipes endpoint
 # ==================================================================================================================================
 
+def test_list_recipes_success(client, test_user, test_db):
+    """Should return list of recipes when user is logged in and has saved recipes."""
+
+    # Log in
+    login(client)
+    client.put("/addrecipe", json=formatted_response)
+
+    response = client.get("/listrecipes")
+
+    assert response.status_code == 200
+    data = response.get_json()
+    assert isinstance(data, list)
+    assert len(data) == 1
+    assert data[0]["title"] == formatted_response["title"]
+
 
 # ==================================================================================================================================
 # Tests for /addingredient endpoint

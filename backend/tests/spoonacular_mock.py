@@ -1,5 +1,5 @@
 # Mocks a spoonacular request of includeIngredients=sausage
-mock_spoonacular_response = {
+mock_spoonacular_recipe = {
     "results": [
         {
             "id": 659581,
@@ -44,4 +44,8 @@ mock_spoonacular_response = {
             }
         }
     ]
+}
+
+mock_spoonacular_ingredient = {
+    "id": 18079, "name": "breadcrumbs", "quantity": None, "image": "breadcrumbs.jpg"
 }
