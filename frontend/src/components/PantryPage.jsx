@@ -8,11 +8,13 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
     //     { name: 'Broccoli', quantity: "1 Bunch"},
     //     { name: 'Olive Oil', quantity: "1 Tbsp"},
     // ]);
+    const commonVolumeUnits = ["cup", "tsp", "tbsp", "L", "mL", "qt", "pt", "gal", "fl oz"]
+    const commonWeightUnits = ["kg", "g", "mg", "lb", "oz"]
+    const commonUnits = commonVolumeUnits.push(... commonWeightUnits)
     const [ingredients, setIngredients] = useState([]);
-
     const [quickAddGroups, setQuickAddGroups] = useState({});
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-    const [newIngredient, setNewIngredient] = useState({ id: '', name: '', quantity: ''});
+    const [newIngredient, setNewIngredient] = useState({ id: '', name: '', quantity: '', unit: '-- unit --'});
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
 
@@ -20,8 +22,8 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
     const serverBaseURLString = "http://localhost:8080";
     const serverBaseURL = new URL(serverBaseURLString);
 
-    function getIDNamePairByName(name) {
-        return ingredientObjs.find(idNamePair => idNamePair.name == name.toLowerCase());
+    function getIngredientByName(name) {
+        return ingredientObjs.find(ing => ing.name == name.toLowerCase());
     }
     function saveIngredient(ingredient) {
         let saveIngredientEndpoint = new URL("addingredient", serverBaseURL);
@@ -95,7 +97,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 return response.json();
             })
             .then(data => {
-                const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.quantity}));
+                const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.quantity, unit: savedIngredient.unit}));
                 setIngredients(tempIngredients);
                 setLoggedIn(true);
             })
@@ -104,8 +106,8 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
 
     // Add ingredient to the list
     const handleQuickAdd = (name) => {
-        const idName = getIDNamePairByName(name);
-        saveIngredient(idName);
+        const ingredient = getIngredientByName(name);
+        saveIngredient(ingredient);
         setIngredients((prev) => [...prev, { name, quantity: "-"}]);
     };
 
@@ -125,25 +127,23 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
 
     // Add new ingredient with validation (now allowing for missing quantity)
     const handleAddIngredient = () => {
-        // const capitalizeWords = (str) => {
-        //     return str
-        //         .split(' ') // Split the string into words
-        //         .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
-        //         .join(' '); // Join the words back together
-        // };
+
+        if (ingredients.find(ing => ing.name == newIngredient.name)) {
+            return
+        }
         
-        const ingredientToAdd = getIDNamePairByName(newIngredient.name);
-        
-        // const ingredientToAdd = {
-        //     id: ingredientObjs.find(idNamePair => idNamePair.name == newIngredient.name.toLowerCase()).id,
-        //     name: capitalizeWords(newIngredient.name.trim()), // Capitalize each word
-        //     quantity: newIngredient.quantity.trim() || "-",
-        // };
+        const ingredientToAdd = getIngredientByName(newIngredient.name)
+        ingredientToAdd.quantity = newIngredient.quantity.trim() || "-";
+        if (!["-- unit --", "n/a"].includes(newIngredient.unit)) {
+            ingredientToAdd.unit = newIngredient.unit
+        } else {
+            ingredientToAdd.unit = "-"
+        }
     
         if (ingredientToAdd.name) {
             saveIngredient(ingredientToAdd);
             setIngredients((prev) => [...prev, ingredientToAdd]);
-            setNewIngredient({ id: '', name: '', quantity: '' });
+            setNewIngredient({ id: '', name: '', quantity: '', unit: '-- unit --' });
         }
     };
 
@@ -151,7 +151,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         loggedIn ?
         <div className="pantry-page">
             <div className="quick-add">
-                <h2>Quick Add Ingredients</h2>
+                <h2>Add Ingredients</h2>
                 <input
                     type="text"
                     placeholder="Ingredient Name"
@@ -176,10 +176,25 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 )}
                 <input
                     type="text"
+                    size={13}
                     placeholder="Quantity (optional)"
                     value={newIngredient.quantity}
                     onChange={(e) => setNewIngredient({ ...newIngredient, quantity: e.target.value })}
                 />
+                <select
+                    value={newIngredient.unit}
+                    onChange={(e) => setNewIngredient({ ...newIngredient, unit: e.target.value })}
+                >
+                    <option disabled defaultValue> -- unit -- </option>
+                    <option>n/a</option>
+                    <optgroup label="volume">
+                        {commonVolumeUnits.map(unit => <option key={unit}>{unit}</option>)}
+                    </optgroup>
+                    <optgroup label="weight">
+                        {commonWeightUnits.map(unit => <option key={unit}>{unit}</option>)}
+                    </optgroup>
+                </select>
+
                 <button onClick={handleAddIngredient}>Add Ingredient</button>
 
                 {/* Display categorized quick-add buttons */}
@@ -209,7 +224,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                         <tr>
                             <th>Ingredient</th>
                             <th>Quantity</th>
-                            <th>Edit Quantity</th>
+                            <th>Unit</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -217,26 +232,40 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                         {ingredients.map((ingredient, index) => (
                             <tr key={index}>
                                 <td style={{textTransform: 'capitalize'}}>{ingredient.name}</td>
-                                <td>{ingredient.quantity ? ingredient.quantity : "-"}</td>
+                                <td className='measurement-column'>{ingredient.quantity ? ingredient.quantity : "-"}</td>
+                                <td className='measurement-column'>{ingredient.unit ? ingredient.unit : "-"}</td>
                                 <td>
-                                    <button onClick={() => {
-                                        const newQuantity = prompt("Enter new quantity:", ingredient.quantity);
-                                        if (newQuantity) {
-                                            const updatedIngredients = [...ingredients];
-                                            updatedIngredients[index].quantity = newQuantity;
-                                            setIngredients(updatedIngredients);
-                                        }
-                                    }}>
-                                        Edit
-                                    </button>
-                                </td>
-                                <td>
-                                    <button onClick={() => {
-                                        removeIngredient(getIDNamePairByName(ingredient.name));
-                                        setIngredients(prev => prev.filter((_, i) => i !== index));
-                                    }}>
-                                        Remove
-                                    </button>
+                                    <div className='add-spacing-to-children'>
+                                        <button onClick={() => {
+                                            const newQuantity = prompt("Enter new quantity:", ingredient.quantity);
+                                            if (newQuantity) {
+                                                const updatedIngredients = [...ingredients];
+                                                updatedIngredients[index].quantity = newQuantity;
+                                                setIngredients(updatedIngredients);
+                                            }
+                                        }}>
+                                            Edit Quantity
+                                        </button>
+                            
+                                        <button onClick={() => {
+                                            const newUnit = prompt("Enter new unit:", ingredient.unit);
+                                            if (newUnit) {
+                                                const updatedIngredients = [...ingredients];
+                                                updatedIngredients[index].unit = newUnit;
+                                                setIngredients(updatedIngredients);
+                                            }
+                                        }}>
+                                            Edit Unit
+                                        </button>
+                    
+                                        <button onClick={() => {
+                                            removeIngredient(getIngredientByName(ingredient.name));
+                                            setIngredients(prev => prev.filter((_, i) => i !== index));
+                                        }}>
+                                            Remove
+                                        </button>
+                                    </div>
+                                   
                                 </td>
                             </tr>
                         ))}

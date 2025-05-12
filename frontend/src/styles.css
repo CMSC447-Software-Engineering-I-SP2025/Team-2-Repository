@@ -597,7 +597,7 @@ header {
     padding: 2rem;
     font-family: lato;
 
-    .quick-add input {
+    .quick-add input, .quick-add select {
         padding: 0.5 rem;
         margin-right: 0.5rem;
     }
@@ -650,14 +650,17 @@ header {
     .ingredient-list th, .ingredient-list td {
         border: 1px solid #ccc;
         padding: 0.5rem;
-        text-align: left;
+    }
+
+    .ingredient-list th {
+        text-align: center;
     }
 
     .ingredient-list button {
         background-color: #ef4444;
         color: white;
         border: none;
-        padding: 0.4rem 0.8rem;
+        padding: 0.3rem 0.6rem;
         border-radius: 5px; 
         cursor: pointer;
     }
@@ -666,7 +669,7 @@ header {
         background-color: #dc2626;
     }
 
-    .ingredient-quantity {
+    .measurement-column {
         text-align: center;
         min-width: 60px; /* for consistent layout */
     }
@@ -1004,4 +1007,11 @@ header {
 
 .icon-not-logged-in.log-ingredients{
     background-color: #5f7680;
+}
+
+.add-spacing-to-children {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
 }
