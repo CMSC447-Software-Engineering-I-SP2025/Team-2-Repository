@@ -996,6 +996,12 @@ header {
 }
 
 /* For altering the account icon when user not logged in */
-.account-icon-change img{
-    filter: invert(94%) sepia(90%) saturate(1776%) hue-rotate(170deg) brightness(50%) contrast(83%);
+.icon-not-logged-in {
+    img {
+        filter: invert(94%) sepia(90%) saturate(1776%) hue-rotate(170deg) brightness(50%) contrast(83%);
+    }    
+}
+
+.icon-not-logged-in.log-ingredients{
+    background-color: #5f7680;
 }
