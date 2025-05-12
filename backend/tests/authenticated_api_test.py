@@ -34,23 +34,60 @@ def test_save_recipe_success(client, test_user, test_db):
     session.close()
 
 
+def test_save_recipe_unauthenticated(client):
+    """Should return 401 if user is not logged in."""
+
+    response = client.put("/addrecipe", json=formatted_response)
+    assert response.status_code == 401
+
 
 # ==================================================================================================================================
 # Tests for /removerecipe endpoint
 # ==================================================================================================================================
 
+def test_delete_recipe_success(client, test_user, test_db):
+    """Should return 200 and persist recipe when user is authenticated"""
+
+    # Place in the mock_response into db
+    login(client)
+    client.put("/addrecipe", json=formatted_response)
+
+    recipe_id = formatted_response["id"]
+    response = client.delete("/removerecipe", data=str(recipe_id))
+
+    assert response.status_code == 200
+
+    session = test_db.DBSession()
+    recipe = session.query(RecipeDB).filter_by(user_id=test_user.id, recipe_id=recipe_id).first()
+    session.close()
+
+    assert recipe is None
+
+
+def test_delete_recipe_unauthenticated(client):
+    """Should return 401 if user is not logged in."""
+
+    recipe_id = formatted_response["id"]
+    response = client.delete("/removerecipe", data=str(recipe_id))
+    assert response.status_code == 401
+
+
 # ==================================================================================================================================
 # Tests for /listrecipes endpoint
 # ==================================================================================================================================
+
 
 # ==================================================================================================================================
 # Tests for /addingredient endpoint
 # ==================================================================================================================================
 
+
 # ==================================================================================================================================
 # Tests for /removeingredient endpoint
 # ==================================================================================================================================
 
+
 # ==================================================================================================================================
 # Tests for /listingredients endpoint
 # ==================================================================================================================================
+

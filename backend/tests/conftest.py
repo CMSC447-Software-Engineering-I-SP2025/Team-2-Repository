@@ -61,11 +61,6 @@ def test_user(test_db):
     user.id = user_id
     return user
 
-@pytest.fixture
-def login_client(client, test_user):
-    """Log into database using dummy user defined"""
-    client.post("/login", json={"username": username, "password": password})
-    return client
 
 @pytest.fixture
 def app():
