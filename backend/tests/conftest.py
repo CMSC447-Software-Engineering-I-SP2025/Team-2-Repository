@@ -7,6 +7,8 @@ from server import DB, Base
 from db_data_models import UserDB
 from werkzeug.security import generate_password_hash
 from pathlib import Path
+from backend.tests.globals import username, password
+
 
 @pytest.fixture
 def test_db(monkeypatch):
@@ -43,8 +45,8 @@ def test_user(test_db):
     session = test_db.DBSession()
 
     user = UserDB(
-        username="testuser",
-        password_hash=generate_password_hash("securepass")
+        username=username,
+        password_hash=generate_password_hash(password)
     )
 
     session.add(user)
@@ -58,6 +60,12 @@ def test_user(test_db):
     # Copy over and return
     user.id = user_id
     return user
+
+@pytest.fixture
+def login_client(client, test_user):
+    """Log into database using dummy user defined"""
+    client.post("/login", json={"username": username, "password": password})
+    return client
 
 @pytest.fixture
 def app():
