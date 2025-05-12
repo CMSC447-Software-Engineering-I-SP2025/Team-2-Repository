@@ -309,6 +309,10 @@ def api_save_recipe() -> str:
     """
     user_id  = session.get("user_id")
 
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
     # Write data to database
     with db.DBSession() as db_session:
         try:
@@ -336,6 +340,10 @@ def api_delete_recipe() -> str:
     """
     user_id  = session.get("user_id")
     recipe_id = int(request.get_data(as_text=True))
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     # Delete specified recipe
     with db.DBSession() as db_session:
