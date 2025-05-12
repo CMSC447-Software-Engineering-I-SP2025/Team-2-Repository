@@ -185,8 +185,7 @@ def login() -> str:
     username = data.get("username")
     password = data.get("password")
     if not username or not password:
-        #return render_template_string(LOGIN_FORM + "<p style='color:red;'>Username and password required.</p>"), 400
-        return "", 400
+        return jsonify({"error": "Username and pasword required"}), 400
 
     # Check if login credentials are correct
     with db.DBSession() as session_db:
@@ -194,10 +193,8 @@ def login() -> str:
         if user and check_password_hash(user.password_hash, password):
             session["user_id"] = user.id
             session["username"] = user.username
-            # return render_template_string("<p>Logged in successfully! <a href='http://localhost:5173/'>Go to home</a></p>")
             return user.username, 200
-        #return render_template_string(LOGIN_FORM + "<p style='color:red;'>Invalid credentials.</p>"), 401
-        return "", 401
+        return jsonify({"error": "Invalid Credentials"}), 401
 
 
 @app.route(rule="/logout", methods=["POST", "GET"])
