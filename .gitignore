@@ -1,7 +1,7 @@
 **/target
-**/__pycache__/
 .vscode/
 **/database.db
 venv
 .idea/
 node_modules/
+__pycache__/
