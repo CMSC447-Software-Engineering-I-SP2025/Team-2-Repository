@@ -91,6 +91,12 @@ def test_list_recipes_success(client, test_user, test_db):
     assert len(data) == 1
     assert data[0]["title"] == formatted_response["title"]
 
+def test_list_recipes_unauthenticated(client):
+    """Should return 401 if user is not logged in."""
+
+    response = client.get("/listrecipes")
+    assert response.status_code == 401
+    assert response.get_json()["error"] == "Unauthorized"
 
 # ==================================================================================================================================
 # Tests for /addingredient endpoint
