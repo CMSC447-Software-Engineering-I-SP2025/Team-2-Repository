@@ -1,11 +1,11 @@
 import pytest
 
 from db_data_models import UserDB, RecipeDB
-from .spoonacular_mock import mock_spoonacular_response
+from .spoonacular_mock import mock_spoonacular_recipe
 from backend.tests.globals import username, password
 
 # Need to format for methods to accept it
-formatted_response = mock_spoonacular_response["results"][0]
+formatted_response = mock_spoonacular_recipe["results"][0]
 
 # Logs into database
 def login(client):
