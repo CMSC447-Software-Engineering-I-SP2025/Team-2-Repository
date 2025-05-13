@@ -1,10 +1,13 @@
 """Main file for this project."""
 # ==================================================================================================================================
 # IMPORTS
+# ==================================================================================================================================
+
 
 # Standard Libraries
 import json
 from pathlib import Path
+from typing import Any
 
 # Custom Libraries
 from backend_data_models import Response, json_mapper, Recipe, Ingredient
@@ -16,7 +19,7 @@ from db_data_models import (
 )
 
 # External Libraries
-from flask import Flask, jsonify, render_template_string, request, session
+from flask import Flask, jsonify, render_template_string, request, session, Response
 from flask_cors import CORS
 from mappers import ingredient_mapper, recipe_mapper
 from requests import Request
@@ -28,7 +31,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 # ==================================================================================================================================
 # GLOBAL ITEMS
-#
+# ==================================================================================================================================
+
 
 # Load config file
 config_options = tomlloads((Path(__file__).parent.parent / "assets" / "config.toml").read_text())
@@ -37,9 +41,13 @@ config_options = tomlloads((Path(__file__).parent.parent / "assets" / "config.to
 class DB:
     """Database connector."""
 
-    def __init__(self) -> None:
+    def __init__(self, db_uri=None) -> None:
         """Initialize the database."""
-        self.engine = create_engine(f"sqlite:///{(Path(__file__).resolve().parent.parent / 'assets' / 'database.db').as_posix()}")
+        if db_uri is None:
+            db_path = Path(__file__).resolve().parent.parent / 'assets' / 'database.db'
+            db_uri = f"sqlite:///{db_path.as_posix()}"
+
+        self.engine = create_engine(db_uri)
         Base.metadata.create_all(self.engine)
         self.DBSession = sessionmaker(bind=self.engine)
         self.base_url = "https://api.spoonacular.com/recipes/complexSearch"
@@ -124,18 +132,17 @@ supports_credentials=True,
 
 # ==================================================================================================================================
 # CORE BUSINESS LOGIC
+# ==================================================================================================================================
 
-@app.route(rule="/register", methods=["POST", "GET"])
-def register() -> dict:
+
+@app.route(rule="/register", methods=["POST"])
+def register() -> str | tuple[Response, int]:
     """Register a user.
 
     Returns:
         dict: Response.
 
     """
-    if request.method == "GET":
-        return render_template_string(REGISTER_FORM)
-
     # POST: handle registration
     data = request.get_json()
     username = data.get("username")
@@ -155,8 +162,8 @@ def register() -> dict:
     return jsonify({"message": "User registered successfully"}), 201
 
 
-@app.route(rule="/login", methods=["GET", "POST"])
-def login() -> str:
+@app.route(rule="/login", methods=["POST"])
+def login() -> str | tuple[Response, int] | tuple[str, int]:
     """Log user in.
 
     Returns:
@@ -167,17 +174,12 @@ def login() -> str:
     if "user_id" in session:
         return render_template_string("<p>You are already logged in as {{username}}. <a href='http://localhost:5173/'>Go to home</a></p>", username=session.get("username"))
 
-    # Return login form
-    if request.method == "GET":
-        return render_template_string(LOGIN_FORM)
-
     # POST: handle login
     data = request.form if request.form else request.get_json()
     username = data.get("username")
     password = data.get("password")
     if not username or not password:
-        #return render_template_string(LOGIN_FORM + "<p style='color:red;'>Username and password required.</p>"), 400
-        return "", 400
+        return jsonify({"error": "Username and password required"}), 400
 
     # Check if login credentials are correct
     with db.DBSession() as session_db:
@@ -185,27 +187,25 @@ def login() -> str:
         if user and check_password_hash(user.password_hash, password):
             session["user_id"] = user.id
             session["username"] = user.username
-            # return render_template_string("<p>Logged in successfully! <a href='http://localhost:5173/'>Go to home</a></p>")
             return user.username, 200
-        #return render_template_string(LOGIN_FORM + "<p style='color:red;'>Invalid credentials.</p>"), 401
-        return "", 401
+        return jsonify({"error": "Invalid credentials"}), 401
 
 
 @app.route(rule="/logout", methods=["POST", "GET"])
-def logout() -> str:
+def logout() -> tuple[Response, int]:
     """Log user out.
 
     Returns:
-        Text: Success message.
+        tuple: JSON message and status code
 
     """
     session.pop("user_id", None)
     session.pop("username", None)
-    return render_template_string("<p>Logged out successfully!</p>")
+    return jsonify({"message": "Logged out successfully"}), 200
 
 
 @app.route(rule="/loginstatus", methods=["GET"])
-def loginstatus() -> str:
+def loginstatus() -> tuple[Any | None, int] | tuple[str, int]:
     """Return username if user is logged in else empty string.
 
     Returns:
@@ -218,7 +218,7 @@ def loginstatus() -> str:
 
 
 @app.route(rule="/my-account")
-def my_account() -> str:
+def my_account() -> tuple[str, int] | str:
     """View account info.
 
     Returns:
@@ -290,11 +290,11 @@ def api_get_recipes() -> dict:
     # return mapped_data
 
     # Request, get, and return data (One liner).
-    return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results 
+    return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
 
 
 @app.route("/addrecipe", methods=["PUT"])
-def api_save_recipe() -> str:
+def api_save_recipe() -> tuple[Response, int] | str:
     """Save a recipe to the database.
 
     Raises:
@@ -305,6 +305,10 @@ def api_save_recipe() -> str:
 
     """
     user_id  = session.get("user_id")
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     # Write data to database
     with db.DBSession() as db_session:
@@ -320,7 +324,7 @@ def api_save_recipe() -> str:
 
 
 @app.route("/removerecipe", methods=["DELETE"])
-def api_delete_recipe() -> str:
+def api_delete_recipe() -> tuple[Response, int] | str:
     """Delete a recipe from the database.
 
     Raises:
@@ -332,6 +336,10 @@ def api_delete_recipe() -> str:
     """
     user_id  = session.get("user_id")
     recipe_id = int(request.get_data(as_text=True))
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     # Delete specified recipe
     with db.DBSession() as db_session:
@@ -347,7 +355,7 @@ def api_delete_recipe() -> str:
 
 
 @app.route("/listrecipes", methods=["GET"])
-def api_list_recipes() -> dict:
+def api_list_recipes() -> Response | tuple[Response, int]:
     """List all saved recipes.
 
     Raises:
@@ -358,6 +366,10 @@ def api_list_recipes() -> dict:
 
     """
     user_id  = session.get("user_id")
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     # Query database for recipes.
     with db.DBSession() as db_session:
@@ -370,7 +382,7 @@ def api_list_recipes() -> dict:
 
 
 @app.route("/addingredient", methods=["PUT"])
-def api_save_ingredient() -> str:
+def api_save_ingredient() -> tuple[Response, int] | str:
     """Add an ingredient to the pantry.
 
     Raises:
@@ -381,6 +393,10 @@ def api_save_ingredient() -> str:
 
     """
     user_id  = session.get("user_id")
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     # Write data to database
     with db.DBSession() as db_session:
@@ -396,7 +412,7 @@ def api_save_ingredient() -> str:
 
 
 @app.route("/removeingredient", methods=["DELETE"])
-def api_delete_ingredient() -> str:
+def api_delete_ingredient() -> tuple[Response, int] | str:
     """Remove an ingredient from the pantry.
 
     Raises:
@@ -410,6 +426,10 @@ def api_delete_ingredient() -> str:
     user_id  = session.get("user_id")
     ingredient_id = int(request.get_data(as_text=True))
 
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
     with db.DBSession() as db_session:
         try:
             db_session.query(IngredientDB).filter_by(ingr_id=ingredient_id, user_id=user_id).delete()
@@ -421,7 +441,7 @@ def api_delete_ingredient() -> str:
 
 
 @app.route("/listingredients", methods=["GET"])
-def api_list_ingredients() -> dict:
+def api_list_ingredients() -> Response | tuple[Response, int]:
     """List all saved ingredients.
 
     Raises:
@@ -432,6 +452,10 @@ def api_list_ingredients() -> dict:
 
     """
     user_id  = session.get("user_id")
+
+    # If null user_id
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
 
     with db.DBSession() as db_session:
         try:
@@ -487,7 +511,8 @@ def find_missing_ingredients() -> list[str]:
 
 # ==================================================================================================================================
 # BEGIN PROGRAM EXECUTION
-#
+# ==================================================================================================================================
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=True)
