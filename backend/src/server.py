@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 # Custom Libraries
-from backend_data_models import Response, json_mapper
+from backend_data_models import SpoonacularResponse, json_mapper
 from db_data_models import (
     Base,
     IngredientDB,
@@ -135,7 +135,7 @@ supports_credentials=True,
 # ==================================================================================================================================
 
 
-@app.route(rule="/register", methods=["POST", "GET"])
+@app.route(rule="/register", methods=["POST"])
 def register() -> str | tuple[Response, int]:
     """Register a user.
 
@@ -143,9 +143,6 @@ def register() -> str | tuple[Response, int]:
         dict: Response.
 
     """
-    if request.method == "GET":
-        return render_template_string(REGISTER_FORM)
-
     # POST: handle registration
     data = request.get_json()
     username = data.get("username")
@@ -165,7 +162,7 @@ def register() -> str | tuple[Response, int]:
     return jsonify({"message": "User registered successfully"}), 201
 
 
-@app.route(rule="/login", methods=["GET", "POST"])
+@app.route(rule="/login", methods=["POST"])
 def login() -> str | tuple[Response, int] | tuple[str, int]:
     """Log user in.
 
@@ -176,10 +173,6 @@ def login() -> str | tuple[Response, int] | tuple[str, int]:
     # User is already logged in
     if "user_id" in session:
         return render_template_string("<p>You are already logged in as {{username}}. <a href='http://localhost:5173/'>Go to home</a></p>", username=session.get("username"))
-
-    # Return login form
-    if request.method == "GET":
-        return render_template_string(LOGIN_FORM)
 
     # POST: handle login
     data = request.form if request.form else request.get_json()
@@ -289,10 +282,16 @@ def api_get_recipes() -> dict:
 
     # Get dummy data
     #final_results = json_mapper(get_dummy_data(), Response).results
-    url = Request(method="GET", url=db.base_url, params=params).prepare().url
-    spoonacularResponse = reqget(url, timeout=5).text
-    json_data = json.loads(spoonacularResponse)
-    mapped_data = json_mapper(json_data, data_class=Response).results
+
+    # Formats the request into a URL
+    prepared_request = Request(method="GET", url=db.base_url, params=params).prepare()
+    url = prepared_request.url
+
+    # Makes request and parses raw JSON into a python dictionary
+    response = reqget(url, timeout=5).text
+    json_data = json.loads(response)
+
+    mapped_data = json_mapper(json_data, data_class=SpoonacularResponse).results
     return mapped_data
     # Request, get, and return data.
     # return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results

@@ -165,7 +165,7 @@ class Recipe:
     nutrition: Nutrition | None
 
 @dataclass
-class Response:
+class SpoonacularResponse:
     """Response dataclass.
 
     Represents a response containing a list of recipes.
@@ -178,7 +178,7 @@ class Response:
     results: list[Recipe]
 
 
-def json_mapper(json_data: dict, data_class: Response):
+def json_mapper(json_data: dict, data_class: SpoonacularResponse):
 
     return from_dict(
         data_class=data_class,

@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from backend_data_models import Ingredient, Recipe, Response
+from backend_data_models import Ingredient, Recipe, SpoonacularResponse
 from dacite import Config, from_dict
 from db_data_models import IngredientDB, RecipeDB
 
@@ -79,7 +79,7 @@ def response_mapper(json_data: Any) -> Any:
 
     """
     return from_dict(
-        data_class=Response,
+        data_class=SpoonacularResponse,
         data=json_data,
         config=Config(check_types=False, cast=[], strict=False),
     )
