@@ -183,3 +183,38 @@ def test_delete_ingredient_unauthenticated(client):
 # Tests for /listingredients endpoint
 # ==================================================================================================================================
 
+def test_list_ingredients_success(client, test_user, test_db):
+    """Should return list of ingredients when user is logged in and has saved ingredients."""
+
+    # Log in
+    login(client)
+
+    # Save ingredient
+    client.put("/addingredient", json=formatted_ingredient)
+
+    # Request list
+    response = client.get("/listingredients")
+    assert response.status_code == 200
+
+    data = response.get_json()
+    assert isinstance(data, list)
+    assert len(data) == 1
+    assert data[0]["name"] == formatted_ingredient["name"]
+
+
+def test_list_ingredients_empty(client, test_user):
+    """Should return empty list when user is logged in but has no ingredients."""
+
+    login(client)
+
+    response = client.get("/listingredients")
+    assert response.status_code == 200
+    assert response.get_json() == []
+
+
+def test_list_ingredients_unauthenticated(client):
+    """Should return 401 if user is not logged in."""
+
+    response = client.get("/listingredients")
+    assert response.status_code == 401
+    assert response.get_json()["error"] == "Unauthorized"
