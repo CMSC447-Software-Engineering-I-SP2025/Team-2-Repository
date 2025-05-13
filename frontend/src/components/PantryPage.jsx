@@ -17,6 +17,9 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
 
+    //bit maps representing whether table ingredient at that row index is currently being edited
+    const [isEditingQuantity, setIsEditingQuantity] = useState([]); 
+    const [isEditingUnit, setIsEditingUnit] = useState([]);
 
     const serverBaseURLString = "http://localhost:8080";
     const serverBaseURL = new URL(serverBaseURLString);
@@ -98,6 +101,10 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
             .then(data => {
                 const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.quantity, unit: savedIngredient.unit}));
                 setIngredients(tempIngredients);
+                const prefilledArray = new Array(tempIngredients.length);
+                prefilledArray.fill(false);
+                setIsEditingQuantity(prefilledArray)
+                setIsEditingUnit(prefilledArray)
                 setLoggedIn(true);
             })
             .catch(error => console.log(error));
@@ -108,6 +115,8 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         const ingredient = getIngredientByName(name);
         saveIngredient(ingredient);
         setIngredients((prev) => [...prev, { name, quantity: "-"}]);
+        setIsEditingQuantity([...isEditingQuantity, false]);
+        setIsEditingUnit([...isEditingUnit, false]);
     };
 
     // Filter suggestions based on input
@@ -142,6 +151,8 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         if (ingredientToAdd.name) {
             saveIngredient(ingredientToAdd);
             setIngredients((prev) => [...prev, ingredientToAdd]);
+            setIsEditingQuantity([...isEditingQuantity, false]);
+            setIsEditingUnit([...isEditingUnit, false]);
             setNewIngredient({ id: '', name: '', quantity: '', unit: '-- unit --' });
         }
     };
@@ -235,31 +246,85 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                 <td className='measurement-column'>{ingredient.unit ? ingredient.unit : "-"}</td>
                                 <td>
                                     <div className='add-spacing-to-children'>
-                                        <button onClick={() => {
-                                            const newQuantity = prompt("Enter new quantity:", ingredient.quantity);
-                                            if (newQuantity) {
-                                                const updatedIngredients = [...ingredients];
-                                                updatedIngredients[index].quantity = newQuantity;
-                                                setIngredients(updatedIngredients);
-                                            }
-                                        }}>
-                                            Edit Quantity
-                                        </button>
-                            
-                                        <button onClick={() => {
-                                            const newUnit = prompt("Enter new unit:", ingredient.unit);
-                                            if (newUnit) {
-                                                const updatedIngredients = [...ingredients];
-                                                updatedIngredients[index].unit = newUnit;
-                                                setIngredients(updatedIngredients);
-                                            }
-                                        }}>
-                                            Edit Unit
-                                        </button>
-                    
+                                        {isEditingQuantity[index]
+                                        ?   <input
+                                                type="text"
+                                                size={8}
+                                                placeholder="New Quantity"
+                                                onKeyDown={(e) => {
+                                                    if(e.key == "Enter") {
+                                                        const ingrsCopy = ingredients.slice();
+                                                        ingrsCopy[index].quantity = e.target.value;
+                                                        setIngredients(ingrsCopy);
+
+                                                        const updatedEditingQuantity = isEditingQuantity.slice();
+                                                        updatedEditingQuantity[index] = false;
+                                                        setIsEditingQuantity(updatedEditingQuantity);
+                                                    } 
+                                                }}   
+                                            />
+                                        :   <button onClick={() => {
+                                                const updatedEditingQuantity = [...isEditingQuantity];
+                                                updatedEditingQuantity[index] = true;
+                                                setIsEditingQuantity(updatedEditingQuantity);
+                                            }}>
+                                                Edit Quantity
+                                            </button>
+                                        }
+                                        {isEditingUnit[index]
+                                        ?   <>
+                                                <select>
+                                                    <option disabled defaultValue value={ingredients[index].unit}> -- unit -- </option>
+                                                    <option value={'-'}>n/a</option>
+                                                    <optgroup label="volume">
+                                                        {commonVolumeUnits.map(unit => <option key={unit} value={unit}>{unit}</option>)}
+                                                    </optgroup>
+                                                    <optgroup label="weight">
+                                                        {commonWeightUnits.map(unit => <option key={unit} value={unit}>{unit}</option>)}
+                                                    </optgroup>
+                                                </select>
+                                            </>
+                                        :   <button onClick={() => {
+                                                const updatedEditingUnit = [...isEditingUnit];
+                                                updatedEditingUnit[index] = true;
+                                                setIsEditingUnit(updatedEditingUnit);
+                                            }}>
+                                                Edit Unit
+                                            </button>
+                                        }
+
+                                        {(isEditingQuantity[index] || isEditingUnit[index]) &&
+                                            <input 
+                                                type="submit"
+                                                value="Update"
+                                                onClick={(e) => {
+                                                    const ingrsCopy = ingredients.slice();
+                                                    if(isEditingQuantity) {
+                                                        ingrsCopy[index].quantity = e.target.previousSibling.previousSibling.value;
+                                                    }
+                                                    if(isEditingUnit) {
+                                                        ingrsCopy[index].unit = e.target.previousSibling.value;
+                                                    }
+                                                    //
+                                                    setIngredients(ingrsCopy);
+                                                    const updatedEditingQuantity = isEditingQuantity.slice();
+                                                    const updatedEditingUnit = isEditingUnit.slice();
+                                                    updatedEditingQuantity[index] = false;
+                                                    updatedEditingUnit[index] = false;
+                                                    setIsEditingQuantity(updatedEditingQuantity);  
+                                                    setIsEditingUnit(updatedEditingUnit);                                                      
+                                                }}
+                                            />
+                                        }
                                         <button onClick={() => {
                                             removeIngredient(getIngredientByName(ingredient.name));
                                             setIngredients(prev => prev.filter((_, i) => i !== index));
+                                            const tempEditQuantity = isEditingQuantity.slice()
+                                            tempEditQuantity.splice(index, 1);
+                                            setIsEditingQuantity(tempEditQuantity);
+                                            const tempEditUnit = isEditingUnit.slice()
+                                            tempEditUnit.splice(index, 1);
+                                            setIsEditingUnit(tempEditUnit);
                                         }}>
                                             Remove
                                         </button>
