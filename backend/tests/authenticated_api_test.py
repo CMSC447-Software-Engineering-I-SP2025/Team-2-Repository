@@ -1,11 +1,13 @@
 import pytest
 
-from db_data_models import UserDB, RecipeDB
-from .spoonacular_mock import mock_spoonacular_recipe
+from db_data_models import UserDB, RecipeDB, IngredientDB
+from .spoonacular_mock import mock_spoonacular_recipe, mock_spoonacular_ingredient
 from backend.tests.globals import username, password
 
 # Need to format for methods to accept it
 formatted_response = mock_spoonacular_recipe["results"][0]
+formatted_ingredient = mock_spoonacular_ingredient
+
 
 # Logs into database
 def login(client):
@@ -98,9 +100,40 @@ def test_list_recipes_unauthenticated(client):
     assert response.status_code == 401
     assert response.get_json()["error"] == "Unauthorized"
 
+
 # ==================================================================================================================================
 # Tests for /addingredient endpoint
 # ==================================================================================================================================
+
+def test_save_ingredient_success(client, test_user, test_db):
+    """Should return 200 and save ingredient when user is authenticated."""
+
+    # Log in the user
+    login(client)
+
+    # Send PUT request to add ingredient
+    response = client.put("/addingredient", json=formatted_ingredient)
+
+    # Validate response
+    assert response.status_code == 200
+    assert response.data.decode() == "200"
+
+    # Confirm ingredient is stored in DB
+    session = test_db.DBSession()
+    saved = session.query(IngredientDB).filter_by(user_id=test_user.id).first()
+    session.close()
+
+    assert saved is not None
+    assert saved.name == formatted_ingredient["name"]
+
+
+def test_save_ingredient_unauthenticated(client):
+    """Should return 401 if user is not logged in."""
+
+    response = client.put("/addingredient", json=formatted_ingredient)
+
+    assert response.status_code == 401
+    assert response.get_json()["error"] == "Unauthorized"
 
 
 # ==================================================================================================================================
