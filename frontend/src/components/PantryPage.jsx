@@ -249,8 +249,9 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                         {isEditingQuantity[index]
                                         ?   <input
                                                 type="text"
-                                                size={8}
-                                                placeholder="New Quantity"
+                                                size={4}
+                                                placeholder="Quantity"
+                                                defaultValue={ingredients[index].quantity}
                                                 onKeyDown={(e) => {
                                                     if(e.key == "Enter") {
                                                         const ingrsCopy = ingredients.slice();
@@ -273,8 +274,8 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                         }
                                         {isEditingUnit[index]
                                         ?   <>
-                                                <select>
-                                                    <option disabled defaultValue value={ingredients[index].unit}> -- unit -- </option>
+                                                <select defaultValue={ingredients[index].unit == '-' ? 'n/a' : ingredients[index].unit}>
+                                                    {/* <option defaultValue value={ingredients[index].unit}> {ingredients[index].unit} </option> */}
                                                     <option value={'-'}>n/a</option>
                                                     <optgroup label="volume">
                                                         {commonVolumeUnits.map(unit => <option key={unit} value={unit}>{unit}</option>)}
@@ -299,10 +300,10 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                                 value="Update"
                                                 onClick={(e) => {
                                                     const ingrsCopy = ingredients.slice();
-                                                    if(isEditingQuantity) {
+                                                    if(isEditingQuantity[index]) {
                                                         ingrsCopy[index].quantity = e.target.previousSibling.previousSibling.value;
                                                     }
-                                                    if(isEditingUnit) {
+                                                    if(isEditingUnit[index]) {
                                                         ingrsCopy[index].unit = e.target.previousSibling.value;
                                                     }
                                                     //
