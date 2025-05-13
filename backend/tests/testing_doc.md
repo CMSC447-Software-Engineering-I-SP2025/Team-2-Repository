@@ -1,14 +1,11 @@
+`WARNING: ` Running tests will nuke the database (wipe it)
+Need to update pip by installing from requirements.txt
+
 # TODO
-- Test Authorized Routes (All require database usage)
-  - save_recipe
-  - delete_recipe
-  - list_recipes
-    - from database
-  - save_ingredient
-  - delete_ingredient
-  - list_ingredients
+
 
 - See if still need unit tests (testing models themselves)
+- FInish CI/CD so upon commit tests get ran
 ---
 
 # Covered
@@ -20,8 +17,15 @@
   - /my-account
   - /recipes
     - Get query from spoonacular
-  
-- Need to get authorized routes (require logged in user) tested
+- Test Authorized Routes (All require database usage)
+  - save_recipe
+  - delete_recipe
+  - list_recipes
+    - from database
+  - save_ingredient
+  - delete_ingredient
+  - list_ingredients
+
 
 # Usage
 `pytest -v -s`
@@ -40,6 +44,3 @@ For generating a coverage report
     - All authenticated recipe routes (save recipe, delete recipe, save ingredient, etc.)
   - user_routes_test.py
     - All authenticated routes related to user login/logout
-
-`WARNING: ` Running tests will nuke the database (wipe it)
-Need to update pip by installing from requirements.txt
