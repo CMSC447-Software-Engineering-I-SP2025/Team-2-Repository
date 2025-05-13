@@ -140,6 +140,44 @@ def test_save_ingredient_unauthenticated(client):
 # Tests for /removeingredient endpoint
 # ==================================================================================================================================
 
+def test_delete_ingredient_success(client, test_user, test_db):
+    """Should delete ingredient and return 200 when user is authenticated."""
+
+    # Log in the user
+    login(client)
+
+    # First, add the ingredient to DB
+    response = client.put("/addingredient", json=formatted_ingredient)
+    assert response.status_code == 200
+
+    # Get the ingredient's ID from the DB
+    session = test_db.DBSession()
+    ingredient = session.query(IngredientDB).filter_by(user_id=test_user.id).first()
+    session.close()
+
+    assert ingredient is not None
+
+    # Send DELETE request
+    response = client.delete("/removeingredient", data=str(ingredient.ingr_id))
+
+    assert response.status_code == 200
+    assert response.data.decode() == "200"
+
+    # Confirm it's gone
+    session = test_db.DBSession()
+    result = session.query(IngredientDB).filter_by(ingr_id=ingredient.ingr_id).first()
+    session.close()
+    assert result is None
+
+
+def test_delete_ingredient_unauthenticated(client):
+    """Should return 401 if user is not logged in."""
+
+    response = client.delete("/removeingredient", data="1")
+
+    assert response.status_code == 401
+    assert response.get_json()["error"] == "Unauthorized"
+
 
 # ==================================================================================================================================
 # Tests for /listingredients endpoint
