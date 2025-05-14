@@ -7,7 +7,7 @@
 # Standard Libraries
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any #TODO remove if not needed
 
 # Custom Libraries
 from backend_data_models import Response, json_mapper, Recipe, Ingredient
@@ -19,12 +19,12 @@ from db_data_models import (
 )
 
 # External Libraries
-from flask import Flask, jsonify, render_template_string, request, session, Response
+from flask import Flask, jsonify, render_template_string, request, session
 from flask_cors import CORS
 from mappers import ingredient_mapper, recipe_mapper
 from requests import Request
 from requests import get as reqget
-from sqlalchemy import create_engine, update
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from tomllib import loads as tomlloads
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -143,6 +143,7 @@ def register() -> str | tuple[Response, int]:
         dict: Response.
 
     """
+
     # POST: handle registration
     data = request.get_json()
     username = data.get("username")
@@ -265,7 +266,7 @@ def api_get_recipes() -> dict:
         "addRecipeNutrition": True,
         "fillIngredients": True,
         "sort": "min-missing-ingredients",
-        "number": 15,
+        "number": 1,
         "apiKey": db.api_key,
     }
 
@@ -290,9 +291,9 @@ def api_get_recipes() -> dict:
     # return mapped_data
 
     # Request, get, and return data (One liner).
-    return json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
-
-
+    a = json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
+    print(a)
+    return a
 @app.route("/addrecipe", methods=["PUT"])
 def api_save_recipe() -> tuple[Response, int] | str:
     """Save a recipe to the database.
@@ -304,6 +305,7 @@ def api_save_recipe() -> tuple[Response, int] | str:
         str: Success message.
 
     """
+    print("Saving Recipe: ", request.get_json())
     user_id  = session.get("user_id")
 
     # If null user_id

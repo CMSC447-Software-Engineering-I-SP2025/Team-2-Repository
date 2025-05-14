@@ -19,7 +19,7 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
             servings=input_recipe["servings"],
             analyzed_instructions=json.dumps(
                 [{k: v for k, v in instr.items() if k != "repr"}
-                 for instr in input_recipe.get("instructions", []) or []],
+                 for instr in input_recipe.get("analyzedInstructions", []) or []],
             ),
             nutrition= json.dumps(
                 #{"nutrients": [{k: v for k, v in nutr.items()}

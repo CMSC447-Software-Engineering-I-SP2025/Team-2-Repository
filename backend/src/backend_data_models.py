@@ -1,4 +1,4 @@
-"""Data classes for frontend <-> backend interaction."""
+"""Data classe for frontend <-> backend interaction."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -132,7 +132,7 @@ class Nutrient:
 class Nutrition:
     """Nutrient dataclass.
 
-    Represents a collection of a nutritional information about a recipe. 
+    Represents a collection of a nutritional information about a recipe.
     Omits the properties, flavonoids, and ingredients fields of a Spoonacular Nutrition object.
 
     Attributes:
