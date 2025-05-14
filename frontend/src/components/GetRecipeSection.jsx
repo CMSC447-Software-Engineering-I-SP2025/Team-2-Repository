@@ -72,7 +72,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
                             includeIngredients.push(ingredient) : excludeIngrendients.push(ingredient)
         )
         recipeEndpoint.searchParams.append("includeIngredients", includeIngredients.join());
-        recipeEndpoint.searchParams.append("excludeIngredients", excludeIngrendients.join());
+        if(includeIngredients.length > 0) recipeEndpoint.searchParams.append("excludeIngredients", excludeIngrendients.join());
         selectedFiltersBitMaps.forEach((bitMap, filterType) => {
             const selectedOptions = [];
             bitMap.forEach((optionIsSelected, i) => { 

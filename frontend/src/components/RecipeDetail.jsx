@@ -15,6 +15,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
     const [favorited, setFavorited] = useState(false);
     const [nutrients, setNutrients] = useState([]);
     const [numServings, setNumServings] = useState(null);
+    const [missingIngredients, setMissingIngredients] = useState([]);
     const serverBaseURLString = "http://localhost:8080";
 
     let recipe;
@@ -34,6 +35,28 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
         .then(data => {
             data.forEach(savedRecipe => {
                 if (savedRecipe["id"] == recipe["id"]) setFavorited(true);
+            });
+        })
+        .catch(error => console.log(error));
+    }
+
+    function getMissingIngredients(recipe) {
+        let serverBaseURL = new URL(serverBaseURLString); 
+        let listRecipesEndpoint = new URL("findmissing", serverBaseURL);
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(recipe)
+        };
+        fetch(listRecipesEndpoint, options)
+        .then(response => response.json())
+        .then(data => {
+            const missing = []
+            data.forEach(ingr => {
+                missing.push(ingr)
             });
         })
         .catch(error => console.log(error));
@@ -59,6 +82,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                 setNutrients(recipe['nutrition']['nutrients']);
                 setNumServings(recipe['servings']);
                 checkIfSaved(recipe);
+                getMissingIngredients(recipe);
             }
         }
     }, []);
