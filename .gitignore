@@ -1,7 +1,8 @@
 **/target
+**/__pycache__/
 .vscode/
 **/database.db
-venv
+venv/
 .idea/
-node_modules/
-__pycache__/
+**/node_modules/
+.coverage

@@ -1,4 +1,4 @@
-"""Data classe for frontend <-> backend interaction."""
+"""Data classes for frontend <-> backend interaction."""
 from __future__ import annotations
 
 from dataclasses import dataclass
