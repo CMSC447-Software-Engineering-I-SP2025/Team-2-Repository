@@ -10,24 +10,55 @@ from db_data_models import IngredientDB, RecipeDB
 
 def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
     """Convert between Recipe dataclass/dict and RecipeDB SQLAlchemy model."""
+    # print(input_recipe)
     # Recipe -> RecipeDB
     if isinstance(input_recipe, (dict, Recipe)):  # Recipe dict -> RecipeDB
+
+        # Assign values to variables first
+        recipe_id = input_recipe.get("id")
+        title = input_recipe["title"]
+        image = input_recipe["image"]
+        servings = input_recipe["servings"]
+        analyzed_instructions = json.dumps([
+            {k: v for k, v in instr.items() if k != "repr"}
+            for instr in input_recipe.get("analyzedInstructions", []) or []
+        ])
+        nutrition = json.dumps({
+            "nutrients": [
+                dict(nutr.items())
+                for nutr in (input_recipe.get("nutrition", {}).get("nutrients", []) or [])
+            ]
+        })
+        ingredients = input_recipe.get("ingredients")
+
+        print(analyzed_instructions)
+        input()
+
+        # Pass variables into RecipeDB
         return RecipeDB(
-            recipe_id=input_recipe.get("id"),
-            title=input_recipe["title"],
-            image=input_recipe["image"],
-            servings=input_recipe["servings"],
-            analyzed_instructions=json.dumps(
-                [{k: v for k, v in instr.items() if k != "repr"}
-                 for instr in input_recipe.get("analyzedInstructions", []) or []],
-            ),
-            nutrition= json.dumps(
-                #{"nutrients": [{k: v for k, v in nutr.items()}
-                {"nutrients": [dict(nutr.items())
-                for nutr in input_recipe.get("nutrition").get("nutrients", []) or []]},
-            ),
-            ingredients=input_recipe.get("ingredients"),
+            recipe_id=recipe_id,
+            title=title,
+            image=image,
+            servings=servings,
+            analyzed_instructions=analyzed_instructions,
+            nutrition=nutrition,
+            ingredients=ingredients,
         )
+
+        # return RecipeDB(
+        #     recipe_id=input_recipe.get("id"),
+        #     title=input_recipe["title"],
+        #     image=input_recipe["image"],
+        #     servings=input_recipe["servings"],
+        #     analyzed_instructions=json.dumps(
+        #         [{k: v for k, v in instr.items() if k != "repr"}
+        #          for instr in input_recipe.get("analyzedInstructions", []) or []],
+        #     ),
+        #     #{"nutrients": [{k: v for k, v in nutr.items()}
+        #     nutrition = json.dumps({"nutrients": [dict(nutr.items()) for nutr in input_recipe.get("nutrition", []).get("nutrients", []) or []]},
+        #     ),
+        #     ingredients=input_recipe.get("ingredients"),
+        # )
 
     # RecipeDB -> Recipe
     return {
