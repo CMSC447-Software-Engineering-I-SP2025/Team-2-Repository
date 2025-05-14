@@ -32,9 +32,8 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
                 for nutr in (input_recipe.get("nutrition", {}).get("nutrients", []) or [])
             ]
         })
-        ingredients = input_recipe.get("ingredients", [])
+        ingredients = input_recipe.get("extendedIngredients", [])
         # print(ingredients)
-
 
         # Pass variables into RecipeDB
         return RecipeDB(
@@ -44,7 +43,7 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
             servings=servings,
             analyzed_instructions=analyzed_instructions,
             nutrition=nutrition,
-            ingredients=ingredients,
+            ingredients=ingredients
         )
 
         # return RecipeDB(
@@ -68,11 +67,11 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
         "title": input_recipe.title,
         "image": input_recipe.image,
         "servings": input_recipe.servings,
-        "instructions": [
+        "analyzedInstructions": [
             dict(instr) for instr in json.loads(input_recipe.analyzed_instructions)
         ],
         "nutrition": {"nutrients": [dict(nutr) for nutr in json.loads(input_recipe.nutrition)["nutrients"]]},
-        "ingredients": list(input_recipe.ingredients),
+        "extendedIngredients": list(input_recipe.ingredients),
     }
 
     error = f"Unsupported type: {type(input_recipe)}"

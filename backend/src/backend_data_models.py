@@ -167,6 +167,7 @@ class Recipe:
     missedIngredientCount: int | None
     analyzedInstructions: list[Instruction] | None
     nutrition: Nutrition | None
+    extendedIngredients: list[Ingredient] | None
 
 @dataclass
 class Response:

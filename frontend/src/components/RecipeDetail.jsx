@@ -58,6 +58,8 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
             data.forEach(ingr => {
                 missing.push(ingr)
             });
+            console.log(missing)
+            setMissingIngredients(missing)
         })
         .catch(error => console.log(error));
     }
@@ -69,9 +71,10 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
             if (recipe) {
                 setTitle(recipe['title']);
                 const tempIngredients = [];
-                if(recipe['analyzedInstructions']?.length > 0) {
-                    setInstructions(recipe['analyzedInstructions'][0]['steps']);
-                    recipe['analyzedInstructions'][0]['steps'].forEach( stepInfo => {
+                const  tempInstructions = recipe['analyzedInstructions'] || recipe['instructions'];
+                if(tempInstructions?.length > 0) {
+                    setInstructions(tempInstructions[0]['steps']);
+                    tempInstructions[0]['steps'].forEach( stepInfo => {
                         tempIngredients.push(... stepInfo['ingredients']
                                             .filter(info => info['id'] > 0)
                                             .map(ingredientInfo => ingredientInfo['name']));
@@ -121,6 +124,12 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                                         <li key={index}>{item}</li>
                                     ))}
                                 </ul> 
+                                <h2>Missing From Pantry</h2>
+                                <ul>
+                                    {missingIngredients.map((item, index) => (
+                                        <li key={index}>{item}</li>
+                                    ))}                   
+                                </ul>
                             </div>
                             </div>
                             <div className="steps-section">

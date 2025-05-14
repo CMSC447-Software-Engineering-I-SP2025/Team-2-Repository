@@ -45,7 +45,8 @@ class RecipeDB(Base):
     nutrition = Column(JSON) # Stores list of Nutrient dataclasses as JSON
 
     # Relationship (if you want direct access)
-    ingredients = relationship("IngredientDB", secondary="recipe_ingredients")
+    # ingredients = relationship("IngredientDB", secondary="recipe_ingredients")
+    ingredients = Column(JSON)
 
 # Association table for many-to-many relationship
 class RecipeIngredientDB(Base):

@@ -127,6 +127,11 @@ CORS(app, resources={
         "methods": ["GET"],
         "allow_headers": ["Content-Type"],
     },
+    r"/findmissing*": {
+        "origins": "http://localhost:5173",
+        "methods": ["POST"],
+        "allow_headers": ["Content-Type"],
+    },
 },
 supports_credentials=True,
 )
@@ -473,7 +478,7 @@ def api_list_ingredients() -> Response | tuple[Response, int]:
             raise e
 
 
-@app.route("/findmissing", methods=["GET"])
+@app.route("/findmissing", methods=["POST"])
 def find_missing_ingredients() -> list[str]:
     """Find all ingredients missing from a specified recipe.
 
@@ -506,7 +511,7 @@ def find_missing_ingredients() -> list[str]:
     recipe = recipe_mapper(request.get_json())
 
     # Get recipe ingredients
-    recipe_ingredients: list[str] = [ingredient.name for ingredient in recipe.ingredients]
+    recipe_ingredients: list[str] = [ingredient["name"] for ingredient in recipe.ingredients]
 
     # Get user ingredients
     user_ingredinets: list[str] = [ingr["name"] for ingr in api_list_ingredients().json]
