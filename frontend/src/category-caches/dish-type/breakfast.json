@@ -1,0 +1,5913 @@
+[
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404715,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/loaf-pan.png",
+                "name": "loaf pan",
+                "temperature": null
+              },
+              {
+                "id": 404726,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/blender.png",
+                "name": "blender",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 18372,
+                "image": "white-powder.jpg",
+                "name": "baking soda",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1052050,
+                "image": "vanilla.jpg",
+                "name": "vanilla",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9040,
+                "image": "bananas.jpg",
+                "name": "banana",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19335,
+                "image": "sugar-in-bowl.png",
+                "name": "sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Preheat the oven to 350 degree. In big bow smashed banana and add melted butter, then add sugar, egg, and vanilla. Keep mixer then add flour, salt and baking soda mixed well then pour buttered into 8 X 3.75 inch loaf pan."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 60,
+              "unit": "minutes"
+            },
+            "number": 2,
+            "step": "Bake for 1 hour. keep cool on the rack. Slice and serve."
+          }
+        ]
+      }
+    ],
+    "id": 634006,
+    "image": "https://img.spoonacular.com/recipes/634006-312x231.jpg",
+    "missedIngredientCount": 5,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 578.27,
+          "name": "Calories",
+          "percentOfDailyNeeds": 28.91,
+          "unit": "kcal"
+        },
+        {
+          "amount": 31.99,
+          "name": "Fat",
+          "percentOfDailyNeeds": 49.21,
+          "unit": "g"
+        },
+        {
+          "amount": 19.79,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 123.69,
+          "unit": "g"
+        },
+        {
+          "amount": 70.66,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 23.55,
+          "unit": "g"
+        },
+        {
+          "amount": 68.28,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 24.83,
+          "unit": "g"
+        },
+        {
+          "amount": 40.68,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 45.2,
+          "unit": "g"
+        },
+        {
+          "amount": 108.62,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 36.21,
+          "unit": "mg"
+        },
+        {
+          "amount": 825.27,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 35.88,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.23,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.17,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 5.12,
+          "name": "Protein",
+          "percentOfDailyNeeds": 10.23,
+          "unit": "g"
+        },
+        {
+          "amount": 1022.81,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 20.46,
+          "unit": "IU"
+        },
+        {
+          "amount": 14.02,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 20.02,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.38,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 18.92,
+          "unit": "mg"
+        },
+        {
+          "amount": 73.57,
+          "name": "Folate",
+          "percentOfDailyNeeds": 18.39,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.27,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 17.9,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.25,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 14.75,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.24,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 12.2,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.26,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 11.31,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.76,
+          "name": "Iron",
+          "percentOfDailyNeeds": 9.78,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.38,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 9.51,
+          "unit": "g"
+        },
+        {
+          "amount": 265.59,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 7.59,
+          "unit": "mg"
+        },
+        {
+          "amount": 70.37,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 7.04,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.03,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 6.88,
+          "unit": "mg"
+        },
+        {
+          "amount": 5.13,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 6.22,
+          "unit": "mg"
+        },
+        {
+          "amount": 24.53,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 6.13,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.1,
+          "name": "Copper",
+          "percentOfDailyNeeds": 4.97,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.49,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 4.88,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.44,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 2.94,
+          "unit": "mg"
+        },
+        {
+          "amount": 3.06,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 2.91,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.13,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 2.16,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 21.47,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 2.15,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 6,
+    "title": "Banana Bread",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 11260,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/mushrooms.png",
+                "name": "mushrooms",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 11677,
+                "image": "shallots.jpg",
+                "name": "shallot",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 10011457,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/spinach.jpg",
+                "name": "spinach",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Clean and chop mushrooms, wash and dry spinach, and chop shallot"
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 4053,
+                "image": "olive-oil.jpg",
+                "name": "olive oil",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 11677,
+                "image": "shallots.jpg",
+                "name": "shallot",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Add butter and olive oil to a non-stick pan over medium-high heat and saut\u00e9 the shallots for about 60 seconds until translucent"
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 11260,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/mushrooms.png",
+                "name": "mushrooms",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": {
+              "number": 3,
+              "unit": "minutes"
+            },
+            "number": 3,
+            "step": "Add mushrooms and cook for 3 minutes, stirring occasionally"
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 1102047,
+                "image": "salt-and-pepper.jpg",
+                "name": "salt and pepper",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1033,
+                "image": "parmesan.jpg",
+                "name": "parmesan",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 10011457,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/spinach.jpg",
+                "name": "spinach",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 4,
+            "step": "Add spinach and Parmesan, season with salt and pepper, and wait until the spinach does its thing"
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 5,
+            "step": "Remove everything from pan and set aside"
+          },
+          {
+            "equipment": [
+              {
+                "id": 405895,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/paper-towels.jpg",
+                "name": "paper towels",
+                "temperature": null
+              },
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 6,
+            "step": "Wipe pan with a paper towel"
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 4053,
+                "image": "olive-oil.jpg",
+                "name": "olive oil",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 7,
+            "step": "Then, using the clean pan, heat butter and olive oil over medium heat"
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 8,
+            "step": "Pour in whisked eggs, making sure the bottom of the pan is evenly covered"
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 9,
+            "step": "Be patient. After about 30 seconds, loosen the edges"
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 10,
+            "step": "Add filing and cook for another 2 minutes"
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 11,
+            "step": "Fold (good luck ) and slide onto a plate"
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 1033,
+                "image": "parmesan.jpg",
+                "name": "parmesan",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 12,
+            "step": "Grate some additional Parmesan cheese on top and serve"
+          }
+        ]
+      }
+    ],
+    "id": 1697687,
+    "image": "https://img.spoonacular.com/recipes/1697687-312x231.jpg",
+    "missedIngredientCount": 6,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 237.3,
+          "name": "Calories",
+          "percentOfDailyNeeds": 11.87,
+          "unit": "kcal"
+        },
+        {
+          "amount": 17.03,
+          "name": "Fat",
+          "percentOfDailyNeeds": 26.2,
+          "unit": "g"
+        },
+        {
+          "amount": 6.75,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 42.19,
+          "unit": "g"
+        },
+        {
+          "amount": 5.28,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 1.76,
+          "unit": "g"
+        },
+        {
+          "amount": 3.82,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 1.39,
+          "unit": "g"
+        },
+        {
+          "amount": 2.24,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 2.49,
+          "unit": "g"
+        },
+        {
+          "amount": 295.13,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 98.38,
+          "unit": "mg"
+        },
+        {
+          "amount": 647.63,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 28.16,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 16.54,
+          "name": "Protein",
+          "percentOfDailyNeeds": 33.08,
+          "unit": "g"
+        },
+        {
+          "amount": 147.77,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 140.74,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 3404.84,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 68.1,
+          "unit": "IU"
+        },
+        {
+          "amount": 30.76,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 43.94,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.64,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 37.48,
+          "unit": "mg"
+        },
+        {
+          "amount": 298.08,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 29.81,
+          "unit": "mg"
+        },
+        {
+          "amount": 105.99,
+          "name": "Folate",
+          "percentOfDailyNeeds": 26.5,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 225.91,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 22.59,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.98,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 19.77,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.35,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 17.26,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.61,
+          "name": "Iron",
+          "percentOfDailyNeeds": 14.5,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.28,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 14.1,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.84,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 14.05,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 2.02,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 13.46,
+          "unit": "mg"
+        },
+        {
+          "amount": 469.39,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 13.41,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.26,
+          "name": "Copper",
+          "percentOfDailyNeeds": 12.93,
+          "unit": "mg"
+        },
+        {
+          "amount": 10.24,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 12.41,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.76,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 11.76,
+          "unit": "mg"
+        },
+        {
+          "amount": 44.7,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 11.17,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.66,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 11.06,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 2.06,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 10.31,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.1,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 6.89,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.46,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 5.84,
+          "unit": "g"
+        }
+      ]
+    },
+    "servings": 2,
+    "title": "Spinach Mushroom Omelette with Parmesan",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 18369,
+                "image": "white-powder.jpg",
+                "name": "baking powder",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20019,
+                "image": "corn-flour.jpg",
+                "name": "corn flour",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 11156,
+                "image": "fresh-chives.jpg",
+                "name": "chives",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 0,
+                "image": "",
+                "name": "wheat",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Mix and combine wheat and corn flour with baking powder and salt. Stir in chives."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 1012,
+                "image": "cottage-cheese.jpg",
+                "name": "cottage cheese",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1077,
+                "image": "milk.png",
+                "name": "milk",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 4582,
+                "image": "vegetable-oil.jpg",
+                "name": "cooking oil",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Mix and combine cottage cheese, eggs, oil and milk."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Add to the flour mixture, stir."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 14384,
+                "image": "water.png",
+                "name": "mineral water",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 0,
+                "image": "pizza-dough",
+                "name": "dough",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 4,
+            "step": "Gradually add the mineral water, stir after each addition until a rather thin dough is obtained (thicker than a pancake batter)."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 0,
+                "image": "pizza-dough",
+                "name": "dough",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 5,
+            "step": "Divide the dough among 12 silicone lined or greased muffin tins."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404644,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/toothpicks.jpg",
+                "name": "toothpicks",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": {
+                  "number": 200.0,
+                  "unit": "Celsius"
+                }
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 25,
+              "unit": "minutes"
+            },
+            "number": 6,
+            "step": "Bake in the oven at 200C for about 25 minutes or until done (the trick with a toothpick)."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 1116,
+                "image": "plain-yogurt.jpg",
+                "name": "yogurt",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1077,
+                "image": "milk.png",
+                "name": "milk",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 7,
+            "step": "Serve warm or cold with yogurt or milk."
+          }
+        ]
+      }
+    ],
+    "id": 659465,
+    "image": "https://img.spoonacular.com/recipes/659465-312x231.jpg",
+    "missedIngredientCount": 6,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 194.09,
+          "name": "Calories",
+          "percentOfDailyNeeds": 9.7,
+          "unit": "kcal"
+        },
+        {
+          "amount": 5.74,
+          "name": "Fat",
+          "percentOfDailyNeeds": 8.83,
+          "unit": "g"
+        },
+        {
+          "amount": 1.17,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 7.32,
+          "unit": "g"
+        },
+        {
+          "amount": 28.72,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 9.57,
+          "unit": "g"
+        },
+        {
+          "amount": 25.92,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 9.43,
+          "unit": "g"
+        },
+        {
+          "amount": 1.42,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 1.58,
+          "unit": "g"
+        },
+        {
+          "amount": 31.33,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 10.44,
+          "unit": "mg"
+        },
+        {
+          "amount": 385.63,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 16.77,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 6.82,
+          "name": "Protein",
+          "percentOfDailyNeeds": 13.64,
+          "unit": "g"
+        },
+        {
+          "amount": 148.21,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 14.82,
+          "unit": "mg"
+        },
+        {
+          "amount": 9.19,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 13.13,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.25,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 12.37,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.17,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 11.67,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.8,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 11.18,
+          "unit": "g"
+        },
+        {
+          "amount": 104.42,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 10.44,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.19,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 9.42,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.15,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 8.93,
+          "unit": "mg"
+        },
+        {
+          "amount": 34.75,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 8.69,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.56,
+          "name": "Iron",
+          "percentOfDailyNeeds": 8.66,
+          "unit": "mg"
+        },
+        {
+          "amount": 34.39,
+          "name": "Folate",
+          "percentOfDailyNeeds": 8.6,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 1.1,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 7.35,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.31,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 6.54,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.09,
+          "name": "Copper",
+          "percentOfDailyNeeds": 4.55,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.45,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 4.49,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.61,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 4.07,
+          "unit": "mg"
+        },
+        {
+          "amount": 141.92,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 4.05,
+          "unit": "mg"
+        },
+        {
+          "amount": 3.58,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 3.41,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.19,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 3.2,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 115.68,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 2.31,
+          "unit": "IU"
+        },
+        {
+          "amount": 0.28,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 1.83,
+          "unit": "\u00b5g"
+        }
+      ]
+    },
+    "servings": 12,
+    "title": "Savory corn and chives muffins",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 19334,
+                "image": "light-brown-sugar.jpg",
+                "name": "light brown sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 18369,
+                "image": "white-powder.jpg",
+                "name": "baking powder",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 18372,
+                "image": "white-powder.jpg",
+                "name": "baking soda",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1230,
+                "image": "buttermilk.jpg",
+                "name": "buttermilk",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 4053,
+                "image": "olive-oil.jpg",
+                "name": "olive oil",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9040,
+                "image": "bananas.jpg",
+                "name": "banana",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Preheat oven to 350 degrees an line a muffin tin with paper or silicon cups.Peel bananas and mash them in a bowl. Set aside.In a large bowl, combine flour, baking powder, baking soda, salt and light brown sugar. Make a well in the center an add buttermilk, beaten egg, olive oil (or butter) and bananas."
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 2,
+            "step": "Combine until just mixed. Do not overmix!"
+          },
+          {
+            "equipment": [
+              {
+                "id": 404676,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-or-cupcake-forms.png",
+                "name": "muffin liners",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 9050,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/blueberries.jpg",
+                "name": "blueberries",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19908,
+                "image": "raw-brown-sugar.png",
+                "name": "raw sugar",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Add in blueberries and give a couple of stirs.Spoon batter into muffin cups until full and then sprinkle the tops with raw sugar."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 25,
+              "unit": "minutes"
+            },
+            "number": 4,
+            "step": "Bake for 20 - 25 minutes until golden brown."
+          },
+          {
+            "equipment": [
+              {
+                "id": 405900,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/wire-rack.jpg",
+                "name": "wire rack",
+                "temperature": null
+              },
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 5,
+            "step": "Let cool a few minutes in the pan and then transfer to a wire rack to cool completely."
+          }
+        ]
+      }
+    ],
+    "id": 665273,
+    "image": "https://img.spoonacular.com/recipes/665273-312x231.jpg",
+    "missedIngredientCount": 7,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 291.12,
+          "name": "Calories",
+          "percentOfDailyNeeds": 14.56,
+          "unit": "kcal"
+        },
+        {
+          "amount": 17.19,
+          "name": "Fat",
+          "percentOfDailyNeeds": 26.45,
+          "unit": "g"
+        },
+        {
+          "amount": 10.44,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 65.28,
+          "unit": "g"
+        },
+        {
+          "amount": 32.68,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 10.89,
+          "unit": "g"
+        },
+        {
+          "amount": 29.56,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 10.75,
+          "unit": "g"
+        },
+        {
+          "amount": 14.96,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 16.63,
+          "unit": "g"
+        },
+        {
+          "amount": 58.92,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 19.64,
+          "unit": "mg"
+        },
+        {
+          "amount": 304.6,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 13.24,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 4.51,
+          "name": "Protein",
+          "percentOfDailyNeeds": 9.02,
+          "unit": "g"
+        },
+        {
+          "amount": 0.94,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 46.92,
+          "unit": "mg"
+        },
+        {
+          "amount": 15.11,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 21.58,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 3.13,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 12.51,
+          "unit": "g"
+        },
+        {
+          "amount": 123.74,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 12.37,
+          "unit": "mg"
+        },
+        {
+          "amount": 561.71,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 11.23,
+          "unit": "IU"
+        },
+        {
+          "amount": 38.86,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 9.71,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.19,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 9.68,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.13,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 8.53,
+          "unit": "mg"
+        },
+        {
+          "amount": 81.58,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 8.16,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.12,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 7.34,
+          "unit": "mg"
+        },
+        {
+          "amount": 222.91,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 6.37,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.25,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 6.27,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.12,
+          "name": "Copper",
+          "percentOfDailyNeeds": 6.14,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.03,
+          "name": "Iron",
+          "percentOfDailyNeeds": 5.73,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.76,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 5.06,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.75,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 4.99,
+          "unit": "mg"
+        },
+        {
+          "amount": 5.1,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 4.85,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 18.19,
+          "name": "Folate",
+          "percentOfDailyNeeds": 4.55,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 3.58,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 4.33,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.41,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 4.09,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.18,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 3.07,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.41,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 2.72,
+          "unit": "\u00b5g"
+        }
+      ]
+    },
+    "servings": 12,
+    "title": "Whole Wheat Blueberry Muffins",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 19177,
+                "image": "gelatin-powder.jpg",
+                "name": "gelatin",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 14412,
+                "image": "water.png",
+                "name": "water",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Prepare the gelatin by sprinkling over a small cup containing the hot water. Allow to dissolve and mix well. Set aside."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 2010,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/cinnamon.jpg",
+                "name": "cinnamon",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 11134,
+                "image": "cassava.jpg",
+                "name": "cassava",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 12104,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/coconut.jpg",
+                "name": "coconut",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Combine the coconut and cassava flours into a bowl and add the cinnamon."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404661,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png",
+                "name": "whisk",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 12118,
+                "image": "coconut-milk.png",
+                "name": "coconut milk",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19177,
+                "image": "gelatin-powder.jpg",
+                "name": "gelatin",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19296,
+                "image": "honey.png",
+                "name": "honey",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 14412,
+                "image": "water.png",
+                "name": "water",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Add the warm coconut milk, honey, and the gelatine mixture, whisking very well to combine and remove lumps. Keep this mixture warm by placing the bowl inside a larger bowl containing hot water."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 4047,
+                "image": "oil-coconut.jpg",
+                "name": "coconut oil",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 0,
+                "image": "",
+                "name": "spread",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 4,
+            "step": "Add a small amount of coconut oil to a small non-stick pan over medium heat. Spoon 1/4 cup of the batter into the pan and spread it out by turning the pan around."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404642,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/spatula-or-turner.jpg",
+                "name": "spatula",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 4047,
+                "image": "oil-coconut.jpg",
+                "name": "coconut oil",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 0,
+                "image": "",
+                "name": "crust",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": {
+              "number": 7,
+              "unit": "minutes"
+            },
+            "number": 5,
+            "step": "Let the pancake cook for 3-4 minutes, then use a large spatula to flip the little pancake very carefully. You want a delicious light golden crust that adds a huge amount of flavor. Cook on the underside for 2-3 minutes, then place onto a plate lined with kitchen paper to absorb excess coconut oil.Repeat with the rest of the coconut oil and batter (makes approx. 6 small pancakes, a serving is 2 pancakes).The pancakes should be kept warm and served warm."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 1009054,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/berries-mixed.jpg",
+                "name": "berries",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19296,
+                "image": "honey.png",
+                "name": "honey",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 6,
+            "step": "Drizzle over with honey and serve with berries of your choice."
+          }
+        ]
+      }
+    ],
+    "id": 1096262,
+    "image": "https://img.spoonacular.com/recipes/1096262-312x231.jpg",
+    "missedIngredientCount": 7,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 475.21,
+          "name": "Calories",
+          "percentOfDailyNeeds": 23.76,
+          "unit": "kcal"
+        },
+        {
+          "amount": 21.84,
+          "name": "Fat",
+          "percentOfDailyNeeds": 33.6,
+          "unit": "g"
+        },
+        {
+          "amount": 18.87,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 117.92,
+          "unit": "g"
+        },
+        {
+          "amount": 65.4,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 21.8,
+          "unit": "g"
+        },
+        {
+          "amount": 52.72,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 19.17,
+          "unit": "g"
+        },
+        {
+          "amount": 32.19,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 35.77,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 0.0,
+          "unit": "mg"
+        },
+        {
+          "amount": 75.2,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 3.27,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 8.71,
+          "name": "Protein",
+          "percentOfDailyNeeds": 17.41,
+          "unit": "g"
+        },
+        {
+          "amount": 12.68,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 50.73,
+          "unit": "g"
+        },
+        {
+          "amount": 0.49,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 24.38,
+          "unit": "mg"
+        },
+        {
+          "amount": 3.34,
+          "name": "Iron",
+          "percentOfDailyNeeds": 18.55,
+          "unit": "mg"
+        },
+        {
+          "amount": 12.87,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 12.26,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.2,
+          "name": "Copper",
+          "percentOfDailyNeeds": 9.94,
+          "unit": "mg"
+        },
+        {
+          "amount": 66.28,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 6.63,
+          "unit": "mg"
+        },
+        {
+          "amount": 22.88,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 5.72,
+          "unit": "mg"
+        },
+        {
+          "amount": 48.82,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 4.88,
+          "unit": "mg"
+        },
+        {
+          "amount": 3.41,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 4.14,
+          "unit": "mg"
+        },
+        {
+          "amount": 145.05,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 4.14,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.68,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 3.42,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.06,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 3.19,
+          "unit": "mg"
+        },
+        {
+          "amount": 12.33,
+          "name": "Folate",
+          "percentOfDailyNeeds": 3.08,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.05,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 2.79,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.39,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 2.6,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.69,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 2.42,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.03,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 2.27,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.34,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 2.27,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.18,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 1.79,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 3,
+    "title": "Coconut Cassava Pancakes",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404661,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png",
+                "name": "whisk",
+                "temperature": null
+              },
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": {
+                  "number": 425.0,
+                  "unit": "Fahrenheit"
+                }
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 18369,
+                "image": "white-powder.jpg",
+                "name": "baking powder",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 4679,
+                "image": "cooking-spray.png",
+                "name": "cooking spray",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1230,
+                "image": "buttermilk.jpg",
+                "name": "buttermilk",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9156,
+                "image": "zest-lemon.jpg",
+                "name": "lemon zest",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1052050,
+                "image": "vanilla.jpg",
+                "name": "vanilla",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19335,
+                "image": "sugar-in-bowl.png",
+                "name": "sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 4582,
+                "image": "vegetable-oil.jpg",
+                "name": "cooking oil",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Preheat oven to 425 degrees f. Spray a 6-cup large-sized muffin tin lightly with cooking spray, set aside.In a small bowl combine the lemon zest and 1/3 c. sugar, using a fork, mix thoroughly.In a large bowl combine flour, baking powder and salt. In a medium bowl, combine 1 c. sugar and eggs, whisking vigorously for about 45 seconds, until the mixture is thick and homogeneous. Slowly add in melted butter and oil. Then whisk in buttermilk and vanilla."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 9050,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/blueberries.jpg",
+                "name": "blueberries",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9150,
+                "image": "lemon.png",
+                "name": "lemon",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19335,
+                "image": "sugar-in-bowl.png",
+                "name": "sugar",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Add the liquid ingredients and the blueberries to the dry ingredients, folding until just mixed, taking care to not over mix. Scoop batter into the muffin tins and sprinkle the tops with the lemon-sugar."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404644,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/toothpicks.jpg",
+                "name": "toothpicks",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": {
+                  "number": 425.0,
+                  "unit": "Fahrenheit"
+                }
+              },
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 30,
+              "unit": "minutes"
+            },
+            "number": 3,
+            "step": "Bake the muffins at 425 degrees f. for 5 minutes then reduce the heat to 375 degrees f. and continue baking for about 25 minutes (rotating the pan halfway through the bake time to ensure even baking), until a toothpick inserted near the center of the muffins comes out clean with only a few crumbs attached."
+          },
+          {
+            "equipment": [
+              {
+                "id": 405900,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/wire-rack.jpg",
+                "name": "wire rack",
+                "temperature": null
+              },
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 5,
+              "unit": "minutes"
+            },
+            "number": 4,
+            "step": "Let the muffins cool for about 5 minutes in the pan before removing them to a wire rack to cool."
+          }
+        ]
+      }
+    ],
+    "id": 648647,
+    "image": "https://img.spoonacular.com/recipes/648647-312x231.jpg",
+    "missedIngredientCount": 7,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 761.96,
+          "name": "Calories",
+          "percentOfDailyNeeds": 38.1,
+          "unit": "kcal"
+        },
+        {
+          "amount": 58.24,
+          "name": "Fat",
+          "percentOfDailyNeeds": 89.61,
+          "unit": "g"
+        },
+        {
+          "amount": 31.81,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 198.84,
+          "unit": "g"
+        },
+        {
+          "amount": 57.36,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 19.12,
+          "unit": "g"
+        },
+        {
+          "amount": 55.85,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 20.31,
+          "unit": "g"
+        },
+        {
+          "amount": 38.94,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 43.27,
+          "unit": "g"
+        },
+        {
+          "amount": 180.97,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 60.32,
+          "unit": "mg"
+        },
+        {
+          "amount": 947.83,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 41.21,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.36,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.21,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 6.05,
+          "name": "Protein",
+          "percentOfDailyNeeds": 12.1,
+          "unit": "g"
+        },
+        {
+          "amount": 1583.61,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 31.67,
+          "unit": "IU"
+        },
+        {
+          "amount": 28.01,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 26.68,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 254.61,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 25.46,
+          "unit": "mg"
+        },
+        {
+          "amount": 13.86,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 19.8,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 170.91,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 17.09,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.28,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 16.52,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.46,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 16.43,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.28,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 13.83,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.21,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 13.68,
+          "unit": "mg"
+        },
+        {
+          "amount": 51.01,
+          "name": "Folate",
+          "percentOfDailyNeeds": 12.75,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 1.71,
+          "name": "Iron",
+          "percentOfDailyNeeds": 9.52,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.46,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 7.31,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.41,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 6.85,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 1.51,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 6.04,
+          "unit": "g"
+        },
+        {
+          "amount": 0.58,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 5.78,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.81,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 5.42,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 4.23,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 5.13,
+          "unit": "mg"
+        },
+        {
+          "amount": 142.31,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 4.07,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.6,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 4.03,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.08,
+          "name": "Copper",
+          "percentOfDailyNeeds": 3.78,
+          "unit": "mg"
+        },
+        {
+          "amount": 14.73,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 3.68,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.07,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 3.53,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 6,
+    "title": "Jumbo Blueberry Muffins",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              },
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 1,
+            "step": "Preheat the oven to warm or 170 degrees. Bring a small saute pan or small omelet pan to a warm."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 11260,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/mushrooms.png",
+                "name": "mushrooms",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 4053,
+                "image": "olive-oil.jpg",
+                "name": "olive oil",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 11529,
+                "image": "tomato.png",
+                "name": "tomato",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 11677,
+                "image": "shallots.jpg",
+                "name": "shallot",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 10011457,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/spinach.jpg",
+                "name": "spinach",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 11215,
+                "image": "garlic.png",
+                "name": "garlic",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Saute the veggies using the olive oil starting with the shallot and garlic, adding the mushrooms until they are tender. Toss in the tomatoes and spinach and remove the pan from the heat."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404642,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/spatula-or-turner.jpg",
+                "name": "spatula",
+                "temperature": null
+              },
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 1041009,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/cheddar-cheese.png",
+                "name": "cheese",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2044,
+                "image": "basil.jpg",
+                "name": "basil",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Pour a layer of the egg into a small omelet pan or small saute pan. As the egg starts to cook run a spatula around the edge to loosen the egg. Once the egg is almost cooked (slightly runny on the top) sprinkle half the basil, cheese, and sauteed veggies on to one side of the egg. Gently fold the egg over the filling."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 4,
+            "step": "Slide the omelet onto a small oven safe plate and put it in the oven."
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 5,
+            "step": "Repeat for the second omelet!"
+          }
+        ]
+      }
+    ],
+    "id": 650239,
+    "image": "https://img.spoonacular.com/recipes/650239-312x231.jpg",
+    "missedIngredientCount": 8,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 399.09,
+          "name": "Calories",
+          "percentOfDailyNeeds": 19.95,
+          "unit": "kcal"
+        },
+        {
+          "amount": 32.24,
+          "name": "Fat",
+          "percentOfDailyNeeds": 49.6,
+          "unit": "g"
+        },
+        {
+          "amount": 10.15,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 63.43,
+          "unit": "g"
+        },
+        {
+          "amount": 8.25,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 2.75,
+          "unit": "g"
+        },
+        {
+          "amount": 6.76,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 2.46,
+          "unit": "g"
+        },
+        {
+          "amount": 3.94,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 4.37,
+          "unit": "g"
+        },
+        {
+          "amount": 355.61,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 118.54,
+          "unit": "mg"
+        },
+        {
+          "amount": 327.2,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 14.23,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 20.21,
+          "name": "Protein",
+          "percentOfDailyNeeds": 40.41,
+          "unit": "g"
+        },
+        {
+          "amount": 39.51,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 56.45,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 51.77,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 49.31,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.72,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 42.45,
+          "unit": "mg"
+        },
+        {
+          "amount": 371.1,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 37.11,
+          "unit": "mg"
+        },
+        {
+          "amount": 1847.45,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 36.95,
+          "unit": "IU"
+        },
+        {
+          "amount": 274.36,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 27.44,
+          "unit": "mg"
+        },
+        {
+          "amount": 3.7,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 24.69,
+          "unit": "mg"
+        },
+        {
+          "amount": 20.1,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 24.36,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.2,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 22.04,
+          "unit": "mg"
+        },
+        {
+          "amount": 82.46,
+          "name": "Folate",
+          "percentOfDailyNeeds": 20.61,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 1.1,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 18.31,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 2.59,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 17.27,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.34,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 17.12,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.74,
+          "name": "Iron",
+          "percentOfDailyNeeds": 15.2,
+          "unit": "mg"
+        },
+        {
+          "amount": 511.34,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 14.61,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.28,
+          "name": "Copper",
+          "percentOfDailyNeeds": 14.0,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.01,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 13.4,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.26,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 12.9,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.99,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 9.93,
+          "unit": "mg"
+        },
+        {
+          "amount": 37.47,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 9.37,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.12,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 7.8,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.49,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 5.95,
+          "unit": "g"
+        }
+      ]
+    },
+    "servings": 2,
+    "title": "Loaded Veggie Omelet",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 1,
+            "step": "In a large bowl mix to combine all the ingredients."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 2,
+            "step": "Grease a muffin tin and spoon mixture to the top of each cup."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": {
+                  "number": 200.0,
+                  "unit": "Celsius"
+                }
+              },
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 30,
+              "unit": "minutes"
+            },
+            "number": 3,
+            "step": "Bake in an oven at 200C / 390F for 30 minutes, or until the edges of the frittatas are golden brown (do not under bake or they won't come out of the pan)."
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": {
+              "number": 5,
+              "unit": "minutes"
+            },
+            "number": 4,
+            "step": "Let cool for at least 5 minutes in the tin before serving."
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 5,
+            "step": "Eat hot or cold."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 20035,
+                "image": "uncooked-quinoa.png",
+                "name": "quinoa",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 14412,
+                "image": "water.png",
+                "name": "water",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": {
+              "number": 25,
+              "unit": "minutes"
+            },
+            "number": 6,
+            "step": "* Cook quinoa in 350 ml water for 20 minutes (or according to the package instructions). After cooking, leave to soak any remaining water for additional 5 minutes."
+          }
+        ]
+      }
+    ],
+    "id": 651958,
+    "image": "https://img.spoonacular.com/recipes/651958-312x231.jpg",
+    "missedIngredientCount": 8,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 36.5,
+          "name": "Calories",
+          "percentOfDailyNeeds": 1.82,
+          "unit": "kcal"
+        },
+        {
+          "amount": 2.07,
+          "name": "Fat",
+          "percentOfDailyNeeds": 3.19,
+          "unit": "g"
+        },
+        {
+          "amount": 1.02,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 6.38,
+          "unit": "g"
+        },
+        {
+          "amount": 1.61,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 0.54,
+          "unit": "g"
+        },
+        {
+          "amount": 1.37,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 0.5,
+          "unit": "g"
+        },
+        {
+          "amount": 0.26,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 0.29,
+          "unit": "g"
+        },
+        {
+          "amount": 19.38,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 6.46,
+          "unit": "mg"
+        },
+        {
+          "amount": 56.49,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 2.46,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 2.86,
+          "name": "Protein",
+          "percentOfDailyNeeds": 5.72,
+          "unit": "g"
+        },
+        {
+          "amount": 10.59,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 10.08,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 49.98,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 5.0,
+          "unit": "mg"
+        },
+        {
+          "amount": 47.5,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 4.75,
+          "unit": "mg"
+        },
+        {
+          "amount": 3.25,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 4.64,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.05,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 3.21,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.18,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 2.93,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.05,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 2.54,
+          "unit": "mg"
+        },
+        {
+          "amount": 123.79,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 2.48,
+          "unit": "IU"
+        },
+        {
+          "amount": 0.34,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 2.28,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.76,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 2.13,
+          "unit": "mg"
+        },
+        {
+          "amount": 7.36,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 1.84,
+          "unit": "mg"
+        },
+        {
+          "amount": 6.88,
+          "name": "Folate",
+          "percentOfDailyNeeds": 1.72,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.24,
+          "name": "Iron",
+          "percentOfDailyNeeds": 1.32,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.03,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 1.3,
+          "unit": "mg"
+        },
+        {
+          "amount": 39.88,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 1.14,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.02,
+          "name": "Copper",
+          "percentOfDailyNeeds": 1.03,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 24,
+    "title": "Mini frittatas with quinoa",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 1,
+            "step": "Preheat oven to 350 degrees."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404628,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/hand-mixer.png",
+                "name": "hand mixer",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 1256,
+                "image": "plain-yogurt.jpg",
+                "name": "greek yogurt",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9040,
+                "image": "bananas.jpg",
+                "name": "banana",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19335,
+                "image": "sugar-in-bowl.png",
+                "name": "sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1077,
+                "image": "milk.png",
+                "name": "milk",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "In the bowl of an electric mixer, combine the sugar and butter beating at medium speed until fluffy. On low-speed, add the banana, milk, greek yogurt and eggs mixing until combined."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404726,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/blender.png",
+                "name": "blender",
+                "temperature": null
+              },
+              {
+                "id": 404661,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png",
+                "name": "whisk",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 18372,
+                "image": "white-powder.jpg",
+                "name": "baking soda",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "In a small bowl, whisk together the flour, baking soda and salt. Keeping the mixer on low-speed and slowly add the dry ingredients to the wet ingredients. Beat just until blended."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 12142,
+                "image": "pecans.jpg",
+                "name": "pecans",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 4,
+            "step": "Add the pecans and stir briefly."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404644,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/toothpicks.jpg",
+                "name": "toothpicks",
+                "temperature": null
+              },
+              {
+                "id": 405900,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/wire-rack.jpg",
+                "name": "wire rack",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              },
+              {
+                "id": 404715,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/loaf-pan.png",
+                "name": "loaf pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 4679,
+                "image": "cooking-spray.png",
+                "name": "cooking spray",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": {
+              "number": 70,
+              "unit": "minutes"
+            },
+            "number": 5,
+            "step": "Pour the batter into a 95 inch metal loaf pan coated with cooking spray and bake at 350 degrees for 1 hour or until a toothpick inserted into the center comes out clean. Cool in pan for 10 minutes on a wire rack."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 6,
+            "step": "Remove from pan and cool on rack."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404762,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/microwave.jpg",
+                "name": "microwave",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 1053,
+                "image": "fluid-cream.jpg",
+                "name": "heavy cream",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19081,
+                "image": "milk-chocolate.jpg",
+                "name": "chocolate",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 18064,
+                "image": "white-bread.jpg",
+                "name": "bread",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": {
+              "number": 1,
+              "unit": "minutes"
+            },
+            "number": 7,
+            "step": "Place the heavy cream and chocolate in a microwave-safe bowl and microwave at high for 1 minute or until chocolate melts, stirring every 20 seconds.  Cool slightly and spoon over bread."
+          }
+        ]
+      }
+    ],
+    "id": 634010,
+    "image": "https://img.spoonacular.com/recipes/634010-312x231.jpg",
+    "missedIngredientCount": 9,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 208.48,
+          "name": "Calories",
+          "percentOfDailyNeeds": 10.42,
+          "unit": "kcal"
+        },
+        {
+          "amount": 8.4,
+          "name": "Fat",
+          "percentOfDailyNeeds": 12.92,
+          "unit": "g"
+        },
+        {
+          "amount": 3.73,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 23.31,
+          "unit": "g"
+        },
+        {
+          "amount": 30.64,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 10.21,
+          "unit": "g"
+        },
+        {
+          "amount": 29.23,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 10.63,
+          "unit": "g"
+        },
+        {
+          "amount": 16.24,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 18.05,
+          "unit": "g"
+        },
+        {
+          "amount": 34.72,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 11.57,
+          "unit": "mg"
+        },
+        {
+          "amount": 177.32,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 7.71,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 3.05,
+          "name": "Caffeine",
+          "percentOfDailyNeeds": 1.02,
+          "unit": "mg"
+        },
+        {
+          "amount": 3.63,
+          "name": "Protein",
+          "percentOfDailyNeeds": 7.25,
+          "unit": "g"
+        },
+        {
+          "amount": 0.34,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 16.91,
+          "unit": "mg"
+        },
+        {
+          "amount": 8.38,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 11.98,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.15,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 10.29,
+          "unit": "mg"
+        },
+        {
+          "amount": 35.96,
+          "name": "Folate",
+          "percentOfDailyNeeds": 8.99,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.15,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 8.67,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.19,
+          "name": "Iron",
+          "percentOfDailyNeeds": 6.61,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.12,
+          "name": "Copper",
+          "percentOfDailyNeeds": 6.13,
+          "unit": "mg"
+        },
+        {
+          "amount": 60.6,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 6.06,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.41,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 5.63,
+          "unit": "g"
+        },
+        {
+          "amount": 1.11,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 5.55,
+          "unit": "mg"
+        },
+        {
+          "amount": 19.41,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 4.85,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.09,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 4.35,
+          "unit": "mg"
+        },
+        {
+          "amount": 127.42,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 3.64,
+          "unit": "mg"
+        },
+        {
+          "amount": 181.12,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 3.62,
+          "unit": "IU"
+        },
+        {
+          "amount": 0.49,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 3.29,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.29,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 2.88,
+          "unit": "mg"
+        },
+        {
+          "amount": 21.76,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 2.18,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.11,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 1.9,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.26,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 1.76,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.42,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 1.72,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.17,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 1.13,
+          "unit": "\u00b5g"
+        }
+      ]
+    },
+    "servings": 16,
+    "title": "Banana Bread with Chocolate Glaze",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 1,
+            "step": "Preheat the oven to 37"
+          },
+          {
+            "equipment": [
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 4679,
+                "image": "cooking-spray.png",
+                "name": "cooking spray",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1014582,
+                "image": "vegetable-oil.jpg",
+                "name": "canola oil",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Grease and flour 2 muffin tins or line with wrappers and grease the inside of those (I prefer using a combo spray such as Spectrum Cooking Spray with Canola Oil and Flour.  Great time saver.)"
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 18369,
+                "image": "white-powder.jpg",
+                "name": "baking powder",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 18372,
+                "image": "white-powder.jpg",
+                "name": "baking soda",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2010,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/cinnamon.jpg",
+                "name": "cinnamon",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Mix together the flours, baking powder, baking soda, salt, cinnamon and zest."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 19334,
+                "image": "dark-brown-sugar.png",
+                "name": "brown sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1053,
+                "image": "fluid-cream.jpg",
+                "name": "cream",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19335,
+                "image": "sugar-in-bowl.png",
+                "name": "sugar",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 4,
+            "step": "In a separate bowl, cream the butter, sugar and 1/4 cup of the brown sugar on medium-high until pale and fluffy."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404726,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/blender.png",
+                "name": "blender",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 1230,
+                "image": "buttermilk.jpg",
+                "name": "buttermilk",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 5,
+            "step": "Add the egg and mix well; stop once to scrape the sides and bottom of the bowl.  Turn the mixer to low and slowly alternate adding the flour mixture with the buttermilk, starting and ending with flour."
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 6,
+            "step": "Mix until just combined."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 9206,
+                "image": "orange-juice.jpg",
+                "name": "orange juice",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9003,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
+                "name": "apple",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 7,
+            "step": "Peel, core and dice the apples.  Fold them into the muffin batter along with the orange juice."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404676,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-or-cupcake-forms.png",
+                "name": "muffin liners",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 19334,
+                "image": "dark-brown-sugar.png",
+                "name": "brown sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 10118192,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/shortbread-cookies.jpg",
+                "name": "cookies",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19335,
+                "image": "sugar-in-bowl.png",
+                "name": "sugar",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 8,
+            "step": "Divide the batter evenly among the prepared muffin cups (a cookie scoop helps create perfectly shaped muffins), sprinkling the remaining 1/2 cup brown sugar on top. It will look like a lot of sugar but it adds a wonderfully sweet crunch to the top of the muffins."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404644,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/toothpicks.jpg",
+                "name": "toothpicks",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 25,
+              "unit": "minutes"
+            },
+            "number": 9,
+            "step": "Bake for 25 to 30 minutes, or until a toothpick inserted into the center of a muffin comes out clean."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 5,
+              "unit": "minutes"
+            },
+            "number": 10,
+            "step": "Remove from the oven, cool for 5 minutes in the tin, then gently turn the muffins out onto a rack to finish cooling completely."
+          }
+        ]
+      }
+    ],
+    "id": 665269,
+    "image": "https://img.spoonacular.com/recipes/665269-312x231.jpg",
+    "missedIngredientCount": 9,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 174.71,
+          "name": "Calories",
+          "percentOfDailyNeeds": 8.74,
+          "unit": "kcal"
+        },
+        {
+          "amount": 6.11,
+          "name": "Fat",
+          "percentOfDailyNeeds": 9.4,
+          "unit": "g"
+        },
+        {
+          "amount": 3.62,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 22.64,
+          "unit": "g"
+        },
+        {
+          "amount": 28.97,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 9.66,
+          "unit": "g"
+        },
+        {
+          "amount": 27.25,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 9.91,
+          "unit": "g"
+        },
+        {
+          "amount": 17.9,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 19.88,
+          "unit": "g"
+        },
+        {
+          "amount": 25.34,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 8.45,
+          "unit": "mg"
+        },
+        {
+          "amount": 151.15,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 6.57,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 2.47,
+          "name": "Protein",
+          "percentOfDailyNeeds": 4.93,
+          "unit": "g"
+        },
+        {
+          "amount": 0.39,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 19.71,
+          "unit": "mg"
+        },
+        {
+          "amount": 7.73,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 11.05,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 1.72,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 6.88,
+          "unit": "g"
+        },
+        {
+          "amount": 0.1,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 6.55,
+          "unit": "mg"
+        },
+        {
+          "amount": 57.43,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 5.74,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.09,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 5.28,
+          "unit": "mg"
+        },
+        {
+          "amount": 50.82,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 5.08,
+          "unit": "mg"
+        },
+        {
+          "amount": 18.71,
+          "name": "Folate",
+          "percentOfDailyNeeds": 4.68,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 214.87,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 4.3,
+          "unit": "IU"
+        },
+        {
+          "amount": 0.76,
+          "name": "Iron",
+          "percentOfDailyNeeds": 4.22,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.77,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 3.87,
+          "unit": "mg"
+        },
+        {
+          "amount": 14.57,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 3.64,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.56,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 3.1,
+          "unit": "mg"
+        },
+        {
+          "amount": 98.66,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 2.82,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.06,
+          "name": "Copper",
+          "percentOfDailyNeeds": 2.79,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.05,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 2.71,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.33,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 2.17,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.32,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 2.16,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.2,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 2.02,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.29,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 1.93,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.1,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 1.61,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 1.31,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 1.25,
+          "unit": "\u00b5g"
+        }
+      ]
+    },
+    "servings": 18,
+    "title": "Whole Wheat Apple Orange Muffins",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 405907,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/mixing-bowl.jpg",
+                "name": "mixing bowl",
+                "temperature": null
+              },
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              },
+              {
+                "id": 404661,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png",
+                "name": "whisk",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 18369,
+                "image": "white-powder.jpg",
+                "name": "baking powder",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 18372,
+                "image": "white-powder.jpg",
+                "name": "baking soda",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Preheat oven to 400 degrees.Line a 12-cup muffin pan with paper cups.In a medium mixing bowl, whisk flour, baking powder, baking soda, and salt together.In a large bowl beat eggs for 30 seconds."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404661,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png",
+                "name": "whisk",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 19335,
+                "image": "sugar-in-bowl.png",
+                "name": "sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 4582,
+                "image": "vegetable-oil.jpg",
+                "name": "cooking oil",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Add the sugar and oil and whisk for 30 seconds."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404661,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png",
+                "name": "whisk",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 9152,
+                "image": "lemon-juice.jpg",
+                "name": "lemon juice",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9019,
+                "image": "applesauce.png",
+                "name": "applesauce",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1052050,
+                "image": "vanilla.jpg",
+                "name": "vanilla",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1077,
+                "image": "milk.png",
+                "name": "milk",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Whisk in applesauce, lemon juice, vanilla, and milk."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404732,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/wooden-spoon.jpg",
+                "name": "wooden spoon",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 9050,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/blueberries.jpg",
+                "name": "blueberries",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 4,
+            "step": "Combine the wet ingredients with the dry ingredients. Stir with a wooden spoon until just combined, about 20 strokes. Toss blueberries with 2 tbsp of flour to coat. Gently stir blueberries into batter.Scoop batter with a muffin scoop into paper cups. Evenly sprinkle topping over muffins (about 1 tablespoon per muffin)."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404644,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/toothpicks.jpg",
+                "name": "toothpicks",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 20,
+              "unit": "minutes"
+            },
+            "number": 5,
+            "step": "Bake until muffins are lightly golden, about 15-20 minutes. Insert a toothpick in center, if it comes out clean they are done."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 2010,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/cinnamon.jpg",
+                "name": "cinnamon",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20081,
+                "image": "flour.png",
+                "name": "all purpose flour",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19335,
+                "image": "sugar-in-bowl.png",
+                "name": "sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 8120,
+                "image": "rolled-oats.jpg",
+                "name": "oats",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 6,
+            "step": "Combine oats, flour, sugar, cinnamon in medium bowl."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 7,
+            "step": "Pour melted butter over mixture. Stir until mixture is moist."
+          }
+        ]
+      }
+    ],
+    "id": 918029,
+    "image": "https://img.spoonacular.com/recipes/918029-312x231.jpg",
+    "missedIngredientCount": 10,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 119.4,
+          "name": "Calories",
+          "percentOfDailyNeeds": 5.97,
+          "unit": "kcal"
+        },
+        {
+          "amount": 3.95,
+          "name": "Fat",
+          "percentOfDailyNeeds": 6.07,
+          "unit": "g"
+        },
+        {
+          "amount": 1.1,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 6.86,
+          "unit": "g"
+        },
+        {
+          "amount": 19.54,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 6.51,
+          "unit": "g"
+        },
+        {
+          "amount": 17.95,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 6.53,
+          "unit": "g"
+        },
+        {
+          "amount": 9.52,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 10.58,
+          "unit": "g"
+        },
+        {
+          "amount": 18.24,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 6.08,
+          "unit": "mg"
+        },
+        {
+          "amount": 137.6,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 5.98,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 2.59,
+          "name": "Protein",
+          "percentOfDailyNeeds": 5.18,
+          "unit": "g"
+        },
+        {
+          "amount": 1.59,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 6.37,
+          "unit": "g"
+        },
+        {
+          "amount": 6.16,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 5.87,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 52.72,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 5.27,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.1,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 5.03,
+          "unit": "mg"
+        },
+        {
+          "amount": 35.46,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 3.55,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.3,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 3.29,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.55,
+          "name": "Iron",
+          "percentOfDailyNeeds": 3.07,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.05,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 2.69,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.33,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 2.23,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.03,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 1.84,
+          "unit": "mg"
+        },
+        {
+          "amount": 53.19,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 1.52,
+          "unit": "mg"
+        },
+        {
+          "amount": 75.5,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 1.51,
+          "unit": "IU"
+        },
+        {
+          "amount": 1.24,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 1.51,
+          "unit": "mg"
+        },
+        {
+          "amount": 5.89,
+          "name": "Folate",
+          "percentOfDailyNeeds": 1.47,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.08,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 1.39,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.13,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 1.29,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.19,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 1.23,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 4.46,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 1.11,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.02,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 1.08,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.16,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 1.07,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 24,
+    "title": "Healthy Blueberry Muffins",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404770,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/baking-paper.jpg",
+                "name": "baking paper",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": {
+                  "number": 350.0,
+                  "unit": "Fahrenheit"
+                }
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Preheat your oven to 350 degrees F. Butter an 8 x 12 in glassbaking dish (or a similar size) and line it with parchment paper."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404646,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/roasting-pan.jpg",
+                "name": "baking pan",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 12061,
+                "image": "almonds.jpg",
+                "name": "almonds",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 12104,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/coconut.jpg",
+                "name": "coconut",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 20035,
+                "image": "uncooked-quinoa.png",
+                "name": "quinoa",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 8120,
+                "image": "rolled-oats.jpg",
+                "name": "oats",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": {
+              "number": 16,
+              "unit": "minutes"
+            },
+            "number": 2,
+            "step": "Combine the oats, quinoa, almonds, and coconut together on an unlined baking pan and bake for 12 minutes, or until lightly browned, stirring every 4 minutes."
+          },
+          {
+            "equipment": [
+              {
+                "id": 405907,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/mixing-bowl.jpg",
+                "name": "mixing bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 20078,
+                "image": "wheat-germ.png",
+                "name": "wheat germ",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Transfer the mixture to a mixing bowl and stir in the wheat germ."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": {
+                  "number": 300.0,
+                  "unit": "Fahrenheit"
+                }
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 4,
+            "step": "Reduce the oven temperature to 300 degrees F."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404669,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/sauce-pan.jpg",
+                "name": "sauce pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 19334,
+                "image": "dark-brown-sugar.png",
+                "name": "brown sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1052050,
+                "image": "vanilla.jpg",
+                "name": "vanilla",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19296,
+                "image": "honey.png",
+                "name": "honey",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 4582,
+                "image": "vegetable-oil.jpg",
+                "name": "cooking oil",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 5,
+            "step": "Place the oil, honey, brown sugar, vanilla, and salt in a small saucepan and heat over medium heat. Bring to a boil (the mixture will start foaming) Once boiling, cook for 60 seconds, stirring constantly."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 8121,
+                "image": "rolled-oats.jpg",
+                "name": "oatmeal",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 0,
+                "image": "",
+                "name": "syrup",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 6,
+            "step": "Pour the syrup over the toasted oatmeal mixture."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 1009079,
+                "image": "dried-cranberries.jpg",
+                "name": "craisins",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9087,
+                "image": "dates.jpg",
+                "name": "dates",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 7,
+            "step": "Add the dates and craisins and stir well."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 10419903,
+                "image": "chocolate-chips",
+                "name": "chocolate chunks",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19081,
+                "image": "milk-chocolate.jpg",
+                "name": "chocolate",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 8,
+            "step": "Stir in the dark chocolate chunks, because the mixture is so warm, you will find some of the chocolate melting."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 9,
+            "step": "Pour the mixture into the prepared pan and gently, but firmly press the mixture evenly into the pan using your fingers."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 8212,
+                "image": "granola.jpg",
+                "name": "granola",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": {
+              "number": 20,
+              "unit": "minutes"
+            },
+            "number": 10,
+            "step": "Bake for 20 minutes, or until the granola is a light golden brown color."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 180,
+              "unit": "minutes"
+            },
+            "number": 11,
+            "step": "Cool for at least 2 to 3 hours before removing from the pan and cutting into squares. Store in an airtight container at room temperature!"
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 12,
+            "step": "NOTES"
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 8120,
+                "image": "rolled-oats.jpg",
+                "name": "oats",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 13,
+            "step": "**Make sure that your oats are certified gluten free."
+          },
+          {
+            "equipment": [],
+            "ingredients": [
+              {
+                "id": 19912,
+                "image": "agave.png",
+                "name": "agave",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19296,
+                "image": "honey.png",
+                "name": "honey",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 14,
+            "step": "** These do contain honey, I've seen some vegans eat honey, others don't, so keep that in mind! :) I haven't tried to sub the honey with agave, but if you do, please let me know the results!"
+          }
+        ]
+      }
+    ],
+    "id": 641255,
+    "image": "https://img.spoonacular.com/recipes/641255-312x231.jpg",
+    "missedIngredientCount": 10,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 290.6,
+          "name": "Calories",
+          "percentOfDailyNeeds": 14.53,
+          "unit": "kcal"
+        },
+        {
+          "amount": 12.23,
+          "name": "Fat",
+          "percentOfDailyNeeds": 18.82,
+          "unit": "g"
+        },
+        {
+          "amount": 6.26,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 39.14,
+          "unit": "g"
+        },
+        {
+          "amount": 43.77,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 14.59,
+          "unit": "g"
+        },
+        {
+          "amount": 39.75,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 14.45,
+          "unit": "g"
+        },
+        {
+          "amount": 26.9,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 29.88,
+          "unit": "g"
+        },
+        {
+          "amount": 0.0,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 0.0,
+          "unit": "mg"
+        },
+        {
+          "amount": 61.77,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 2.69,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.15,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.26,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 5.65,
+          "name": "Protein",
+          "percentOfDailyNeeds": 11.3,
+          "unit": "g"
+        },
+        {
+          "amount": 1.34,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 67.23,
+          "unit": "mg"
+        },
+        {
+          "amount": 65.94,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 16.49,
+          "unit": "mg"
+        },
+        {
+          "amount": 4.02,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 16.09,
+          "unit": "g"
+        },
+        {
+          "amount": 156.91,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 15.69,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.04,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 13.57,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.24,
+          "name": "Copper",
+          "percentOfDailyNeeds": 11.75,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.05,
+          "name": "Iron",
+          "percentOfDailyNeeds": 11.38,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.17,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 11.1,
+          "unit": "mg"
+        },
+        {
+          "amount": 7.64,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 10.91,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 40.6,
+          "name": "Folate",
+          "percentOfDailyNeeds": 10.15,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 1.47,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 9.79,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.16,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 9.12,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.16,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 8.01,
+          "unit": "mg"
+        },
+        {
+          "amount": 249.97,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 7.14,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.89,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 4.47,
+          "unit": "mg"
+        },
+        {
+          "amount": 44.02,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 4.4,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.38,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 3.81,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 14,
+    "title": "Dark Chocolate Chunk Quinoa Granola Bars",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 1124,
+                "image": "egg-white.jpg",
+                "name": "egg whites",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 9040,
+                "image": "bananas.jpg",
+                "name": "banana",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1052050,
+                "image": "vanilla.jpg",
+                "name": "vanilla",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 4582,
+                "image": "vegetable-oil.jpg",
+                "name": "cooking oil",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "In a small bowl mash bananas and add egg whites, vanilla and oil. Stir well."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 2,
+            "step": "Dump into large bowl and add all remaining ingredients."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 4679,
+                "image": "cooking-spray.png",
+                "name": "cooking spray",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 8121,
+                "image": "rolled-oats.jpg",
+                "name": "oatmeal",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Spray muffin pan with cooking spray and add oatmeal mixture evenly into each muffin cup."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": {
+                  "number": 350.0,
+                  "unit": "Fahrenheit"
+                }
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 35,
+              "unit": "minutes"
+            },
+            "number": 4,
+            "step": "Bake on 350F for 35 minutes."
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": {
+              "number": 5,
+              "unit": "minutes"
+            },
+            "number": 5,
+            "step": "Allow 5 minutes to cool."
+          }
+        ]
+      }
+    ],
+    "id": 634141,
+    "image": "https://img.spoonacular.com/recipes/634141-312x231.jpg",
+    "missedIngredientCount": 11,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 167.67,
+          "name": "Calories",
+          "percentOfDailyNeeds": 8.38,
+          "unit": "kcal"
+        },
+        {
+          "amount": 3.8,
+          "name": "Fat",
+          "percentOfDailyNeeds": 5.84,
+          "unit": "g"
+        },
+        {
+          "amount": 0.73,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 4.54,
+          "unit": "g"
+        },
+        {
+          "amount": 27.71,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 9.24,
+          "unit": "g"
+        },
+        {
+          "amount": 24.89,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 9.05,
+          "unit": "g"
+        },
+        {
+          "amount": 10.83,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 12.03,
+          "unit": "g"
+        },
+        {
+          "amount": 8.33,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 2.78,
+          "unit": "mg"
+        },
+        {
+          "amount": 122.31,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 5.32,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.12,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.14,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 8.05,
+          "name": "Protein",
+          "percentOfDailyNeeds": 16.09,
+          "unit": "g"
+        },
+        {
+          "amount": 0.73,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 36.41,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.83,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 11.3,
+          "unit": "g"
+        },
+        {
+          "amount": 106.61,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 10.66,
+          "unit": "mg"
+        },
+        {
+          "amount": 97.62,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 9.76,
+          "unit": "mg"
+        },
+        {
+          "amount": 6.37,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 9.1,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 33.83,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 8.46,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.31,
+          "name": "Iron",
+          "percentOfDailyNeeds": 7.29,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.13,
+          "name": "Copper",
+          "percentOfDailyNeeds": 6.63,
+          "unit": "mg"
+        },
+        {
+          "amount": 218.78,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 6.25,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.1,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 5.79,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.11,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 5.68,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.08,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 5.59,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.64,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 4.27,
+          "unit": "mg"
+        },
+        {
+          "amount": 11.45,
+          "name": "Folate",
+          "percentOfDailyNeeds": 2.86,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.26,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 2.61,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.13,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 2.58,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.41,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 2.03,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 12,
+    "title": "Banana Oatmeal Breakfast Muffins",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 404661,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png",
+                "name": "whisk",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 18369,
+                "image": "white-powder.jpg",
+                "name": "baking powder",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 19334,
+                "image": "dark-brown-sugar.png",
+                "name": "brown sugar",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2010,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/cinnamon.jpg",
+                "name": "cinnamon",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 11422,
+                "image": "pumpkin.png",
+                "name": "pumpkin",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1052050,
+                "image": "vanilla.jpg",
+                "name": "vanilla",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1001,
+                "image": "butter-sliced.jpg",
+                "name": "butter",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1002011,
+                "image": "cloves.jpg",
+                "name": "clove",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2025,
+                "image": "ground-nutmeg.jpg",
+                "name": "nutmeg",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 12142,
+                "image": "pecans.jpg",
+                "name": "pecans",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1123,
+                "image": "egg.png",
+                "name": "egg",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 1077,
+                "image": "milk.png",
+                "name": "milk",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 8120,
+                "image": "rolled-oats.jpg",
+                "name": "oats",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 1,
+            "step": "Preheat oven to 350 degrees.In a large bowl, stir to combine the oats, pumpkin, brown sugar, baking powder, salt, cinnamon, nutmeg and cloves. Set aside.In a medium bowl, whisk together the vanilla, eggs, milk and melted butter. Stir into the dry ingredients until well blended.In a small bowl, combine the pecans, butter and brown sugar. Set aside."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404646,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/roasting-pan.jpg",
+                "name": "baking pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 4679,
+                "image": "cooking-spray.png",
+                "name": "cooking spray",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 12142,
+                "image": "pecans.jpg",
+                "name": "pecans",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Pour the mixture into a 9-inch square baking dish coated with cooking spray and sprinkle the pecan mixture over the top."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 40,
+              "unit": "minutes"
+            },
+            "number": 3,
+            "step": "Bake for 35-40 minutes or until just set."
+          },
+          {
+            "equipment": [],
+            "ingredients": [],
+            "length": null,
+            "number": 4,
+            "step": "Serve immediately.(You can store leftovers in an airtight container in the refrigerator for up to 3 days.)"
+          }
+        ]
+      }
+    ],
+    "id": 657361,
+    "image": "https://img.spoonacular.com/recipes/657361-312x231.jpg",
+    "missedIngredientCount": 11,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 464.16,
+          "name": "Calories",
+          "percentOfDailyNeeds": 23.21,
+          "unit": "kcal"
+        },
+        {
+          "amount": 25.43,
+          "name": "Fat",
+          "percentOfDailyNeeds": 39.12,
+          "unit": "g"
+        },
+        {
+          "amount": 11.87,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 74.16,
+          "unit": "g"
+        },
+        {
+          "amount": 52.7,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 17.57,
+          "unit": "g"
+        },
+        {
+          "amount": 46.12,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 16.77,
+          "unit": "g"
+        },
+        {
+          "amount": 22.26,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 24.74,
+          "unit": "g"
+        },
+        {
+          "amount": 125.99,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 42.0,
+          "unit": "mg"
+        },
+        {
+          "amount": 644.81,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 28.04,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.17,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.13,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 8.95,
+          "name": "Protein",
+          "percentOfDailyNeeds": 17.91,
+          "unit": "g"
+        },
+        {
+          "amount": 1.61,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 80.62,
+          "unit": "mg"
+        },
+        {
+          "amount": 3439.25,
+          "name": "Vitamin A",
+          "percentOfDailyNeeds": 68.79,
+          "unit": "IU"
+        },
+        {
+          "amount": 6.58,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 26.3,
+          "unit": "g"
+        },
+        {
+          "amount": 257.18,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 25.72,
+          "unit": "mg"
+        },
+        {
+          "amount": 17.36,
+          "name": "Selenium",
+          "percentOfDailyNeeds": 24.8,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 162.19,
+          "name": "Calcium",
+          "percentOfDailyNeeds": 16.22,
+          "unit": "mg"
+        },
+        {
+          "amount": 64.46,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 16.12,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.26,
+          "name": "Vitamin B2",
+          "percentOfDailyNeeds": 15.19,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.21,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 14.14,
+          "unit": "mg"
+        },
+        {
+          "amount": 2.49,
+          "name": "Iron",
+          "percentOfDailyNeeds": 13.82,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.96,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 13.07,
+          "unit": "mg"
+        },
+        {
+          "amount": 1.27,
+          "name": "Vitamin B5",
+          "percentOfDailyNeeds": 12.74,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.25,
+          "name": "Copper",
+          "percentOfDailyNeeds": 12.65,
+          "unit": "mg"
+        },
+        {
+          "amount": 35.76,
+          "name": "Folate",
+          "percentOfDailyNeeds": 8.94,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 290.41,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 8.3,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.16,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 7.83,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.39,
+          "name": "Vitamin B12",
+          "percentOfDailyNeeds": 6.42,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 0.92,
+          "name": "Vitamin E",
+          "percentOfDailyNeeds": 6.13,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.63,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 3.13,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.44,
+          "name": "Vitamin D",
+          "percentOfDailyNeeds": 2.93,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 2.42,
+          "name": "Vitamin K",
+          "percentOfDailyNeeds": 2.31,
+          "unit": "\u00b5g"
+        },
+        {
+          "amount": 1.32,
+          "name": "Vitamin C",
+          "percentOfDailyNeeds": 1.6,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 8,
+    "title": "Pumpkin Praline Baked Oatmeal",
+    "usedIngredientCount": 0
+  },
+  {
+    "analyzedInstructions": [
+      {
+        "name": "",
+        "steps": [
+          {
+            "equipment": [
+              {
+                "id": 405905,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/mini-muffin-tray.jpg",
+                "name": "mini muffin tray",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": null,
+            "number": 1,
+            "step": "Preheat the oven to 325 and grease a mini muffin tin."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 18372,
+                "image": "white-powder.jpg",
+                "name": "baking soda",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 93626,
+                "image": "white-powder.jpg",
+                "name": "xanthan gum",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 2047,
+                "image": "salt.jpg",
+                "name": "salt",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 2,
+            "step": "Combine the flours, xanthan gum, baking soda, and salt in a bowl."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404661,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png",
+                "name": "whisk",
+                "temperature": null
+              },
+              {
+                "id": 404783,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg",
+                "name": "bowl",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 99278,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/chocolate-chips.jpg",
+                "name": "chocolate chips",
+                "quantity": null,
+                "unit": null
+              },
+              {
+                "id": 10012220,
+                "image": "flax-seeds.png",
+                "name": "flaxseed",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 3,
+            "step": "Whisk them together until thoroughly mixed, then stir in the flax and chocolate chips.  In a separate bowl, whisk together the remaining wet ingredients until smooth."
+          },
+          {
+            "equipment": [
+              {
+                "id": 404671,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/muffin-tray.jpg",
+                "name": "muffin tray",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              }
+            ],
+            "ingredients": [
+              {
+                "id": 10219335,
+                "image": "https://spoonacular.com/cdn/ingredients_100x100/cinnamon-sugar.png",
+                "name": "cinnamon sugar",
+                "quantity": null,
+                "unit": null
+              }
+            ],
+            "length": null,
+            "number": 4,
+            "step": "Add the dry ingredients to the wet and stir until a smooth batter forms.  Fill the muffin tins up about 2/3 full (you should be able to fill about 12).  If using, sprinkle a bit of the cinnamon sugar topping on each muffin.  Tap the pan on the counter to release air bubbles, then place it in the oven."
+          },
+          {
+            "equipment": [
+              {
+                "id": 405900,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/wire-rack.jpg",
+                "name": "wire rack",
+                "temperature": null
+              },
+              {
+                "id": 404784,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
+                "name": "oven",
+                "temperature": null
+              },
+              {
+                "id": 404645,
+                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png",
+                "name": "frying pan",
+                "temperature": null
+              }
+            ],
+            "ingredients": [],
+            "length": {
+              "number": 17,
+              "unit": "minutes"
+            },
+            "number": 5,
+            "step": "Bake the muffins for approximately 15-17 minutes until the tops have puffed and spring back when touched.  Cool in the pan for a few minutes, then invert the pan on a cooling rack and cool completely on the rack (or, you could always enjoy them warm!). Makes 12 mini muffins."
+          }
+        ]
+      }
+    ],
+    "id": 651942,
+    "image": "https://img.spoonacular.com/recipes/651942-312x231.jpg",
+    "missedIngredientCount": 13,
+    "nutrition": {
+      "nutrients": [
+        {
+          "amount": 55.22,
+          "name": "Calories",
+          "percentOfDailyNeeds": 2.76,
+          "unit": "kcal"
+        },
+        {
+          "amount": 2.07,
+          "name": "Fat",
+          "percentOfDailyNeeds": 3.19,
+          "unit": "g"
+        },
+        {
+          "amount": 1.31,
+          "name": "Saturated Fat",
+          "percentOfDailyNeeds": 8.18,
+          "unit": "g"
+        },
+        {
+          "amount": 8.79,
+          "name": "Carbohydrates",
+          "percentOfDailyNeeds": 2.93,
+          "unit": "g"
+        },
+        {
+          "amount": 8.18,
+          "name": "Net Carbohydrates",
+          "percentOfDailyNeeds": 2.98,
+          "unit": "g"
+        },
+        {
+          "amount": 3.89,
+          "name": "Sugar",
+          "percentOfDailyNeeds": 4.32,
+          "unit": "g"
+        },
+        {
+          "amount": 0.38,
+          "name": "Cholesterol",
+          "percentOfDailyNeeds": 0.13,
+          "unit": "mg"
+        },
+        {
+          "amount": 78.51,
+          "name": "Sodium",
+          "percentOfDailyNeeds": 3.41,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.03,
+          "name": "Alcohol",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "g"
+        },
+        {
+          "amount": 0.19,
+          "name": "Alcohol %",
+          "percentOfDailyNeeds": 100.0,
+          "unit": "%"
+        },
+        {
+          "amount": 0.69,
+          "name": "Protein",
+          "percentOfDailyNeeds": 1.39,
+          "unit": "g"
+        },
+        {
+          "amount": 0.18,
+          "name": "Manganese",
+          "percentOfDailyNeeds": 8.99,
+          "unit": "mg"
+        },
+        {
+          "amount": 10.55,
+          "name": "Magnesium",
+          "percentOfDailyNeeds": 2.64,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.6,
+          "name": "Fiber",
+          "percentOfDailyNeeds": 2.41,
+          "unit": "g"
+        },
+        {
+          "amount": 0.05,
+          "name": "Vitamin B6",
+          "percentOfDailyNeeds": 2.38,
+          "unit": "mg"
+        },
+        {
+          "amount": 21.91,
+          "name": "Phosphorus",
+          "percentOfDailyNeeds": 2.19,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.03,
+          "name": "Vitamin B1",
+          "percentOfDailyNeeds": 2.18,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.35,
+          "name": "Iron",
+          "percentOfDailyNeeds": 1.97,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.04,
+          "name": "Copper",
+          "percentOfDailyNeeds": 1.76,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.31,
+          "name": "Vitamin B3",
+          "percentOfDailyNeeds": 1.53,
+          "unit": "mg"
+        },
+        {
+          "amount": 44.04,
+          "name": "Potassium",
+          "percentOfDailyNeeds": 1.26,
+          "unit": "mg"
+        },
+        {
+          "amount": 0.15,
+          "name": "Zinc",
+          "percentOfDailyNeeds": 1.02,
+          "unit": "mg"
+        }
+      ]
+    },
+    "servings": 12,
+    "title": "Mini Chocolate Chip & Flax Banana Muffins",
+    "usedIngredientCount": 0
+  }
+]

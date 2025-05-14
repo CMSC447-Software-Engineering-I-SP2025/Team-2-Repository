@@ -10,29 +10,39 @@ export default function ResultsDisplay ({recipes, favoritedRecipesBitMap, setFav
 }
 
 function ResultsCell({recipe, index, favoritedRecipesBitMap, setFavoritedRecipesBitMap, saveRecipe, removeRecipe}) {
-    const recipeURL = recipe.image;
-    const recipeName = recipe.title;
-    const resultLink = `/recipe/${recipeName.toLowerCase()}`; 
-    let favorite_icon = favoritedRecipesBitMap[index] ? "../star-solid.svg" : "../star-regular.svg";
-    let favorite_alt_text = favoritedRecipesBitMap[index] ? "A favorite recipe button set to favorited." : "A favorite recipe button set to not favorited.";
+    // Ensure `favoritedRecipesBitMap` is valid
+    const isFavorited = (favoritedRecipesBitMap && favoritedRecipesBitMap[index]) || false;
+    const favorite_icon = isFavorited ? "../star-solid.svg" : "../star-regular.svg";
+    const favorite_alt_text = isFavorited
+        ? "A favorite recipe button set to favorited."
+        : "A favorite recipe button set to not favorited.";
 
     function handleFavoriteClick() {
         let copyBitMap = favoritedRecipesBitMap.slice();
-        favoritedRecipesBitMap[index] ? removeRecipe(recipe) : saveRecipe(recipe);
-        copyBitMap[index] = !copyBitMap[index];
+        if (isFavorited) {
+            removeRecipe(recipe);
+        } else {
+            saveRecipe(recipe);
+        }
+        copyBitMap[index] = !isFavorited;
         setFavoritedRecipesBitMap(copyBitMap);
     }
 
-    return <div className="result-cell">
-        <div className="result-image-wrapper">
-            <a href={resultLink}><img src ={recipeURL} alt={recipeName}/></a>
-            <div className="favorite-button-cut-out">
-                <img className="favorite-button" src={favorite_icon} alt={favorite_alt_text} onClick={() => handleFavoriteClick()}/>
+    const recipeURL = recipe.image;
+    const recipeName = recipe.title;
+    const resultLink = `/recipe/${recipeName.toLowerCase()}`; 
+
+    return (
+        <div className="result-cell">
+            <div className="result-image-wrapper">
+                <a href={resultLink}><img src={recipeURL} alt={recipeName}/></a>
+                <div className="favorite-button-cut-out">
+                    <img className="favorite-button" src={favorite_icon} alt={favorite_alt_text} onClick={handleFavoriteClick}/>
+                </div>
+            </div>
+            <div className="recipe-name">
+                <Link to={{ pathname: resultLink, state: recipeName }}>{recipeName}</Link>
             </div>
         </div>
-        <div className="recipe-name"> 
-            {/* <a href={resultLink}>{recipeName}</a> */}
-            <Link to={{ pathname: resultLink, state: recipeName }}>{recipeName}</Link>
-        </div>
-    </div>;
+    );
 }
