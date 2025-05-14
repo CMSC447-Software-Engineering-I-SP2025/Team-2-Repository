@@ -46,7 +46,7 @@ class Ingredient:
 
     id: int
     name: str
-    quantity: int | None
+    amount: float | None
     unit: str | None
     image: str
 

@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 import NutritionLabel from "./NutritionLabel";
 
-export default function RecipeDetail({saveRecipe, removeRecipe}) {
+export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
     //the recipe data must be in states b/c the recipe isn't found until after the page loads
     //storing a single recipe state wasn't working, so we have states for each field
     const {recipeName} = useParams();
@@ -58,7 +58,6 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
             data.forEach(ingr => {
                 missing.push(ingr)
             });
-            console.log(missing)
             setMissingIngredients(missing)
         })
         .catch(error => console.log(error));
@@ -74,13 +73,15 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                 const  tempInstructions = recipe['analyzedInstructions'] || recipe['instructions'];
                 if(tempInstructions?.length > 0) {
                     setInstructions(tempInstructions[0]['steps']);
-                    tempInstructions[0]['steps'].forEach( stepInfo => {
-                        tempIngredients.push(... stepInfo['ingredients']
-                                            .filter(info => info['id'] > 0)
-                                            .map(ingredientInfo => ingredientInfo['name']));
-                    });
-                    setIngredients([... new Set(tempIngredients)]);
+                    // tempInstructions[0]['steps'].forEach( stepInfo => {
+                    //     tempIngredients.push(... stepInfo['ingredients']
+                    //                         .filter(info => info['id'] > 0)
+                    //                         .map(ingredientInfo => ingredientInfo['name']));
+                    // });
+                    // setIngredients([... new Set(tempIngredients)]);
                 }
+                recipe['extendedIngredients']?.forEach(ing => tempIngredients.push(ing)) ;
+                setIngredients(tempIngredients);
                 setImageURL(recipe['image']);
                 setNutrients(recipe['nutrition']['nutrients']);
                 setNumServings(recipe['servings']);
@@ -120,16 +121,20 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                             <div className="recipe-ingredients-display">
                                 <h2>Ingredients</h2>
                                 <ul>
-                                    {ingredients.map((item, index) => (
-                                        <li key={index}>{item}</li>
+                                    {ingredients.map((ing, index) => (
+                                        <li key={index}><b>{ing.name}</b> - {ing.amount + " " + ing.unit} </li>
                                     ))}
                                 </ul> 
-                                <h2>Missing From Pantry</h2>
-                                <ul>
-                                    {missingIngredients.map((item, index) => (
-                                        <li key={index}>{item}</li>
-                                    ))}                   
-                                </ul>
+                                {isLoggedIn && 
+                                    <>
+                                        <h2>Missing From Pantry</h2>
+                                        <ul>
+                                            {missingIngredients.map((item, index) => (
+                                                <li key={index}>{item}</li>
+                                            ))}                   
+                                        </ul>
+                                    </>
+                                }
                             </div>
                             </div>
                             <div className="steps-section">

@@ -85,7 +85,7 @@ def ingredient_mapper(input_ingredient: Ingredient | IngredientDB) -> Ingredient
         return IngredientDB(
             ingr_id=input_ingredient["id"],
             name=input_ingredient["name"],
-            quantity=input_ingredient.get("quantity"),
+            amount=input_ingredient.get("amount"),
             unit=input_ingredient.get("unit"),
             image=input_ingredient.get("image"),
         )
@@ -94,7 +94,7 @@ def ingredient_mapper(input_ingredient: Ingredient | IngredientDB) -> Ingredient
     return {
         "id": input_ingredient.ingr_id,
         "name": input_ingredient.name,
-        "quantity": input_ingredient.quantity,
+        "amount": input_ingredient.amount,
         "unit": input_ingredient.unit,
         "image": input_ingredient.image,
     }
