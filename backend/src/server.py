@@ -21,7 +21,7 @@ from flask_cors import CORS
 from mappers import ingredient_mapper, recipe_mapper
 from requests import Request
 from requests import get as reqget
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, update
 from sqlalchemy.orm import sessionmaker
 from tomllib import loads as tomlloads
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -381,15 +381,21 @@ def api_save_ingredient() -> str:
 
     """
     user_id  = session.get("user_id")
-
+    print(user_id)
     # Write data to database
     with db.DBSession() as db_session:
         try:
             ingredient_db_class = ingredient_mapper(request.get_json())
             ingredient_db_class.user_id = user_id
+
+            existingRecord = db_session.query(IngredientDB).filter_by(ingr_id=ingredient_db_class.ingr_id, user_id=user_id)
+            if (existingRecord):
+                existingRecord.delete()
+                
             db_session.add(ingredient_db_class)
             db_session.commit()
         except Exception as e:
+            print("here")
             db_session.rollback()
             raise e
     return "200"

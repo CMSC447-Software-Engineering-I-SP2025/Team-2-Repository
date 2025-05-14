@@ -28,6 +28,9 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         return ingredientObjs.find(ing => ing.name == name.toLowerCase());
     }
     function saveIngredient(ingredient) {
+        if(!ingredient.id) {
+            ingredient.id = getIngredientByName(ingredient.name).id;
+        }
         let saveIngredientEndpoint = new URL("addingredient", serverBaseURL);
         const options = {
             method: "PUT",
@@ -256,6 +259,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                                     if(e.key == "Enter") {
                                                         const ingrsCopy = ingredients.slice();
                                                         ingrsCopy[index].quantity = e.target.value;
+                                                        saveIngredient(ingrsCopy[index]);
                                                         setIngredients(ingrsCopy);
 
                                                         const updatedEditingQuantity = isEditingQuantity.slice();
@@ -306,7 +310,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                                     if(isEditingUnit[index]) {
                                                         ingrsCopy[index].unit = e.target.previousSibling.value;
                                                     }
-                                                    //
+                                                    saveIngredient(ingrsCopy[index]);
                                                     setIngredients(ingrsCopy);
                                                     const updatedEditingQuantity = isEditingQuantity.slice();
                                                     const updatedEditingUnit = isEditingUnit.slice();
