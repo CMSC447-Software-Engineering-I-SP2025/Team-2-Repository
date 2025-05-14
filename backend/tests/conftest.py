@@ -7,7 +7,7 @@ from server import DB, Base
 from db_data_models import UserDB
 from werkzeug.security import generate_password_hash
 from pathlib import Path
-from backend.tests.globals import username, password
+from backend.tests.utils.globals import username, password
 
 
 @pytest.fixture

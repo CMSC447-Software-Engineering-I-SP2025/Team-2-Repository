@@ -58,4 +58,3 @@ class RecipeIngredientDB(Base):
     __tablename__ = "recipe_ingredients"
     recipe_id = Column(Integer, ForeignKey("recipes.recipe_id"), primary_key=True)
     ingredient_id = Column(Integer, ForeignKey("ingredients.ingr_id"), primary_key=True)
-
