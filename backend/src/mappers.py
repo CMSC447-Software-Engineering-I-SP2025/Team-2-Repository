@@ -14,6 +14,8 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
     # Recipe -> RecipeDB
     if isinstance(input_recipe, (dict, Recipe)):  # Recipe dict -> RecipeDB
 
+        # print(input_recipe)
+
         # Assign values to variables first
         recipe_id = input_recipe.get("id")
         title = input_recipe["title"]
@@ -23,16 +25,16 @@ def recipe_mapper(input_recipe: Recipe | RecipeDB) -> Recipe | RecipeDB:
             {k: v for k, v in instr.items() if k != "repr"}
             for instr in input_recipe.get("analyzedInstructions", []) or []
         ])
+        # print(analyzed_instructions)
         nutrition = json.dumps({
             "nutrients": [
                 dict(nutr.items())
                 for nutr in (input_recipe.get("nutrition", {}).get("nutrients", []) or [])
             ]
         })
-        ingredients = input_recipe.get("ingredients")
+        ingredients = input_recipe.get("ingredients", [])
+        # print(ingredients)
 
-        print(analyzed_instructions)
-        input()
 
         # Pass variables into RecipeDB
         return RecipeDB(
