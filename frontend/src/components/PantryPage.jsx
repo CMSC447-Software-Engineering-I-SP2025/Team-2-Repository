@@ -28,9 +28,17 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         return ingredientObjs.find(ing => ing.name == name.toLowerCase());
     }
     function saveIngredient(ingredient) {
+        const processedIngredient = {... ingredient}
         if(!ingredient.id) {
-            ingredient.id = getIngredientByName(ingredient.name).id;
+            processedIngredient.id = getIngredientByName(ingredient.name).id;
         }
+        if(ingredient.quantity) {
+            //renaming before sending off because of different naming conventions
+            const tempAmount = ingredient.quantity;
+            processedIngredient.amount = tempAmount;
+            delete processedIngredient.quantity;
+        }
+
         let saveIngredientEndpoint = new URL("addingredient", serverBaseURL);
         const options = {
             method: "PUT",
@@ -38,7 +46,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 "Content-Type": "application/json",
             },
             credentials: "include",
-            body: JSON.stringify(ingredient)
+            body: JSON.stringify(processedIngredient)
         };
         fetch(saveIngredientEndpoint, options)
         .catch(error => console.log(error));
@@ -102,7 +110,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 return response.json();
             })
             .then(data => {
-                const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.quantity, unit: savedIngredient.unit}));
+                const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.amount, unit: savedIngredient.unit}));
                 setIngredients(tempIngredients);
                 const prefilledArray = new Array(tempIngredients.length);
                 prefilledArray.fill(false);
