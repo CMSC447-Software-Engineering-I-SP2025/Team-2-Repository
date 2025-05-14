@@ -92,6 +92,9 @@ export default function CategoryPage({ saveRecipe, removeRecipe }) {
 
     if (cache && Array.isArray(cache)) {
       const randomRecipes = cache.sort(() => 0.5 - Math.random()).slice(0, 8); // display 10 random recipes
+      const tempArr = [];
+      randomRecipes.forEach(recipe => tempArr.push(recipe));
+      sessionStorage.setItem("recipes", JSON.stringify(tempArr));
       setRecipes(randomRecipes);
       setFavoritedRecipesBitMap(new Array(randomRecipes.length).fill(false));
     } else {
