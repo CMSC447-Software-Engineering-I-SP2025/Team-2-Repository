@@ -33,13 +33,14 @@ class IngredientDB(Base):
 class RecipeDB(Base):
     """Recipe DB table."""
 
+
     __tablename__ = "recipes"
 
     recipe_id = Column(Integer, primary_key=True, nullable=False)
     user_id = Column(Integer, nullable=False)
     title = Column(String(100), nullable=False)
     image = Column(String(255))
-    servings = Column(Integer)
+    servings = Column(Integer, nullable=True)
     analyzed_instructions = Column(JSON)  # Stores list of Instruction dataclasses as JSON
     nutrition = Column(JSON) # Stores list of Nutrient dataclasses as JSON
 

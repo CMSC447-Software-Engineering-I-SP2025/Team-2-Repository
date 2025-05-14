@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-
 from dacite import Config, from_dict
 
 
@@ -181,12 +180,3 @@ class Response:
     """
 
     results: list[Recipe]
-
-
-def json_mapper(json_data: dict, data_class: Response):
-
-    return from_dict(
-        data_class=data_class,
-        data=json_data,
-        config=Config(check_types=False, cast=[], strict=False),
-    )

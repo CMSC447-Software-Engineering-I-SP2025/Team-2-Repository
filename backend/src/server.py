@@ -5,12 +5,13 @@
 
 
 # Standard Libraries
+from __future__ import annotations
 import json
 from pathlib import Path
-from typing import Any #TODO remove if not needed
+from typing import Any  #TODO remove if not needed
 
 # Custom Libraries
-from backend_data_models import Response, json_mapper, Recipe, Ingredient
+from backend_data_models import Response
 from db_data_models import (
     Base,
     IngredientDB,
@@ -21,7 +22,7 @@ from db_data_models import (
 # External Libraries
 from flask import Flask, jsonify, render_template_string, request, session
 from flask_cors import CORS
-from mappers import ingredient_mapper, recipe_mapper
+from mappers import ingredient_mapper, recipe_mapper, response_mapper
 from requests import Request
 from requests import get as reqget
 from sqlalchemy import create_engine
@@ -252,7 +253,6 @@ def api_get_recipes() -> dict:
     """
     # Get data from request
     include_ingredients = request.args.get("includeIngredients", type=str)
-    exclude_ingredients = request.args.get("excludeIngredients", default="", type=str)
     cuisine = request.args.get("cuisine", default="", type=str)
     intolerances = request.args.get("intolerances", default="", type=str)
     diet = request.args.get("diet", default="", type=str)
@@ -271,8 +271,6 @@ def api_get_recipes() -> dict:
     }
 
     # Build optional params
-    if exclude_ingredients:
-        params["excludeIngredients"] = exclude_ingredients
     if cuisine:
         params["cuisine"] = cuisine
     if intolerances:
@@ -281,19 +279,19 @@ def api_get_recipes() -> dict:
         params["diet"] = diet
 
     # Get dummy data
-    #final_results = json_mapper(get_dummy_data(), Response).results
+    #final_results = response_mapper(get_dummy_data(), Response).results
 
     # Request, get, and return data (Expanded)
-    # url = Request(method="GET", url=db.base_url, params=params).prepare().url
-    # spoonacular_response = reqget(url, timeout=5).text
-    # json_data = json.loads(spoonacular_response)
-    # mapped_data = json_mapper(json_data, data_class=Response).results
-    # return mapped_data
+    url = Request(method="GET", url=db.base_url, params=params).prepare().url
+    spoonacular_response = reqget(url, timeout=5).text
+    json_data = json.loads(spoonacular_response)
+    mapped_data = response_mapper(json_data).results
+    return mapped_data
 
     # Request, get, and return data (One liner).
-    a = json_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text), data_class=Response).results
-    print(a)
-    return a
+    # return response_mapper(json_data=json.loads(reqget(url=Request(method="GET", url=db.base_url, params=params).prepare().url,timeout=5).text)).results
+
+
 @app.route("/addrecipe", methods=["PUT"])
 def api_save_recipe() -> tuple[Response, int] | str:
     """Save a recipe to the database.
@@ -305,7 +303,7 @@ def api_save_recipe() -> tuple[Response, int] | str:
         str: Success message.
 
     """
-    print("Saving Recipe: ", request.get_json())
+    recipe_data = request.get_json()
     user_id  = session.get("user_id")
 
     # If null user_id
@@ -315,10 +313,11 @@ def api_save_recipe() -> tuple[Response, int] | str:
     # Write data to database
     with db.DBSession() as db_session:
         try:
-            recipe_db_class = recipe_mapper(request.get_json())
+            recipe_db_class = recipe_mapper(recipe_data)
             recipe_db_class.user_id = user_id
             db_session.add(recipe_db_class)
             db_session.commit()
+
         except Exception as e:
             db_session.rollback()
             raise e
@@ -413,7 +412,6 @@ def api_save_ingredient() -> tuple[Response, int] | str:
             db_session.add(ingredient_db_class)
             db_session.commit()
         except Exception as e:
-            print("here")
             db_session.rollback()
             raise e
     return "200"
