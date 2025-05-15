@@ -271,7 +271,7 @@ def api_get_recipes() -> dict:
         "addRecipeNutrition": True,
         "fillIngredients": True,
         "sort": "min-missing-ingredients",
-        "number": 1,
+        "number": 12,
         "apiKey": db.api_key,
     }
 
