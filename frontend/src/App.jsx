@@ -123,8 +123,8 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
                             <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
 
                             {/* Category/Subcategory Page */}
-                            <Route path="/:category" element={<CategoryPage />} />
-                            <Route path="/:category/:subcategory" element={<CategoryPage />} />
+                            <Route path="/:category" element={ <CategoryPage saveRecipe={saveRecipe} removeRecipe={removeRecipe} /> } />
+                            <Route path="/:category/:subcategory" element={ <CategoryPage saveRecipe={saveRecipe} removeRecipe={removeRecipe} /> } />
 
                             {/* 404 Page */}
                             <Route path="*" element={<h1>404 Not Found</h1>} />

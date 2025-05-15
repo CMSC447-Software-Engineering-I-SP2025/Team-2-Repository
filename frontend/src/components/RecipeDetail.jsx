@@ -132,7 +132,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                                     <h2>Ingredients</h2>                                
                                     <ul>
                                         {ingredients.map((ing, index) => (
-                                            <li key={index}><b>{ing.name}</b> - {ing.amount * parseInt(scaleBy) + " " + ing.unit} </li>
+                                            <li key={index}><b>{ing.name}</b> - {Math.round((ing.amount * parseInt(scaleBy))*1000)/1000 + " " + ing.unit} </li>
                                         ))}
                                     </ul> 
                                     {isLoggedIn && 
