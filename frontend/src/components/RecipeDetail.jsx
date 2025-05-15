@@ -16,6 +16,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
     const [nutrients, setNutrients] = useState([]);
     const [numServings, setNumServings] = useState(null);
     const [missingIngredients, setMissingIngredients] = useState([]);
+    const [scaleBy, setScaleBy] = useState("1");
     const serverBaseURLString = "http://localhost:8080";
 
     let recipe;
@@ -108,7 +109,12 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                    </div>
                    <div className="image-and-save-section">
                         <div>{imageURL ? <img src= {imageURL} alt={recipeName}/>: <div>No Image Provided</div>}</div>
-                        <div className="favorite-recipe-element">
+                        <div className="favorite-recipe-element">      
+                            <div className="scale">
+                                Scale By: 
+                                x {scaleBy}
+                                <input value={scaleBy} type="range" min="1" max="8" step="1" onChange={e => setScaleBy(e.target.value)}></input>
+                            </div>                      
                             {favorited ? "Saved!": "Save Recipe?"}
                             <img className="favorite-button" src={favorite_icon} alt={favorite_alt_text} onClick={() => handleFavoriteClick()}/>
                         </div>
@@ -118,24 +124,28 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                         instructions ? 
                         <div className="recipe-detail-text-sections">
                             <div className="ingredients-and-time-area">
-                            <div className="recipe-ingredients-display">
-                                <h2>Ingredients</h2>
-                                <ul>
-                                    {ingredients.map((ing, index) => (
-                                        <li key={index}><b>{ing.name}</b> - {ing.amount + " " + ing.unit} </li>
-                                    ))}
-                                </ul> 
-                                {isLoggedIn && 
-                                    <>
-                                        <h2>Missing From Pantry</h2>
-                                        <ul>
-                                            {missingIngredients.map((item, index) => (
-                                                <li key={index}>{item}</li>
-                                            ))}                   
-                                        </ul>
-                                    </>
-                                }
-                            </div>
+                                <div>
+                                    <h2>Servings: {numServings * parseInt(scaleBy)}</h2>
+                                </div>
+                                <div className="recipe-ingredients-display">
+
+                                    <h2>Ingredients</h2>                                
+                                    <ul>
+                                        {ingredients.map((ing, index) => (
+                                            <li key={index}><b>{ing.name}</b> - {ing.amount * parseInt(scaleBy) + " " + ing.unit} </li>
+                                        ))}
+                                    </ul> 
+                                    {isLoggedIn && 
+                                        <>
+                                            <h2>Missing From Pantry</h2>
+                                            <ul>
+                                                {missingIngredients.map((item, index) => (
+                                                    <li key={index}>{item}</li>
+                                                ))}                   
+                                            </ul>
+                                        </>
+                                    }
+                                </div>
                             </div>
                             <div className="steps-section">
                                 <h2>Steps</h2>

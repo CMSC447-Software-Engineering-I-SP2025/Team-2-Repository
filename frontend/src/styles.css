@@ -493,6 +493,14 @@ header {
         align-items: center;
         margin-top: 1rem;
         gap: 5px;
+
+        .scale {
+            margin-right: 10px;
+
+            input {
+                margin-left: 10px;
+            }
+        }
     }
     .favorite-button {
         width: 2.5rem;
