@@ -28,7 +28,7 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
       const timer = setTimeout(() => {
         setErrorMessage('');
         setSuccessMessage('');
-      }, 5000);
+      }, 6500);
       return () => clearTimeout(timer);
     }
   }, [errorMessage, successMessage]);
@@ -78,12 +78,14 @@ export default function LoginRegisterModal({ show, onClose, isLoggedIn, setIsLog
         if(response.status == 409) throw new Error(data.message || 'That username has been taken.');
         throw new Error(data.message || 'Invalid username or password.');
       }
-
+      if (isRegistering) setIsRegistering(false);
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage(error.message || 'Something went wrong.');
     } finally {
       setIsSubmitting(false);
+      setUsername('');
+      setPassword('');
     }
   }
 
