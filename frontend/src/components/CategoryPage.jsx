@@ -85,6 +85,27 @@ export default function CategoryPage({ saveRecipe, removeRecipe }) {
   const [favoritedRecipesBitMap, setFavoritedRecipesBitMap] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  function checkIfSaved(recipes) {
+    const recipeIDs = recipes.map(recipe => recipe["id"]);
+    const favoritesCopy = new Array(recipes.length).fill(false);
+    const serverBaseURLString = "http://localhost:8080";
+    let serverBaseURL = new URL(serverBaseURLString); 
+    let listRecipesEndpoint = new URL("listrecipes", serverBaseURL);
+    const options = {
+        method: "GET",
+        credentials: "include"
+    };
+    fetch(listRecipesEndpoint, options)
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(savedRecipe => {
+            favoritesCopy[recipeIDs.indexOf(savedRecipe["id"])] = true;
+        });
+        setFavoritedRecipesBitMap(favoritesCopy);
+    })
+    .catch(error => console.log(error));
+  }
+
   useEffect(() => {
     if (subcategory) {
       // --- Subcategory case ---
@@ -92,11 +113,10 @@ export default function CategoryPage({ saveRecipe, removeRecipe }) {
 
     if (cache && Array.isArray(cache)) {
       const randomRecipes = cache.sort(() => 0.5 - Math.random()).slice(0, 8); // display 10 random recipes
-      const tempArr = [];
-      randomRecipes.forEach(recipe => tempArr.push(recipe));
-      sessionStorage.setItem("recipes", JSON.stringify(tempArr));
+      sessionStorage.setItem("recipes", JSON.stringify(randomRecipes));
       setRecipes(randomRecipes);
       setFavoritedRecipesBitMap(new Array(randomRecipes.length).fill(false));
+      checkIfSaved(randomRecipes);
     } else {
       console.warn("No cache found for", category, subcategory);
       setRecipes([]);

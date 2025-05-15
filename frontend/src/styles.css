@@ -513,6 +513,13 @@ header {
         padding-right: 1.5rem;
         text-transform: capitalize;
         line-height: 1.6;
+
+        h2 {
+            margin-bottom: 0rem;
+        }
+        ul {
+            margin-top: 0.25rem;
+        }
     }
 }
 
