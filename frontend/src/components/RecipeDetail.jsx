@@ -90,7 +90,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                 getMissingIngredients(recipe);
             }
         }
-    }, []);
+    }, [isLoggedIn]);
 
 
     function handleFavoriteClick() {
@@ -108,7 +108,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                         <h1>{title}</h1>
                    </div>
                    <div className="image-and-save-section">
-                        <div>{imageURL ? <img src= {imageURL} alt={recipeName}/>: <div>No Image Provided</div>}</div>
+                        <div className="detail-image-holder">{imageURL ? <img src= {imageURL} alt={recipeName}/>: <div>No Image Provided</div>}</div>
                         <div className="favorite-recipe-element">      
                             <div className="scale">
                                 Scale By: 
@@ -135,16 +135,6 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                                             <li key={index}><b>{ing.name}</b> - {Math.round((ing.amount * parseInt(scaleBy))*1000)/1000 + " " + ing.unit} </li>
                                         ))}
                                     </ul> 
-                                    {isLoggedIn && 
-                                        <>
-                                            <h2>Missing From Pantry</h2>
-                                            <ul>
-                                                {missingIngredients.map((item, index) => (
-                                                    <li key={index}>{item}</li>
-                                                ))}                   
-                                            </ul>
-                                        </>
-                                    }
                                 </div>
                             </div>
                             <div className="steps-section">
@@ -158,7 +148,19 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                         </div> :
                         <div>No Instructions Or Ingredients Provided</div>
                     }
-                    <NutritionLabel nutrientsRaw={nutrients} servings={numServings}/>
+                    <div className="extra-details">  
+                            {isLoggedIn && 
+                                <div className="missing-list"> 
+                                    <h2>Missing From Pantry</h2>
+                                    <ul>
+                                        {missingIngredients.map((item, index) => (
+                                            <li key={index}>{item}</li>
+                                        ))}                   
+                                    </ul>
+                                </div>
+                            }
+                        <NutritionLabel nutrientsRaw={nutrients} servings={numServings}/>
+                    </div>
                 </>
             ) : (
                 <h2>Recipe not found</h2>

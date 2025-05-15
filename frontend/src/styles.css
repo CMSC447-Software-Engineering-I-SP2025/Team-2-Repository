@@ -1030,3 +1030,33 @@ header {
     gap: 1rem;
     justify-content: center;
 }
+
+.detail-image-holder {
+    display: flex;
+    justify-content: center;
+}
+.missing-list {
+    background-color: rgb(179, 118, 118);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-radius: 3px;
+    text-transform: capitalize;
+    line-height: 1.6;
+    margin-top: 2rem;
+    height: fit-content;
+
+    h2 {
+        margin-bottom: 0rem;
+    }
+    ul {
+        margin-top: 0.25rem;
+    }
+}
+
+.extra-details {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
