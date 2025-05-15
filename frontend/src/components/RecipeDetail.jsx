@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 import NutritionLabel from "./NutritionLabel";
 
-export default function RecipeDetail({saveRecipe, removeRecipe}) {
+export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
     //the recipe data must be in states b/c the recipe isn't found until after the page loads
     //storing a single recipe state wasn't working, so we have states for each field
     const {recipeName} = useParams();
@@ -15,6 +15,8 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
     const [favorited, setFavorited] = useState(false);
     const [nutrients, setNutrients] = useState([]);
     const [numServings, setNumServings] = useState(null);
+    const [missingIngredients, setMissingIngredients] = useState([]);
+    const [scaleBy, setScaleBy] = useState("1");
     const serverBaseURLString = "http://localhost:8080";
 
     let recipe;
@@ -39,6 +41,29 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
         .catch(error => console.log(error));
     }
 
+    function getMissingIngredients(recipe) {
+        let serverBaseURL = new URL(serverBaseURLString); 
+        let listRecipesEndpoint = new URL("findmissing", serverBaseURL);
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(recipe)
+        };
+        fetch(listRecipesEndpoint, options)
+        .then(response => response.json())
+        .then(data => {
+            const missing = []
+            data.forEach(ingr => {
+                missing.push(ingr)
+            });
+            setMissingIngredients(missing)
+        })
+        .catch(error => console.log(error));
+    }
+
     useEffect(() => {
         if (sessionStorage && sessionStorage.getItem('recipes')) {
             recipesArr = JSON.parse(sessionStorage.getItem('recipes'));
@@ -46,19 +71,23 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
             if (recipe) {
                 setTitle(recipe['title']);
                 const tempIngredients = [];
-                if(recipe['analyzedInstructions']?.length > 0) {
-                    setInstructions(recipe['analyzedInstructions'][0]['steps']);
-                    recipe['analyzedInstructions'][0]['steps'].forEach( stepInfo => {
-                        tempIngredients.push(... stepInfo['ingredients']
-                                            .filter(info => info['id'] > 0)
-                                            .map(ingredientInfo => ingredientInfo['name']));
-                    });
-                    setIngredients([... new Set(tempIngredients)]);
+                const  tempInstructions = recipe['analyzedInstructions'] || recipe['instructions'];
+                if(tempInstructions?.length > 0) {
+                    setInstructions(tempInstructions[0]['steps']);
+                    // tempInstructions[0]['steps'].forEach( stepInfo => {
+                    //     tempIngredients.push(... stepInfo['ingredients']
+                    //                         .filter(info => info['id'] > 0)
+                    //                         .map(ingredientInfo => ingredientInfo['name']));
+                    // });
+                    // setIngredients([... new Set(tempIngredients)]);
                 }
+                recipe['extendedIngredients']?.forEach(ing => tempIngredients.push(ing)) ;
+                setIngredients(tempIngredients);
                 setImageURL(recipe['image']);
                 setNutrients(recipe['nutrition']['nutrients']);
                 setNumServings(recipe['servings']);
                 checkIfSaved(recipe);
+                getMissingIngredients(recipe);
             }
         }
     }, []);
@@ -80,7 +109,12 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                    </div>
                    <div className="image-and-save-section">
                         <div>{imageURL ? <img src= {imageURL} alt={recipeName}/>: <div>No Image Provided</div>}</div>
-                        <div className="favorite-recipe-element">
+                        <div className="favorite-recipe-element">      
+                            <div className="scale">
+                                Scale By: 
+                                x {scaleBy}
+                                <input value={scaleBy} type="range" min="1" max="8" step="1" onChange={e => setScaleBy(e.target.value)}></input>
+                            </div>                      
                             {favorited ? "Saved!": "Save Recipe?"}
                             <img className="favorite-button" src={favorite_icon} alt={favorite_alt_text} onClick={() => handleFavoriteClick()}/>
                         </div>
@@ -90,14 +124,28 @@ export default function RecipeDetail({saveRecipe, removeRecipe}) {
                         instructions ? 
                         <div className="recipe-detail-text-sections">
                             <div className="ingredients-and-time-area">
-                            <div className="recipe-ingredients-display">
-                                <h2>Ingredients</h2>
-                                <ul>
-                                    {ingredients.map((item, index) => (
-                                        <li key={index}>{item}</li>
-                                    ))}
-                                </ul> 
-                            </div>
+                                <div>
+                                    <h2>Servings: {numServings * parseInt(scaleBy)}</h2>
+                                </div>
+                                <div className="recipe-ingredients-display">
+
+                                    <h2>Ingredients</h2>                                
+                                    <ul>
+                                        {ingredients.map((ing, index) => (
+                                            <li key={index}><b>{ing.name}</b> - {ing.amount * parseInt(scaleBy) + " " + ing.unit} </li>
+                                        ))}
+                                    </ul> 
+                                    {isLoggedIn && 
+                                        <>
+                                            <h2>Missing From Pantry</h2>
+                                            <ul>
+                                                {missingIngredients.map((item, index) => (
+                                                    <li key={index}>{item}</li>
+                                                ))}                   
+                                            </ul>
+                                        </>
+                                    }
+                                </div>
                             </div>
                             <div className="steps-section">
                                 <h2>Steps</h2>

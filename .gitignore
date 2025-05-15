@@ -2,6 +2,7 @@
 **/__pycache__/
 .vscode/
 **/database.db
-venv
+venv/
 .idea/
-**/node_module/
+**/node_modules/
+.coverage

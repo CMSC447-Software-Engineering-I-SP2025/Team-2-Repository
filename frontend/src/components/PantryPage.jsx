@@ -8,22 +8,37 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
     //     { name: 'Broccoli', quantity: "1 Bunch"},
     //     { name: 'Olive Oil', quantity: "1 Tbsp"},
     // ]);
+    const commonVolumeUnits = ["cup", "tsp", "tbsp", "L", "mL", "qt", "pt", "gal", "fl oz"]
+    const commonWeightUnits = ["kg", "g", "mg", "lb", "oz"]
     const [ingredients, setIngredients] = useState([]);
-
     const [quickAddGroups, setQuickAddGroups] = useState({});
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-    const [newIngredient, setNewIngredient] = useState({ id: '', name: '', quantity: ''});
+    const [newIngredient, setNewIngredient] = useState({ id: '', name: '', quantity: '', unit: '-- unit --'});
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
 
+    //bit maps representing whether table ingredient at that row index is currently being edited
+    const [isEditingQuantity, setIsEditingQuantity] = useState([]); 
+    const [isEditingUnit, setIsEditingUnit] = useState([]);
 
     const serverBaseURLString = "http://localhost:8080";
     const serverBaseURL = new URL(serverBaseURLString);
 
-    function getIDNamePairByName(name) {
-        return ingredientObjs.find(idNamePair => idNamePair.name == name.toLowerCase());
+    function getIngredientByName(name) {
+        return ingredientObjs.find(ing => ing.name == name.toLowerCase());
     }
     function saveIngredient(ingredient) {
+        const processedIngredient = {... ingredient}
+        if(!ingredient.id) {
+            processedIngredient.id = getIngredientByName(ingredient.name).id;
+        }
+        if(ingredient.quantity) {
+            //renaming before sending off because of different naming conventions
+            const tempAmount = ingredient.quantity;
+            processedIngredient.amount = tempAmount;
+            delete processedIngredient.quantity;
+        }
+
         let saveIngredientEndpoint = new URL("addingredient", serverBaseURL);
         const options = {
             method: "PUT",
@@ -31,7 +46,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 "Content-Type": "application/json",
             },
             credentials: "include",
-            body: JSON.stringify(ingredient)
+            body: JSON.stringify(processedIngredient)
         };
         fetch(saveIngredientEndpoint, options)
         .catch(error => console.log(error));
@@ -95,8 +110,12 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 return response.json();
             })
             .then(data => {
-                const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.quantity}));
+                const tempIngredients = data.map(savedIngredient => ({name: savedIngredient.name, quantity: savedIngredient.amount, unit: savedIngredient.unit}));
                 setIngredients(tempIngredients);
+                const prefilledArray = new Array(tempIngredients.length);
+                prefilledArray.fill(false);
+                setIsEditingQuantity(prefilledArray)
+                setIsEditingUnit(prefilledArray)
                 setLoggedIn(true);
             })
             .catch(error => console.log(error));
@@ -104,9 +123,11 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
 
     // Add ingredient to the list
     const handleQuickAdd = (name) => {
-        const idName = getIDNamePairByName(name);
-        saveIngredient(idName);
+        const ingredient = getIngredientByName(name);
+        saveIngredient(ingredient);
         setIngredients((prev) => [...prev, { name, quantity: "-"}]);
+        setIsEditingQuantity([...isEditingQuantity, false]);
+        setIsEditingUnit([...isEditingUnit, false]);
     };
 
     // Filter suggestions based on input
@@ -125,25 +146,25 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
 
     // Add new ingredient with validation (now allowing for missing quantity)
     const handleAddIngredient = () => {
-        // const capitalizeWords = (str) => {
-        //     return str
-        //         .split(' ') // Split the string into words
-        //         .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
-        //         .join(' '); // Join the words back together
-        // };
+
+        if (ingredients.find(ing => ing.name == newIngredient.name)) {
+            return
+        }
         
-        const ingredientToAdd = getIDNamePairByName(newIngredient.name);
-        
-        // const ingredientToAdd = {
-        //     id: ingredientObjs.find(idNamePair => idNamePair.name == newIngredient.name.toLowerCase()).id,
-        //     name: capitalizeWords(newIngredient.name.trim()), // Capitalize each word
-        //     quantity: newIngredient.quantity.trim() || "-",
-        // };
+        const ingredientToAdd = getIngredientByName(newIngredient.name)
+        ingredientToAdd.quantity = newIngredient.quantity.trim() || "-";
+        if (!["-- unit --", "n/a"].includes(newIngredient.unit)) {
+            ingredientToAdd.unit = newIngredient.unit
+        } else {
+            ingredientToAdd.unit = "-"
+        }
     
         if (ingredientToAdd.name) {
             saveIngredient(ingredientToAdd);
             setIngredients((prev) => [...prev, ingredientToAdd]);
-            setNewIngredient({ id: '', name: '', quantity: '' });
+            setIsEditingQuantity([...isEditingQuantity, false]);
+            setIsEditingUnit([...isEditingUnit, false]);
+            setNewIngredient({ id: '', name: '', quantity: '', unit: '-- unit --' });
         }
     };
 
@@ -151,7 +172,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         loggedIn ?
         <div className="pantry-page">
             <div className="quick-add">
-                <h2>Quick Add Ingredients</h2>
+                <h2>Add Ingredients</h2>
                 <input
                     type="text"
                     placeholder="Ingredient Name"
@@ -176,10 +197,25 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                 )}
                 <input
                     type="text"
+                    size={13}
                     placeholder="Quantity (optional)"
                     value={newIngredient.quantity}
                     onChange={(e) => setNewIngredient({ ...newIngredient, quantity: e.target.value })}
                 />
+                <select
+                    value={newIngredient.unit}
+                    onChange={(e) => setNewIngredient({ ...newIngredient, unit: e.target.value })}
+                >
+                    <option disabled defaultValue> -- unit -- </option>
+                    <option>n/a</option>
+                    <optgroup label="volume">
+                        {commonVolumeUnits.map(unit => <option key={unit}>{unit}</option>)}
+                    </optgroup>
+                    <optgroup label="weight">
+                        {commonWeightUnits.map(unit => <option key={unit}>{unit}</option>)}
+                    </optgroup>
+                </select>
+
                 <button onClick={handleAddIngredient}>Add Ingredient</button>
 
                 {/* Display categorized quick-add buttons */}
@@ -209,7 +245,7 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                         <tr>
                             <th>Ingredient</th>
                             <th>Quantity</th>
-                            <th>Edit Quantity</th>
+                            <th>Unit</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -217,26 +253,96 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                         {ingredients.map((ingredient, index) => (
                             <tr key={index}>
                                 <td style={{textTransform: 'capitalize'}}>{ingredient.name}</td>
-                                <td>{ingredient.quantity ? ingredient.quantity : "-"}</td>
+                                <td className='measurement-column'>{ingredient.quantity ? ingredient.quantity : "-"}</td>
+                                <td className='measurement-column'>{ingredient.unit ? ingredient.unit : "-"}</td>
                                 <td>
-                                    <button onClick={() => {
-                                        const newQuantity = prompt("Enter new quantity:", ingredient.quantity);
-                                        if (newQuantity) {
-                                            const updatedIngredients = [...ingredients];
-                                            updatedIngredients[index].quantity = newQuantity;
-                                            setIngredients(updatedIngredients);
+                                    <div className='add-spacing-to-children'>
+                                        {isEditingQuantity[index]
+                                        ?   <input
+                                                type="text"
+                                                size={4}
+                                                placeholder="Quantity"
+                                                defaultValue={ingredients[index].quantity}
+                                                onKeyDown={(e) => {
+                                                    if(e.key == "Enter") {
+                                                        const ingrsCopy = ingredients.slice();
+                                                        ingrsCopy[index].quantity = e.target.value;
+                                                        saveIngredient(ingrsCopy[index]);
+                                                        setIngredients(ingrsCopy);
+
+                                                        const updatedEditingQuantity = isEditingQuantity.slice();
+                                                        updatedEditingQuantity[index] = false;
+                                                        setIsEditingQuantity(updatedEditingQuantity);
+                                                    } 
+                                                }}   
+                                            />
+                                        :   <button onClick={() => {
+                                                const updatedEditingQuantity = [...isEditingQuantity];
+                                                updatedEditingQuantity[index] = true;
+                                                setIsEditingQuantity(updatedEditingQuantity);
+                                            }}>
+                                                Edit Quantity
+                                            </button>
                                         }
-                                    }}>
-                                        Edit
-                                    </button>
-                                </td>
-                                <td>
-                                    <button onClick={() => {
-                                        removeIngredient(getIDNamePairByName(ingredient.name));
-                                        setIngredients(prev => prev.filter((_, i) => i !== index));
-                                    }}>
-                                        Remove
-                                    </button>
+                                        {isEditingUnit[index]
+                                        ?   <>
+                                                <select defaultValue={ingredients[index].unit == '-' ? 'n/a' : ingredients[index].unit}>
+                                                    {/* <option defaultValue value={ingredients[index].unit}> {ingredients[index].unit} </option> */}
+                                                    <option value={'-'}>n/a</option>
+                                                    <optgroup label="volume">
+                                                        {commonVolumeUnits.map(unit => <option key={unit} value={unit}>{unit}</option>)}
+                                                    </optgroup>
+                                                    <optgroup label="weight">
+                                                        {commonWeightUnits.map(unit => <option key={unit} value={unit}>{unit}</option>)}
+                                                    </optgroup>
+                                                </select>
+                                            </>
+                                        :   <button onClick={() => {
+                                                const updatedEditingUnit = [...isEditingUnit];
+                                                updatedEditingUnit[index] = true;
+                                                setIsEditingUnit(updatedEditingUnit);
+                                            }}>
+                                                Edit Unit
+                                            </button>
+                                        }
+
+                                        {(isEditingQuantity[index] || isEditingUnit[index]) &&
+                                            <input 
+                                                type="submit"
+                                                value="Update"
+                                                onClick={(e) => {
+                                                    const ingrsCopy = ingredients.slice();
+                                                    if(isEditingQuantity[index]) {
+                                                        ingrsCopy[index].quantity = e.target.previousSibling.previousSibling.value;
+                                                    }
+                                                    if(isEditingUnit[index]) {
+                                                        ingrsCopy[index].unit = e.target.previousSibling.value;
+                                                    }
+                                                    saveIngredient(ingrsCopy[index]);
+                                                    setIngredients(ingrsCopy);
+                                                    const updatedEditingQuantity = isEditingQuantity.slice();
+                                                    const updatedEditingUnit = isEditingUnit.slice();
+                                                    updatedEditingQuantity[index] = false;
+                                                    updatedEditingUnit[index] = false;
+                                                    setIsEditingQuantity(updatedEditingQuantity);  
+                                                    setIsEditingUnit(updatedEditingUnit);                                                      
+                                                }}
+                                            />
+                                        }
+                                        <button onClick={() => {
+                                            removeIngredient(getIngredientByName(ingredient.name));
+                                            setIngredients(prev => prev.filter((_, i) => i !== index));
+                                            const tempEditQuantity = isEditingQuantity.slice()
+                                            tempEditQuantity.splice(index, 1);
+                                            setIsEditingQuantity(tempEditQuantity);
+                                            const tempEditUnit = isEditingUnit.slice()
+                                            tempEditUnit.splice(index, 1);
+                                            setIsEditingUnit(tempEditUnit);
+                                        }}>
+                                            Remove
+                                        </button>
+                                    </div>
+                                   
                                 </td>
                             </tr>
                         ))}

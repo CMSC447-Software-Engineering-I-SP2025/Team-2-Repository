@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-
 from dacite import Config, from_dict
 
 
@@ -47,7 +46,7 @@ class Ingredient:
 
     id: int
     name: str
-    quantity: int | None
+    amount: float | None
     unit: str | None
     image: str
 
@@ -132,7 +131,7 @@ class Nutrient:
 class Nutrition:
     """Nutrient dataclass.
 
-    Represents a collection of a nutritional information about a recipe. 
+    Represents a collection of a nutritional information about a recipe.
     Omits the properties, flavonoids, and ingredients fields of a Spoonacular Nutrition object.
 
     Attributes:
@@ -168,6 +167,7 @@ class Recipe:
     missedIngredientCount: int | None
     analyzedInstructions: list[Instruction] | None
     nutrition: Nutrition | None
+    extendedIngredients: list[Ingredient] | None
 
 @dataclass
 class Response:
@@ -181,12 +181,3 @@ class Response:
     """
 
     results: list[Recipe]
-
-
-def json_mapper(json_data: dict, data_class: Response):
-
-    return from_dict(
-        data_class=data_class,
-        data=json_data,
-        config=Config(check_types=False, cast=[], strict=False),
-    )

@@ -114,7 +114,7 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
                             } />
 
                             {/* Recipe Detail Page */}
-                            <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
+                            <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn}/>} />
                             
                             {/* Pantry Page */}
                             <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs}/>} />
