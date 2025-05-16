@@ -9,7 +9,6 @@ This is our recipe app.
 2. In a terminal in `recipe-app` run `npm install`.
 3. To start the frontend, run `npm run dev` to start the dev frontend.
   - Hit `q + Enter`, or run `npx kill-port 5173` to stop the frontend.
-5. To start the backend, run `./mvnw clean package`, then run `java -jar .\target\CookbookApp-maker-0.0.1-SNAPSHOT.jar`
 
 ### Running the Backend
 1. `cd /Team-2-Repository`
