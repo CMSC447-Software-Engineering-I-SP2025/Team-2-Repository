@@ -258,6 +258,7 @@ def api_get_recipes() -> dict:
     """
     # Get data from request
     include_ingredients = request.args.get("includeIngredients", type=str)
+    exclude_ingredients = request.args.get("excludeIngredients", type=str)
     cuisine = request.args.get("cuisine", default="", type=str)
     intolerances = request.args.get("intolerances", default="", type=str)
     diet = request.args.get("diet", default="", type=str)
@@ -276,6 +277,8 @@ def api_get_recipes() -> dict:
     }
 
     # Build optional params
+    if exclude_ingredients:
+         params["excludeIngredients"] = exclude_ingredients
     if cuisine:
         params["cuisine"] = cuisine
     if intolerances:
