@@ -32,8 +32,6 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         if(!ingredient.id) {
             processedIngredient.id = getIngredientByName(ingredient.name).id;
         }
-        console.log(ingredient.quantity);
-        console.log(isNaN(ingredient.quantity));
         if(isNaN(ingredient.quantity)) {
             ingredient.quantity = '-';
         }
@@ -344,8 +342,10 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                                     const ingrsCopy = ingredients.slice();
                                                     if(isEditingQuantity[index]) {
                                                         ingrsCopy[index].quantity = parseFloat(e.target.previousSibling.previousSibling.value);
+                                                        console.log(ingrsCopy[index].quantity);
                                                         if (ingrsCopy[index].quantity == 0) {
                                                             removeIngredient(getIngredientByName(ingredient.name), index);
+                                                            return;
                                                         } else if (ingrsCopy[index].quantity < 0) {
                                                             return;
                                                         }
