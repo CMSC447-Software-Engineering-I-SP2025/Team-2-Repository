@@ -1,14 +1,15 @@
-# Team-2-Repository
-This is a recipe finder application that uses the Spoonacular API.
+# Overview
+This is our recipe app.
 
-### Running the Frontend
-1. Download [nodeJS](https://nodejs.org/en/download/)
-2. In `/frontend` run `npm install`, then run `npm run dev`.
-3. For sunsequent runs, go to `/frontend` and run `num run dev`.
-4. To stop the server do one of the following:
-    - Hit `Q + Enter`
-    - Hit `Ctrl + C`
-    - In another terminal, run `npx kill-port 5173`
+# Usage (Windows)
+
+### Frontend
+1. Clone the git repo.
+2. Download and install [nodeJS](https://nodejs.org/en/download/). 
+2. In a terminal in `recipe-app` run `npm install`.
+3. To start the frontend, run `npm run dev` to start the dev frontend.
+  - Hit `q + Enter`, or run `npx kill-port 5173` to stop the frontend.
+5. To start the backend, run `./mvnw clean package`, then run `java -jar .\target\CookbookApp-maker-0.0.1-SNAPSHOT.jar`
 
 ### Running the Backend
 1. `cd /Team-2-Repository`
