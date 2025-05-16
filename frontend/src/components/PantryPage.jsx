@@ -32,7 +32,12 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         if(!ingredient.id) {
             processedIngredient.id = getIngredientByName(ingredient.name).id;
         }
-        if(ingredient.quantity) {
+        console.log(ingredient.quantity);
+        console.log(isNaN(ingredient.quantity));
+        if(isNaN(ingredient.quantity)) {
+            ingredient.quantity = '-';
+        }
+        if(processedIngredient.quantity) {
             //renaming before sending off because of different naming conventions
             const tempAmount = ingredient.quantity;
             processedIngredient.amount = tempAmount;
@@ -52,7 +57,15 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
         .catch(error => console.log(error));
     }
 
-    function removeIngredient(ingredient) {
+    function removeIngredient(ingredient, index) {
+        setIngredients(prev => prev.filter((_, i) => i !== index));
+        const tempEditQuantity = isEditingQuantity.slice();
+        tempEditQuantity.splice(index, 1);
+        setIsEditingQuantity(tempEditQuantity);
+        const tempEditUnit = isEditingUnit.slice();
+        tempEditUnit.splice(index, 1);
+        setIsEditingUnit(tempEditUnit);
+
         let removeIngredientEndpoint = new URL("removeingredient", serverBaseURL);
         const options = {
             method: "DELETE",
@@ -123,11 +136,13 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
 
     // Add ingredient to the list
     const handleQuickAdd = (name) => {
-        const ingredient = getIngredientByName(name);
-        saveIngredient(ingredient);
-        setIngredients((prev) => [...prev, { name, quantity: "-"}]);
-        setIsEditingQuantity([...isEditingQuantity, false]);
-        setIsEditingUnit([...isEditingUnit, false]);
+        if (!ingredients.find(ing => ing.name == name)) {
+            const ingredient = getIngredientByName(name);
+            saveIngredient(ingredient);
+            setIngredients((prev) => [...prev, { name, quantity: "-"}]);
+            setIsEditingQuantity([...isEditingQuantity, false]);
+            setIsEditingUnit([...isEditingUnit, false]);
+        }
     };
 
     // Filter suggestions based on input
@@ -148,9 +163,13 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
     const handleAddIngredient = () => {
 
         if (ingredients.find(ing => ing.name == newIngredient.name)) {
-            return
+            return;
         }
-        
+
+        if(parseFloat(newIngredient.quantity) <= 0) {
+            return;
+        }
+    
         const ingredientToAdd = getIngredientByName(newIngredient.name)
         ingredientToAdd.quantity = newIngredient.quantity.trim() || "-";
         if (!["-- unit --", "n/a"].includes(newIngredient.unit)) {
@@ -196,8 +215,11 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                     </ul>
                 )}
                 <input
-                    type="text"
-                    size={13}
+                    style={{width: "8rem"}}
+                    type="number"
+                    step="any"
+                    min="0"
+                    max="10000"
                     placeholder="Quantity (optional)"
                     value={newIngredient.quantity}
                     onChange={(e) => setNewIngredient({ ...newIngredient, quantity: e.target.value })}
@@ -259,20 +281,28 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                     <div className='add-spacing-to-children'>
                                         {isEditingQuantity[index]
                                         ?   <input
-                                                type="text"
-                                                size={4}
+                                                style={{width: "4rem"}}
+                                                type="number"
+                                                step="any"
+                                                min="0"
+                                                max="10000"
                                                 placeholder="Quantity"
                                                 defaultValue={ingredients[index].quantity}
                                                 onKeyDown={(e) => {
                                                     if(e.key == "Enter") {
-                                                        const ingrsCopy = ingredients.slice();
-                                                        ingrsCopy[index].quantity = e.target.value;
-                                                        saveIngredient(ingrsCopy[index]);
-                                                        setIngredients(ingrsCopy);
+                                                        const newQuantity = parseFloat(e.target.value);
+                                                        if (newQuantity == 0) {
+                                                            removeIngredient(getIngredientByName(ingredient.name), index);
+                                                        } else if (newQuantity > 0) {
+                                                            const ingrsCopy = ingredients.slice();
+                                                            ingrsCopy[index].quantity = newQuantity;
+                                                            saveIngredient(ingrsCopy[index]);
+                                                            setIngredients(ingrsCopy);
 
-                                                        const updatedEditingQuantity = isEditingQuantity.slice();
-                                                        updatedEditingQuantity[index] = false;
-                                                        setIsEditingQuantity(updatedEditingQuantity);
+                                                            const updatedEditingQuantity = isEditingQuantity.slice();
+                                                            updatedEditingQuantity[index] = false;
+                                                            setIsEditingQuantity(updatedEditingQuantity);
+                                                        }
                                                     } 
                                                 }}   
                                             />
@@ -313,7 +343,12 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                                 onClick={(e) => {
                                                     const ingrsCopy = ingredients.slice();
                                                     if(isEditingQuantity[index]) {
-                                                        ingrsCopy[index].quantity = e.target.previousSibling.previousSibling.value;
+                                                        ingrsCopy[index].quantity = parseFloat(e.target.previousSibling.previousSibling.value);
+                                                        if (ingrsCopy[index].quantity == 0) {
+                                                            removeIngredient(getIngredientByName(ingredient.name), index);
+                                                        } else if (ingrsCopy[index].quantity < 0) {
+                                                            return;
+                                                        }
                                                     }
                                                     if(isEditingUnit[index]) {
                                                         ingrsCopy[index].unit = e.target.previousSibling.value;
@@ -330,19 +365,11 @@ export default function PantryPage({uniqueIngredientNames, ingredientObjs}) {
                                             />
                                         }
                                         <button onClick={() => {
-                                            removeIngredient(getIngredientByName(ingredient.name));
-                                            setIngredients(prev => prev.filter((_, i) => i !== index));
-                                            const tempEditQuantity = isEditingQuantity.slice()
-                                            tempEditQuantity.splice(index, 1);
-                                            setIsEditingQuantity(tempEditQuantity);
-                                            const tempEditUnit = isEditingUnit.slice()
-                                            tempEditUnit.splice(index, 1);
-                                            setIsEditingUnit(tempEditUnit);
+                                            removeIngredient(getIngredientByName(ingredient.name), index);
                                         }}>
                                             Remove
                                         </button>
                                     </div>
-                                   
                                 </td>
                             </tr>
                         ))}
