@@ -106,7 +106,7 @@ export default function GetRecipeSection({ingredientNameList, setRecipes, setFav
             <div className="get-recipe-guide">Find recipes by their ingredients</div>
             <InputTextArea ingredients={ingredients} setIngredients={setIngredients} ingredientNameList={ingredientNameList} includeToggle={includeToggle} 
                         setIncludeToggle={setIncludeToggle} ingredientsIncludeBitMap={ingredientsIncludeBitMap} setIngredientsIncludeBitMap={setIngredientsIncludeBitMap} handleSubmit={handleSubmit}/>
-            <IngredientList ingredients={ingredients} setIngredients={setIngredients} ingredientsIncludeBitMap={ingredientsIncludeBitMap}/>
+            <IngredientList ingredients={ingredients} setIngredients={setIngredients} setIngredientsIncludeBitMap={setIngredientsIncludeBitMap} ingredientsIncludeBitMap={ingredientsIncludeBitMap}/>
             <SubmitButton handleSubmit={handleSubmit}/>
         </div>
     </div>
@@ -203,13 +203,16 @@ function SubmitButton({handleSubmit}) {
     return <button type="button" className="submit-button" onClick={handleSubmit}>Get Recipes</button>;
 }
 
-function IngredientList({ingredients, setIngredients, ingredientsIncludeBitMap}) {
+function IngredientList({ingredients, setIngredients, setIngredientsIncludeBitMap, ingredientsIncludeBitMap}) {
     function removeIngredient (ingredient) {
         //error because of key duplicate if duplicate ingredient, make sure to disallow dupes.
         const ingredientArrCopy = ingredients.slice();
+        const includeBitMapCopy =  ingredientsIncludeBitMap.slice();
         const index = ingredientArrCopy.indexOf(ingredient);
         ingredientArrCopy.splice(index, 1);
+        includeBitMapCopy.splice(index, 1);
         setIngredients(ingredientArrCopy);
+        setIngredientsIncludeBitMap(includeBitMapCopy);
     }
     return <>
         <div className="ingredient-list">
