@@ -37,7 +37,7 @@ class RecipeDB(Base):
     __tablename__ = "recipes"
 
     recipe_id = Column(Integer, primary_key=True, nullable=False)
-    user_id = Column(Integer, nullable=False)
+    user_id = Column(Integer, primary_key=True, nullable=False)
     title = Column(String(100), nullable=False)
     image = Column(String(255))
     servings = Column(Integer, nullable=True)
