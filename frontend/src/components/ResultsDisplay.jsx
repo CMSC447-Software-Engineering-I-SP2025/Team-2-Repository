@@ -1,15 +1,18 @@
 import {Link} from 'react-router-dom';
 
-export default function ResultsDisplay ({recipes, favoritedRecipesBitMap, setFavoritedRecipesBitMap, saveRecipe, removeRecipe}) {
+export default function ResultsDisplay ({recipes, favoritedRecipesBitMap, setFavoritedRecipesBitMap, saveRecipe, removeRecipe, isLoggedIn, setShowLogin}) {
     return <div className="results-section">
         <div className="results-grid">
-                {recipes.slice(0,15).map((recipe, i) => 
-                <ResultsCell recipe={recipe} index={i} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe} key={recipe.title}/>)}
+                {
+                    recipes.slice(0,15).map((recipe, i) => 
+                        <ResultsCell recipe={recipe} index={i} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} 
+                        saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn} setShowLogin={setShowLogin} key={recipe.title}/>)
+                }
         </div>
     </div>
 }
 
-function ResultsCell({recipe, index, favoritedRecipesBitMap, setFavoritedRecipesBitMap, saveRecipe, removeRecipe}) {
+function ResultsCell({recipe, index, favoritedRecipesBitMap, setFavoritedRecipesBitMap, saveRecipe, removeRecipe, isLoggedIn, setShowLogin}) {
     // Ensure `favoritedRecipesBitMap` is valid
     const isFavorited = (favoritedRecipesBitMap && favoritedRecipesBitMap[index]) || false;
     const favorite_icon = isFavorited ? "../star-solid.svg" : "../star-regular.svg";
@@ -18,14 +21,18 @@ function ResultsCell({recipe, index, favoritedRecipesBitMap, setFavoritedRecipes
         : "A favorite recipe button set to not favorited.";
 
     function handleFavoriteClick() {
-        let copyBitMap = favoritedRecipesBitMap.slice();
-        if (isFavorited) {
-            removeRecipe(recipe);
+        if(isLoggedIn) {
+            let copyBitMap = favoritedRecipesBitMap.slice();
+            if (isFavorited) {
+                removeRecipe(recipe);
+            } else {
+                saveRecipe(recipe);
+            }
+            copyBitMap[index] = !isFavorited;
+            setFavoritedRecipesBitMap(copyBitMap);
         } else {
-            saveRecipe(recipe);
+            setShowLogin(true);
         }
-        copyBitMap[index] = !isFavorited;
-        setFavoritedRecipesBitMap(copyBitMap);
     }
 
     const recipeURL = recipe.image;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ResultsDisplay from "./ResultsDisplay";
 
-export default function UserRecipesPage ({saveRecipe, removeRecipe}) {
+export default function UserRecipesPage ({saveRecipe, removeRecipe, isLoggedIn, setShowLogin}) {
     const [savedRecipes, setSavedRecipes] = useState([]);
     const [favoritedRecipesBitMap, setFavoritedRecipesBitMap] = useState([]);
     const [loggedIn, setLoggedIn] = useState(false);
@@ -45,7 +45,8 @@ export default function UserRecipesPage ({saveRecipe, removeRecipe}) {
         {loggedIn ?
             <><h1 style={{textAlign: "center"}}>Saved Recipes</h1>
             {savedRecipes.length > 0 ? 
-                <ResultsDisplay recipes={savedRecipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe} />
+                <ResultsDisplay recipes={savedRecipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} 
+                saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn} setShowLogin={setShowLogin}/>
                 : <div style={{textAlign: "center", color: " #A52A2A"}}> No recipes saved yet. Time to start your culinary adventure! </div>
             }</>
         : <h3 style={{textAlign: "center"}}>Not logged in</h3>

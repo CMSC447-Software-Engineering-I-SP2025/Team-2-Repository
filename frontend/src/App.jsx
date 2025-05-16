@@ -109,22 +109,22 @@ export default function App({ingredientNameList, ingredientIDNamePairs}) {
                             <Route path="/search" element={
                                 <>
                                     <GetRecipeSection ingredientNameList={ingredientNameList} setRecipes={setRecipes} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} isLoggedIn={isLoggedIn}/>
-                                    <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>
+                                    <ResultsDisplay recipes={recipes} favoritedRecipesBitMap={favoritedRecipesBitMap} setFavoritedRecipesBitMap={setFavoritedRecipesBitMap} saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn} setShowLogin={setShowLoginModal}/>
                                 </>
                             } />
 
                             {/* Recipe Detail Page */}
-                            <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn}/>} />
+                            <Route path="/recipe/:recipeName" element={<RecipeDetail  saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn} setShowLogin={setShowLoginModal} />} />
                             
                             {/* Pantry Page */}
-                            <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs}/>} />
+                            <Route path="/pantry" element={<PantryPage uniqueIngredientNames={ingredientNameList} ingredientObjs={ingredientIDNamePairs} isLoggedIn={isLoggedIn} setShowLogin={setShowLoginModal}/>} />
         
                             {/* Saved Recipes Page */}
-                            <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe}/>} />
+                            <Route path="/saved-recipes" element={<UserRecipesPage saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn} setShowLogin={setShowLoginModal}/>} />
 
                             {/* Category/Subcategory Page */}
-                            <Route path="/:category" element={ <CategoryPage saveRecipe={saveRecipe} removeRecipe={removeRecipe} /> } />
-                            <Route path="/:category/:subcategory" element={ <CategoryPage saveRecipe={saveRecipe} removeRecipe={removeRecipe} /> } />
+                            <Route path="/:category" element={ <CategoryPage saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn} setShowLogin={setShowLoginModal}/> } />
+                            <Route path="/:category/:subcategory" element={ <CategoryPage saveRecipe={saveRecipe} removeRecipe={removeRecipe} isLoggedIn={isLoggedIn} setShowLogin={setShowLoginModal}/> } />
 
                             {/* 404 Page */}
                             <Route path="*" element={<h1>404 Not Found</h1>} />

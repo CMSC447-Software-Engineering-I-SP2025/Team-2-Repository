@@ -78,7 +78,7 @@ const RECIPE_CACHE = {
   }
 };
 
-export default function CategoryPage({ saveRecipe, removeRecipe }) {
+export default function CategoryPage({ saveRecipe, removeRecipe, isLoggedIn, setShowLogin }) {
   const { category, subcategory } = useParams();
   const [recipes, setRecipes] = useState([]);
   const [recipesBySubcategory, setRecipesBySubcategory] = useState({});
@@ -170,6 +170,8 @@ export default function CategoryPage({ saveRecipe, removeRecipe }) {
             setFavoritedRecipesBitMap={setFavoritedRecipesBitMap}
             saveRecipe={saveRecipe}
             removeRecipe={removeRecipe}
+            isLoggedIn={isLoggedIn}
+            setShowLogin={setShowLogin}
           />
         ) : (
           <div style={{ textAlign: "center", color: "#A52A2A" }}>

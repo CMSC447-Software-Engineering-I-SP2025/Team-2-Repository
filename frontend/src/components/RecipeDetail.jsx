@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 import NutritionLabel from "./NutritionLabel";
 
-export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
+export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn, setShowLogin}) {
     //the recipe data must be in states b/c the recipe isn't found until after the page loads
     //storing a single recipe state wasn't working, so we have states for each field
     const {recipeName} = useParams();
@@ -74,12 +74,6 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                 const  tempInstructions = recipe['analyzedInstructions'] || recipe['instructions'];
                 if(tempInstructions?.length > 0) {
                     setInstructions(tempInstructions[0]['steps']);
-                    // tempInstructions[0]['steps'].forEach( stepInfo => {
-                    //     tempIngredients.push(... stepInfo['ingredients']
-                    //                         .filter(info => info['id'] > 0)
-                    //                         .map(ingredientInfo => ingredientInfo['name']));
-                    // });
-                    // setIngredients([... new Set(tempIngredients)]);
                 }
                 recipe['extendedIngredients']?.forEach(ing => tempIngredients.push(ing)) ;
                 setIngredients(tempIngredients);
@@ -94,10 +88,15 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
 
 
     function handleFavoriteClick() {
-        recipesArr = JSON.parse(sessionStorage.getItem('recipes'));
-        recipe = recipesArr.find(sessionRecipe => sessionRecipe.title.toLowerCase() == recipeName.toLowerCase());
-        favorited ? removeRecipe(recipe) : saveRecipe(recipe);
-        setFavorited(!favorited);
+        if (isLoggedIn) {
+            recipesArr = JSON.parse(sessionStorage.getItem('recipes'));
+            recipe = recipesArr.find(sessionRecipe => sessionRecipe.title.toLowerCase() == recipeName.toLowerCase());
+            favorited ? removeRecipe(recipe) : saveRecipe(recipe);
+            setFavorited(!favorited);
+        } else {
+            setShowLogin(true);
+        }
+
     }
 
     return (
@@ -132,7 +131,7 @@ export default function RecipeDetail({saveRecipe, removeRecipe, isLoggedIn}) {
                                     <h2>Ingredients</h2>                                
                                     <ul>
                                         {ingredients.map((ing, index) => (
-                                            <li key={index}><b>{ing.name}</b> - {Math.round((ing.amount * parseInt(scaleBy))*1000)/1000 + " " + ing.unit} </li>
+                                            <li key={index}><b>{ing.name}</b> - {Math.round((ing.amount * parseInt(scaleBy))*1000)/1000} <span style={{textTransform:"none"}}>{ing.unit}</span> </li>
                                         ))}
                                     </ul> 
                                 </div>

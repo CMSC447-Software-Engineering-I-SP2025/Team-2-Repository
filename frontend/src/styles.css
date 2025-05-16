@@ -502,8 +502,20 @@ header {
             }
         }
     }
+
     .favorite-button {
         width: 2.5rem;
+        padding: 4px 6px;
+        font-size: 1rem;
+        background: none;
+        border: none;
+        color: #4A2C2A;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    
+        &:hover {
+            color: #a05c3c;
+        }
     }
 
     .ingredients-and-time-area {
@@ -512,7 +524,7 @@ header {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
         text-transform: capitalize;
-        line-height: 1.6;
+        line-height: 2;
 
         h2 {
             margin-bottom: 0rem;
@@ -1036,7 +1048,7 @@ header {
     justify-content: center;
 }
 .missing-list {
-    background-color: rgb(179, 118, 118);
+    background-color: rgb(184, 137, 137);
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding-top: 0.3rem;
