@@ -270,7 +270,7 @@ def api_get_recipes() -> dict:
         "addRecipeInstructions": True,
         "addRecipeNutrition": True,
         "fillIngredients": True,
-        "sort": "min-missing-ingredients",
+        # "sort": "min-missing-ingredients",
         "number": 12,
         "apiKey": db.api_key,
     }
@@ -511,11 +511,9 @@ def find_missing_ingredients() -> list[str]:
     recipe = recipe_mapper(request.get_json())
 
     # Get recipe ingredients
-    recipe_ingredients: list[str] = [ingredient["name"] for ingredient in recipe.ingredients]
-
+    recipe_ingredients: list[str] = [ingredient["name"].lower() for ingredient in recipe.ingredients]
     # Get user ingredients
-    user_ingredinets: list[str] = [ingr["name"] for ingr in api_list_ingredients().json]
-
+    user_ingredinets: list[str] = [ingr["name"].lower() for ingr in api_list_ingredients().json]
     # Find / return missing ingredients
     return [ingr for ingr in recipe_ingredients if ingr not in user_ingredinets]
 
